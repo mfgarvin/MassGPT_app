@@ -1,0 +1,2590 @@
+[
+    {
+      "name": "Visitation of Mary, Akron",
+      "latitude": 41.0728219,
+      "longitude": -81.4882493,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1030",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "Queen of Heaven, Uniontown",
+      "latitude": 40.9468231,
+      "longitude": -81.469451,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 815",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 830"
+      ]
+    },
+    {
+      "name": "Transfiguration, Lakewood",
+      "latitude": 41.4771636,
+      "longitude": -81.7767796,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Monday at 830",
+        "Wednesday at 830",
+        "Friday at 830",
+        "Tuesday at 1730"
+      ]
+    },
+    {
+      "name": "Ss. Robert and William, Euclid",
+      "latitude": 41.617024,
+      "longitude": -81.50243,
+      "mass_times": [
+        "Monday at 830",
+        "Monday at 1130",
+        "Tuesday at 830",
+        "Tuesday at 1830",
+        "Wednesday at 830",
+        "Wednesday at 1130",
+        "Thursday at 830",
+        "Thursday at 1830",
+        "Friday at 1130",
+        "Saturday at 830",
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 930",
+        "Sunday at 1100",
+        "Sunday at 1800"
+      ]
+    },
+    {
+      "name": "Ss. Peter and Paul, Garfield Heights",
+      "latitude": 41.4305067,
+      "longitude": -81.6168576,
+      "mass_times": [
+        "Wednesday at 830",
+        "Friday at 830",
+        "Saturday at 1600",
+        "Sunday at 830"
+      ]
+    },
+    {
+      "name": "Ss. Peter and Paul, Doylestown",
+      "latitude": 40.970462,
+      "longitude": -81.699628,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Wednesday at 1900",
+        "Thursday at 800",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "Ss. Cosmas and Damian, Twinsburg",
+      "latitude": 41.3255699,
+      "longitude": -81.4572877,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Wendelin, Cleveland",
+      "latitude": 41.481842,
+      "longitude": -81.6997389,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Vitus, Cleveland",
+      "latitude": 41.5227521,
+      "longitude": -81.6489348,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1030",
+        "Monday at 1700",
+        "Tuesday at 1700",
+        "Wednesday at 1700",
+        "Thursday at 1700",
+        "Friday at 1700"
+      ]
+    },
+    {
+      "name": "St. Vincent de Paul, Elyria",
+      "latitude": 41.4171552,
+      "longitude": -82.1213772,
+      "mass_times": [
+        "Thursday at 900",
+        "Friday at 900",
+        "Saturday at 1600",
+        "Sunday at 2330",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Sunday at 800",
+        "Sunday at 1000"
+      ]
+    },
+    {
+      "name": "St. Vincent de Paul, Cleveland",
+      "latitude": 41.457458,
+      "longitude": -81.7840849,
+      "mass_times": [
+        "Saturday at 1730",
+        "Sunday at 900",
+        "Monday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Holy Day at 830"
+      ]
+    },
+    {
+      "name": "St. Vincent de Paul, Akron",
+      "latitude": 41.087309,
+      "longitude": -81.522865,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 628",
+        "Tuesday at 628",
+        "Wednesday at 628",
+        "Thursday at 628",
+        "Friday at 628",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Victor, Richfield",
+      "latitude": 41.2035073,
+      "longitude": -81.6174307,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 845",
+        "Sunday at 1130",
+        "Monday at 730",
+        "Tuesday at 730",
+        "Friday at 730"
+      ]
+    },
+    {
+      "name": "St. Thomas More, Brooklyn",
+      "latitude": 41.442811,
+      "longitude": -81.739775,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 815",
+        "Wednesday at 815",
+        "Friday at 815",
+        "Saturday at 815",
+        "Tuesday at 1845"
+      ]
+    },
+    {
+      "name": "St. Thomas, Sheffield Lake",
+      "latitude": 41.4868078,
+      "longitude": -82.0945173,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Theresa of Avila, Sheffield ",
+      "latitude": 41.46657,
+      "longitude": -82.07655,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Wednesday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Therese, Garfield Heights",
+      "latitude": 41.4175754,
+      "longitude": -81.6115923,
+      "mass_times": [
+        "Saturday at 1730",
+        "Sunday at 1030",
+        "Monday at 1830",
+        "Thursday at 830"
+      ]
+    },
+    {
+      "name": "St. Stephen, West Salem",
+      "latitude": 40.9733311,
+      "longitude": -82.1053785,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1100",
+        "Wednesday at 1600"
+      ]
+    },
+    {
+      "name": "St. Stephen, Cleveland",
+      "latitude": 41.478899,
+      "longitude": -81.7240446,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Stanislaus, Cleveland",
+      "latitude": 41.4591025,
+      "longitude": -81.6446127,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Monday at 645",
+        "Monday at 1215",
+        "Tuesday at 645",
+        "Tuesday at 1900",
+        "Wednesday at 645",
+        "Wednesday at 830",
+        "Thursday at 645",
+        "Thursday at 1900",
+        "Friday at 645",
+        "Friday at 1215",
+        "Saturday at 830"
+      ]
+    },
+    {
+      "name": "St. Sebastian, Akron",
+      "latitude": 41.0989311,
+      "longitude": -81.5665409,
+      "mass_times": [
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 805",
+        "Friday at 800",
+        "Saturday at 800",
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Rocco, Cleveland",
+      "latitude": 41.466824,
+      "longitude": -81.706753,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 730",
+        "Sunday at 930",
+        "Sunday at 1200",
+        "Monday at 645",
+        "Monday at 1830",
+        "Tuesday at 645",
+        "Tuesday at 1830",
+        "Wednesday at 645",
+        "Wednesday at 1830",
+        "Thursday at 645",
+        "Thursday at 1830",
+        "Friday at 645",
+        "Friday at 1830"
+      ]
+    },
+    {
+      "name": "St. Rita, Solon",
+      "latitude": 41.3843959,
+      "longitude": -81.4450675,
+      "mass_times": [
+        "Saturday at 845",
+        "Saturday at 1700",
+        "Sunday at 730",
+        "Sunday at 900",
+        "Sunday at 1045",
+        "Monday at 845",
+        "Monday at 1900",
+        "Tuesday at 845",
+        "Wednesday at 845",
+        "Thursday at 845",
+        "Friday at 845"
+      ]
+    },
+    {
+      "name": "St. Richard, North Olmsted",
+      "latitude": 41.417086,
+      "longitude": -81.918826,
+      "mass_times": [
+        "Monday at 700",
+        "Tuesday at 700",
+        "Wednesday at 700",
+        "Thursday at 700",
+        "Friday at 700",
+        "Saturday at 800",
+        "Saturday at 1630",
+        "Sunday at 700",
+        "Sunday at 1015"
+      ]
+    },
+    {
+      "name": "St. Raphael, Bay Village",
+      "latitude": 41.4805755,
+      "longitude": -81.9195342,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 745",
+        "Monday at 915",
+        "Tuesday at 745",
+        "Tuesday at 915",
+        "Wednesday at 745",
+        "Thursday at 915",
+        "Friday at 745",
+        "Friday at 915"
+      ]
+    },
+    {
+      "name": "St. Peter, North Ridgeville",
+      "latitude": 41.3906503,
+      "longitude": -82.0157912,
+      "mass_times": [
+        "Monday at 815",
+        "Tuesday at 815",
+        "Wednesday at 815",
+        "Thursday at 815",
+        "Friday at 815",
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200"
+      ]
+    },
+    {
+      "name": "St. Peter, Loudonville",
+      "latitude": 40.6366145,
+      "longitude": -82.2308743,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Peter, Lorain",
+      "latitude": 41.4373726,
+      "longitude": -82.185384,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1200",
+        "Monday at 1730",
+        "Tuesday at 830",
+        "Thursday at 1730",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Peter, Cleveland",
+      "latitude": 41.5054988,
+      "longitude": -81.6811037,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Paul, Cleveland",
+      "latitude": 41.5160302,
+      "longitude": -81.6633672,
+      "mass_times": [
+        "Monday at 730",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Thursday at 730",
+        "Friday at 730",
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1200"
+      ]
+    },
+    {
+      "name": "St. Paul, Akron",
+      "latitude": 41.0383724,
+      "longitude": -81.5108867,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1030",
+        "Monday at 830",
+        "Tuesday at 700",
+        "Wednesday at 830",
+        "Thursday at 700",
+        "Friday at 830",
+        "Friday at 1730"
+      ]
+    },
+    {
+      "name": "St. Patrick, Wellington",
+      "latitude": 41.175007,
+      "longitude": -82.2167846,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Patrick, Thompson",
+      "latitude": 41.6648573,
+      "longitude": -81.0529447,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 930",
+        "Tuesday at 845",
+        "Thursday at 845"
+      ]
+    },
+    {
+      "name": "St. Patrick, Cleveland (Rocky River)",
+      "latitude": 41.434398,
+      "longitude": -81.8217189,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Tuesday at 1900",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Patrick, Cleveland (Bridge)",
+      "latitude": 41.4831958,
+      "longitude": -81.711556,
+      "mass_times": [
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1630",
+        "Sunday at 715",
+        "Sunday at 1045"
+      ]
+    },
+    {
+      "name": "St. Paschal Baylon, Highland Heights",
+      "latitude": 41.5380938,
+      "longitude": -81.4854892,
+      "mass_times": [
+        "Saturday at 1630",
+        "Saturday at 900",
+        "Sunday at 830",
+        "Sunday at 1030",
+        "Sunday at 1830",
+        "Monday at 900",
+        "Monday at 1130",
+        "Tuesday at 900",
+        "Tuesday at 1130",
+        "Wednesday at 900",
+        "Wednesday at 1130",
+        "Thursday at 900",
+        "Thursday at 1130",
+        "Friday at 630",
+        "Friday at 1130"
+      ]
+    },
+    {
+      "name": "St. Noel, Willoughby",
+      "latitude": 41.5861896,
+      "longitude": -81.4353346,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Monica, Garfield Heights",
+      "latitude": 41.403715,
+      "longitude": -81.586485,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1045",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "St. Michael the Archangel, Cleveland",
+      "latitude": 41.4697367,
+      "longitude": -81.6974633,
+      "mass_times": [
+        "Saturday at 1700",
+        "Saturday at 1900",
+        "Sunday at 945",
+        "Sunday at 1200",
+        "Monday at 1200",
+        "Wednesday at 1830",
+        "Thursday at 1830",
+        "Friday at 1200"
+      ]
+    },
+    {
+      "name": "St. Michael, Independence",
+      "latitude": 41.3846655,
+      "longitude": -81.6419084,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200"
+      ]
+    },
+    {
+      "name": "St. Mel, Cleveland",
+      "latitude": 41.4614558,
+      "longitude": -81.7954471,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 700",
+        "Sunday at 1000",
+        "Tuesday at 645",
+        "Friday at 645"
+      ]
+    },
+    {
+      "name": "St. Matthias, Parma",
+      "latitude": 41.3514044,
+      "longitude": -81.6879478,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1000",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Friday at 1200"
+      ]
+    },
+    {
+      "name": "St. Mary of the Immaculate Conception, Wooster",
+      "latitude": 40.8047701,
+      "longitude": -81.933746,
+      "mass_times": [
+        "Sunday at 800",
+        "Sunday at 1100",
+        "Sunday at 1700",
+        "Monday at 700",
+        "Wednesday at 930",
+        "Thursday at 700",
+        "Friday at 700",
+        "Saturday at 1700"
+      ]
+    },
+    {
+      "name": "St. Mary of the Immaculate Conception, Avon",
+      "latitude": 41.449693,
+      "longitude": -82.033951,
+      "mass_times": [
+        "Monday at 745",
+        "Monday at 1930",
+        "Tuesday at 745",
+        "Wednesday at 745",
+        "Wednesday at 830",
+        "Thursday at 745",
+        "Thursday at 1930",
+        "Friday at 745",
+        "Friday at 830",
+        "Saturday at 830",
+        "Saturday at 1600",
+        "Saturday at 1700",
+        "Sunday at 730",
+        "Sunday at 800",
+        "Sunday at 900",
+        "Sunday at 1000",
+        "Sunday at 1030",
+        "Sunday at 1200"
+      ]
+    },
+    {
+      "name": "St. Mary of the Falls, Olmsted Falls",
+      "latitude": 41.3724257,
+      "longitude": -81.9032495,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Sunday at 1700",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 700",
+        "Friday at 700"
+      ]
+    },
+    {
+      "name": "St. Mary of the Assumption, Mentor",
+      "latitude": 41.6681396,
+      "longitude": -81.3343183,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 815",
+        "Tuesday at 815",
+        "Wednesday at 815",
+        "Friday at 815"
+      ]
+    },
+    {
+      "name": "St. Mary Magdalene, Willowick",
+      "latitude": 41.6420066,
+      "longitude": -81.4602894,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1100",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Mary, Painesville",
+      "latitude": 41.7301553,
+      "longitude": -81.2436449,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Sunday at 1800",
+        "Monday at 645",
+        "Monday at 1215",
+        "Tuesday at 645",
+        "Wednesday at 1215",
+        "Thursday at 645",
+        "Friday at 1215"
+      ]
+    },
+    {
+      "name": "St. Mary, Lorain",
+      "latitude": 41.4639406,
+      "longitude": -82.176617,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Mary, Hudson",
+      "latitude": 41.2470795,
+      "longitude": -81.441468,
+      "mass_times": [
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Thursday at 900",
+        "Friday at 900",
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 930",
+        "Sunday at 1130",
+        "Sunday at 1730"
+      ]
+    },
+    {
+      "name": "St. Mary, Elyria",
+      "latitude": 41.3645301,
+      "longitude": -82.1068211,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1030",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Thursday at 900",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Mary, Cleveland (Collonwood)",
+      "latitude": 41.560673,
+      "longitude": -81.573232,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1015",
+        "Monday at 745",
+        "Tuesday at 745",
+        "Wednesday at 745",
+        "Thursday at 745",
+        "Friday at 745",
+        "Saturday at 745",
+        "Holy Day Vigil at 1900",
+        "Holy Day at 800",
+        "Holy Day at 1930"
+      ]
+    },
+    {
+      "name": "St. Mary, Chardon",
+      "latitude": 41.5893886,
+      "longitude": -81.2057072,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 730",
+        "Tuesday at 830",
+        "Wednesday at 1200",
+        "Thursday at 730",
+        "Friday at 730"
+      ]
+    },
+    {
+      "name": "St. Mary, Berea",
+      "latitude": 41.3662518,
+      "longitude": -81.8654315,
+      "mass_times": [
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Thursday at 900",
+        "Friday at 900",
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1030"
+      ]
+    },
+    {
+      "name": "St. Mary, Bedford",
+      "latitude": 41.3803166,
+      "longitude": -81.5250791,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 915",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800"
+      ]
+    },
+    {
+      "name": "St. Mary, Akron",
+      "latitude": 41.0662748,
+      "longitude": -81.5274569,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Martin of Tours, Valley City",
+      "latitude": 41.225069,
+      "longitude": -81.9549139,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 800",
+        "Sunday at 1030",
+        "Monday at 1700",
+        "Wednesday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Martin of Tours, Maple Heights",
+      "latitude": 41.3930011,
+      "longitude": -81.5810146,
+      "mass_times": [
+        "Monday at 730",
+        "Monday at 1830",
+        "Tuesday at 730",
+        "Tuesday at 1830",
+        "Wednesday at 730",
+        "Wednesday at 1830",
+        "Thursday at 730",
+        "Friday at 730",
+        "Saturday at 730",
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Mark, Cleveland",
+      "latitude": 41.4677509,
+      "longitude": -81.8070814,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Thursday at 830",
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1130"
+      ]
+    },
+    {
+      "name": "St. Matthew, Akron",
+      "latitude": 41.053233,
+      "longitude": -81.436211,
+      "mass_times": [
+        "Sunday at 800",
+        "Sunday at 1030",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Friday at 800",
+        "Saturday at 1600"
+      ]
+    },
+    {
+      "name": "St. Malachi, Cleveland",
+      "latitude": 41.4922845,
+      "longitude": -81.7074602,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1000",
+        "Tuesday at 1200",
+        "Friday at 1200",
+        "Holy Day at 1200"
+      ]
+    },
+    {
+      "name": "St. Luke, Lakewood",
+      "latitude": 41.490786,
+      "longitude": -81.7897163,
+      "mass_times": [
+        "Monday at 815",
+        "Tuesday at 815",
+        "Wednesday at 815",
+        "Thursday at 815",
+        "Friday at 815",
+        "Saturday at 800",
+        "Saturday at 1600",
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 900",
+        "Sunday at 1030",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Lucy Mission, Middlefield",
+      "latitude": 41.4625924,
+      "longitude": -81.0612541,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Leo the Great, Cleveland",
+      "latitude": 41.4220489,
+      "longitude": -81.6967444,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Ladislas, Westlake",
+      "latitude": 41.4545923,
+      "longitude": -81.9448835,
+      "mass_times": [
+        "Monday at 1830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Justin Martyr, Eastlake",
+      "latitude": 41.6483142,
+      "longitude": -81.4338551,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Julie Billiart, North Ridgeville",
+      "latitude": 41.4101136,
+      "longitude": -81.9926809,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 1730",
+        "Wednesday at 1730",
+        "Friday at 1730"
+      ]
+    },
+    {
+      "name": "St. Jude, Elryia",
+      "latitude": 41.3826554,
+      "longitude": -82.0857794,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Joseph, Cuyahoga Falls",
+      "latitude": 41.1295978,
+      "longitude": -81.4852502,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 845",
+        "Tuesday at 845",
+        "Wednesday at 845",
+        "Thursday at 845",
+        "Friday at 845"
+      ]
+    },
+    {
+      "name": "St. Joseph, Strongsville",
+      "latitude": 41.3205974,
+      "longitude": -81.837302,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1030",
+        "Monday at 1830",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Thursday at 730",
+        "Friday at 805",
+        "First Saturday at 800"
+      ]
+    },
+    {
+      "name": "St. Joseph, Avon Lake",
+      "latitude": 41.5104968,
+      "longitude": -82.026321,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Sunday at 1700",
+        "Monday at 800",
+        "Wednesday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "St. Joseph, Amherst",
+      "latitude": 41.4046332,
+      "longitude": -82.2185184,
+      "mass_times": [
+        "Monday at 900",
+        "Tuesday at 800",
+        "Thursday at 1900",
+        "Friday at 900",
+        "Saturday at 1600",
+        "Saturday at 1730",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Sunday at 1700"
+      ]
+    },
+    {
+      "name": "St. John Vianney, Mentor",
+      "latitude": 41.6871975,
+      "longitude": -81.3699303,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 730",
+        "Sunday at 900",
+        "Sunday at 1030",
+        "Sunday at 1215",
+        "Monday at 800",
+        "Monday at 1100",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Wednesday at 1100",
+        "Thursday at 800",
+        "Friday at 800",
+        "Friday at 1100"
+      ]
+    },
+    {
+      "name": "St. John Neumann, Strongsville",
+      "latitude": 41.2986221,
+      "longitude": -81.8336826,
+      "mass_times": [
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Friday at 900",
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Sunday at 1700"
+      ]
+    },
+    {
+      "name": "St. John the Baptist, Akron",
+      "latitude": 41.053475,
+      "longitude": -81.51056,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. John of the Cross, Euclid",
+      "latitude": 41.5836648,
+      "longitude": -81.5002318,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. John Bosco, Parma Heights",
+      "latitude": 41.3868894,
+      "longitude": -81.7720796,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 730",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Thursday at 1900",
+        "Friday at 730"
+      ]
+    },
+    {
+      "name": "St. John Nepomucene, Cleveland",
+      "latitude": 41.4555258,
+      "longitude": -81.655689,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1000",
+        "Tuesday at 900",
+        "Thursday at 900"
+      ]
+    },
+    {
+      "name": "St. John Cantius, Cleveland",
+      "latitude": 41.4804836,
+      "longitude": -81.6861672,
+      "mass_times": [
+        "Monday at 1800",
+        "Tuesday at 830",
+        "Wednesday at 1800",
+        "Thursday at 830",
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1130"
+      ]
+    },
+    {
+      "name": "St. Joan of Arc, Chagrin Falls",
+      "latitude": 41.4266635,
+      "longitude": -81.375196,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Tuesday at 900",
+        "Tuesday at 800"
+      ]
+    },
+    {
+      "name": "St. Jerome, Cleveland",
+      "latitude": 41.573047,
+      "longitude": -81.576606,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Wednesday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. James, Lakewood",
+      "latitude": 41.4857435,
+      "longitude": -81.8172097,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Ignatius of Antioch, Cleveland",
+      "latitude": 41.4656844,
+      "longitude": -81.7553296,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Hilary, Fairlawn",
+      "latitude": 41.1242136,
+      "longitude": -81.6029067,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 730",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Sunday at 1730",
+        "Monday at 700",
+        "Monday at 930",
+        "Tuesday at 700",
+        "Tuesday at 930",
+        "Wednesday at 700",
+        "Thursday at 700",
+        "Friday at 700",
+        "Friday at 930"
+      ]
+    },
+    {
+      "name": "St. Helen, Newbury",
+      "latitude": 41.4664957,
+      "longitude": -81.2068015,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Gabriel, Concord",
+      "latitude": 41.67754,
+      "longitude": -81.2837006,
+      "mass_times": [
+        "Monday at 700",
+        "Tuesday at 1900",
+        "Wednesday at 700",
+        "Wednesday at 1000",
+        "Thursday at 1900",
+        "Friday at 700",
+        "Saturday at 830",
+        "Saturday at 1700",
+        "Sunday at 730",
+        "Sunday at 930",
+        "Sunday at 1130"
+      ]
+    },
+    {
+      "name": "St. Francis of Assissi, Gates Mills",
+      "latitude": 41.5194991,
+      "longitude": -81.4302456,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Francis Xavier Cabrini, Lorain",
+      "latitude": 41.4364931,
+      "longitude": -82.1204263,
+      "mass_times": [
+        "Thursday at 900",
+        "Friday at 900",
+        "Saturday at 1600",
+        "Sunday at 1130",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Sunday at 800",
+        "Sunday at 1000"
+      ]
+    },
+    {
+      "name": "St. Francis Xavier, Medina",
+      "latitude": 41.1374315,
+      "longitude": -81.8546504,
+      "mass_times": [
+        "Monday at 730",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Thursday at 730",
+        "Friday at 730",
+        "Saturday at 1700",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Sunday at 1730"
+      ]
+    },
+    {
+      "name": "St. Francis de Sales, Parma",
+      "latitude": 41.404652,
+      "longitude": -81.7098919,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 845",
+        "Tuesday at 845",
+        "Wednesday at 845",
+        "Thursday at 845",
+        "Friday at 845"
+      ]
+    },
+    {
+      "name": "St. Francis de Sales, Akron",
+      "latitude": 40.9928459,
+      "longitude": -81.5564463,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Eugene, Cuyahoga Falls",
+      "latitude": 41.141567,
+      "longitude": -81.45799,
+      "mass_times": [
+        "Monday at 1100",
+        "Tuesday at 1100",
+        "Wednesday at 1100",
+        "Thursday at 1100",
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Elizabeth of Hungry, Cleveland",
+      "latitude": 41.4851003,
+      "longitude": -81.6233815,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Elizabeth Ann Seton, Columbia Station",
+      "latitude": 41.311413,
+      "longitude": -81.931575,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Tuesday at 1900",
+        "Wednesday at 900",
+        "Thursday at 900",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Emeric, Cleveland",
+      "latitude": 41.486465,
+      "longitude": -81.7022332,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Edward, Parkman",
+      "latitude": 41.3725416,
+      "longitude": -81.0656905,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Edward, Ashland",
+      "latitude": 40.8722811,
+      "longitude": -82.3179253,
+      "mass_times": [
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 1315",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Sunday at 1630"
+      ]
+    },
+    {
+      "name": "St. Dominic, Shaker Heights",
+      "latitude": 41.4660837,
+      "longitude": -81.5454586,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Friday at 830",
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Cyprian, Perry",
+      "latitude": 41.7782328,
+      "longitude": -81.1354655,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Columbkille, Parma",
+      "latitude": 41.3823748,
+      "longitude": -81.6862782,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Colman, Cleveland",
+      "latitude": 41.4760301,
+      "longitude": -81.7296719,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Friday at 1830"
+      ]
+    },
+    {
+      "name": "St. Colette, Brunswick",
+      "latitude": 41.266793,
+      "longitude": -81.78616,
+      "mass_times": [
+        "Monday at 1815",
+        "Tuesday at 1100",
+        "Wednesday at 1100",
+        "Friday at 1100",
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1145"
+      ]
+    },
+    {
+      "name": "St. Clement, Lakewood",
+      "latitude": 41.4767585,
+      "longitude": -81.7955084,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Clarence, North Olmsted",
+      "latitude": 41.4018799,
+      "longitude": -81.9540447,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Thursday at 1900",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Clare, Lyndhurst",
+      "latitude": 41.5212583,
+      "longitude": -81.4749273,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Christopher, Rocky River",
+      "latitude": 41.4773769,
+      "longitude": -81.8443926,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Monday at 1100",
+        "Tuesday at 1100",
+        "Wednesday at 1100",
+        "Thursday at 1100",
+        "Friday at 1100"
+      ]
+    },
+    {
+      "name": "St. Charles Borromeo, Parma",
+      "latitude": 41.4027562,
+      "longitude": -81.7339547,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 1900",
+        "Wednesday at 1900",
+        "Friday at 1900",
+        "Tuesday at 700",
+        "Thursday at 700",
+        "Saturday at 800",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Casimir, Euclid",
+      "latitude": 41.584164,
+      "longitude": -81.553839,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Casimir, Cleveland",
+      "latitude": 41.4083669,
+      "longitude": -81.7595526,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Bridget of Kildare, Parma",
+      "latitude": 41.42692,
+      "longitude": -81.882623,
+      "mass_times": [
+        "Saturday at 1600",
+        "Saturday at 1730",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "St. Brendan, North Olmsted",
+      "latitude": 41.5242804,
+      "longitude": -81.6303169,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1130",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Holy Day Vigil at 1900",
+        "Holy Day at 830",
+        "Holy Day at 1900"
+      ]
+    },
+    {
+      "name": "St. Boniface, Cleveland",
+      "latitude": 41.4577576,
+      "longitude": -81.7247014,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Bernard, Akron",
+      "latitude": 41.0781069,
+      "longitude": -81.5182503,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Sunday at 2000",
+        "Monday at 1210",
+        "Tuesday at 1210",
+        "Wednesday at 1210",
+        "Thursday at 1210",
+        "Friday at 1210"
+      ]
+    },
+    {
+      "name": "St. Bernadette, Westlake",
+      "latitude": 41.4543426,
+      "longitude": -81.886538,
+      "mass_times": [
+        "Sunday at 800",
+        "Sunday at 945",
+        "Sunday at 1130",
+        "Monday at 900",
+        "Tuesday at 800",
+        "Wednesday at 900",
+        "Thursday at 800",
+        "Friday at 900",
+        "Saturday at 800",
+        "Saturday at 1600"
+      ]
+    },
+    {
+      "name": "St. Bede the Venerable, Mentor",
+      "latitude": 41.7205215,
+      "longitude": -81.3118303,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Basil The Great, Brecksville",
+      "latitude": 41.3255562,
+      "longitude": -81.6277639,
+      "mass_times": [
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 1700",
+        "Sunday at 730",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Sunday at 1730"
+      ]
+    },
+    {
+      "name": "St. Bartholomew, Middleburg Heights",
+      "latitude": 41.366718,
+      "longitude": -81.8023561,
+      "mass_times": [
+        "Monday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Barnabas, Northfield",
+      "latitude": 41.3112067,
+      "longitude": -81.5378666,
+      "mass_times": [
+        "Monday at 830",
+        "Monday at 1900",
+        "Tuesday at 830",
+        "Wednesday at 700",
+        "Thursday at 700",
+        "Friday at 830",
+        "Saturday at 830",
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1030",
+        "Sunday at 1730"
+      ]
+    },
+    {
+      "name": "St. Barbara, Cleveland",
+      "latitude": 41.4513158,
+      "longitude": -81.6913123,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Augustine, Cleveland",
+      "latitude": 41.478706,
+      "longitude": -81.691869,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Augustine, Barberton",
+      "latitude": 41.0163218,
+      "longitude": -81.6127217,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Anthony of Padua, Parma",
+      "latitude": 41.3814376,
+      "longitude": -81.7129776,
+      "mass_times": [
+        "Saturday at 1630",
+        "Saturday at 1800",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1200",
+        "Monday at 700",
+        "Monday at 800",
+        "Tuesday at 700",
+        "Tuesday at 800",
+        "Wednesday at 700",
+        "Wednesday at 800",
+        "Thursday at 700",
+        "Thursday at 800",
+        "Friday at 700",
+        "Friday at 800",
+        "Holy Day at 1730",
+        "Holy Day at 700",
+        "Holy Day at 900",
+        "Holy Day at 1730",
+        "Holy Day at 1900"
+      ]
+    },
+    {
+      "name": "St. Anthony of Padua, Lorain",
+      "latitude": 41.475318,
+      "longitude": -82.160151,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1000",
+        "Monday at 830",
+        "Tuesday at 830"
+      ]
+    },
+    {
+      "name": "St. Anthony of Padua, Fairport Harbor",
+      "latitude": 41.751859,
+      "longitude": -81.274452,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Monday at 1800",
+        "Wednesday at 800"
+      ]
+    },
+    {
+      "name": "St. Anthony of Padua, Akron",
+      "latitude": 41.0989521,
+      "longitude": -81.5122528,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Anselm, Chesterland",
+      "latitude": 41.5149894,
+      "longitude": -81.3374935,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 1900",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "St. Anne, Rittman",
+      "latitude": 40.9725886,
+      "longitude": -81.784017,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Wednesday at 1900",
+        "Thursday at 800",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Angela Merici, Fairview Park",
+      "latitude": 41.4474259,
+      "longitude": -81.8518267,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1630",
+        "Sunday at 730",
+        "Sunday at 930",
+        "Sunday at 1730"
+      ]
+    },
+    {
+      "name": "St. Andrew the Apostle, Norton",
+      "latitude": 41.003444,
+      "longitude": -81.667031,
+      "mass_times": [
+        "Saturday at 1730",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 800"
+      ]
+    },
+    {
+      "name": "St. Andrew Kim, Cleveland",
+      "latitude": 41.4806734,
+      "longitude": -81.6918636,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Ambrose, Brunswick",
+      "latitude": 41.2498025,
+      "longitude": -81.8403235,
+      "mass_times": [
+        "Monday at 815",
+        "Thursday at 1730",
+        "Wednesday at 815",
+        "Friday at 815",
+        "Saturday at 1630",
+        "Saturday at 815",
+        "Sunday at 730",
+        "Sunday at 900",
+        "Sunday at 1030",
+        "Sunday at 1200",
+        "Sunday at 1700"
+      ]
+    },
+    {
+      "name": "St. Aloysius - St. Agatha, Cleveland",
+      "latitude": 41.5397129,
+      "longitude": -81.609061,
+      "mass_times": [
+        "Sunday at 1000",
+        "Wednesday at 1130"
+      ]
+    },
+    {
+      "name": "St. Albert the Great, North Royalton",
+      "latitude": 41.3254965,
+      "longitude": -81.7331466,
+      "mass_times": [
+        "Monday at 1130",
+        "Tuesday at 1130",
+        "Wednesday at 1130",
+        "Thursday at 1130",
+        "Friday at 1130",
+        "Saturday at 1600",
+        "Sunday at 730",
+        "Sunday at 930",
+        "Sunday at 1130",
+        "Sunday at 1700"
+      ]
+    },
+    {
+      "name": "St. Agnes, Orrville",
+      "latitude": 40.8351334,
+      "longitude": -81.7591757,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Agnes, Elyria",
+      "latitude": 41.377289,
+      "longitude": -82.12023,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1030",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Wednesday at 900",
+        "Thursday at 900",
+        "Friday at 900"
+      ]
+    },
+    {
+      "name": "St. Agnes - Our Lady of Fatima, Cleveland",
+      "latitude": 41.5108245,
+      "longitude": -81.6441796,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Adalbert, Cleveland",
+      "latitude": 41.4950223,
+      "longitude": -81.6292108,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "St. Adalbert, Berea",
+      "latitude": 41.375229,
+      "longitude": -81.8552935,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Sunday at 1800",
+        "Monday at 830",
+        "Tuesday at 1830",
+        "Wednesday at 830",
+        "Thursday at 1830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "Sagrada Familia, Cleveland",
+      "latitude": 41.481504,
+      "longitude": -81.7381139,
+      "mass_times": [
+        "Wednesday at 1830",
+        "Thursday at 1830",
+        "Friday at 1830",
+        "Saturday at 1700",
+        "Sunday at 1000",
+        "Sunday at 1200"
+      ]
+    },
+    {
+      "name": "Sacred Heart of Jesus, Wadsworth",
+      "latitude": 41.0258816,
+      "longitude": -81.7230331,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 800",
+        "Sunday at 1030",
+        "Sunday at 1700",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "First Saturday of the Month at 800"
+      ]
+    },
+    {
+      "name": "Sacred Heart of Jesus, South Euclid",
+      "latitude": 41.5179066,
+      "longitude": -81.5186292,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1000",
+        "Monday at 1210",
+        "Tuesday at 1210",
+        "Wednesday at 1210",
+        "Thursday at 1210",
+        "Friday at 1210"
+      ]
+    },
+    {
+      "name": "Sacred Heart Chapel, Lorain",
+      "latitude": 41.4299502,
+      "longitude": -82.1352353,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Sacred Heart, Oberlin",
+      "latitude": 41.2949906,
+      "longitude": -82.23259,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Resurrection of Our Lord, Solon",
+      "latitude": 41.4102989,
+      "longitude": -81.4523014,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "Prince of Peace, Norton",
+      "latitude": 41.0158417,
+      "longitude": -81.6362693,
+      "mass_times": [
+        "Saturday at 800",
+        "Saturday at 1600",
+        "Saturday at 1730",
+        "Sunday at 830",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 800"
+      ]
+    },
+    {
+      "name": "Our Lady Queen of Peace, Grafton",
+      "latitude": 41.2769793,
+      "longitude": -82.0600877,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 900",
+        "Tuesday at 900",
+        "Thursday at 900",
+        "Friday at 900",
+        "Wednesday at 1830"
+      ]
+    },
+    {
+      "name": "Our Lady of Victory, Tallmadge",
+      "latitude": 41.10472,
+      "longitude": -81.441818,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830"
+      ]
+    },
+    {
+      "name": "Our Lady of the Lake, Euclid",
+      "latitude": 41.6016578,
+      "longitude": -81.5404977,
+      "mass_times": [
+        "Monday at 900",
+        "Tuesday at 845",
+        "Wednesday at 900",
+        "Thursday at 900",
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "Our Lady of Peace, Cleveland",
+      "latitude": 41.4848922,
+      "longitude": -81.5961778,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Our Lady of Mount Carmel, Wickliffe",
+      "latitude": 41.609924,
+      "longitude": -81.464812,
+      "mass_times": [
+        "Monday at 700",
+        "Monday at 1900",
+        "Tuesday at 700",
+        "Tuesday at 830",
+        "Wednesday at 700",
+        "Thursday at 700",
+        "Thursday at 830",
+        "Friday at 700",
+        "Friday at 1230",
+        "Saturday at 830",
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000"
+      ]
+    },
+    {
+      "name": "Our Lady of Mount Carmel, Cleveland",
+      "latitude": 41.4836489,
+      "longitude": -81.7330876,
+      "mass_times": [
+        "Sunday at 800",
+        "Sunday at 1130",
+        "Sunday at 1700",
+        "Monday at 1800",
+        "Wednesday at 1800",
+        "Friday at 1800",
+        "Tuesday at 630",
+        "Thursday at 630",
+        "Saturday at 815",
+        "First Friday at 2200"
+      ]
+    },
+    {
+      "name": "Our Lady of Lourdes, Cleveland",
+      "latitude": 41.4655976,
+      "longitude": -81.6521799,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1000",
+        "Sunday at 1230"
+      ]
+    },
+    {
+      "name": "Our Lady of Hope, Bedford",
+      "latitude": 41.4039458,
+      "longitude": -81.536032,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "Our Lady of Guadalupe, Macedonia",
+      "latitude": 41.322031,
+      "longitude": -81.489806,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Our Lady of Grace, Hinckley",
+      "latitude": 41.2470762,
+      "longitude": -81.745778,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "Our Lady of Angels, Cleveland",
+      "latitude": 41.4542071,
+      "longitude": -81.8170805,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 1730",
+        "Thursday at 1730",
+        "Friday at 1730",
+        "Wednesday at 800",
+        "Wednesday at 1730"
+      ]
+    },
+    {
+      "name": "Our Lady Help of Christian, Seville",
+      "latitude": 41.0136379,
+      "longitude": -81.8684697,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Our Lady Help of Christians, Nova",
+      "latitude": 41.0302099,
+      "longitude": -82.3051178,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Our Lady Help of Christians, Lodi",
+      "latitude": 41.0398731,
+      "longitude": -81.9872142,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Our Lady Help of Christians, Litchfield",
+      "latitude": 41.164286,
+      "longitude": -82.0339708,
+      "mass_times": [
+        "Saturday at 1600",
+        "Saturday at 1800",
+        "Sunday at 830",
+        "Sunday at 900",
+        "Sunday at 1030",
+        "Sunday at 1100",
+        "Monday at 1800",
+        "Wednesday at 900",
+        "First Friday at 1900"
+      ]
+    },
+    {
+      "name": "Nativity of the Lord Jesus, Akron",
+      "latitude": 40.9975087,
+      "longitude": -81.4352644,
+      "mass_times": [
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 1630"
+      ]
+    },
+    {
+      "name": "Nativity of the Blessed Virgin Mary, South Amherst",
+      "latitude": 41.350248,
+      "longitude": -82.2399213,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Nativity of the Blessed Virgin Mary, Lorain",
+      "latitude": 41.4560215,
+      "longitude": -82.1724515,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1030",
+        "Monday at 815",
+        "Wednesday at 1830",
+        "Thursday at 815",
+        "Friday at 815"
+      ]
+    },
+    {
+      "name": "Mother of Sorrows, Peninsula",
+      "latitude": 41.2404221,
+      "longitude": -81.5482742,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Mary Queen of Peace, Cleveland",
+      "latitude": 41.4352011,
+      "longitude": -81.7095886,
+      "mass_times": [
+        "Sunday at 630",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 615",
+        "Monday at 800",
+        "Tuesday at 615",
+        "Tuesday at 800",
+        "Wednesday at 615",
+        "Wednesday at 800",
+        "Thursday at 615",
+        "Thursday at 800",
+        "Friday at 615",
+        "Friday at 800",
+        "Saturday at 800",
+        "Saturday at 1630",
+        "First Friday at 1900"
+      ]
+    },
+    {
+      "name": "Mary Queen of Apostles, Brook Park",
+      "latitude": 41.39204,
+      "longitude": -81.8227197,
+      "mass_times": [
+        "Monday at 800",
+        "Tuesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 1630",
+        "Sunday at 900",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "Immaculate Heart of Mary, Cuyahoga Falls",
+      "latitude": 41.1485774,
+      "longitude": -81.5052399,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 815"
+      ]
+    },
+    {
+      "name": "Immaculate Heart of Mary, Cleveland",
+      "latitude": 41.4522422,
+      "longitude": -81.6425933,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Immaculate Conception, Willoughby",
+      "latitude": 41.6351744,
+      "longitude": -81.4093644,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 730",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Thursday at 730",
+        "Friday at 730",
+        "Friday at 1900"
+      ]
+    },
+    {
+      "name": "Immaculate Conception, Madison",
+      "latitude": 41.7981417,
+      "longitude": -81.0490548,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Monday at 830",
+        "Tuesday at 1900",
+        "Wednesday at 830",
+        "Thursday at 1900",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "Immaculate Conception, Cleveland",
+      "latitude": 41.5147794,
+      "longitude": -81.6609434,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Immaculate Conception, Akron",
+      "latitude": 41.0464564,
+      "longitude": -81.5609709,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Holy Trinity, Avon",
+      "latitude": 41.4525818,
+      "longitude": -81.9896477,
+      "mass_times": [
+        "Monday at 745",
+        "Monday at 1930",
+        "Tuesday at 745",
+        "Wednesday at 745",
+        "Wednesday at 830",
+        "Thursday at 745",
+        "Thursday at 1930",
+        "Friday at 745",
+        "Friday at 830",
+        "Saturday at 830",
+        "Saturday at 1600",
+        "Saturday at 1700",
+        "Sunday at 730",
+        "Sunday at 800",
+        "Sunday at 900",
+        "Sunday at 1000",
+        "Sunday at 1030",
+        "Sunday at 1200"
+      ]
+    },
+    {
+      "name": "Holy Spirit, Garfield Heights",
+      "latitude": 41.4411655,
+      "longitude": -81.5904904,
+      "mass_times": [
+        "TBD"
+      ]
+    },
+    {
+      "name": "Holy Spirit, Avon Lake",
+      "latitude": 41.494133,
+      "longitude": -81.9894942,
+      "mass_times": [
+        "Sunday at 900",
+        "Sunday at 1030",
+        "Sunday at 1200",
+        "Saturday at 1700",
+        "Tuesday at 830",
+        "Thursday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "Holy Rosary, Cleveland",
+      "latitude": 41.5089035,
+      "longitude": -81.5987462,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Sunday at 2000",
+        "Monday at 1215",
+        "Tuesday at 1215",
+        "Wednesday at 1215",
+        "Friday at 1215"
+      ]
+    },
+    {
+      "name": "Holy Redeemer, Cleveland",
+      "latitude": 41.554816,
+      "longitude": -81.5680066,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Thursday at 800"
+      ]
+    },
+    {
+      "name": "Holy Name, Cleveland",
+      "latitude": 41.4496327,
+      "longitude": -81.6297092,
+      "mass_times": [
+        "Saturday at 800",
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Sunday at 1800",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "Holy Martyrs, Medina",
+      "latitude": 41.1900563,
+      "longitude": -81.7934731,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 930",
+        "Sunday at 1130",
+        "Sunday at 1700",
+        "Monday at 1200",
+        "Tuesday at 1200",
+        "Wednesday at 1200",
+        "Thursday at 1200",
+        "Friday at 1200"
+      ]
+    },
+    {
+      "name": "Holy Family, Stow",
+      "latitude": 41.158383,
+      "longitude": -81.444991,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 730",
+        "Sunday at 900",
+        "Sunday at 1130",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800",
+        "Saturday at 800"
+      ]
+    },
+    {
+      "name": "Holy Family, Parma",
+      "latitude": 41.3658995,
+      "longitude": -81.7576935,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1630",
+        "Sunday at 730",
+        "Sunday at 930",
+        "Sunday at 1130"
+      ]
+    },
+    {
+      "name": "Holy Angels, Bainbridge",
+      "latitude": 41.3730246,
+      "longitude": -81.3349092,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 900",
+        "Wednesday at 900",
+        "Friday at 900",
+        "Tuesday at 700"
+      ]
+    },
+    {
+      "name": "Guardian Angels, Copley",
+      "latitude": 41.0915674,
+      "longitude": -81.645418,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Thursday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "Gesu, University Heights",
+      "latitude": 41.492358,
+      "longitude": -81.532349,
+      "mass_times": [
+        "Saturday at 1630",
+        "Sunday at 800",
+        "Sunday at 1000",
+        "Sunday at 1130",
+        "Monday at 730",
+        "Monday at 830",
+        "Tuesday at 730",
+        "Wednesday at 730",
+        "Wednesday at 830",
+        "Thursday at 730",
+        "Friday at 730",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "Divine Word, Kirtland",
+      "latitude": 41.6042265,
+      "longitude": -81.3541559,
+      "mass_times": [
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Thursday at 830",
+        "Friday at 830",
+        "Saturday at 1630",
+        "Sunday at 830",
+        "Sunday at 1100"
+      ]
+    },
+    {
+      "name": "Communion of Saints, Cleveland Heights",
+      "latitude": 41.5005227,
+      "longitude": -81.5793325,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 830",
+        "Sunday at 1130",
+        "Sunday at 1000",
+        "Monday at 800",
+        "Tuesday at 800",
+        "Wednesday at 800",
+        "Thursday at 800",
+        "Friday at 800"
+      ]
+    },
+    {
+      "name": "Cathedral of Saint John the Evangelist, Cleveland",
+      "latitude": 41.5030193,
+      "longitude": -81.6881019,
+      "mass_times": [
+        "Sunday at 800",
+        "Sunday at 1030",
+        "Sunday at 1215",
+        "Sunday at 1730",
+        "Monday at 715",
+        "Monday at 1200",
+        "Tuesday at 715",
+        "Tuesday at 1200",
+        "Wednesday at 715",
+        "Wednesday at 1200",
+        "Thursday at 715",
+        "Thursday at 1200",
+        "Friday at 715",
+        "Friday at 1200",
+        "Saturday at 1630"
+      ]
+    },
+    {
+      "name": "Blessed Trinity, Cleveland",
+      "latitude": 41.4339645,
+      "longitude": -81.7915284,
+      "mass_times": [
+        "Saturday at 1600",
+        "Sunday at 900",
+        "Sunday at 1100",
+        "Tuesday at 830",
+        "Wednesday at 830",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "Blessed Trinity, Akron",
+      "latitude": 41.101228,
+      "longitude": -81.504139,
+      "mass_times": [
+        "Saturday at 1700",
+        "Sunday at 830",
+        "Sunday at 1100",
+        "Monday at 830",
+        "Tuesday at 830",
+        "Wednesday at 1730",
+        "Friday at 830"
+      ]
+    },
+    {
+      "name": "Assumption, Broadview Heights",
+      "latitude": 41.3163684,
+      "longitude": -81.6839109,
+      "mass_times": [
+        "Monday at 630",
+        "Monday at 830",
+        "Tuesday at 630",
+        "Tuesday at 830",
+        "Wednesday at 630",
+        "Wednesday at 830",
+        "Thursday at 630",
+        "Thursday at 830",
+        "Friday at 630",
+        "Friday at 815",
+        "Saturday at 830",
+        "Saturday at 1600",
+        "Sunday at 730",
+        "Sunday at 930",
+        "Sunday at 1130",
+        "Sunday at 1800"
+      ]
+    }
+  ]

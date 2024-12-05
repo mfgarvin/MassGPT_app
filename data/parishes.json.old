@@ -1,0 +1,15 @@
+[
+    {
+        "name": "St. Charles Borromeo",
+        "address": "5891 Ridge Road",
+        "city": "Parma",
+        "zip_code": 44129,
+        "mass_times": [
+            "Sunday at 8AM",
+            "Monday at 7am"
+        ],
+        "contact_info": "234-555-1234",
+        "latitude": 41.402690,
+        "longitude": -81.734010
+    }
+]
