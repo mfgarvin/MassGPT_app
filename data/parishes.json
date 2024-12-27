@@ -1,2590 +1,3196 @@
 [
-    {
-      "name": "Visitation of Mary, Akron",
-      "latitude": 41.0728219,
-      "longitude": -81.4882493,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1030",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "Queen of Heaven, Uniontown",
-      "latitude": 40.9468231,
-      "longitude": -81.469451,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 815",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 830"
-      ]
-    },
-    {
-      "name": "Transfiguration, Lakewood",
-      "latitude": 41.4771636,
-      "longitude": -81.7767796,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Monday at 830",
-        "Wednesday at 830",
-        "Friday at 830",
-        "Tuesday at 1730"
-      ]
-    },
-    {
-      "name": "Ss. Robert and William, Euclid",
-      "latitude": 41.617024,
-      "longitude": -81.50243,
-      "mass_times": [
-        "Monday at 830",
-        "Monday at 1130",
-        "Tuesday at 830",
-        "Tuesday at 1830",
-        "Wednesday at 830",
-        "Wednesday at 1130",
-        "Thursday at 830",
-        "Thursday at 1830",
-        "Friday at 1130",
-        "Saturday at 830",
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 930",
-        "Sunday at 1100",
-        "Sunday at 1800"
-      ]
-    },
-    {
-      "name": "Ss. Peter and Paul, Garfield Heights",
-      "latitude": 41.4305067,
-      "longitude": -81.6168576,
-      "mass_times": [
-        "Wednesday at 830",
-        "Friday at 830",
-        "Saturday at 1600",
-        "Sunday at 830"
-      ]
-    },
-    {
-      "name": "Ss. Peter and Paul, Doylestown",
-      "latitude": 40.970462,
-      "longitude": -81.699628,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Wednesday at 1900",
-        "Thursday at 800",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "Ss. Cosmas and Damian, Twinsburg",
-      "latitude": 41.3255699,
-      "longitude": -81.4572877,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Wendelin, Cleveland",
-      "latitude": 41.481842,
-      "longitude": -81.6997389,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Vitus, Cleveland",
-      "latitude": 41.5227521,
-      "longitude": -81.6489348,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1030",
-        "Monday at 1700",
-        "Tuesday at 1700",
-        "Wednesday at 1700",
-        "Thursday at 1700",
-        "Friday at 1700"
-      ]
-    },
-    {
-      "name": "St. Vincent de Paul, Elyria",
-      "latitude": 41.4171552,
-      "longitude": -82.1213772,
-      "mass_times": [
-        "Thursday at 900",
-        "Friday at 900",
-        "Saturday at 1600",
-        "Sunday at 2330",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Sunday at 800",
-        "Sunday at 1000"
-      ]
-    },
-    {
-      "name": "St. Vincent de Paul, Cleveland",
-      "latitude": 41.457458,
-      "longitude": -81.7840849,
-      "mass_times": [
-        "Saturday at 1730",
-        "Sunday at 900",
-        "Monday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Holy Day at 830"
-      ]
-    },
-    {
-      "name": "St. Vincent de Paul, Akron",
-      "latitude": 41.087309,
-      "longitude": -81.522865,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 628",
-        "Tuesday at 628",
-        "Wednesday at 628",
-        "Thursday at 628",
-        "Friday at 628",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Victor, Richfield",
-      "latitude": 41.2035073,
-      "longitude": -81.6174307,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 845",
-        "Sunday at 1130",
-        "Monday at 730",
-        "Tuesday at 730",
-        "Friday at 730"
-      ]
-    },
-    {
-      "name": "St. Thomas More, Brooklyn",
-      "latitude": 41.442811,
-      "longitude": -81.739775,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 815",
-        "Wednesday at 815",
-        "Friday at 815",
-        "Saturday at 815",
-        "Tuesday at 1845"
-      ]
-    },
-    {
-      "name": "St. Thomas, Sheffield Lake",
-      "latitude": 41.4868078,
-      "longitude": -82.0945173,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Theresa of Avila, Sheffield ",
-      "latitude": 41.46657,
-      "longitude": -82.07655,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Wednesday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Therese, Garfield Heights",
-      "latitude": 41.4175754,
-      "longitude": -81.6115923,
-      "mass_times": [
-        "Saturday at 1730",
-        "Sunday at 1030",
-        "Monday at 1830",
-        "Thursday at 830"
-      ]
-    },
-    {
-      "name": "St. Stephen, West Salem",
-      "latitude": 40.9733311,
-      "longitude": -82.1053785,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1100",
-        "Wednesday at 1600"
-      ]
-    },
-    {
-      "name": "St. Stephen, Cleveland",
-      "latitude": 41.478899,
-      "longitude": -81.7240446,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Stanislaus, Cleveland",
-      "latitude": 41.4591025,
-      "longitude": -81.6446127,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Monday at 645",
-        "Monday at 1215",
-        "Tuesday at 645",
-        "Tuesday at 1900",
-        "Wednesday at 645",
-        "Wednesday at 830",
-        "Thursday at 645",
-        "Thursday at 1900",
-        "Friday at 645",
-        "Friday at 1215",
-        "Saturday at 830"
-      ]
-    },
-    {
-      "name": "St. Sebastian, Akron",
-      "latitude": 41.0989311,
-      "longitude": -81.5665409,
-      "mass_times": [
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 805",
-        "Friday at 800",
-        "Saturday at 800",
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Rocco, Cleveland",
-      "latitude": 41.466824,
-      "longitude": -81.706753,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 730",
-        "Sunday at 930",
-        "Sunday at 1200",
-        "Monday at 645",
-        "Monday at 1830",
-        "Tuesday at 645",
-        "Tuesday at 1830",
-        "Wednesday at 645",
-        "Wednesday at 1830",
-        "Thursday at 645",
-        "Thursday at 1830",
-        "Friday at 645",
-        "Friday at 1830"
-      ]
-    },
-    {
-      "name": "St. Rita, Solon",
-      "latitude": 41.3843959,
-      "longitude": -81.4450675,
-      "mass_times": [
-        "Saturday at 845",
-        "Saturday at 1700",
-        "Sunday at 730",
-        "Sunday at 900",
-        "Sunday at 1045",
-        "Monday at 845",
-        "Monday at 1900",
-        "Tuesday at 845",
-        "Wednesday at 845",
-        "Thursday at 845",
-        "Friday at 845"
-      ]
-    },
-    {
-      "name": "St. Richard, North Olmsted",
-      "latitude": 41.417086,
-      "longitude": -81.918826,
-      "mass_times": [
-        "Monday at 700",
-        "Tuesday at 700",
-        "Wednesday at 700",
-        "Thursday at 700",
-        "Friday at 700",
-        "Saturday at 800",
-        "Saturday at 1630",
-        "Sunday at 700",
-        "Sunday at 1015"
-      ]
-    },
-    {
-      "name": "St. Raphael, Bay Village",
-      "latitude": 41.4805755,
-      "longitude": -81.9195342,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 745",
-        "Monday at 915",
-        "Tuesday at 745",
-        "Tuesday at 915",
-        "Wednesday at 745",
-        "Thursday at 915",
-        "Friday at 745",
-        "Friday at 915"
-      ]
-    },
-    {
-      "name": "St. Peter, North Ridgeville",
-      "latitude": 41.3906503,
-      "longitude": -82.0157912,
-      "mass_times": [
-        "Monday at 815",
-        "Tuesday at 815",
-        "Wednesday at 815",
-        "Thursday at 815",
-        "Friday at 815",
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200"
-      ]
-    },
-    {
-      "name": "St. Peter, Loudonville",
-      "latitude": 40.6366145,
-      "longitude": -82.2308743,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Peter, Lorain",
-      "latitude": 41.4373726,
-      "longitude": -82.185384,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1200",
-        "Monday at 1730",
-        "Tuesday at 830",
-        "Thursday at 1730",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Peter, Cleveland",
-      "latitude": 41.5054988,
-      "longitude": -81.6811037,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Paul, Cleveland",
-      "latitude": 41.5160302,
-      "longitude": -81.6633672,
-      "mass_times": [
-        "Monday at 730",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Thursday at 730",
-        "Friday at 730",
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1200"
-      ]
-    },
-    {
-      "name": "St. Paul, Akron",
-      "latitude": 41.0383724,
-      "longitude": -81.5108867,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1030",
-        "Monday at 830",
-        "Tuesday at 700",
-        "Wednesday at 830",
-        "Thursday at 700",
-        "Friday at 830",
-        "Friday at 1730"
-      ]
-    },
-    {
-      "name": "St. Patrick, Wellington",
-      "latitude": 41.175007,
-      "longitude": -82.2167846,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Patrick, Thompson",
-      "latitude": 41.6648573,
-      "longitude": -81.0529447,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 930",
-        "Tuesday at 845",
-        "Thursday at 845"
-      ]
-    },
-    {
-      "name": "St. Patrick, Cleveland (Rocky River)",
-      "latitude": 41.434398,
-      "longitude": -81.8217189,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Tuesday at 1900",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Patrick, Cleveland (Bridge)",
-      "latitude": 41.4831958,
-      "longitude": -81.711556,
-      "mass_times": [
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1630",
-        "Sunday at 715",
-        "Sunday at 1045"
-      ]
-    },
-    {
-      "name": "St. Paschal Baylon, Highland Heights",
-      "latitude": 41.5380938,
-      "longitude": -81.4854892,
-      "mass_times": [
-        "Saturday at 1630",
-        "Saturday at 900",
-        "Sunday at 830",
-        "Sunday at 1030",
-        "Sunday at 1830",
-        "Monday at 900",
-        "Monday at 1130",
-        "Tuesday at 900",
-        "Tuesday at 1130",
-        "Wednesday at 900",
-        "Wednesday at 1130",
-        "Thursday at 900",
-        "Thursday at 1130",
-        "Friday at 630",
-        "Friday at 1130"
-      ]
-    },
-    {
-      "name": "St. Noel, Willoughby",
-      "latitude": 41.5861896,
-      "longitude": -81.4353346,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Monica, Garfield Heights",
-      "latitude": 41.403715,
-      "longitude": -81.586485,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1045",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "St. Michael the Archangel, Cleveland",
-      "latitude": 41.4697367,
-      "longitude": -81.6974633,
-      "mass_times": [
-        "Saturday at 1700",
-        "Saturday at 1900",
-        "Sunday at 945",
-        "Sunday at 1200",
-        "Monday at 1200",
-        "Wednesday at 1830",
-        "Thursday at 1830",
-        "Friday at 1200"
-      ]
-    },
-    {
-      "name": "St. Michael, Independence",
-      "latitude": 41.3846655,
-      "longitude": -81.6419084,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200"
-      ]
-    },
-    {
-      "name": "St. Mel, Cleveland",
-      "latitude": 41.4614558,
-      "longitude": -81.7954471,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 700",
-        "Sunday at 1000",
-        "Tuesday at 645",
-        "Friday at 645"
-      ]
-    },
-    {
-      "name": "St. Matthias, Parma",
-      "latitude": 41.3514044,
-      "longitude": -81.6879478,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1000",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Friday at 1200"
-      ]
-    },
-    {
-      "name": "St. Mary of the Immaculate Conception, Wooster",
-      "latitude": 40.8047701,
-      "longitude": -81.933746,
-      "mass_times": [
-        "Sunday at 800",
-        "Sunday at 1100",
-        "Sunday at 1700",
-        "Monday at 700",
-        "Wednesday at 930",
-        "Thursday at 700",
-        "Friday at 700",
-        "Saturday at 1700"
-      ]
-    },
-    {
-      "name": "St. Mary of the Immaculate Conception, Avon",
-      "latitude": 41.449693,
-      "longitude": -82.033951,
-      "mass_times": [
-        "Monday at 745",
-        "Monday at 1930",
-        "Tuesday at 745",
-        "Wednesday at 745",
-        "Wednesday at 830",
-        "Thursday at 745",
-        "Thursday at 1930",
-        "Friday at 745",
-        "Friday at 830",
-        "Saturday at 830",
-        "Saturday at 1600",
-        "Saturday at 1700",
-        "Sunday at 730",
-        "Sunday at 800",
-        "Sunday at 900",
-        "Sunday at 1000",
-        "Sunday at 1030",
-        "Sunday at 1200"
-      ]
-    },
-    {
-      "name": "St. Mary of the Falls, Olmsted Falls",
-      "latitude": 41.3724257,
-      "longitude": -81.9032495,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Sunday at 1700",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 700",
-        "Friday at 700"
-      ]
-    },
-    {
-      "name": "St. Mary of the Assumption, Mentor",
-      "latitude": 41.6681396,
-      "longitude": -81.3343183,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 815",
-        "Tuesday at 815",
-        "Wednesday at 815",
-        "Friday at 815"
-      ]
-    },
-    {
-      "name": "St. Mary Magdalene, Willowick",
-      "latitude": 41.6420066,
-      "longitude": -81.4602894,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1100",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Mary, Painesville",
-      "latitude": 41.7301553,
-      "longitude": -81.2436449,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Sunday at 1800",
-        "Monday at 645",
-        "Monday at 1215",
-        "Tuesday at 645",
-        "Wednesday at 1215",
-        "Thursday at 645",
-        "Friday at 1215"
-      ]
-    },
-    {
-      "name": "St. Mary, Lorain",
-      "latitude": 41.4639406,
-      "longitude": -82.176617,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Mary, Hudson",
-      "latitude": 41.2470795,
-      "longitude": -81.441468,
-      "mass_times": [
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Thursday at 900",
-        "Friday at 900",
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 930",
-        "Sunday at 1130",
-        "Sunday at 1730"
-      ]
-    },
-    {
-      "name": "St. Mary, Elyria",
-      "latitude": 41.3645301,
-      "longitude": -82.1068211,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1030",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Thursday at 900",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Mary, Cleveland (Collonwood)",
-      "latitude": 41.560673,
-      "longitude": -81.573232,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1015",
-        "Monday at 745",
-        "Tuesday at 745",
-        "Wednesday at 745",
-        "Thursday at 745",
-        "Friday at 745",
-        "Saturday at 745",
-        "Holy Day Vigil at 1900",
-        "Holy Day at 800",
-        "Holy Day at 1930"
-      ]
-    },
-    {
-      "name": "St. Mary, Chardon",
-      "latitude": 41.5893886,
-      "longitude": -81.2057072,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 730",
-        "Tuesday at 830",
-        "Wednesday at 1200",
-        "Thursday at 730",
-        "Friday at 730"
-      ]
-    },
-    {
-      "name": "St. Mary, Berea",
-      "latitude": 41.3662518,
-      "longitude": -81.8654315,
-      "mass_times": [
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Thursday at 900",
-        "Friday at 900",
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1030"
-      ]
-    },
-    {
-      "name": "St. Mary, Bedford",
-      "latitude": 41.3803166,
-      "longitude": -81.5250791,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 915",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800"
-      ]
-    },
-    {
-      "name": "St. Mary, Akron",
-      "latitude": 41.0662748,
-      "longitude": -81.5274569,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Martin of Tours, Valley City",
-      "latitude": 41.225069,
-      "longitude": -81.9549139,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 800",
-        "Sunday at 1030",
-        "Monday at 1700",
-        "Wednesday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Martin of Tours, Maple Heights",
-      "latitude": 41.3930011,
-      "longitude": -81.5810146,
-      "mass_times": [
-        "Monday at 730",
-        "Monday at 1830",
-        "Tuesday at 730",
-        "Tuesday at 1830",
-        "Wednesday at 730",
-        "Wednesday at 1830",
-        "Thursday at 730",
-        "Friday at 730",
-        "Saturday at 730",
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Mark, Cleveland",
-      "latitude": 41.4677509,
-      "longitude": -81.8070814,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Thursday at 830",
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1130"
-      ]
-    },
-    {
-      "name": "St. Matthew, Akron",
-      "latitude": 41.053233,
-      "longitude": -81.436211,
-      "mass_times": [
-        "Sunday at 800",
-        "Sunday at 1030",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Friday at 800",
-        "Saturday at 1600"
-      ]
-    },
-    {
-      "name": "St. Malachi, Cleveland",
-      "latitude": 41.4922845,
-      "longitude": -81.7074602,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1000",
-        "Tuesday at 1200",
-        "Friday at 1200",
-        "Holy Day at 1200"
-      ]
-    },
-    {
-      "name": "St. Luke, Lakewood",
-      "latitude": 41.490786,
-      "longitude": -81.7897163,
-      "mass_times": [
-        "Monday at 815",
-        "Tuesday at 815",
-        "Wednesday at 815",
-        "Thursday at 815",
-        "Friday at 815",
-        "Saturday at 800",
-        "Saturday at 1600",
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 900",
-        "Sunday at 1030",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Lucy Mission, Middlefield",
-      "latitude": 41.4625924,
-      "longitude": -81.0612541,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Leo the Great, Cleveland",
-      "latitude": 41.4220489,
-      "longitude": -81.6967444,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Ladislas, Westlake",
-      "latitude": 41.4545923,
-      "longitude": -81.9448835,
-      "mass_times": [
-        "Monday at 1830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Justin Martyr, Eastlake",
-      "latitude": 41.6483142,
-      "longitude": -81.4338551,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Julie Billiart, North Ridgeville",
-      "latitude": 41.4101136,
-      "longitude": -81.9926809,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 1730",
-        "Wednesday at 1730",
-        "Friday at 1730"
-      ]
-    },
-    {
-      "name": "St. Jude, Elryia",
-      "latitude": 41.3826554,
-      "longitude": -82.0857794,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Joseph, Cuyahoga Falls",
-      "latitude": 41.1295978,
-      "longitude": -81.4852502,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 845",
-        "Tuesday at 845",
-        "Wednesday at 845",
-        "Thursday at 845",
-        "Friday at 845"
-      ]
-    },
-    {
-      "name": "St. Joseph, Strongsville",
-      "latitude": 41.3205974,
-      "longitude": -81.837302,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1030",
-        "Monday at 1830",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Thursday at 730",
-        "Friday at 805",
-        "First Saturday at 800"
-      ]
-    },
-    {
-      "name": "St. Joseph, Avon Lake",
-      "latitude": 41.5104968,
-      "longitude": -82.026321,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Sunday at 1700",
-        "Monday at 800",
-        "Wednesday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "St. Joseph, Amherst",
-      "latitude": 41.4046332,
-      "longitude": -82.2185184,
-      "mass_times": [
-        "Monday at 900",
-        "Tuesday at 800",
-        "Thursday at 1900",
-        "Friday at 900",
-        "Saturday at 1600",
-        "Saturday at 1730",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Sunday at 1700"
-      ]
-    },
-    {
-      "name": "St. John Vianney, Mentor",
-      "latitude": 41.6871975,
-      "longitude": -81.3699303,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 730",
-        "Sunday at 900",
-        "Sunday at 1030",
-        "Sunday at 1215",
-        "Monday at 800",
-        "Monday at 1100",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Wednesday at 1100",
-        "Thursday at 800",
-        "Friday at 800",
-        "Friday at 1100"
-      ]
-    },
-    {
-      "name": "St. John Neumann, Strongsville",
-      "latitude": 41.2986221,
-      "longitude": -81.8336826,
-      "mass_times": [
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Friday at 900",
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Sunday at 1700"
-      ]
-    },
-    {
-      "name": "St. John the Baptist, Akron",
-      "latitude": 41.053475,
-      "longitude": -81.51056,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. John of the Cross, Euclid",
-      "latitude": 41.5836648,
-      "longitude": -81.5002318,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. John Bosco, Parma Heights",
-      "latitude": 41.3868894,
-      "longitude": -81.7720796,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 730",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Thursday at 1900",
-        "Friday at 730"
-      ]
-    },
-    {
-      "name": "St. John Nepomucene, Cleveland",
-      "latitude": 41.4555258,
-      "longitude": -81.655689,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1000",
-        "Tuesday at 900",
-        "Thursday at 900"
-      ]
-    },
-    {
-      "name": "St. John Cantius, Cleveland",
-      "latitude": 41.4804836,
-      "longitude": -81.6861672,
-      "mass_times": [
-        "Monday at 1800",
-        "Tuesday at 830",
-        "Wednesday at 1800",
-        "Thursday at 830",
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1130"
-      ]
-    },
-    {
-      "name": "St. Joan of Arc, Chagrin Falls",
-      "latitude": 41.4266635,
-      "longitude": -81.375196,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Tuesday at 900",
-        "Tuesday at 800"
-      ]
-    },
-    {
-      "name": "St. Jerome, Cleveland",
-      "latitude": 41.573047,
-      "longitude": -81.576606,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Wednesday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. James, Lakewood",
-      "latitude": 41.4857435,
-      "longitude": -81.8172097,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Ignatius of Antioch, Cleveland",
-      "latitude": 41.4656844,
-      "longitude": -81.7553296,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Hilary, Fairlawn",
-      "latitude": 41.1242136,
-      "longitude": -81.6029067,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 730",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Sunday at 1730",
-        "Monday at 700",
-        "Monday at 930",
-        "Tuesday at 700",
-        "Tuesday at 930",
-        "Wednesday at 700",
-        "Thursday at 700",
-        "Friday at 700",
-        "Friday at 930"
-      ]
-    },
-    {
-      "name": "St. Helen, Newbury",
-      "latitude": 41.4664957,
-      "longitude": -81.2068015,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Gabriel, Concord",
-      "latitude": 41.67754,
-      "longitude": -81.2837006,
-      "mass_times": [
-        "Monday at 700",
-        "Tuesday at 1900",
-        "Wednesday at 700",
-        "Wednesday at 1000",
-        "Thursday at 1900",
-        "Friday at 700",
-        "Saturday at 830",
-        "Saturday at 1700",
-        "Sunday at 730",
-        "Sunday at 930",
-        "Sunday at 1130"
-      ]
-    },
-    {
-      "name": "St. Francis of Assissi, Gates Mills",
-      "latitude": 41.5194991,
-      "longitude": -81.4302456,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Francis Xavier Cabrini, Lorain",
-      "latitude": 41.4364931,
-      "longitude": -82.1204263,
-      "mass_times": [
-        "Thursday at 900",
-        "Friday at 900",
-        "Saturday at 1600",
-        "Sunday at 1130",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Sunday at 800",
-        "Sunday at 1000"
-      ]
-    },
-    {
-      "name": "St. Francis Xavier, Medina",
-      "latitude": 41.1374315,
-      "longitude": -81.8546504,
-      "mass_times": [
-        "Monday at 730",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Thursday at 730",
-        "Friday at 730",
-        "Saturday at 1700",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Sunday at 1730"
-      ]
-    },
-    {
-      "name": "St. Francis de Sales, Parma",
-      "latitude": 41.404652,
-      "longitude": -81.7098919,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 845",
-        "Tuesday at 845",
-        "Wednesday at 845",
-        "Thursday at 845",
-        "Friday at 845"
-      ]
-    },
-    {
-      "name": "St. Francis de Sales, Akron",
-      "latitude": 40.9928459,
-      "longitude": -81.5564463,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Eugene, Cuyahoga Falls",
-      "latitude": 41.141567,
-      "longitude": -81.45799,
-      "mass_times": [
-        "Monday at 1100",
-        "Tuesday at 1100",
-        "Wednesday at 1100",
-        "Thursday at 1100",
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Elizabeth of Hungry, Cleveland",
-      "latitude": 41.4851003,
-      "longitude": -81.6233815,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Elizabeth Ann Seton, Columbia Station",
-      "latitude": 41.311413,
-      "longitude": -81.931575,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Tuesday at 1900",
-        "Wednesday at 900",
-        "Thursday at 900",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Emeric, Cleveland",
-      "latitude": 41.486465,
-      "longitude": -81.7022332,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Edward, Parkman",
-      "latitude": 41.3725416,
-      "longitude": -81.0656905,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Edward, Ashland",
-      "latitude": 40.8722811,
-      "longitude": -82.3179253,
-      "mass_times": [
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 1315",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Sunday at 1630"
-      ]
-    },
-    {
-      "name": "St. Dominic, Shaker Heights",
-      "latitude": 41.4660837,
-      "longitude": -81.5454586,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Friday at 830",
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Cyprian, Perry",
-      "latitude": 41.7782328,
-      "longitude": -81.1354655,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Columbkille, Parma",
-      "latitude": 41.3823748,
-      "longitude": -81.6862782,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Colman, Cleveland",
-      "latitude": 41.4760301,
-      "longitude": -81.7296719,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Friday at 1830"
-      ]
-    },
-    {
-      "name": "St. Colette, Brunswick",
-      "latitude": 41.266793,
-      "longitude": -81.78616,
-      "mass_times": [
-        "Monday at 1815",
-        "Tuesday at 1100",
-        "Wednesday at 1100",
-        "Friday at 1100",
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1145"
-      ]
-    },
-    {
-      "name": "St. Clement, Lakewood",
-      "latitude": 41.4767585,
-      "longitude": -81.7955084,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Clarence, North Olmsted",
-      "latitude": 41.4018799,
-      "longitude": -81.9540447,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Thursday at 1900",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Clare, Lyndhurst",
-      "latitude": 41.5212583,
-      "longitude": -81.4749273,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Christopher, Rocky River",
-      "latitude": 41.4773769,
-      "longitude": -81.8443926,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Monday at 1100",
-        "Tuesday at 1100",
-        "Wednesday at 1100",
-        "Thursday at 1100",
-        "Friday at 1100"
-      ]
-    },
-    {
-      "name": "St. Charles Borromeo, Parma",
-      "latitude": 41.4027562,
-      "longitude": -81.7339547,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 1900",
-        "Wednesday at 1900",
-        "Friday at 1900",
-        "Tuesday at 700",
-        "Thursday at 700",
-        "Saturday at 800",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Casimir, Euclid",
-      "latitude": 41.584164,
-      "longitude": -81.553839,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Casimir, Cleveland",
-      "latitude": 41.4083669,
-      "longitude": -81.7595526,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Bridget of Kildare, Parma",
-      "latitude": 41.42692,
-      "longitude": -81.882623,
-      "mass_times": [
-        "Saturday at 1600",
-        "Saturday at 1730",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "St. Brendan, North Olmsted",
-      "latitude": 41.5242804,
-      "longitude": -81.6303169,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1130",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Holy Day Vigil at 1900",
-        "Holy Day at 830",
-        "Holy Day at 1900"
-      ]
-    },
-    {
-      "name": "St. Boniface, Cleveland",
-      "latitude": 41.4577576,
-      "longitude": -81.7247014,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Bernard, Akron",
-      "latitude": 41.0781069,
-      "longitude": -81.5182503,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Sunday at 2000",
-        "Monday at 1210",
-        "Tuesday at 1210",
-        "Wednesday at 1210",
-        "Thursday at 1210",
-        "Friday at 1210"
-      ]
-    },
-    {
-      "name": "St. Bernadette, Westlake",
-      "latitude": 41.4543426,
-      "longitude": -81.886538,
-      "mass_times": [
-        "Sunday at 800",
-        "Sunday at 945",
-        "Sunday at 1130",
-        "Monday at 900",
-        "Tuesday at 800",
-        "Wednesday at 900",
-        "Thursday at 800",
-        "Friday at 900",
-        "Saturday at 800",
-        "Saturday at 1600"
-      ]
-    },
-    {
-      "name": "St. Bede the Venerable, Mentor",
-      "latitude": 41.7205215,
-      "longitude": -81.3118303,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Basil The Great, Brecksville",
-      "latitude": 41.3255562,
-      "longitude": -81.6277639,
-      "mass_times": [
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 1700",
-        "Sunday at 730",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Sunday at 1730"
-      ]
-    },
-    {
-      "name": "St. Bartholomew, Middleburg Heights",
-      "latitude": 41.366718,
-      "longitude": -81.8023561,
-      "mass_times": [
-        "Monday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Barnabas, Northfield",
-      "latitude": 41.3112067,
-      "longitude": -81.5378666,
-      "mass_times": [
-        "Monday at 830",
-        "Monday at 1900",
-        "Tuesday at 830",
-        "Wednesday at 700",
-        "Thursday at 700",
-        "Friday at 830",
-        "Saturday at 830",
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1030",
-        "Sunday at 1730"
-      ]
-    },
-    {
-      "name": "St. Barbara, Cleveland",
-      "latitude": 41.4513158,
-      "longitude": -81.6913123,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Augustine, Cleveland",
-      "latitude": 41.478706,
-      "longitude": -81.691869,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Augustine, Barberton",
-      "latitude": 41.0163218,
-      "longitude": -81.6127217,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Anthony of Padua, Parma",
-      "latitude": 41.3814376,
-      "longitude": -81.7129776,
-      "mass_times": [
-        "Saturday at 1630",
-        "Saturday at 1800",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1200",
-        "Monday at 700",
-        "Monday at 800",
-        "Tuesday at 700",
-        "Tuesday at 800",
-        "Wednesday at 700",
-        "Wednesday at 800",
-        "Thursday at 700",
-        "Thursday at 800",
-        "Friday at 700",
-        "Friday at 800",
-        "Holy Day at 1730",
-        "Holy Day at 700",
-        "Holy Day at 900",
-        "Holy Day at 1730",
-        "Holy Day at 1900"
-      ]
-    },
-    {
-      "name": "St. Anthony of Padua, Lorain",
-      "latitude": 41.475318,
-      "longitude": -82.160151,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1000",
-        "Monday at 830",
-        "Tuesday at 830"
-      ]
-    },
-    {
-      "name": "St. Anthony of Padua, Fairport Harbor",
-      "latitude": 41.751859,
-      "longitude": -81.274452,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Monday at 1800",
-        "Wednesday at 800"
-      ]
-    },
-    {
-      "name": "St. Anthony of Padua, Akron",
-      "latitude": 41.0989521,
-      "longitude": -81.5122528,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Anselm, Chesterland",
-      "latitude": 41.5149894,
-      "longitude": -81.3374935,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 1900",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "St. Anne, Rittman",
-      "latitude": 40.9725886,
-      "longitude": -81.784017,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Wednesday at 1900",
-        "Thursday at 800",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Angela Merici, Fairview Park",
-      "latitude": 41.4474259,
-      "longitude": -81.8518267,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1630",
-        "Sunday at 730",
-        "Sunday at 930",
-        "Sunday at 1730"
-      ]
-    },
-    {
-      "name": "St. Andrew the Apostle, Norton",
-      "latitude": 41.003444,
-      "longitude": -81.667031,
-      "mass_times": [
-        "Saturday at 1730",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 800"
-      ]
-    },
-    {
-      "name": "St. Andrew Kim, Cleveland",
-      "latitude": 41.4806734,
-      "longitude": -81.6918636,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Ambrose, Brunswick",
-      "latitude": 41.2498025,
-      "longitude": -81.8403235,
-      "mass_times": [
-        "Monday at 815",
-        "Thursday at 1730",
-        "Wednesday at 815",
-        "Friday at 815",
-        "Saturday at 1630",
-        "Saturday at 815",
-        "Sunday at 730",
-        "Sunday at 900",
-        "Sunday at 1030",
-        "Sunday at 1200",
-        "Sunday at 1700"
-      ]
-    },
-    {
-      "name": "St. Aloysius - St. Agatha, Cleveland",
-      "latitude": 41.5397129,
-      "longitude": -81.609061,
-      "mass_times": [
-        "Sunday at 1000",
-        "Wednesday at 1130"
-      ]
-    },
-    {
-      "name": "St. Albert the Great, North Royalton",
-      "latitude": 41.3254965,
-      "longitude": -81.7331466,
-      "mass_times": [
-        "Monday at 1130",
-        "Tuesday at 1130",
-        "Wednesday at 1130",
-        "Thursday at 1130",
-        "Friday at 1130",
-        "Saturday at 1600",
-        "Sunday at 730",
-        "Sunday at 930",
-        "Sunday at 1130",
-        "Sunday at 1700"
-      ]
-    },
-    {
-      "name": "St. Agnes, Orrville",
-      "latitude": 40.8351334,
-      "longitude": -81.7591757,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Agnes, Elyria",
-      "latitude": 41.377289,
-      "longitude": -82.12023,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1030",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Wednesday at 900",
-        "Thursday at 900",
-        "Friday at 900"
-      ]
-    },
-    {
-      "name": "St. Agnes - Our Lady of Fatima, Cleveland",
-      "latitude": 41.5108245,
-      "longitude": -81.6441796,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Adalbert, Cleveland",
-      "latitude": 41.4950223,
-      "longitude": -81.6292108,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "St. Adalbert, Berea",
-      "latitude": 41.375229,
-      "longitude": -81.8552935,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Sunday at 1800",
-        "Monday at 830",
-        "Tuesday at 1830",
-        "Wednesday at 830",
-        "Thursday at 1830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "Sagrada Familia, Cleveland",
-      "latitude": 41.481504,
-      "longitude": -81.7381139,
-      "mass_times": [
-        "Wednesday at 1830",
-        "Thursday at 1830",
-        "Friday at 1830",
-        "Saturday at 1700",
-        "Sunday at 1000",
-        "Sunday at 1200"
-      ]
-    },
-    {
-      "name": "Sacred Heart of Jesus, Wadsworth",
-      "latitude": 41.0258816,
-      "longitude": -81.7230331,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 800",
-        "Sunday at 1030",
-        "Sunday at 1700",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "First Saturday of the Month at 800"
-      ]
-    },
-    {
-      "name": "Sacred Heart of Jesus, South Euclid",
-      "latitude": 41.5179066,
-      "longitude": -81.5186292,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1000",
-        "Monday at 1210",
-        "Tuesday at 1210",
-        "Wednesday at 1210",
-        "Thursday at 1210",
-        "Friday at 1210"
-      ]
-    },
-    {
-      "name": "Sacred Heart Chapel, Lorain",
-      "latitude": 41.4299502,
-      "longitude": -82.1352353,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Sacred Heart, Oberlin",
-      "latitude": 41.2949906,
-      "longitude": -82.23259,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Resurrection of Our Lord, Solon",
-      "latitude": 41.4102989,
-      "longitude": -81.4523014,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "Prince of Peace, Norton",
-      "latitude": 41.0158417,
-      "longitude": -81.6362693,
-      "mass_times": [
-        "Saturday at 800",
-        "Saturday at 1600",
-        "Saturday at 1730",
-        "Sunday at 830",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 800"
-      ]
-    },
-    {
-      "name": "Our Lady Queen of Peace, Grafton",
-      "latitude": 41.2769793,
-      "longitude": -82.0600877,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 900",
-        "Tuesday at 900",
-        "Thursday at 900",
-        "Friday at 900",
-        "Wednesday at 1830"
-      ]
-    },
-    {
-      "name": "Our Lady of Victory, Tallmadge",
-      "latitude": 41.10472,
-      "longitude": -81.441818,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830"
-      ]
-    },
-    {
-      "name": "Our Lady of the Lake, Euclid",
-      "latitude": 41.6016578,
-      "longitude": -81.5404977,
-      "mass_times": [
-        "Monday at 900",
-        "Tuesday at 845",
-        "Wednesday at 900",
-        "Thursday at 900",
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "Our Lady of Peace, Cleveland",
-      "latitude": 41.4848922,
-      "longitude": -81.5961778,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Our Lady of Mount Carmel, Wickliffe",
-      "latitude": 41.609924,
-      "longitude": -81.464812,
-      "mass_times": [
-        "Monday at 700",
-        "Monday at 1900",
-        "Tuesday at 700",
-        "Tuesday at 830",
-        "Wednesday at 700",
-        "Thursday at 700",
-        "Thursday at 830",
-        "Friday at 700",
-        "Friday at 1230",
-        "Saturday at 830",
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000"
-      ]
-    },
-    {
-      "name": "Our Lady of Mount Carmel, Cleveland",
-      "latitude": 41.4836489,
-      "longitude": -81.7330876,
-      "mass_times": [
-        "Sunday at 800",
-        "Sunday at 1130",
-        "Sunday at 1700",
-        "Monday at 1800",
-        "Wednesday at 1800",
-        "Friday at 1800",
-        "Tuesday at 630",
-        "Thursday at 630",
-        "Saturday at 815",
-        "First Friday at 2200"
-      ]
-    },
-    {
-      "name": "Our Lady of Lourdes, Cleveland",
-      "latitude": 41.4655976,
-      "longitude": -81.6521799,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1000",
-        "Sunday at 1230"
-      ]
-    },
-    {
-      "name": "Our Lady of Hope, Bedford",
-      "latitude": 41.4039458,
-      "longitude": -81.536032,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "Our Lady of Guadalupe, Macedonia",
-      "latitude": 41.322031,
-      "longitude": -81.489806,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Our Lady of Grace, Hinckley",
-      "latitude": 41.2470762,
-      "longitude": -81.745778,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "Our Lady of Angels, Cleveland",
-      "latitude": 41.4542071,
-      "longitude": -81.8170805,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 1730",
-        "Thursday at 1730",
-        "Friday at 1730",
-        "Wednesday at 800",
-        "Wednesday at 1730"
-      ]
-    },
-    {
-      "name": "Our Lady Help of Christian, Seville",
-      "latitude": 41.0136379,
-      "longitude": -81.8684697,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Our Lady Help of Christians, Nova",
-      "latitude": 41.0302099,
-      "longitude": -82.3051178,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Our Lady Help of Christians, Lodi",
-      "latitude": 41.0398731,
-      "longitude": -81.9872142,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Our Lady Help of Christians, Litchfield",
-      "latitude": 41.164286,
-      "longitude": -82.0339708,
-      "mass_times": [
-        "Saturday at 1600",
-        "Saturday at 1800",
-        "Sunday at 830",
-        "Sunday at 900",
-        "Sunday at 1030",
-        "Sunday at 1100",
-        "Monday at 1800",
-        "Wednesday at 900",
-        "First Friday at 1900"
-      ]
-    },
-    {
-      "name": "Nativity of the Lord Jesus, Akron",
-      "latitude": 40.9975087,
-      "longitude": -81.4352644,
-      "mass_times": [
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 1630"
-      ]
-    },
-    {
-      "name": "Nativity of the Blessed Virgin Mary, South Amherst",
-      "latitude": 41.350248,
-      "longitude": -82.2399213,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Nativity of the Blessed Virgin Mary, Lorain",
-      "latitude": 41.4560215,
-      "longitude": -82.1724515,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1030",
-        "Monday at 815",
-        "Wednesday at 1830",
-        "Thursday at 815",
-        "Friday at 815"
-      ]
-    },
-    {
-      "name": "Mother of Sorrows, Peninsula",
-      "latitude": 41.2404221,
-      "longitude": -81.5482742,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Mary Queen of Peace, Cleveland",
-      "latitude": 41.4352011,
-      "longitude": -81.7095886,
-      "mass_times": [
-        "Sunday at 630",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 615",
-        "Monday at 800",
-        "Tuesday at 615",
-        "Tuesday at 800",
-        "Wednesday at 615",
-        "Wednesday at 800",
-        "Thursday at 615",
-        "Thursday at 800",
-        "Friday at 615",
-        "Friday at 800",
-        "Saturday at 800",
-        "Saturday at 1630",
-        "First Friday at 1900"
-      ]
-    },
-    {
-      "name": "Mary Queen of Apostles, Brook Park",
-      "latitude": 41.39204,
-      "longitude": -81.8227197,
-      "mass_times": [
-        "Monday at 800",
-        "Tuesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 1630",
-        "Sunday at 900",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "Immaculate Heart of Mary, Cuyahoga Falls",
-      "latitude": 41.1485774,
-      "longitude": -81.5052399,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 815"
-      ]
-    },
-    {
-      "name": "Immaculate Heart of Mary, Cleveland",
-      "latitude": 41.4522422,
-      "longitude": -81.6425933,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Immaculate Conception, Willoughby",
-      "latitude": 41.6351744,
-      "longitude": -81.4093644,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 730",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Thursday at 730",
-        "Friday at 730",
-        "Friday at 1900"
-      ]
-    },
-    {
-      "name": "Immaculate Conception, Madison",
-      "latitude": 41.7981417,
-      "longitude": -81.0490548,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Monday at 830",
-        "Tuesday at 1900",
-        "Wednesday at 830",
-        "Thursday at 1900",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "Immaculate Conception, Cleveland",
-      "latitude": 41.5147794,
-      "longitude": -81.6609434,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Immaculate Conception, Akron",
-      "latitude": 41.0464564,
-      "longitude": -81.5609709,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Holy Trinity, Avon",
-      "latitude": 41.4525818,
-      "longitude": -81.9896477,
-      "mass_times": [
-        "Monday at 745",
-        "Monday at 1930",
-        "Tuesday at 745",
-        "Wednesday at 745",
-        "Wednesday at 830",
-        "Thursday at 745",
-        "Thursday at 1930",
-        "Friday at 745",
-        "Friday at 830",
-        "Saturday at 830",
-        "Saturday at 1600",
-        "Saturday at 1700",
-        "Sunday at 730",
-        "Sunday at 800",
-        "Sunday at 900",
-        "Sunday at 1000",
-        "Sunday at 1030",
-        "Sunday at 1200"
-      ]
-    },
-    {
-      "name": "Holy Spirit, Garfield Heights",
-      "latitude": 41.4411655,
-      "longitude": -81.5904904,
-      "mass_times": [
-        "TBD"
-      ]
-    },
-    {
-      "name": "Holy Spirit, Avon Lake",
-      "latitude": 41.494133,
-      "longitude": -81.9894942,
-      "mass_times": [
-        "Sunday at 900",
-        "Sunday at 1030",
-        "Sunday at 1200",
-        "Saturday at 1700",
-        "Tuesday at 830",
-        "Thursday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "Holy Rosary, Cleveland",
-      "latitude": 41.5089035,
-      "longitude": -81.5987462,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Sunday at 2000",
-        "Monday at 1215",
-        "Tuesday at 1215",
-        "Wednesday at 1215",
-        "Friday at 1215"
-      ]
-    },
-    {
-      "name": "Holy Redeemer, Cleveland",
-      "latitude": 41.554816,
-      "longitude": -81.5680066,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Thursday at 800"
-      ]
-    },
-    {
-      "name": "Holy Name, Cleveland",
-      "latitude": 41.4496327,
-      "longitude": -81.6297092,
-      "mass_times": [
-        "Saturday at 800",
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Sunday at 1800",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "Holy Martyrs, Medina",
-      "latitude": 41.1900563,
-      "longitude": -81.7934731,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 930",
-        "Sunday at 1130",
-        "Sunday at 1700",
-        "Monday at 1200",
-        "Tuesday at 1200",
-        "Wednesday at 1200",
-        "Thursday at 1200",
-        "Friday at 1200"
-      ]
-    },
-    {
-      "name": "Holy Family, Stow",
-      "latitude": 41.158383,
-      "longitude": -81.444991,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 730",
-        "Sunday at 900",
-        "Sunday at 1130",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800",
-        "Saturday at 800"
-      ]
-    },
-    {
-      "name": "Holy Family, Parma",
-      "latitude": 41.3658995,
-      "longitude": -81.7576935,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1630",
-        "Sunday at 730",
-        "Sunday at 930",
-        "Sunday at 1130"
-      ]
-    },
-    {
-      "name": "Holy Angels, Bainbridge",
-      "latitude": 41.3730246,
-      "longitude": -81.3349092,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 900",
-        "Wednesday at 900",
-        "Friday at 900",
-        "Tuesday at 700"
-      ]
-    },
-    {
-      "name": "Guardian Angels, Copley",
-      "latitude": 41.0915674,
-      "longitude": -81.645418,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Thursday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "Gesu, University Heights",
-      "latitude": 41.492358,
-      "longitude": -81.532349,
-      "mass_times": [
-        "Saturday at 1630",
-        "Sunday at 800",
-        "Sunday at 1000",
-        "Sunday at 1130",
-        "Monday at 730",
-        "Monday at 830",
-        "Tuesday at 730",
-        "Wednesday at 730",
-        "Wednesday at 830",
-        "Thursday at 730",
-        "Friday at 730",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "Divine Word, Kirtland",
-      "latitude": 41.6042265,
-      "longitude": -81.3541559,
-      "mass_times": [
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Thursday at 830",
-        "Friday at 830",
-        "Saturday at 1630",
-        "Sunday at 830",
-        "Sunday at 1100"
-      ]
-    },
-    {
-      "name": "Communion of Saints, Cleveland Heights",
-      "latitude": 41.5005227,
-      "longitude": -81.5793325,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 830",
-        "Sunday at 1130",
-        "Sunday at 1000",
-        "Monday at 800",
-        "Tuesday at 800",
-        "Wednesday at 800",
-        "Thursday at 800",
-        "Friday at 800"
-      ]
-    },
-    {
-      "name": "Cathedral of Saint John the Evangelist, Cleveland",
-      "latitude": 41.5030193,
-      "longitude": -81.6881019,
-      "mass_times": [
-        "Sunday at 800",
-        "Sunday at 1030",
-        "Sunday at 1215",
-        "Sunday at 1730",
-        "Monday at 715",
-        "Monday at 1200",
-        "Tuesday at 715",
-        "Tuesday at 1200",
-        "Wednesday at 715",
-        "Wednesday at 1200",
-        "Thursday at 715",
-        "Thursday at 1200",
-        "Friday at 715",
-        "Friday at 1200",
-        "Saturday at 1630"
-      ]
-    },
-    {
-      "name": "Blessed Trinity, Cleveland",
-      "latitude": 41.4339645,
-      "longitude": -81.7915284,
-      "mass_times": [
-        "Saturday at 1600",
-        "Sunday at 900",
-        "Sunday at 1100",
-        "Tuesday at 830",
-        "Wednesday at 830",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "Blessed Trinity, Akron",
-      "latitude": 41.101228,
-      "longitude": -81.504139,
-      "mass_times": [
-        "Saturday at 1700",
-        "Sunday at 830",
-        "Sunday at 1100",
-        "Monday at 830",
-        "Tuesday at 830",
-        "Wednesday at 1730",
-        "Friday at 830"
-      ]
-    },
-    {
-      "name": "Assumption, Broadview Heights",
-      "latitude": 41.3163684,
-      "longitude": -81.6839109,
-      "mass_times": [
-        "Monday at 630",
-        "Monday at 830",
-        "Tuesday at 630",
-        "Tuesday at 830",
-        "Wednesday at 630",
-        "Wednesday at 830",
-        "Thursday at 630",
-        "Thursday at 830",
-        "Friday at 630",
-        "Friday at 815",
-        "Saturday at 830",
-        "Saturday at 1600",
-        "Sunday at 730",
-        "Sunday at 930",
-        "Sunday at 1130",
-        "Sunday at 1800"
-      ]
-    }
-  ]
+  {
+    "name": "Visitation of Mary",
+    "latitude": 41.0728219,
+    "longitude": -81.4882493,
+    "address": "87 Broad Street",
+    "city": "Akron",
+    "zip_code": "44305",
+    "phone": "330-535-4502",
+    "www": "www.sjbakron.org",
+    "mass_times": [
+      "Sunday: 10:30AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Queen of Heaven",
+    "latitude": 40.9468231,
+    "longitude": -81.469451,
+    "address": "1800 Steese Road",
+    "city": "Uniontown",
+    "zip_code": "44685",
+    "phone": "330-896-2345",
+    "www": "www.queenofheavenparish.org",
+    "mass_times": [
+      "Sunday: 08:15AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM, 08:30AM"
+    ]
+  },
+  {
+    "name": "Transfiguration",
+    "latitude": 41.4771636,
+    "longitude": -81.7767796,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "Sunday: 09:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 05:30PM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Ss. Robert and William",
+    "latitude": 41.617024,
+    "longitude": -81.50243,
+    "address": "367 E. 260th Street",
+    "city": "Euclid",
+    "zip_code": "44132",
+    "phone": "216.731.1515",
+    "www": "www.srweuclid.cc",
+    "mass_times": [
+      "Sunday: 09:30AM",
+      "Monday: 08:30AM",
+      "Tuesday: 06:30PM",
+      "Wednesday: 08:30AM",
+      "Thursday: 06:30PM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Ss. Peter and Paul",
+    "latitude": 41.4305067,
+    "longitude": -81.6168576,
+    "address": "4750 Turney Road",
+    "city": "Garfield Heights",
+    "zip_code": "44125",
+    "phone": "216-429-1515",
+    "www": "http://stspeterpaul.weconnect.com/",
+    "mass_times": [
+      "Sunday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Ss. Peter and Paul",
+    "latitude": 40.970462,
+    "longitude": -81.699628,
+    "address": "161 W. Clinton St.",
+    "city": "Doylestown",
+    "zip_code": "44230",
+    "phone": "330-658-2145",
+    "www": "www.stsppc.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Wednesday: 07:00PM",
+      "Thursday: 08:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM, 06:00PM"
+    ]
+  },
+  {
+    "name": "Ss. Cosmas and Damian",
+    "latitude": 41.3255699,
+    "longitude": -81.4572877,
+    "address": "10419 Ravenna Road",
+    "city": "Twinsburg",
+    "zip_code": "44087",
+    "phone": "(330) 425-8141",
+    "www": "www.CatholicTwinsburg.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Wendelin",
+    "latitude": 41.481842,
+    "longitude": -81.6997389,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Vitus",
+    "latitude": 41.5227521,
+    "longitude": -81.6489348,
+    "address": "6019 Lausche Avenue",
+    "city": "Cleveland",
+    "zip_code": "44103",
+    "phone": "(216) 361-1444",
+    "www": "www.saintvitus.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 10:30AM",
+      "Monday: 05:00PM",
+      "Tuesday: 05:00PM",
+      "Wednesday: 05:00PM",
+      "Thursday: 05:00PM",
+      "Friday: 05:00PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Vincent de Paul",
+    "latitude": 41.4171552,
+    "longitude": -82.1213772,
+    "address": "2143 Homewood Dr.",
+    "city": "Lorain",
+    "zip_code": "44055",
+    "phone": "440-277-7266",
+    "www": "www.saintfrancesxcabrini.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 11:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Vincent de Paul",
+    "latitude": 41.457458,
+    "longitude": -81.7840849,
+    "address": "13400 Lorain Avenue",
+    "city": "Cleveland",
+    "zip_code": "44111-3432",
+    "phone": "216.252.2626",
+    "www": "www.svdpcleveland.org",
+    "mass_times": [
+      "Sunday: 09:00AM",
+      "Monday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:30PM"
+    ]
+  },
+  {
+    "name": "St. Vincent de Paul",
+    "latitude": 41.087309,
+    "longitude": -81.522865,
+    "address": "164 West Market Street",
+    "city": "Akron",
+    "zip_code": "44303",
+    "phone": "330-535-3135",
+    "www": "www.stvincentchurch.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 06:28AM",
+      "Tuesday: 06:28AM",
+      "Wednesday: 06:28AM",
+      "Thursday: 06:28AM",
+      "Friday: 06:28AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Victor",
+    "latitude": 41.2035073,
+    "longitude": -81.6174307,
+    "address": "3435 Everett Road",
+    "city": "Richfield, OH",
+    "zip_code": "44286",
+    "phone": "330-659-6591",
+    "www": "www.saintvictorparish.org",
+    "mass_times": [
+      "Sunday: 08:45AM, 11:30AM",
+      "Monday: 07:30AM",
+      "Tuesday: 07:30AM",
+      "Friday: 07:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Thomas More",
+    "latitude": 41.442811,
+    "longitude": -81.739775,
+    "address": "4170 North Amber Drive",
+    "city": "Brooklyn",
+    "zip_code": "44144",
+    "phone": "216-749-0414",
+    "www": "stmparish.net",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:15AM",
+      "Tuesday: 06:45PM",
+      "Wednesday: 08:15AM",
+      "Friday: 08:15AM",
+      "Saturday: 04:30PM, 08:15AM"
+    ]
+  },
+  {
+    "name": "St. Thomas",
+    "latitude": 41.4868078,
+    "longitude": -82.0945173,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Theresa of Avila",
+    "latitude": 41.46657,
+    "longitude": -82.07655,
+    "address": "1878 Abbe Road",
+    "city": "Sheffield Village",
+    "zip_code": "44054",
+    "phone": "(440) 934-4227",
+    "www": "www.stteresaparish.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Therese",
+    "latitude": 41.4175754,
+    "longitude": -81.6115923,
+    "address": "5276 East 105th Street",
+    "city": "Garfield Heights",
+    "zip_code": "44125",
+    "phone": "216-581-2852",
+    "www": "www.sttheresegarfield.org",
+    "mass_times": [
+      "Sunday: 10:30AM",
+      "Monday: 06:30PM",
+      "Thursday: 08:30AM",
+      "Saturday: 05:30PM"
+    ]
+  },
+  {
+    "name": "St. Stephen",
+    "latitude": 40.9733311,
+    "longitude": -82.1053785,
+    "address": "44 Britton Street",
+    "city": "West Salem",
+    "zip_code": "44287",
+    "phone": "(419) 853-4946",
+    "www": "www.ststephen.ws",
+    "mass_times": [
+      "Sunday: 11:00AM",
+      "Wednesday: 04:00PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Stephen",
+    "latitude": 41.478899,
+    "longitude": -81.7240446,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Stanislaus",
+    "latitude": 41.4591025,
+    "longitude": -81.6446127,
+    "address": "3649 East 65th Street",
+    "city": "Cleveland",
+    "zip_code": "44105",
+    "phone": "216-341-9091",
+    "www": "www.ststanislaus.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:00AM, 11:30AM",
+      "Monday: 06:45AM, 12:15PM",
+      "Tuesday: 06:45AM, 07:00PM",
+      "Wednesday: 06:45AM, 08:30AM",
+      "Thursday: 06:45AM, 07:00PM",
+      "Friday: 06:45AM, 12:15PM",
+      "Saturday: 05:00PM, 08:30AM"
+    ]
+  },
+  {
+    "name": "St. Sebastian",
+    "latitude": 41.0989311,
+    "longitude": -81.5665409,
+    "address": "476 Mull Avenue",
+    "city": "Akron, Ohio",
+    "zip_code": "44320",
+    "phone": "330-836-2233",
+    "www": "www.stsebastian.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:05AM",
+      "Friday: 08:00AM",
+      "Saturday: 08:00AM, 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Rocco",
+    "latitude": 41.466824,
+    "longitude": -81.706753,
+    "address": "3205 Fulton Road",
+    "city": "Cleveland",
+    "zip_code": "44109",
+    "phone": "(216) 961-8331",
+    "www": "www.saintroccocleveland.com",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:30AM, 12:00PM",
+      "Monday: 06:45AM, 06:30PM",
+      "Tuesday: 06:45AM, 06:30PM",
+      "Wednesday: 06:45AM, 06:30PM",
+      "Thursday: 06:45AM, 06:30PM",
+      "Friday: 06:45AM, 06:30PM",
+      "Saturday: 04:00PM, 06:45AM"
+    ]
+  },
+  {
+    "name": "St. Rita",
+    "latitude": 41.3843959,
+    "longitude": -81.4450675,
+    "address": "32820 Baldwin Road",
+    "city": "Solon",
+    "zip_code": "44139",
+    "phone": "440-248-1350",
+    "www": "https://www.stritaparish.com",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:00AM, 10:45AM",
+      "Monday: 08:45AM",
+      "Tuesday: 08:45AM",
+      "Wednesday: 08:45AM",
+      "Thursday: 08:45AM",
+      "Friday: 08:45AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Richard",
+    "latitude": 41.417086,
+    "longitude": -81.918826,
+    "address": "26855 Lorain Road",
+    "city": "North Olmsted",
+    "zip_code": "44070",
+    "phone": "440-777-5050",
+    "www": "www.st-richard.org",
+    "mass_times": [
+      "Sunday: 07:00AM, 10:15AM",
+      "Monday: 07:00AM",
+      "Tuesday: 07:00AM",
+      "Wednesday: 07:00AM",
+      "Thursday: 07:00AM",
+      "Friday: 07:00AM",
+      "Saturday: 08:00AM, 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Raphael",
+    "latitude": 41.4805755,
+    "longitude": -81.9195342,
+    "address": "525 Dover Center Rd",
+    "city": "Bay Village, OH",
+    "zip_code": "44140",
+    "phone": "440.871.1100",
+    "www": "www.saintraphaelparish.com",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 07:45AM, 09:15AM",
+      "Tuesday: 07:45AM, 09:15AM",
+      "Wednesday: 07:45AM",
+      "Thursday: 09:15AM",
+      "Friday: 07:45AM, 09:15AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Peter",
+    "latitude": 41.3906503,
+    "longitude": -82.0157912,
+    "address": "35777 Center Ridge Road",
+    "city": "North Ridgeville",
+    "zip_code": "44039",
+    "phone": "440-327-2201",
+    "www": "www.stpeternr.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 08:15AM",
+      "Tuesday: 08:15AM",
+      "Wednesday: 08:15AM",
+      "Thursday: 08:15AM",
+      "Friday: 08:15AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Peter",
+    "latitude": 40.6366145,
+    "longitude": -82.2308743,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Peter",
+    "latitude": 41.4373726,
+    "longitude": -82.185384,
+    "address": "3655 Oberlin Ave.",
+    "city": "Lorain",
+    "zip_code": "44053",
+    "phone": "440-282-9103",
+    "www": "www.stpeterlorain.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 12:00PM",
+      "Monday: 05:30PM",
+      "Tuesday: 08:30AM",
+      "Thursday: 05:30PM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Peter",
+    "latitude": 41.5054988,
+    "longitude": -81.6811037,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Paul",
+    "latitude": 41.5160302,
+    "longitude": -81.6633672,
+    "address": "1369 E. 40th Street",
+    "city": "Cleveland",
+    "zip_code": "44103",
+    "phone": "216 431-1895",
+    "www": "www.stpaulcroatianchurch.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:00AM, 12:00PM",
+      "Monday: 07:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 07:30AM",
+      "Friday: 07:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Paul",
+    "latitude": 41.0383724,
+    "longitude": -81.5108867,
+    "address": "1580 Brown Street",
+    "city": "Akron",
+    "zip_code": "44301",
+    "phone": "330-724-1263",
+    "www": "www.stpaulparishakron.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:30AM",
+      "Monday: 08:30AM",
+      "Tuesday: 07:00AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 07:00AM",
+      "Friday: 08:30AM, 05:30PM",
+      "Saturday: 04:30PM, 07:00AM"
+    ]
+  },
+  {
+    "name": "St. Patrick",
+    "latitude": 41.175007,
+    "longitude": -82.2167846,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Patrick",
+    "latitude": 41.6648573,
+    "longitude": -81.0529447,
+    "address": "16550 Rock Creek Road",
+    "city": "Thompson",
+    "zip_code": "44086",
+    "phone": "440-298-1327",
+    "www": "www.stpatrickthompson.org",
+    "mass_times": [
+      "Sunday: 09:30AM",
+      "Tuesday: 08:45AM",
+      "Thursday: 08:45AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Patrick",
+    "latitude": 41.434398,
+    "longitude": -81.8217189,
+    "address": "4427 Rocky River Dr.",
+    "city": "Cleveland",
+    "zip_code": "44135",
+    "phone": "216-251-1200",
+    "www": "www.stpatrickwp.org",
+    "mass_times": [
+      "Sunday: 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 07:00PM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Patrick",
+    "latitude": 41.4831958,
+    "longitude": -81.711556,
+    "address": "14010 S. River Rd.",
+    "city": "Grand Rapids",
+    "zip_code": "43522",
+    "phone": "419-832-5215",
+    "www": "www.stpatrickprovidence.com",
+    "mass_times": [
+      "Sunday: 07:15AM, 10:45AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Paschal Baylon",
+    "latitude": 41.5380938,
+    "longitude": -81.4854892,
+    "address": "5384 Wilson Mills Road",
+    "city": "Highland Heights",
+    "zip_code": "44143",
+    "phone": "440-442-3410",
+    "www": "church.saintpaschal.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:30AM, 06:30PM",
+      "Monday: 09:00AM, 11:30AM",
+      "Tuesday: 09:00AM, 11:30AM",
+      "Wednesday: 09:00AM, 11:30AM",
+      "Thursday: 09:00AM, 11:30AM",
+      "Friday: 09:00AM, 11:30AM",
+      "Saturday: 04:30PM, 09:00AM"
+    ]
+  },
+  {
+    "name": "St. Noel",
+    "latitude": 41.5861896,
+    "longitude": -81.4353346,
+    "address": "35200 Chardon Rd",
+    "city": "Willoughby Hills",
+    "zip_code": "44094",
+    "phone": "(440) 946-0887",
+    "www": "WWW.STNOEL.ORG",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Monica",
+    "latitude": 41.403715,
+    "longitude": -81.586485,
+    "address": "13623 Rockside Road",
+    "city": "Garfield Heights",
+    "zip_code": "44125",
+    "phone": "216-662-8685",
+    "www": "saintmonicachurch.net",
+    "mass_times": [
+      "Sunday: 09:00AM, 10:45AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Michael the Archangel",
+    "latitude": 41.4697367,
+    "longitude": -81.6974633,
+    "address": "3114 Scranton Road",
+    "city": "Cleveland",
+    "zip_code": "44109",
+    "phone": "216-621-3847",
+    "www": "www.smacleveland.net",
+    "mass_times": [
+      "Sunday: 09:45AM, 12:00PM",
+      "Monday: 12:00PM",
+      "Wednesday: 06:30PM",
+      "Thursday: 06:30PM",
+      "Friday: 12:00PM",
+      "Saturday: 05:00PM, 07:00PM"
+    ]
+  },
+  {
+    "name": "St. Michael",
+    "latitude": 41.3846655,
+    "longitude": -81.6419084,
+    "address": "6912 Chestnut Road",
+    "city": "Independence",
+    "zip_code": "44131",
+    "phone": "216-524-1394",
+    "www": "stmichaelchurchindependence.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mel",
+    "latitude": 41.4614558,
+    "longitude": -81.7954471,
+    "address": "14436 Triskett Road",
+    "city": "Cleveland, OH",
+    "zip_code": "44111-2263",
+    "phone": "216-941-4313",
+    "www": "http://www.stmel.net",
+    "mass_times": [
+      "Sunday: 07:00AM, 10:00AM",
+      "Tuesday: 06:45AM",
+      "Friday: 06:45AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Matthias",
+    "latitude": 41.3514044,
+    "longitude": -81.6879478,
+    "address": "1200 West Sprague Road",
+    "city": "Parma",
+    "zip_code": "44134",
+    "phone": "440-888-8220",
+    "www": "www.stmatthiaschurch.org",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Friday: 12:00PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary of the Immaculate Conception",
+    "latitude": 40.8047701,
+    "longitude": -81.933746,
+    "address": "527 Beall Avenue",
+    "city": "Wooster",
+    "zip_code": "44691",
+    "phone": "330-264-8824",
+    "www": "www.stmarywooster.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 11:00AM, 05:00PM",
+      "Monday: 07:00AM",
+      "Tuesday: 07:00AM",
+      "Wednesday: 09:30AM",
+      "Thursday: 07:00AM",
+      "Friday: 07:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary of the Immaculate Conception",
+    "latitude": 41.449693,
+    "longitude": -82.033951,
+    "address": "33601 Detroit Road",
+    "city": "Avon",
+    "zip_code": "44011",
+    "phone": "(440) 937-5363",
+    "www": "www.htavon.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 08:00AM, 09:00AM, 10:00AM, 10:30AM, 12:00PM",
+      "Monday: 07:45AM, 07:30PM",
+      "Tuesday: 07:45AM",
+      "Wednesday: 07:45AM, 08:30AM",
+      "Thursday: 07:45AM, 07:30PM",
+      "Friday: 07:45AM, 08:30AM",
+      "Saturday: 08:30AM, 04:00PM, 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary of the Falls",
+    "latitude": 41.3724257,
+    "longitude": -81.9032495,
+    "address": "25615 Bagley Rd.",
+    "city": "Olmsted Falls",
+    "zip_code": "44138",
+    "phone": "440-235-2222",
+    "www": "www.stmaryofthefalls.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 05:00PM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 07:00AM",
+      "Friday: 07:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary of the Assumption",
+    "latitude": 41.6681396,
+    "longitude": -81.3343183,
+    "address": "8560 Mentor Avenue",
+    "city": "Mentor",
+    "zip_code": "44060",
+    "phone": "440.255.3404",
+    "www": "www.stmarysmentor.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 08:15AM",
+      "Tuesday: 08:15AM",
+      "Wednesday: 08:15AM",
+      "Friday: 08:15AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mary Magdalene",
+    "latitude": 41.6420066,
+    "longitude": -81.4602894,
+    "address": "32114 Vine Street",
+    "city": "Willowick",
+    "zip_code": "44095",
+    "phone": "440-943-2133",
+    "www": "www.smmwillowick.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 11:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.7301553,
+    "longitude": -81.2436449,
+    "address": "242 North State Street",
+    "city": "Painesville",
+    "zip_code": "44077",
+    "phone": "440-354-6200",
+    "www": "www.stmarypvl.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM, 06:00PM",
+      "Monday: 06:45AM, 12:15PM",
+      "Tuesday: 06:45AM",
+      "Wednesday: 12:15PM",
+      "Thursday: 06:45AM",
+      "Friday: 12:15PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.4639406,
+    "longitude": -82.176617,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.2470795,
+    "longitude": -81.441468,
+    "address": "340 North Main Street",
+    "city": "Hudson",
+    "zip_code": "44236",
+    "phone": "330.653.8118",
+    "www": "www.stmaryhudson.cc",
+    "mass_times": [
+      "Sunday: 08:00AM, 09:30AM, 11:30AM, 05:30PM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.3645301,
+    "longitude": -82.1068211,
+    "address": "611 Lake Avenue",
+    "city": "Elyria, Ohio",
+    "zip_code": "44035-3541",
+    "phone": "440-322-5622",
+    "www": "www.saintagneselyria.church",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.560673,
+    "longitude": -81.573232,
+    "address": "15519 Holmes Avenue",
+    "city": "Cleveland, Ohio",
+    "zip_code": "44110",
+    "phone": "216-761-7740",
+    "www": "www.stmaryscollinwood.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:15AM",
+      "Monday: 07:45AM",
+      "Tuesday: 07:45AM",
+      "Wednesday: 07:45AM",
+      "Thursday: 07:45AM",
+      "Friday: 07:45AM",
+      "Saturday: 05:00PM, 07:45AM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.5893886,
+    "longitude": -81.2057072,
+    "address": "401 North Street",
+    "city": "Chardon",
+    "zip_code": "44024",
+    "phone": "440-285-7051",
+    "www": "www.stmarychardon.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 07:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 12:00PM",
+      "Thursday: 07:30AM",
+      "Friday: 07:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.3662518,
+    "longitude": -81.8654315,
+    "address": "250 Kraft Street",
+    "city": "Berea",
+    "zip_code": "44017",
+    "phone": "(440) 243-3877",
+    "www": "www.stmaryberea.org",
+    "mass_times": [
+      "Sunday: 04:00AM, 08:30AM, 10:30AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.3803166,
+    "longitude": -81.5250791,
+    "address": "340 Union Street",
+    "city": "Bedford",
+    "zip_code": "44146",
+    "phone": "440-359-8205",
+    "www": "www.saintmarybedford.org",
+    "mass_times": [
+      "Sunday: 09:15AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Mary",
+    "latitude": 41.0662748,
+    "longitude": -81.5274569,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Martin of Tours",
+    "latitude": 41.225069,
+    "longitude": -81.9549139,
+    "address": "1800 Station Road",
+    "city": "Valley City",
+    "zip_code": "44280",
+    "phone": "330-483-3808",
+    "www": "www.stmartinvc.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:30AM",
+      "Monday: 05:00PM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Martin of Tours",
+    "latitude": 41.3930011,
+    "longitude": -81.5810146,
+    "address": "14600 Turney Road",
+    "city": "Maple Heights",
+    "zip_code": "44137",
+    "phone": "216-475-4300",
+    "www": "http://www.stmartinoftours.info",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 07:30AM, 06:30PM",
+      "Tuesday: 07:30AM, 06:30PM",
+      "Wednesday: 07:30AM, 06:30PM",
+      "Thursday: 07:30AM",
+      "Friday: 07:30AM",
+      "Saturday: 07:30AM, 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Mark",
+    "latitude": 41.4677509,
+    "longitude": -81.8070814,
+    "address": "15800 Montrose Avenue",
+    "city": "Cleveland",
+    "zip_code": "44111",
+    "phone": "216-226-7577",
+    "www": "stmarkcleveland.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:30AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Matthew",
+    "latitude": 41.053233,
+    "longitude": -81.436211,
+    "address": "2603 Benton Avenue",
+    "city": "Akron",
+    "zip_code": "44312",
+    "phone": "330-733-9944",
+    "www": "stmatthewparish.net",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:30AM",
+      "Monday: 05:30PM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Malachi",
+    "latitude": 41.4922845,
+    "longitude": -81.7074602,
+    "address": "2459 Washington Ave. (West 25 & Detroit)",
+    "city": "Cleveland",
+    "zip_code": "44113",
+    "phone": "216-861-5343",
+    "www": "www.StMalachi.org",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Tuesday: 12:00PM",
+      "Friday: 12:00PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Luke",
+    "latitude": 41.490786,
+    "longitude": -81.7897163,
+    "address": "1212 Bunts Rd",
+    "city": "Lakewood",
+    "zip_code": "44107",
+    "phone": "216-521-0184",
+    "www": "www.stlukelakewood.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 09:00AM, 10:30AM, 11:00AM",
+      "Monday: 08:15AM",
+      "Tuesday: 08:15AM",
+      "Wednesday: 08:15AM",
+      "Thursday: 08:15AM",
+      "Friday: 08:15AM",
+      "Saturday: 04:00PM, 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Lucy Mission",
+    "latitude": 41.4625924,
+    "longitude": -81.0612541,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Leo the Great",
+    "latitude": 41.4220489,
+    "longitude": -81.6967444,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Ladislas",
+    "latitude": 41.4545923,
+    "longitude": -81.9448835,
+    "address": "2345 Bassett Road",
+    "city": "Westlake, Ohio",
+    "zip_code": "44145",
+    "phone": "440-835-2300",
+    "www": "stladislas.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 06:30PM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Justin Martyr",
+    "latitude": 41.6483142,
+    "longitude": -81.4338551,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Julie Billiart",
+    "latitude": 41.4101136,
+    "longitude": -81.9926809,
+    "address": "5500 Lear Nagle Road",
+    "city": "N. Ridgeville",
+    "zip_code": "44039",
+    "phone": "440-327-1978",
+    "www": "www.stjuliebilliart.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 05:30PM",
+      "Wednesday: 05:30PM",
+      "Friday: 05:30PM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Jude",
+    "latitude": 41.3826554,
+    "longitude": -82.0857794,
+    "address": "590 Poplar Street",
+    "city": "Elyria",
+    "zip_code": "44035",
+    "phone": "440-366-5711",
+    "www": "www.saintjudeparish.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Joseph",
+    "latitude": 41.1295978,
+    "longitude": -81.4852502,
+    "address": "1761 Second Street",
+    "city": "Cuyahoga Falls",
+    "zip_code": "44221",
+    "phone": "330-928-2173",
+    "www": "www.saintjoe.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 08:45AM",
+      "Tuesday: 08:45AM",
+      "Wednesday: 08:45AM",
+      "Thursday: 08:45AM",
+      "Friday: 08:45AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Joseph",
+    "latitude": 41.3205974,
+    "longitude": -81.837302,
+    "address": "12700 Pearl Road",
+    "city": "Strongsville",
+    "zip_code": "44136",
+    "phone": "440.238.5555",
+    "www": "www.sjohio.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:30AM",
+      "Monday: 06:30PM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 07:30AM",
+      "Friday: 08:05AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Joseph",
+    "latitude": 41.5104968,
+    "longitude": -82.026321,
+    "address": "32929 Lake Road",
+    "city": "Avon Lake",
+    "zip_code": "44012",
+    "phone": "440.933.3152",
+    "www": "stjosephavonlake.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 05:00PM",
+      "Monday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Joseph",
+    "latitude": 41.4046332,
+    "longitude": -82.2185184,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 05:00PM",
+      "Monday: 09:00AM",
+      "Tuesday: 08:00AM",
+      "Thursday: 07:00PM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM, 05:30PM"
+    ]
+  },
+  {
+    "name": "St. John Vianney",
+    "latitude": 41.6871975,
+    "longitude": -81.3699303,
+    "address": "7575 Bellflower Rd.",
+    "city": "Mentor",
+    "zip_code": "44060",
+    "phone": "440-255-0600",
+    "www": "www.sjvmentor.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:00AM, 10:30AM, 12:15PM",
+      "Monday: 08:00AM, 11:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM, 11:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM, 11:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. John Neumann",
+    "latitude": 41.2986221,
+    "longitude": -81.8336826,
+    "address": "16271 Pearl Rd",
+    "city": "Strongsville",
+    "zip_code": "44136",
+    "phone": "440-238-1770",
+    "www": "http://www.sjnohio.com",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM, 05:00PM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. John the Baptist",
+    "latitude": 41.053475,
+    "longitude": -81.51056,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. John of the Cross",
+    "latitude": 41.5836648,
+    "longitude": -81.5002318,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. John Bosco",
+    "latitude": 41.3868894,
+    "longitude": -81.7720796,
+    "address": "6480 Pearl Road",
+    "city": "Parma Heights",
+    "zip_code": "44130",
+    "phone": "(440) 886-3500",
+    "www": "https://sjbparmaheights.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 07:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 07:00PM",
+      "Friday: 07:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. John Nepomucene",
+    "latitude": 41.4555258,
+    "longitude": -81.655689,
+    "address": "5000 Fleet Ave",
+    "city": "Cleveland",
+    "zip_code": "44105",
+    "phone": "216-641-8444",
+    "www": "www.st-john-nepomucene.org",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Tuesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. John Cantius",
+    "latitude": 41.4804836,
+    "longitude": -81.6861672,
+    "address": "906 College Ave.",
+    "city": "Cleveland",
+    "zip_code": "44113",
+    "phone": "216-781-9095",
+    "www": "stjohncantiuschurch.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:30AM",
+      "Monday: 06:00PM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 06:00PM",
+      "Thursday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Joan of Arc",
+    "latitude": 41.4266635,
+    "longitude": -81.375196,
+    "address": "496 E. Washington St.",
+    "city": "Chagrin Falls, OH",
+    "zip_code": "44022",
+    "phone": "440-247-7183",
+    "www": "www.stjoanofarcchurch.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 09:00AM, 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Jerome",
+    "latitude": 41.573047,
+    "longitude": -81.576606,
+    "address": "15000 Lake Shore Boulevard",
+    "city": "Cleveland",
+    "zip_code": "44110",
+    "phone": "216-481-8200",
+    "www": "https://www.stjeromecleveland.org/church",
+    "mass_times": [
+      "Sunday: 09:00AM",
+      "Monday: 08:00AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. James",
+    "latitude": 41.4857435,
+    "longitude": -81.8172097,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Ignatius of Antioch",
+    "latitude": 41.4656844,
+    "longitude": -81.7553296,
+    "address": "10205 Lorain Avenue",
+    "city": "Cleveland",
+    "zip_code": "44111-5435",
+    "phone": "216-251-0300",
+    "www": "www.sioaparish.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Hilary",
+    "latitude": 41.1242136,
+    "longitude": -81.6029067,
+    "address": "2750 West Market Street",
+    "city": "Fairlawn, Ohio",
+    "zip_code": "44333",
+    "phone": "330-867-1055",
+    "www": "sthilarychurch.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:00AM, 11:00AM, 05:30PM",
+      "Monday: 07:00AM, 09:30AM",
+      "Tuesday: 07:00AM, 09:30AM",
+      "Wednesday: 07:00AM",
+      "Thursday: 07:00AM",
+      "Friday: 07:00AM, 09:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Helen",
+    "latitude": 41.4664957,
+    "longitude": -81.2068015,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Gabriel",
+    "latitude": 41.67754,
+    "longitude": -81.2837006,
+    "address": "9925 Johnnycake Ridge Road",
+    "city": "Concord Township, Ohio",
+    "zip_code": "44060",
+    "phone": "(440) 352-8282",
+    "www": "www.St-Gabriel.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:30AM, 11:30AM",
+      "Monday: 07:00AM",
+      "Tuesday: 07:00PM",
+      "Wednesday: 07:00AM, 10:00AM",
+      "Thursday: 07:00PM",
+      "Friday: 07:00AM",
+      "Saturday: 08:30AM, 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Francis of Assissi",
+    "latitude": 41.5194991,
+    "longitude": -81.4302456,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Francis Xavier Cabrini",
+    "latitude": 41.4364931,
+    "longitude": -82.1204263,
+    "address": "2143 Homewood Dr.",
+    "city": "Lorain",
+    "zip_code": "44055",
+    "phone": "(440) 277-7266",
+    "www": "www.saintfrancesxcabrini.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 11:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Francis Xavier",
+    "latitude": 41.1374315,
+    "longitude": -81.8546504,
+    "address": "606 E. Washington St.",
+    "city": "Medina",
+    "zip_code": "44256",
+    "phone": "330-725-4968",
+    "www": "www.sfxmedina.com",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM, 05:30PM",
+      "Monday: 07:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 07:30AM",
+      "Friday: 07:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Francis de Sales",
+    "latitude": 41.404652,
+    "longitude": -81.7098919,
+    "address": "3434 George Avenue",
+    "city": "Parma",
+    "zip_code": "44134-2904",
+    "phone": "(440) 884-2319",
+    "www": "stfrancisdesales-church.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:45AM",
+      "Tuesday: 08:45AM",
+      "Wednesday: 08:45AM",
+      "Thursday: 08:45AM",
+      "Friday: 08:45AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Francis de Sales",
+    "latitude": 40.9928459,
+    "longitude": -81.5564463,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Eugene",
+    "latitude": 41.141567,
+    "longitude": -81.45799,
+    "address": "1821 Munroe Falls Ave",
+    "city": "Cuyahoga Falls",
+    "zip_code": "44221",
+    "phone": "(330) 923-5244",
+    "www": "www.sainteugene.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 11:00AM",
+      "Tuesday: 11:00AM",
+      "Wednesday: 11:00AM",
+      "Thursday: 11:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Elizabeth of Hungry",
+    "latitude": 41.4851003,
+    "longitude": -81.6233815,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Elizabeth Ann Seton",
+    "latitude": 41.311413,
+    "longitude": -81.931575,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Tuesday: 07:00PM",
+      "Wednesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Emeric",
+    "latitude": 41.486465,
+    "longitude": -81.7022332,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Edward",
+    "latitude": 41.3725416,
+    "longitude": -81.0656905,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Edward",
+    "latitude": 40.8722811,
+    "longitude": -82.3179253,
+    "address": "501 Cottage St.",
+    "city": "Ashland",
+    "zip_code": "44805",
+    "phone": "419-289-7224",
+    "www": "stedwardashland.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 04:30PM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 01:15PM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 08:30AM, 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Dominic",
+    "latitude": 41.4660837,
+    "longitude": -81.5454586,
+    "address": "3450 Norwood Road",
+    "city": "Shaker Heights, OH",
+    "zip_code": "44122",
+    "phone": "(216) 991-1444",
+    "www": "www.stdominicchurch.net",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Cyprian",
+    "latitude": 41.7782328,
+    "longitude": -81.1354655,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Columbkille",
+    "latitude": 41.3823748,
+    "longitude": -81.6862782,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Colman",
+    "latitude": 41.4760301,
+    "longitude": -81.7296719,
+    "address": "2027 West 65th Street",
+    "city": "Cleveland",
+    "zip_code": "44102",
+    "phone": "216-651-0550",
+    "www": "www.stcolmanchurch.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Colette",
+    "latitude": 41.266793,
+    "longitude": -81.78616,
+    "address": "330 W. 130th Street",
+    "city": "Brunswick",
+    "zip_code": "44212",
+    "phone": "330-273-5500",
+    "www": "www.stcolettecatholicchurch.com",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 11:45AM",
+      "Monday: 06:15PM",
+      "Tuesday: 11:00AM",
+      "Wednesday: 11:00AM",
+      "Friday: 11:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Clement",
+    "latitude": 41.4767585,
+    "longitude": -81.7955084,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Clarence",
+    "latitude": 41.4018799,
+    "longitude": -81.9540447,
+    "address": "30106 Lorain Road",
+    "city": "North Olmsted",
+    "zip_code": "44070",
+    "phone": "440-734-2414",
+    "www": "www.st-clarence.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Clare",
+    "latitude": 41.5212583,
+    "longitude": -81.4749273,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Christopher",
+    "latitude": 41.4773769,
+    "longitude": -81.8443926,
+    "address": "20141 DETROIT ROAD",
+    "city": "ROCKY RIVER",
+    "zip_code": "OH 44116",
+    "phone": "440-331-4255",
+    "www": "www.stchrisparish.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:00AM, 11:30AM",
+      "Monday: 11:00AM",
+      "Tuesday: 11:00AM",
+      "Wednesday: 11:00AM",
+      "Thursday: 11:00AM",
+      "Friday: 11:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Charles Borromeo",
+    "latitude": 41.4027562,
+    "longitude": -81.7339547,
+    "address": "5891 Ridge Road",
+    "city": "Parma",
+    "zip_code": "44129",
+    "phone": "440-884-3030",
+    "www": "www.stcharlesonline.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 07:00PM",
+      "Tuesday: 07:00AM",
+      "Wednesday: 07:00PM",
+      "Thursday: 07:00AM",
+      "Friday: 07:00PM, 08:30AM",
+      "Saturday: 04:00PM, 08:00AM"
+    ]
+  },
+  {
+    "name": "St. Casimir",
+    "latitude": 41.584164,
+    "longitude": -81.553839,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Casimir",
+    "latitude": 41.4083669,
+    "longitude": -81.7595526,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Bridget of Kildare",
+    "latitude": 41.42692,
+    "longitude": -81.882623,
+    "address": "5620 Hauserman Road",
+    "city": "Parma",
+    "zip_code": "44130",
+    "phone": "440-886-4434",
+    "www": "www.stbridgetparma.com",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM, 05:30PM"
+    ]
+  },
+  {
+    "name": "St. Brendan",
+    "latitude": 41.5242804,
+    "longitude": -81.6303169,
+    "address": "4242 Brendan Lane",
+    "city": "North Olmsted",
+    "zip_code": "44070",
+    "phone": "(440) 777-7222",
+    "www": "www.stbrendannortholmsted.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:30AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Boniface",
+    "latitude": 41.4577576,
+    "longitude": -81.7247014,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Bernard",
+    "latitude": 41.0781069,
+    "longitude": -81.5182503,
+    "address": "44 University Avenue",
+    "city": "Akron",
+    "zip_code": "44308",
+    "phone": "(330) 253-5161",
+    "www": "stbernardakron.org",
+    "mass_times": [
+      "Sunday: 10:00AM, 12:00PM, 08:00PM",
+      "Monday: 12:10PM",
+      "Tuesday: 12:10PM",
+      "Wednesday: 12:10PM",
+      "Thursday: 12:10PM",
+      "Friday: 12:10PM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Bernadette",
+    "latitude": 41.4543426,
+    "longitude": -81.886538,
+    "address": "2256 Clague Road",
+    "city": "Westlake",
+    "zip_code": "44145",
+    "phone": "440-734-1300",
+    "www": "www.saintbernadetteparish.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 09:45AM, 11:30AM",
+      "Monday: 09:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 09:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 08:00AM, 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Bede the Venerable",
+    "latitude": 41.7205215,
+    "longitude": -81.3118303,
+    "address": "9114 Lake Shore Blvd",
+    "city": "Mentor",
+    "zip_code": "44060",
+    "phone": "440-257-5544",
+    "www": "stbedementor.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Basil The Great",
+    "latitude": 41.3255562,
+    "longitude": -81.6277639,
+    "address": "8700 Brecksville Rd",
+    "city": "Brecksville",
+    "zip_code": "44141",
+    "phone": "440-526-1686",
+    "www": "basilthegreat.org/yearofbeauty",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:00AM, 11:00AM, 05:30PM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "St. Bartholomew",
+    "latitude": 41.366718,
+    "longitude": -81.8023561,
+    "address": "14865 East Bagley Rd.",
+    "city": "Middleburg Heights",
+    "zip_code": "44130",
+    "phone": "440-842-5400",
+    "www": "stbartholomewparish.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Barnabas",
+    "latitude": 41.3112067,
+    "longitude": -81.5378666,
+    "address": "9451 Brandywine Rd",
+    "city": "Northfield, Ohio",
+    "zip_code": "44067",
+    "phone": "330-467-7959",
+    "www": "www.stbarnabasfamily.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:30AM, 05:30PM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 07:00AM",
+      "Thursday: 07:00AM",
+      "Friday: 08:30AM",
+      "Saturday: 08:30AM, 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Barbara",
+    "latitude": 41.4513158,
+    "longitude": -81.6913123,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Augustine",
+    "latitude": 41.478706,
+    "longitude": -81.691869,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Augustine",
+    "latitude": 41.0163218,
+    "longitude": -81.6127217,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Anthony of Padua",
+    "latitude": 41.3814376,
+    "longitude": -81.7129776,
+    "address": "6750 State Road",
+    "city": "Parma",
+    "zip_code": "44134",
+    "phone": "(440) 842-2666",
+    "www": "www.stanthonypaduaparma.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 12:00PM",
+      "Monday: 07:00AM, 08:00AM",
+      "Tuesday: 07:00AM, 08:00AM",
+      "Wednesday: 07:00AM, 08:00AM",
+      "Thursday: 07:00AM, 08:00AM",
+      "Friday: 07:00AM, 08:00AM",
+      "Saturday: 04:30PM, 06:00PM"
+    ]
+  },
+  {
+    "name": "St. Anthony of Padua",
+    "latitude": 41.475318,
+    "longitude": -82.160151,
+    "address": "1305 E. Erie Ave.",
+    "city": "Lorain",
+    "zip_code": "44052",
+    "phone": "440-288-0106",
+    "www": "www.StAnthonyLorain.org/our-parish",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Anthony of Padua",
+    "latitude": 41.751859,
+    "longitude": -81.274452,
+    "address": "316 Fifth St. (Parish Office)",
+    "city": "Fairport Harbor",
+    "zip_code": "44077",
+    "phone": "440.354.4525",
+    "www": "https://www.stafh.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM",
+      "Monday: 06:00PM",
+      "Wednesday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Anthony of Padua",
+    "latitude": 41.0989521,
+    "longitude": -81.5122528,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Anselm",
+    "latitude": 41.5149894,
+    "longitude": -81.3374935,
+    "address": "12969 Chillicothe Rd, Chesterland, OH 44026",
+    "city": "Chesterland",
+    "zip_code": "44026",
+    "phone": "440-729-9575",
+    "www": "stanselm.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 07:00PM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Anne",
+    "latitude": 40.9725886,
+    "longitude": -81.784017,
+    "address": "161 W. Clinton St.",
+    "city": "Doylestown",
+    "zip_code": "OH 44230",
+    "phone": "330-658-2145",
+    "www": "www.stsppc.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Wednesday: 07:00PM",
+      "Thursday: 08:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:00PM, 06:00PM"
+    ]
+  },
+  {
+    "name": "St. Angela Merici",
+    "latitude": 41.4474259,
+    "longitude": -81.8518267,
+    "address": "20970 Lorain Road",
+    "city": "Fairview Park",
+    "zip_code": "44126",
+    "phone": "(440) 333-2133",
+    "www": "samparish.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:30AM, 05:30PM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Andrew the Apostle",
+    "latitude": 41.003444,
+    "longitude": -81.667031,
+    "address": "4022 Johnson Rd.",
+    "city": "Norton",
+    "zip_code": "44203",
+    "phone": "330-825-3135",
+    "www": "www.standrewnorton.com",
+    "mass_times": [
+      "Sunday: 10:00AM, 11:30AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 08:00AM, 05:30PM"
+    ]
+  },
+  {
+    "name": "St. Andrew Kim",
+    "latitude": 41.4806734,
+    "longitude": -81.6918636,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Ambrose",
+    "latitude": 41.2498025,
+    "longitude": -81.8403235,
+    "address": "929 Pearl Rd.",
+    "city": "Brunswick",
+    "zip_code": "44212",
+    "phone": "330-460-7300",
+    "www": "www.StAmbrose.us",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:00AM, 10:30AM, 12:00PM, 05:00PM",
+      "Monday: 08:15AM",
+      "Wednesday: 08:15AM",
+      "Thursday: 05:30PM",
+      "Friday: 08:15AM",
+      "Saturday: 04:30AM, 08:15AM"
+    ]
+  },
+  {
+    "name": "St. Aloysius - St. Agatha",
+    "latitude": 41.5397129,
+    "longitude": -81.609061,
+    "address": "10932 ST. CLAIR AVENUE",
+    "city": "Cleveland",
+    "zip_code": "44108-1939",
+    "phone": "216-451-3262",
+    "www": "www.saintaloysiuscleveland.com",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Wednesday: 11:30AM"
+    ]
+  },
+  {
+    "name": "St. Albert the Great",
+    "latitude": 41.3254965,
+    "longitude": -81.7331466,
+    "address": "6667 Wallings Road",
+    "city": "North Royalton, Ohio",
+    "zip_code": "44133",
+    "phone": "440-237-6760",
+    "www": "saint-albert.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:30AM, 11:30AM, 05:00PM",
+      "Monday: 11:30AM",
+      "Tuesday: 11:30AM",
+      "Wednesday: 11:30AM",
+      "Thursday: 11:30AM",
+      "Friday: 11:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "St. Agnes",
+    "latitude": 40.8351334,
+    "longitude": -81.7591757,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Agnes",
+    "latitude": 41.377289,
+    "longitude": -82.12023,
+    "address": "611 Lake Avenue",
+    "city": "Elyria",
+    "zip_code": "44035-3541",
+    "phone": "440-322-5622",
+    "www": "www.saintagneselyria.church",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "St. Agnes - Our Lady of Fatima",
+    "latitude": 41.5108245,
+    "longitude": -81.6441796,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Adalbert",
+    "latitude": 41.4950223,
+    "longitude": -81.6292108,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "St. Adalbert",
+    "latitude": 41.375229,
+    "longitude": -81.8552935,
+    "address": "66 Adalbert Street",
+    "city": "Berea, Ohio",
+    "zip_code": "44017",
+    "phone": "(440)-234-6830",
+    "www": "saintadalbertparish.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 10:00AM, 11:30AM, 06:00PM",
+      "Monday: 08:30AM",
+      "Tuesday: 06:30PM",
+      "Wednesday: 08:30AM",
+      "Thursday: 06:30PM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Sagrada Familia",
+    "latitude": 41.481504,
+    "longitude": -81.7381139,
+    "address": "7719 Detroit Avenue",
+    "city": "Cleveland",
+    "zip_code": "44102",
+    "phone": "216-631-3305",
+    "www": "www.lasagradafamiliaparish.org",
+    "mass_times": [
+      "Sunday: 10:00AM, 12:00PM",
+      "Wednesday: 06:30PM",
+      "Thursday: 06:30PM",
+      "Friday: 06:30PM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Sacred Heart of Jesus",
+    "latitude": 41.0258816,
+    "longitude": -81.7230331,
+    "address": "272 Broad St",
+    "city": "Wadsworth, OH",
+    "zip_code": "44281",
+    "phone": "330-336-3049",
+    "www": "shofjesus.com",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:30AM, 05:00PM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM, 09:30AM",
+      "Friday: 08:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Sacred Heart of Jesus",
+    "latitude": 41.5179066,
+    "longitude": -81.5186292,
+    "address": "1545 S. Green Rd",
+    "city": "South Euclid",
+    "zip_code": "44121",
+    "phone": "216.382.7601",
+    "www": "www.sacredheartofjesusparish.org",
+    "mass_times": [
+      "Sunday: 10:00AM",
+      "Monday: 12:10PM",
+      "Friday: 12:10PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Sacred Heart Chapel",
+    "latitude": 41.4299502,
+    "longitude": -82.1352353,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Sacred Heart",
+    "latitude": 41.2949906,
+    "longitude": -82.23259,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Resurrection of Our Lord",
+    "latitude": 41.4102989,
+    "longitude": -81.4523014,
+    "address": "32001 Cannon Road",
+    "city": "Solon",
+    "zip_code": "44139",
+    "phone": "440-248-0980",
+    "www": "https://churchofresurrection.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Prince of Peace",
+    "latitude": 41.0158417,
+    "longitude": -81.6362693,
+    "address": "1263 Shannon Ave.",
+    "city": "Barberton",
+    "zip_code": "44203",
+    "phone": "(330) 825-9543",
+    "www": "www.princeofpeaceparish.org",
+    "mass_times": [
+      "Sunday: 08:30AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady Queen of Peace",
+    "latitude": 41.2769793,
+    "longitude": -82.0600877,
+    "address": "702 Erie Street",
+    "city": "Grafton, OH",
+    "zip_code": "44044",
+    "phone": "440-926-2364",
+    "www": "www.olqpgrafton.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 09:00AM",
+      "Wednesday: 06:30PM",
+      "Thursday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Our Lady of Victory",
+    "latitude": 41.10472,
+    "longitude": -81.441818,
+    "address": "73 North Avenue",
+    "city": "Tallmadge",
+    "zip_code": "44278",
+    "phone": "330-633-3637",
+    "www": "www.ourladyofvictory.net",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady of the Lake",
+    "latitude": 41.6016578,
+    "longitude": -81.5404977,
+    "address": "19951 Lakeshore Blvd.",
+    "city": "Euclid",
+    "zip_code": "44119",
+    "phone": "216-486-0850",
+    "www": "https://olleuclid.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 08:45AM",
+      "Wednesday: 09:00AM",
+      "Thursday: 09:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady of Peace",
+    "latitude": 41.4848922,
+    "longitude": -81.5961778,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Our Lady of Mount Carmel",
+    "latitude": 41.609924,
+    "longitude": -81.464812,
+    "address": "29850 Euclid Ave",
+    "city": "Wickliffe",
+    "zip_code": "44092",
+    "phone": "(440) 585-0700",
+    "www": "http://www.olmcwickliffe.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM",
+      "Monday: 07:00AM, 07:00PM",
+      "Tuesday: 07:00AM, 08:30AM",
+      "Wednesday: 07:00AM",
+      "Thursday: 07:00AM, 08:30AM",
+      "Friday: 07:00AM, 12:30PM",
+      "Saturday: 08:30AM, 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady of Mount Carmel",
+    "latitude": 41.4836489,
+    "longitude": -81.7330876,
+    "address": "6928 Detroit Ave.",
+    "city": "Cleveland",
+    "zip_code": "44102",
+    "phone": "(216) 651-5043",
+    "www": "www.olmccleveland.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 11:30AM, 05:00PM",
+      "Monday: 06:00PM",
+      "Tuesday: 06:30AM",
+      "Wednesday: 06:00PM",
+      "Thursday: 06:30AM",
+      "Friday: 06:00PM",
+      "Saturday: 08:15AM"
+    ]
+  },
+  {
+    "name": "Our Lady of Lourdes",
+    "latitude": 41.4655976,
+    "longitude": -81.6521799,
+    "address": "3395 East 53rd St.",
+    "city": "Cleveland",
+    "zip_code": "44127",
+    "phone": "216.641.2829",
+    "www": "www.ourladyoflourdes-cle.com",
+    "mass_times": [
+      "Sunday: 10:00AM, 12:30PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady of Hope",
+    "latitude": 41.4039458,
+    "longitude": -81.536032,
+    "address": "400 Center Road",
+    "city": "Bedford",
+    "zip_code": "44146-2296",
+    "phone": "(440) 232-8166",
+    "www": "www.ourladyofhopebedford.org",
+    "mass_times": [
+      "Sunday: 11:00AM",
+      "Monday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady of Guadalupe",
+    "latitude": 41.322031,
+    "longitude": -81.489806,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Our Lady of Grace",
+    "latitude": 41.2470762,
+    "longitude": -81.745778,
+    "address": "1088 Ridge Road",
+    "city": "Hinckley",
+    "zip_code": "44233",
+    "phone": "330-278-4121",
+    "www": "www.olghinckley.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady of Angels",
+    "latitude": 41.4542071,
+    "longitude": -81.8170805,
+    "address": "3644 Rocky River Drive",
+    "city": "Cleveland",
+    "zip_code": "44111",
+    "phone": "216-252-2332",
+    "www": "www.olangels.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 06:00PM",
+      "Wednesday: 08:00AM, 06:00PM",
+      "Thursday: 06:00PM",
+      "Friday: 06:00PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Our Lady Help of Christian",
+    "latitude": 41.0136379,
+    "longitude": -81.8684697,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Our Lady Help of Christians",
+    "latitude": 41.0302099,
+    "longitude": -82.3051178,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Our Lady Help of Christians",
+    "latitude": 41.0398731,
+    "longitude": -81.9872142,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Our Lady Help of Christians",
+    "latitude": 41.164286,
+    "longitude": -82.0339708,
+    "address": "9608 Norwalk Rd",
+    "city": "Litchfield, OH",
+    "zip_code": "44253",
+    "phone": "(330) 722-1180",
+    "www": "www.olhc-parish.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 09:00AM, 10:30AM, 11:00AM",
+      "Monday: 06:00PM",
+      "Wednesday: 09:00AM",
+      "Saturday: 04:00PM, 06:00PM"
+    ]
+  },
+  {
+    "name": "Nativity of the Lord Jesus",
+    "latitude": 40.9975087,
+    "longitude": -81.4352644,
+    "address": "2425 Myersville Road",
+    "city": "Akron, OH",
+    "zip_code": "44312",
+    "phone": "330-699-5086",
+    "www": "www.nativityofthelord.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Nativity of the Blessed Virgin Mary",
+    "latitude": 41.350248,
+    "longitude": -82.2399213,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Nativity of the Blessed Virgin Mary",
+    "latitude": 41.4560215,
+    "longitude": -82.1724515,
+    "address": "418 West 15th Street",
+    "city": "Lorain",
+    "zip_code": "44052",
+    "phone": "244-9090",
+    "www": "nativitybvmlorain.org",
+    "mass_times": [
+      "Sunday: 10:30AM",
+      "Monday: 08:15AM",
+      "Wednesday: 06:30PM",
+      "Thursday: 08:15AM",
+      "Friday: 08:15AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Mother of Sorrows",
+    "latitude": 41.2404221,
+    "longitude": -81.5482742,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Mary Queen of Peace",
+    "latitude": 41.4352011,
+    "longitude": -81.7095886,
+    "address": "4423 Pearl Road",
+    "city": "Cleveland",
+    "zip_code": "44109",
+    "phone": "216-749-2323",
+    "www": "www.maryqop.org",
+    "mass_times": [
+      "Sunday: 06:30AM, 08:30AM, 11:00AM",
+      "Monday: 06:15AM, 08:00AM",
+      "Tuesday: 06:15AM, 08:00AM",
+      "Wednesday: 06:15AM, 08:00AM",
+      "Thursday: 06:15AM, 08:00AM",
+      "Friday: 06:15AM, 08:00AM",
+      "Saturday: 08:00AM, 04:30PM"
+    ]
+  },
+  {
+    "name": "Mary Queen of Apostles",
+    "latitude": 41.39204,
+    "longitude": -81.8227197,
+    "address": "6455 Engle Road",
+    "city": "Brook Park, Ohio",
+    "zip_code": "44142",
+    "phone": "216-433-1440",
+    "www": "www.mqabrookpark.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Immaculate Heart of Mary",
+    "latitude": 41.1485774,
+    "longitude": -81.5052399,
+    "address": "1905 Portage Trail",
+    "city": "Cuyahoga Falls",
+    "zip_code": "44223",
+    "phone": "330-929-8361",
+    "www": "www.ihmcfo.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:15AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Immaculate Heart of Mary",
+    "latitude": 41.4522422,
+    "longitude": -81.6425933,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Immaculate Conception",
+    "latitude": 41.6351744,
+    "longitude": -81.4093644,
+    "address": "37940 Euclid Ave",
+    "city": "Willoughby",
+    "zip_code": "44094",
+    "phone": "440-942-4500",
+    "www": "immaculate.net",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 07:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM",
+      "Thursday: 07:30AM",
+      "Friday: 07:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Immaculate Conception",
+    "latitude": 41.7981417,
+    "longitude": -81.0490548,
+    "address": "2846 Hubbard Road",
+    "city": "Madison",
+    "zip_code": "44057",
+    "phone": "(440) 428-5164",
+    "www": "www.iccmadison.com",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 11:30AM",
+      "Monday: 08:30AM",
+      "Tuesday: 07:00PM",
+      "Wednesday: 08:30AM",
+      "Thursday: 07:00PM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Immaculate Conception",
+    "latitude": 41.5147794,
+    "longitude": -81.6609434,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Immaculate Conception",
+    "latitude": 41.0464564,
+    "longitude": -81.5609709,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Holy Trinity",
+    "latitude": 41.4525818,
+    "longitude": -81.9896477,
+    "address": "33601 Detroit Road",
+    "city": "Avon, Ohio",
+    "zip_code": "44011",
+    "phone": "(440) 937-5363",
+    "www": "www.htavon.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 08:00AM, 09:00AM, 10:00AM, 10:30AM, 12:00PM",
+      "Monday: 07:45AM, 07:30PM",
+      "Tuesday: 07:45AM",
+      "Wednesday: 07:45AM, 08:30AM",
+      "Thursday: 07:45AM, 07:30PM",
+      "Friday: 07:45AM, 08:30AM",
+      "Saturday: 08:30AM, 04:00PM, 05:00PM"
+    ]
+  },
+  {
+    "name": "Holy Spirit",
+    "latitude": 41.4411655,
+    "longitude": -81.5904904,
+    "address": "",
+    "city": "",
+    "zip_code": "",
+    "phone": "",
+    "www": "",
+    "mass_times": [
+      "TBD"
+    ]
+  },
+  {
+    "name": "Holy Spirit",
+    "latitude": 41.494133,
+    "longitude": -81.9894942,
+    "address": "410 Lear Road",
+    "city": "Avon Lake",
+    "zip_code": "44012",
+    "phone": "440-933-3777",
+    "www": "www.hspal.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 10:30AM, 12:00PM",
+      "Tuesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Holy Rosary",
+    "latitude": 41.5089035,
+    "longitude": -81.5987462,
+    "address": "12021 Mayfield Road",
+    "city": "Cleveland",
+    "zip_code": "44106",
+    "phone": "(216) 421-2995",
+    "www": "www.holy-rosary.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 08:00PM",
+      "Monday: 12:15PM",
+      "Tuesday: 12:15PM",
+      "Wednesday: 12:15PM",
+      "Friday: 12:15PM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Holy Redeemer",
+    "latitude": 41.554816,
+    "longitude": -81.5680066,
+    "address": "15712 Kipling Avenue",
+    "city": "Cleveland",
+    "zip_code": "44110",
+    "phone": "216-531-3313",
+    "www": "www.holyredeemer-cleveland.org",
+    "mass_times": [
+      "Sunday: 11:00AM",
+      "Monday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Holy Name",
+    "latitude": 41.4496327,
+    "longitude": -81.6297092,
+    "address": "8328 Broadway Avenue",
+    "city": "Cleveland",
+    "zip_code": "44105",
+    "phone": "(216) 271-4242",
+    "www": "http://www.holynamecleveland.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 06:00PM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 08:00AM, 04:00PM"
+    ]
+  },
+  {
+    "name": "Holy Martyrs",
+    "latitude": 41.1900563,
+    "longitude": -81.7934731,
+    "address": "3100 Old Weymouth Road",
+    "city": "Medina",
+    "zip_code": "44256",
+    "phone": "330-722-6633",
+    "www": "https://holymartyrs.net",
+    "mass_times": [
+      "Sunday: 09:30AM, 11:30AM, 05:00PM",
+      "Monday: 12:00PM",
+      "Tuesday: 12:00PM",
+      "Wednesday: 12:00PM",
+      "Thursday: 12:00PM",
+      "Friday: 12:00PM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Holy Family",
+    "latitude": 41.158383,
+    "longitude": -81.444991,
+    "address": "3179 Kent Road",
+    "city": "Stow",
+    "zip_code": "44224-4421",
+    "phone": "330-688-6412",
+    "www": "www.holyfamilystow.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:00AM, 11:30AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Wednesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Holy Family",
+    "latitude": 41.3658995,
+    "longitude": -81.7576935,
+    "address": "7367 York Rd.",
+    "city": "Parma",
+    "zip_code": "44130",
+    "phone": "440-842-5533",
+    "www": "www.holyfamparma.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:30AM, 11:30AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 07:30AM, 09:30AM, 11:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Holy Angels",
+    "latitude": 41.3730246,
+    "longitude": -81.3349092,
+    "address": "18205 Chillicothe Road",
+    "city": "Chagrin Falls",
+    "zip_code": "44023",
+    "phone": "440-708-0000",
+    "www": "www.holyangelschurch.com",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 09:00AM",
+      "Tuesday: 07:00AM",
+      "Wednesday: 09:00AM",
+      "Friday: 09:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Guardian Angels",
+    "latitude": 41.0915674,
+    "longitude": -81.645418,
+    "address": "1686 South Cleveland-Massillon Road",
+    "city": "Copley",
+    "zip_code": "44321-1956",
+    "phone": "(330) 666-1373",
+    "www": "www.copleyangels.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Monday: 08:00AM",
+      "Tuesday: 08:00AM",
+      "Thursday: 08:00AM",
+      "Friday: 08:00AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Gesu",
+    "latitude": 41.492358,
+    "longitude": -81.532349,
+    "address": "2470 Miramar Blvd.",
+    "city": "University Heights, OH",
+    "zip_code": "44118",
+    "phone": "(216) 932-0617",
+    "www": "churchofthegesu.org",
+    "mass_times": [
+      "Sunday: 08:00AM, 10:00AM, 11:30AM",
+      "Monday: 07:30AM, 08:30AM",
+      "Tuesday: 07:30AM",
+      "Wednesday: 07:30AM, 08:30AM",
+      "Thursday: 07:30AM",
+      "Friday: 07:30AM, 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Divine Word",
+    "latitude": 41.6042265,
+    "longitude": -81.3541559,
+    "address": "8100 Eagle Road",
+    "city": "Kirtland, OH",
+    "zip_code": "44094",
+    "phone": "440-256-1412",
+    "www": "www.divinewordkirtland.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Thursday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Communion of Saints",
+    "latitude": 41.5005227,
+    "longitude": -81.5793325,
+    "address": "2175 Coventry Road",
+    "city": "Cleveland Heights",
+    "zip_code": "44118",
+    "phone": "(216) 321-0024",
+    "www": "cosparish.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:30AM, 10:00AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Cathedral of Saint John the Evangelist",
+    "latitude": 41.5030193,
+    "longitude": -81.6881019,
+    "address": "1007 Superior Avenue E",
+    "city": "Cleveland",
+    "zip_code": "44114-2582",
+    "phone": "216-771-6666",
+    "www": "SaintJohnCathedral.com",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM, 05:30PM",
+      "Monday: 07:15AM, 12:00PM",
+      "Tuesday: 07:15AM, 12:00PM",
+      "Wednesday: 07:15AM, 12:00PM",
+      "Thursday: 07:15AM, 12:00PM",
+      "Friday: 07:15AM, 12:00PM",
+      "Saturday: 04:30PM"
+    ]
+  },
+  {
+    "name": "Blessed Trinity",
+    "latitude": 41.4339645,
+    "longitude": -81.7915284,
+    "address": "14040 Puritas Avenue",
+    "city": "Cleveland",
+    "zip_code": "44135",
+    "phone": "216-671-5890",
+    "www": "www.blessedtrinitycleveland.org",
+    "mass_times": [
+      "Sunday: 09:00AM, 11:00AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 08:30AM",
+      "Friday: 08:30AM",
+      "Saturday: 04:00PM"
+    ]
+  },
+  {
+    "name": "Blessed Trinity",
+    "latitude": 41.101228,
+    "longitude": -81.504139,
+    "address": "300 East Tallmadge Avenue",
+    "city": "Akron",
+    "zip_code": "44310",
+    "phone": "330-376-5144",
+    "www": "http://www.blessedtrinityakron.org",
+    "mass_times": [
+      "Sunday: 08:30AM, 11:00AM",
+      "Monday: 08:30AM",
+      "Tuesday: 08:30AM",
+      "Wednesday: 05:30PM",
+      "Friday: 08:30AM",
+      "Saturday: 05:00PM"
+    ]
+  },
+  {
+    "name": "Assumption",
+    "latitude": 41.3163684,
+    "longitude": -81.6839109,
+    "address": "9183 Broadview Road",
+    "city": "Broadview Heights",
+    "zip_code": "44147",
+    "phone": "(440) 526-1177",
+    "www": "www.coabvm.org",
+    "mass_times": [
+      "Sunday: 07:30AM, 09:30AM, 11:30AM, 06:00PM",
+      "Monday: 06:30AM, 08:30AM",
+      "Tuesday: 06:30AM, 08:30AM",
+      "Wednesday: 06:30AM, 08:30AM",
+      "Thursday: 06:30AM, 08:30AM",
+      "Friday: 06:30AM, 08:15AM",
+      "Saturday: 08:30AM, 04:00PM"
+    ]
+  }
+]

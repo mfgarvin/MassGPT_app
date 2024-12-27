@@ -55,20 +55,31 @@ class ParishDetailPage extends StatelessWidget {
             const SizedBox(height: 20),
             // Additional Details (if any)
             // For example, contact information, website, etc.
-            if (parish.contactInfo != null) ...[
-              Text(
-                'Contact Information:',
-                style: TextStyle(
-                    color: accentColor,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                parish.contactInfo!,
-                style: TextStyle(color: textColor, fontSize: 18),
-              ),
-            ],
+            Text(
+              'Website:',
+              style: TextStyle(
+                  color: accentColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              parish.website!,
+              style: TextStyle(color: textColor, fontSize: 18),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Phone Number:',
+              style: TextStyle(
+                  color: accentColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              parish.phone,
+              style: TextStyle(color: textColor, fontSize: 18),
+            ),
           ],
         ),
       ),
