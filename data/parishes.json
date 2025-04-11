@@ -6,16 +6,20 @@
     "address": "87 Broad Street",
     "city": "Akron",
     "zip_code": "44305",
-    "phone": "330-535-4502",
-    "www": "www.sjbakron.org",
+    "phone": "330-535-4141",
+    "www": "www.visitationofmary.org",
     "mass_times": [
       "Sunday: 10:30AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Thursday: 5:00PM to 5:30PM",
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -25,34 +29,41 @@
     "address": "1800 Steese Road",
     "city": "Uniontown",
     "zip_code": "44685",
-    "phone": "330-896-2345",
+    "phone": "(330) 896-2345",
     "www": "www.queenofheavenparish.org",
     "mass_times": [
-      "Sunday: 08:15AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM, 08:30AM"
+      "Sunday: 8:15AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Friday: 9:00AM to 10:00AM",
+      "Saturday: 3:15PM to 4:15PM"
     ]
   },
   {
     "name": "Transfiguration",
     "latitude": 41.4771636,
     "longitude": -81.7767796,
-    "address": "",
-    "city": "",
-    "zip_code": "",
-    "phone": "",
-    "www": "",
+    "address": "12608 Madison Avenue",
+    "city": "Lakewood, OH",
+    "zip_code": "44107",
+    "phone": "(216) 521-7288",
+    "www": "lakewoodcatholicacademy.com",
     "mass_times": [
-      "Sunday: 09:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 05:30PM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 5:30PM",
+      "Wednesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:15PM to 3:45PM"
     ]
   },
   {
@@ -60,18 +71,21 @@
     "latitude": 41.617024,
     "longitude": -81.50243,
     "address": "367 E. 260th Street",
-    "city": "Euclid",
+    "city": "Euclid, OH",
     "zip_code": "44132",
-    "phone": "216.731.1515",
+    "phone": "216-731-1515",
     "www": "www.srweuclid.cc",
     "mass_times": [
-      "Sunday: 09:30AM",
-      "Monday: 08:30AM",
-      "Tuesday: 06:30PM",
-      "Wednesday: 08:30AM",
-      "Thursday: 06:30PM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 9:30AM",
+      "Thursday: 6:30PM",
+      "Friday: 11:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -84,10 +98,13 @@
     "phone": "216-429-1515",
     "www": "http://stspeterpaul.weconnect.com/",
     "mass_times": [
-      "Sunday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -95,17 +112,21 @@
     "latitude": 40.970462,
     "longitude": -81.699628,
     "address": "161 W. Clinton St.",
-    "city": "Doylestown",
+    "city": "Doylestown, OH",
     "zip_code": "44230",
     "phone": "330-658-2145",
     "www": "www.stsppc.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Wednesday: 07:00PM",
-      "Thursday: 08:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM, 06:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Wednesday: 7:00PM",
+      "Thursday: 8:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Thursday: 6:00PM to 6:45PM",
+      "Saturday: 9:00AM to 10:00AM"
     ]
   },
   {
@@ -118,13 +139,17 @@
     "phone": "(330) 425-8141",
     "www": "www.CatholicTwinsburg.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Wednesday: 5:00PM to 6:00PM",
+      "Saturday: 2:45PM to 3:45PM"
     ]
   },
   {
@@ -138,6 +163,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -150,13 +178,17 @@
     "phone": "(216) 361-1444",
     "www": "www.saintvitus.org",
     "mass_times": [
-      "Sunday: 09:00AM, 10:30AM",
-      "Monday: 05:00PM",
-      "Tuesday: 05:00PM",
-      "Wednesday: 05:00PM",
-      "Thursday: 05:00PM",
-      "Friday: 05:00PM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 5:00PM",
+      "Tuesday: 5:00PM",
+      "Wednesday: 5:00PM",
+      "Thursday: 5:00PM",
+      "Friday: 5:00PM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 10:00AM to 10:30AM",
+      "Saturday: 3:30PM to 3:50PM"
     ]
   },
   {
@@ -169,12 +201,16 @@
     "phone": "440-277-7266",
     "www": "www.saintfrancesxcabrini.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 11:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:00AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 9:00AM to 9:30AM",
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -187,11 +223,14 @@
     "phone": "216.252.2626",
     "www": "www.svdpcleveland.org",
     "mass_times": [
-      "Sunday: 09:00AM",
-      "Monday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 5:00PM"
     ]
   },
   {
@@ -200,17 +239,20 @@
     "longitude": -81.522865,
     "address": "164 West Market Street",
     "city": "Akron",
-    "zip_code": "44303",
+    "zip_code": "44303-2373",
     "phone": "330-535-3135",
     "www": "www.stvincentchurch.com",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 06:28AM",
-      "Tuesday: 06:28AM",
-      "Wednesday: 06:28AM",
-      "Thursday: 06:28AM",
-      "Friday: 06:28AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 6:28AM",
+      "Tuesday: 6:28AM",
+      "Wednesday: 6:28AM",
+      "Thursday: 6:28AM",
+      "Friday: 6:28AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -223,12 +265,13 @@
     "phone": "330-659-6591",
     "www": "www.saintvictorparish.org",
     "mass_times": [
-      "Sunday: 08:45AM, 11:30AM",
-      "Monday: 07:30AM",
-      "Tuesday: 07:30AM",
-      "Friday: 07:30AM",
-      "Saturday: 05:00PM"
-    ]
+      "Sunday: 8:45AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": []
   },
   {
     "name": "St. Thomas More",
@@ -240,12 +283,15 @@
     "phone": "216-749-0414",
     "www": "stmparish.net",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:15AM",
-      "Tuesday: 06:45PM",
-      "Wednesday: 08:15AM",
-      "Friday: 08:15AM",
-      "Saturday: 04:30PM, 08:15AM"
+      "Sunday: 9:00AM",
+      "Monday: 8:15AM",
+      "Tuesday: 6:45PM",
+      "Wednesday: 8:15AM",
+      "Friday: 8:15AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:15PM"
     ]
   },
   {
@@ -259,6 +305,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -271,10 +320,13 @@
     "phone": "(440) 934-4227",
     "www": "www.stteresaparish.com",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:00PM"
     ]
   },
   {
@@ -282,15 +334,18 @@
     "latitude": 41.4175754,
     "longitude": -81.6115923,
     "address": "5276 East 105th Street",
-    "city": "Garfield Heights",
+    "city": "Garfield Heights, Ohio",
     "zip_code": "44125",
     "phone": "216-581-2852",
     "www": "www.sttheresegarfield.org",
     "mass_times": [
       "Sunday: 10:30AM",
-      "Monday: 06:30PM",
-      "Thursday: 08:30AM",
-      "Saturday: 05:30PM"
+      "Monday: 6:30PM",
+      "Thursday: 8:30AM",
+      "Saturday: 5:30PM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 8:00PM"
     ]
   },
   {
@@ -300,12 +355,14 @@
     "address": "44 Britton Street",
     "city": "West Salem",
     "zip_code": "44287",
-    "phone": "(419) 853-4946",
+    "phone": "419-853-4946",
     "www": "www.ststephen.ws",
     "mass_times": [
       "Sunday: 11:00AM",
-      "Wednesday: 04:00PM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -319,6 +376,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -331,13 +391,16 @@
     "phone": "216-341-9091",
     "www": "www.ststanislaus.org",
     "mass_times": [
-      "Sunday: 08:30AM, 10:00AM, 11:30AM",
-      "Monday: 06:45AM, 12:15PM",
-      "Tuesday: 06:45AM, 07:00PM",
-      "Wednesday: 06:45AM, 08:30AM",
-      "Thursday: 06:45AM, 07:00PM",
-      "Friday: 06:45AM, 12:15PM",
-      "Saturday: 05:00PM, 08:30AM"
+      "Sunday: 8:30AM",
+      "Monday: 6:45AM",
+      "Tuesday: 6:45AM",
+      "Wednesday: 6:45AM",
+      "Thursday: 6:45AM",
+      "Friday: 6:45AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 4:30PM"
     ]
   },
   {
@@ -345,18 +408,23 @@
     "latitude": 41.0989311,
     "longitude": -81.5665409,
     "address": "476 Mull Avenue",
-    "city": "Akron, Ohio",
+    "city": "Akron",
     "zip_code": "44320",
     "phone": "330-836-2233",
     "www": "www.stsebastian.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:05AM",
-      "Friday: 08:00AM",
-      "Saturday: 08:00AM, 04:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:05AM",
+      "Friday: 8:00AM",
+      "Saturday: 8:00AM"
+    ],
+    "conf_times": [
+      "Tuesday: 7:00PM to 7:30PM",
+      "Friday: 4:00PM to 5:00PM",
+      "Saturday: 9:30AM to 10:00AM"
     ]
   },
   {
@@ -369,13 +437,17 @@
     "phone": "(216) 961-8331",
     "www": "www.saintroccocleveland.com",
     "mass_times": [
-      "Sunday: 07:30AM, 09:30AM, 12:00PM",
-      "Monday: 06:45AM, 06:30PM",
-      "Tuesday: 06:45AM, 06:30PM",
-      "Wednesday: 06:45AM, 06:30PM",
-      "Thursday: 06:45AM, 06:30PM",
-      "Friday: 06:45AM, 06:30PM",
-      "Saturday: 04:00PM, 06:45AM"
+      "Sunday: 7:30AM",
+      "Monday: 6:45AM",
+      "Tuesday: 6:45AM",
+      "Wednesday: 9:30AM",
+      "Thursday: 6:45AM",
+      "Friday: 6:45AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Monday: 6:00PM to 7:00PM",
+      "Tuesday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -383,18 +455,21 @@
     "latitude": 41.3843959,
     "longitude": -81.4450675,
     "address": "32820 Baldwin Road",
-    "city": "Solon",
+    "city": "Solon, OH",
     "zip_code": "44139",
     "phone": "440-248-1350",
-    "www": "https://www.stritaparish.com",
+    "www": "www.stritaparish.com",
     "mass_times": [
-      "Sunday: 07:30AM, 09:00AM, 10:45AM",
-      "Monday: 08:45AM",
-      "Tuesday: 08:45AM",
-      "Wednesday: 08:45AM",
-      "Thursday: 08:45AM",
-      "Friday: 08:45AM",
-      "Saturday: 05:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 8:45AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 10:30AM",
+      "Thursday: 8:45AM",
+      "Friday: 8:45AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -407,13 +482,16 @@
     "phone": "440-777-5050",
     "www": "www.st-richard.org",
     "mass_times": [
-      "Sunday: 07:00AM, 10:15AM",
-      "Monday: 07:00AM",
-      "Tuesday: 07:00AM",
-      "Wednesday: 07:00AM",
-      "Thursday: 07:00AM",
-      "Friday: 07:00AM",
-      "Saturday: 08:00AM, 04:30PM"
+      "Sunday: 7:00AM",
+      "Monday: 7:00AM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 7:00AM",
+      "Thursday: 7:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 8:00AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -426,13 +504,16 @@
     "phone": "440.871.1100",
     "www": "www.saintraphaelparish.com",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 07:45AM, 09:15AM",
-      "Tuesday: 07:45AM, 09:15AM",
-      "Wednesday: 07:45AM",
-      "Thursday: 09:15AM",
-      "Friday: 07:45AM, 09:15AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 7:45AM",
+      "Tuesday: 7:45AM",
+      "Wednesday: 7:45AM",
+      "Thursday: 9:15AM",
+      "Friday: 7:45AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -445,13 +526,17 @@
     "phone": "440-327-2201",
     "www": "www.stpeternr.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 08:15AM",
-      "Tuesday: 08:15AM",
-      "Wednesday: 08:15AM",
-      "Thursday: 08:15AM",
-      "Friday: 08:15AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:15AM",
+      "Tuesday: 8:15AM",
+      "Wednesday: 8:15AM",
+      "Thursday: 8:15AM",
+      "Friday: 8:15AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Wednesday: 8:15AM to 8:45AM",
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -465,6 +550,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -475,14 +563,16 @@
     "city": "Lorain",
     "zip_code": "44053",
     "phone": "440-282-9103",
-    "www": "www.stpeterlorain.org",
+    "www": "https://www.stpeterlorain.org",
     "mass_times": [
-      "Sunday: 09:00AM, 12:00PM",
-      "Monday: 05:30PM",
-      "Tuesday: 08:30AM",
-      "Thursday: 05:30PM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 4:00PM",
+      "Monday: 5:30PM",
+      "Tuesday: 8:30AM",
+      "Thursday: 5:30PM",
+      "Friday: 8:30AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -496,6 +586,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -504,17 +597,20 @@
     "longitude": -81.6633672,
     "address": "1369 E. 40th Street",
     "city": "Cleveland",
-    "zip_code": "44103",
+    "zip_code": "OH 44103",
     "phone": "216 431-1895",
     "www": "www.stpaulcroatianchurch.org",
     "mass_times": [
-      "Sunday: 08:30AM, 10:00AM, 12:00PM",
-      "Monday: 07:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 07:30AM",
-      "Friday: 07:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -527,13 +623,17 @@
     "phone": "330-724-1263",
     "www": "www.stpaulparishakron.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:30AM",
-      "Monday: 08:30AM",
-      "Tuesday: 07:00AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 07:00AM",
-      "Friday: 08:30AM, 05:30PM",
-      "Saturday: 04:30PM, 07:00AM"
+      "Sunday: 8:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 7:00AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Friday: 4:00PM to 5:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -547,6 +647,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -554,15 +657,18 @@
     "latitude": 41.6648573,
     "longitude": -81.0529447,
     "address": "16550 Rock Creek Road",
-    "city": "Thompson",
+    "city": "Thompson, Ohio",
     "zip_code": "44086",
     "phone": "440-298-1327",
     "www": "www.stpatrickthompson.org",
     "mass_times": [
-      "Sunday: 09:30AM",
-      "Tuesday: 08:45AM",
-      "Thursday: 08:45AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:30AM",
+      "Tuesday: 8:45AM",
+      "Thursday: 8:45AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -576,28 +682,38 @@
     "www": "www.stpatrickwp.org",
     "mass_times": [
       "Sunday: 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 07:00PM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Monday: 8:30AM",
+      "Tuesday: 7:00PM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Tuesday: 7:00PM to 8:00PM",
+      "Saturday: 11:00AM to 12:00PM"
     ]
   },
   {
     "name": "St. Patrick",
     "latitude": 41.4831958,
     "longitude": -81.711556,
-    "address": "14010 S. River Rd.",
-    "city": "Grand Rapids",
-    "zip_code": "43522",
+    "address": "14010 S. RIVER RD.",
+    "city": "GRAND RAPIDS",
+    "zip_code": "OH 43522",
     "phone": "419-832-5215",
     "www": "www.stpatrickprovidence.com",
     "mass_times": [
-      "Sunday: 07:15AM, 10:45AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 7:15AM",
+      "Monday: 9:15AM",
+      "Tuesday: 4:30PM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -608,15 +724,18 @@
     "city": "Highland Heights",
     "zip_code": "44143",
     "phone": "440-442-3410",
-    "www": "church.saintpaschal.com",
+    "www": "Church.SaintPaschal.com",
     "mass_times": [
-      "Sunday: 08:30AM, 10:30AM, 06:30PM",
-      "Monday: 09:00AM, 11:30AM",
-      "Tuesday: 09:00AM, 11:30AM",
-      "Wednesday: 09:00AM, 11:30AM",
-      "Thursday: 09:00AM, 11:30AM",
-      "Friday: 09:00AM, 11:30AM",
-      "Saturday: 04:30PM, 09:00AM"
+      "Sunday: 8:30AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 9:00AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:15PM"
     ]
   },
   {
@@ -624,17 +743,20 @@
     "latitude": 41.5861896,
     "longitude": -81.4353346,
     "address": "35200 Chardon Rd",
-    "city": "Willoughby Hills",
+    "city": "Willoughby Hills, OH",
     "zip_code": "44094",
     "phone": "(440) 946-0887",
-    "www": "WWW.STNOEL.ORG",
+    "www": "www.stnoel.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -642,18 +764,21 @@
     "latitude": 41.403715,
     "longitude": -81.586485,
     "address": "13623 Rockside Road",
-    "city": "Garfield Heights",
+    "city": "Garfield Heights, OH",
     "zip_code": "44125",
-    "phone": "216-662-8685",
+    "phone": "(216) 662-8685",
     "www": "saintmonicachurch.net",
     "mass_times": [
-      "Sunday: 09:00AM, 10:45AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:15PM to 4:00PM"
     ]
   },
   {
@@ -666,12 +791,15 @@
     "phone": "216-621-3847",
     "www": "www.smacleveland.net",
     "mass_times": [
-      "Sunday: 09:45AM, 12:00PM",
+      "Sunday: 9:45AM",
       "Monday: 12:00PM",
-      "Wednesday: 06:30PM",
-      "Thursday: 06:30PM",
+      "Wednesday: 6:30PM",
+      "Thursday: 6:30PM",
       "Friday: 12:00PM",
-      "Saturday: 05:00PM, 07:00PM"
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -684,13 +812,16 @@
     "phone": "216-524-1394",
     "www": "stmichaelchurchindependence.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:00PM"
     ]
   },
   {
@@ -698,15 +829,18 @@
     "latitude": 41.4614558,
     "longitude": -81.7954471,
     "address": "14436 Triskett Road",
-    "city": "Cleveland, OH",
+    "city": "Cleveland",
     "zip_code": "44111-2263",
     "phone": "216-941-4313",
     "www": "http://www.stmel.net",
     "mass_times": [
-      "Sunday: 07:00AM, 10:00AM",
-      "Tuesday: 06:45AM",
-      "Friday: 06:45AM",
-      "Saturday: 04:30PM"
+      "Sunday: 7:00AM",
+      "Tuesday: 6:45AM",
+      "Friday: 6:45AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -720,11 +854,14 @@
     "www": "www.stmatthiaschurch.org",
     "mass_times": [
       "Sunday: 10:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
       "Friday: 12:00PM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:15PM to 3:45PM"
     ]
   },
   {
@@ -737,13 +874,17 @@
     "phone": "330-264-8824",
     "www": "www.stmarywooster.org",
     "mass_times": [
-      "Sunday: 08:00AM, 11:00AM, 05:00PM",
-      "Monday: 07:00AM",
-      "Tuesday: 07:00AM",
-      "Wednesday: 09:30AM",
-      "Thursday: 07:00AM",
-      "Friday: 07:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 7:00AM",
+      "Tuesday: 7:00AM",
+      "Thursday: 7:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 9:00AM to 10:00AM",
+      "Monday: 11:00AM to 12:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -756,13 +897,17 @@
     "phone": "(440) 937-5363",
     "www": "www.htavon.org",
     "mass_times": [
-      "Sunday: 07:30AM, 08:00AM, 09:00AM, 10:00AM, 10:30AM, 12:00PM",
-      "Monday: 07:45AM, 07:30PM",
-      "Tuesday: 07:45AM",
-      "Wednesday: 07:45AM, 08:30AM",
-      "Thursday: 07:45AM, 07:30PM",
-      "Friday: 07:45AM, 08:30AM",
-      "Saturday: 08:30AM, 04:00PM, 05:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 7:45AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 8:00AM",
+      "Thursday: 7:45AM",
+      "Friday: 7:45AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 7:25PM",
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -770,17 +915,20 @@
     "latitude": 41.3724257,
     "longitude": -81.9032495,
     "address": "25615 Bagley Rd.",
-    "city": "Olmsted Falls",
+    "city": "Olmsted Falls, OH",
     "zip_code": "44138",
     "phone": "440-235-2222",
     "www": "www.stmaryofthefalls.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 05:00PM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 07:00AM",
-      "Friday: 07:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 7:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -793,12 +941,15 @@
     "phone": "440.255.3404",
     "www": "www.stmarysmentor.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 08:15AM",
-      "Tuesday: 08:15AM",
-      "Wednesday: 08:15AM",
-      "Friday: 08:15AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:15AM",
+      "Tuesday: 8:15AM",
+      "Wednesday: 8:15AM",
+      "Friday: 8:15AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -806,17 +957,20 @@
     "latitude": 41.6420066,
     "longitude": -81.4602894,
     "address": "32114 Vine Street",
-    "city": "Willowick",
+    "city": "Willowick, OH",
     "zip_code": "44095",
     "phone": "440-943-2133",
     "www": "www.smmwillowick.org",
     "mass_times": [
-      "Sunday: 08:00AM, 11:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:15PM to 4:00PM"
     ]
   },
   {
@@ -829,13 +983,18 @@
     "phone": "440-354-6200",
     "www": "www.stmarypvl.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM, 06:00PM",
-      "Monday: 06:45AM, 12:15PM",
-      "Tuesday: 06:45AM",
+      "Sunday: 8:00AM",
+      "Monday: 6:45AM",
+      "Tuesday: 6:45AM",
       "Wednesday: 12:15PM",
-      "Thursday: 06:45AM",
+      "Thursday: 6:45AM",
       "Friday: 12:15PM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 5:30PM to 6:00PM",
+      "Friday: 1:00PM to 1:30PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -849,6 +1008,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -861,13 +1023,15 @@
     "phone": "330.653.8118",
     "www": "www.stmaryhudson.cc",
     "mass_times": [
-      "Sunday: 08:00AM, 09:30AM, 11:30AM, 05:30PM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Monday: 6:30PM to 7:30PM"
     ]
   },
   {
@@ -875,36 +1039,41 @@
     "latitude": 41.3645301,
     "longitude": -82.1068211,
     "address": "611 Lake Avenue",
-    "city": "Elyria, Ohio",
+    "city": "Elyria",
     "zip_code": "44035-3541",
     "phone": "440-322-5622",
     "www": "www.saintagneselyria.church",
     "mass_times": [
       "Sunday: 10:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Saturday: 04:30PM"
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 10:00AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 9:30AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:15PM"
     ]
   },
   {
     "name": "St. Mary",
     "latitude": 41.560673,
     "longitude": -81.573232,
-    "address": "15519 Holmes Avenue",
-    "city": "Cleveland, Ohio",
+    "address": "15519 Holmes Ave",
+    "city": "Cleveland",
     "zip_code": "44110",
     "phone": "216-761-7740",
-    "www": "www.stmaryscollinwood.com",
+    "www": "www.DiscoverMass.com",
     "mass_times": [
-      "Sunday: 08:30AM, 10:15AM",
-      "Monday: 07:45AM",
-      "Tuesday: 07:45AM",
-      "Wednesday: 07:45AM",
-      "Thursday: 07:45AM",
-      "Friday: 07:45AM",
-      "Saturday: 05:00PM, 07:45AM"
+      "Sunday: 8:30AM",
+      "Tuesday: 7:45AM",
+      "Wednesday: 8:30AM",
+      "Friday: 7:45AM",
+      "Saturday: 7:45AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -912,37 +1081,43 @@
     "latitude": 41.5893886,
     "longitude": -81.2057072,
     "address": "401 North Street",
-    "city": "Chardon",
+    "city": "Chardon, Ohio",
     "zip_code": "44024",
     "phone": "440-285-7051",
     "www": "www.stmarychardon.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 07:30AM",
-      "Tuesday: 08:30AM",
+      "Sunday: 8:00AM",
+      "Monday: 7:30AM",
+      "Tuesday: 8:30AM",
       "Wednesday: 12:00PM",
-      "Thursday: 07:30AM",
-      "Friday: 07:30AM",
-      "Saturday: 04:30PM"
+      "Thursday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
     "name": "St. Mary",
     "latitude": 41.3662518,
     "longitude": -81.8654315,
-    "address": "250 Kraft Street",
+    "address": "250 Kraft St",
     "city": "Berea",
     "zip_code": "44017",
     "phone": "(440) 243-3877",
-    "www": "www.stmaryberea.org",
+    "www": "www.DiscoverMass.com",
     "mass_times": [
-      "Sunday: 04:00AM, 08:30AM, 10:30AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 9:00AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 8:30AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -955,11 +1130,14 @@
     "phone": "440-359-8205",
     "www": "www.saintmarybedford.org",
     "mass_times": [
-      "Sunday: 09:15AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:15AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -973,6 +1151,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -985,11 +1166,14 @@
     "phone": "330-483-3808",
     "www": "www.stmartinvc.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:30AM",
-      "Monday: 05:00PM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 5:00PM",
+      "Wednesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 4:45PM"
     ]
   },
   {
@@ -1000,15 +1184,18 @@
     "city": "Maple Heights",
     "zip_code": "44137",
     "phone": "216-475-4300",
-    "www": "http://www.stmartinoftours.info",
+    "www": "www.stmartinoftours.info",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 07:30AM, 06:30PM",
-      "Tuesday: 07:30AM, 06:30PM",
-      "Wednesday: 07:30AM, 06:30PM",
-      "Thursday: 07:30AM",
-      "Friday: 07:30AM",
-      "Saturday: 07:30AM, 04:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 7:30AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1021,11 +1208,12 @@
     "phone": "216-226-7577",
     "www": "stmarkcleveland.com",
     "mass_times": [
-      "Sunday: 08:30AM, 11:30AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -1038,12 +1226,15 @@
     "phone": "330-733-9944",
     "www": "stmatthewparish.net",
     "mass_times": [
-      "Sunday: 08:00AM, 10:30AM",
-      "Monday: 05:30PM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 9:00AM to 9:30AM"
     ]
   },
   {
@@ -1059,7 +1250,10 @@
       "Sunday: 10:00AM",
       "Tuesday: 12:00PM",
       "Friday: 12:00PM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Friday: 12:30PM to 1:00PM"
     ]
   },
   {
@@ -1067,18 +1261,21 @@
     "latitude": 41.490786,
     "longitude": -81.7897163,
     "address": "1212 Bunts Rd",
-    "city": "Lakewood",
+    "city": "Lakewood, Ohio",
     "zip_code": "44107",
     "phone": "216-521-0184",
     "www": "www.stlukelakewood.org",
     "mass_times": [
-      "Sunday: 08:30AM, 09:00AM, 10:30AM, 11:00AM",
-      "Monday: 08:15AM",
-      "Tuesday: 08:15AM",
-      "Wednesday: 08:15AM",
-      "Thursday: 08:15AM",
-      "Friday: 08:15AM",
-      "Saturday: 04:00PM, 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:15AM",
+      "Tuesday: 8:15AM",
+      "Wednesday: 8:15AM",
+      "Thursday: 8:15AM",
+      "Friday: 8:15AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1091,6 +1288,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -1105,6 +1305,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1112,18 +1315,21 @@
     "latitude": 41.4545923,
     "longitude": -81.9448835,
     "address": "2345 Bassett Road",
-    "city": "Westlake, Ohio",
+    "city": "Westlake",
     "zip_code": "44145",
     "phone": "440-835-2300",
     "www": "stladislas.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 06:30PM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 6:30PM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1137,23 +1343,30 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
     "name": "St. Julie Billiart",
     "latitude": 41.4101136,
     "longitude": -81.9926809,
-    "address": "5500 Lear Nagle Road",
-    "city": "N. Ridgeville",
+    "address": "5500 Lear Nagle Rd",
+    "city": "North Ridgeville",
     "zip_code": "44039",
-    "phone": "440-327-1978",
-    "www": "www.stjuliebilliart.org",
+    "phone": "(440) 327-1978",
+    "www": "https://www.stjuliebilliart.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 05:30PM",
-      "Wednesday: 05:30PM",
-      "Friday: 05:30PM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 5:30PM",
+      "Wednesday: 5:30PM",
+      "Friday: 5:30PM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Monday: 3:00PM to 4:00PM",
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1166,13 +1379,16 @@
     "phone": "440-366-5711",
     "www": "www.saintjudeparish.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 10:00AM to 11:00AM"
     ]
   },
   {
@@ -1183,15 +1399,19 @@
     "city": "Cuyahoga Falls",
     "zip_code": "44221",
     "phone": "330-928-2173",
-    "www": "www.saintjoe.org",
+    "www": "https://www.saintjoe.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 08:45AM",
-      "Tuesday: 08:45AM",
-      "Wednesday: 08:45AM",
-      "Thursday: 08:45AM",
-      "Friday: 08:45AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:45AM",
+      "Tuesday: 8:45AM",
+      "Wednesday: 8:45AM",
+      "Thursday: 8:45AM",
+      "Friday: 8:45AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 7:30PM",
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1204,13 +1424,17 @@
     "phone": "440.238.5555",
     "www": "www.sjohio.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:30AM",
-      "Monday: 06:30PM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 07:30AM",
-      "Friday: 08:05AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 6:30PM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:30AM",
+      "Friday: 8:05AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Thursday: 6:30PM to 8:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1218,16 +1442,20 @@
     "latitude": 41.5104968,
     "longitude": -82.026321,
     "address": "32929 Lake Road",
-    "city": "Avon Lake",
+    "city": "Avon Lake, OH",
     "zip_code": "44012",
     "phone": "440.933.3152",
     "www": "stjosephavonlake.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 05:00PM",
-      "Monday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Wednesday: 8:45AM to 9:30AM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1240,12 +1468,16 @@
     "phone": "",
     "www": "",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 05:00PM",
-      "Monday: 09:00AM",
-      "Tuesday: 08:00AM",
-      "Thursday: 07:00PM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM, 05:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 9:00AM",
+      "Tuesday: 8:00AM",
+      "Thursday: 7:00PM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Thursday: 7:30PM to 8:30PM",
+      "Saturday: 11:00AM to 12:00PM"
     ]
   },
   {
@@ -1253,18 +1485,22 @@
     "latitude": 41.6871975,
     "longitude": -81.3699303,
     "address": "7575 Bellflower Rd.",
-    "city": "Mentor",
+    "city": "Mentor, Ohio",
     "zip_code": "44060",
     "phone": "440-255-0600",
     "www": "www.sjvmentor.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:00AM, 10:30AM, 12:15PM",
-      "Monday: 08:00AM, 11:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM, 11:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM, 11:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Wednesday: 7:00PM to 7:30PM",
+      "Saturday: 2:45PM to 3:45PM"
     ]
   },
   {
@@ -1275,14 +1511,19 @@
     "city": "Strongsville",
     "zip_code": "44136",
     "phone": "440-238-1770",
-    "www": "http://www.sjnohio.com",
+    "www": "www.sjnohio.com",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM, 05:00PM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Monday: 5:15PM to 6:00PM",
+      "Friday: 5:15PM to 6:00PM",
+      "Saturday: 9:00AM to 10:00AM"
     ]
   },
   {
@@ -1295,6 +1536,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -1309,6 +1553,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1318,16 +1565,20 @@
     "address": "6480 Pearl Road",
     "city": "Parma Heights",
     "zip_code": "44130",
-    "phone": "(440) 886-3500",
+    "phone": "440-886-3500",
     "www": "https://sjbparmaheights.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 07:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 07:00PM",
-      "Friday: 07:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:00PM",
+      "Friday: 7:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Thursday: 6:15PM to 6:45PM",
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -1341,27 +1592,28 @@
     "www": "www.st-john-nepomucene.org",
     "mass_times": [
       "Sunday: 10:00AM",
-      "Tuesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
     "name": "St. John Cantius",
     "latitude": 41.4804836,
     "longitude": -81.6861672,
-    "address": "906 College Ave.",
+    "address": "906 College Avenue",
     "city": "Cleveland",
     "zip_code": "44113",
-    "phone": "216-781-9095",
-    "www": "stjohncantiuschurch.org",
+    "phone": "216-696-2505",
+    "www": "http://www.stjohncantiuscleveland.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:30AM",
-      "Monday: 06:00PM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 06:00PM",
-      "Thursday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 6:00PM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1369,17 +1621,19 @@
     "latitude": 41.4266635,
     "longitude": -81.375196,
     "address": "496 E. Washington St.",
-    "city": "Chagrin Falls, OH",
+    "city": "Chagrin Falls",
     "zip_code": "44022",
     "phone": "440-247-7183",
     "www": "www.stjoanofarcchurch.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 09:00AM, 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1392,11 +1646,14 @@
     "phone": "216-481-8200",
     "www": "https://www.stjeromecleveland.org/church",
     "mass_times": [
-      "Sunday: 09:00AM",
-      "Monday: 08:00AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Wednesday: 9:00AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:45PM to 3:30PM"
     ]
   },
   {
@@ -1410,6 +1667,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1422,12 +1682,16 @@
     "phone": "216-251-0300",
     "www": "www.sioaparish.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 10:00AM to 10:45AM",
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1435,18 +1699,21 @@
     "latitude": 41.1242136,
     "longitude": -81.6029067,
     "address": "2750 West Market Street",
-    "city": "Fairlawn, Ohio",
+    "city": "Fairlawn",
     "zip_code": "44333",
     "phone": "330-867-1055",
-    "www": "sthilarychurch.org",
+    "www": "https://sthilarychurch.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:00AM, 11:00AM, 05:30PM",
-      "Monday: 07:00AM, 09:30AM",
-      "Tuesday: 07:00AM, 09:30AM",
-      "Wednesday: 07:00AM",
-      "Thursday: 07:00AM",
-      "Friday: 07:00AM, 09:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 7:00AM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 7:00AM",
+      "Thursday: 7:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -1460,6 +1727,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1467,18 +1737,21 @@
     "latitude": 41.67754,
     "longitude": -81.2837006,
     "address": "9925 Johnnycake Ridge Road",
-    "city": "Concord Township, Ohio",
+    "city": "Concord Township",
     "zip_code": "44060",
     "phone": "(440) 352-8282",
     "www": "www.St-Gabriel.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:30AM, 11:30AM",
-      "Monday: 07:00AM",
-      "Tuesday: 07:00PM",
-      "Wednesday: 07:00AM, 10:00AM",
-      "Thursday: 07:00PM",
-      "Friday: 07:00AM",
-      "Saturday: 08:30AM, 05:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 7:00AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 7:30AM",
+      "Thursday: 9:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:45PM to 4:30PM"
     ]
   },
   {
@@ -1492,24 +1765,31 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
     "name": "St. Francis Xavier Cabrini",
     "latitude": 41.4364931,
     "longitude": -82.1204263,
-    "address": "2143 Homewood Dr.",
+    "address": "2143 Homewood Dr",
     "city": "Lorain",
     "zip_code": "44055",
-    "phone": "(440) 277-7266",
+    "phone": "440-277-7266",
     "www": "www.saintfrancesxcabrini.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 11:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 11:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 9:00AM to 9:30AM",
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -1517,18 +1797,22 @@
     "latitude": 41.1374315,
     "longitude": -81.8546504,
     "address": "606 E. Washington St.",
-    "city": "Medina",
+    "city": "Medina, OH",
     "zip_code": "44256",
     "phone": "330-725-4968",
     "www": "www.sfxmedina.com",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM, 05:30PM",
-      "Monday: 07:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 07:30AM",
-      "Friday: 07:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 8:00PM",
+      "Saturday: 3:30PM to 5:00PM"
     ]
   },
   {
@@ -1541,13 +1825,16 @@
     "phone": "(440) 884-2319",
     "www": "stfrancisdesales-church.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:45AM",
-      "Tuesday: 08:45AM",
-      "Wednesday: 08:45AM",
-      "Thursday: 08:45AM",
-      "Friday: 08:45AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:45AM",
+      "Tuesday: 8:45AM",
+      "Wednesday: 8:45AM",
+      "Thursday: 8:45AM",
+      "Friday: 8:45AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -1561,6 +1848,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1573,12 +1863,15 @@
     "phone": "(330) 923-5244",
     "www": "www.sainteugene.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
+      "Sunday: 9:00AM",
       "Monday: 11:00AM",
       "Tuesday: 11:00AM",
       "Wednesday: 11:00AM",
       "Thursday: 11:00AM",
-      "Saturday: 05:00PM"
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 4:45PM"
     ]
   },
   {
@@ -1592,6 +1885,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1604,12 +1900,15 @@
     "phone": "",
     "www": "",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Tuesday: 07:00PM",
-      "Wednesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Tuesday: 7:00PM",
+      "Wednesday: 9:00AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -1622,6 +1921,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -1636,6 +1938,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1646,15 +1951,19 @@
     "city": "Ashland",
     "zip_code": "44805",
     "phone": "419-289-7224",
-    "www": "stedwardashland.org",
+    "www": "http://stedwardashland.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 04:30PM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 01:15PM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 08:30AM, 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 1:15PM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Monday: 5:30PM to 7:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1662,17 +1971,18 @@
     "latitude": 41.4660837,
     "longitude": -81.5454586,
     "address": "3450 Norwood Road",
-    "city": "Shaker Heights, OH",
+    "city": "Shaker Heights",
     "zip_code": "44122",
     "phone": "(216) 991-1444",
     "www": "www.stdominicchurch.net",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1685,6 +1995,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -1699,6 +2012,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1711,13 +2027,16 @@
     "phone": "216-651-0550",
     "www": "www.stcolmanchurch.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:30PM to 5:00PM"
     ]
   },
   {
@@ -1730,12 +2049,16 @@
     "phone": "330-273-5500",
     "www": "www.stcolettecatholicchurch.com",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 11:45AM",
-      "Monday: 06:15PM",
+      "Sunday: 8:00AM",
+      "Monday: 6:15AM",
       "Tuesday: 11:00AM",
       "Wednesday: 11:00AM",
       "Friday: 11:00AM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Monday: 5:15PM to 6:00PM",
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -1749,6 +2072,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1761,13 +2087,14 @@
     "phone": "440-734-2414",
     "www": "www.st-clarence.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 4:30PM"
     ]
   },
   {
@@ -1781,25 +2108,31 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
     "name": "St. Christopher",
     "latitude": 41.4773769,
     "longitude": -81.8443926,
-    "address": "20141 DETROIT ROAD",
-    "city": "ROCKY RIVER",
-    "zip_code": "OH 44116",
+    "address": "20141 Detroit Road",
+    "city": "Rocky River",
+    "zip_code": "44116",
     "phone": "440-331-4255",
     "www": "www.stchrisparish.com",
     "mass_times": [
-      "Sunday: 08:30AM, 10:00AM, 11:30AM",
+      "Sunday: 8:30AM",
       "Monday: 11:00AM",
       "Tuesday: 11:00AM",
       "Wednesday: 11:00AM",
       "Thursday: 11:00AM",
       "Friday: 11:00AM",
-      "Saturday: 05:00PM"
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 5:00PM"
     ]
   },
   {
@@ -1810,15 +2143,20 @@
     "city": "Parma",
     "zip_code": "44129",
     "phone": "440-884-3030",
-    "www": "www.stcharlesonline.org",
+    "www": "https://stcharlesonline.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 07:00PM",
-      "Tuesday: 07:00AM",
-      "Wednesday: 07:00PM",
-      "Thursday: 07:00AM",
-      "Friday: 07:00PM, 08:30AM",
-      "Saturday: 04:00PM, 08:00AM"
+      "Sunday: 8:00AM",
+      "Monday: 7:00PM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 7:00PM",
+      "Thursday: 7:00AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 9:00AM to 9:30AM",
+      "Monday: 11:00AM to 12:00PM",
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -1831,6 +2169,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -1845,6 +2186,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1857,13 +2201,16 @@
     "phone": "440-886-4434",
     "www": "www.stbridgetparma.com",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM, 05:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -1876,13 +2223,16 @@
     "phone": "(440) 777-7222",
     "www": "www.stbrendannortholmsted.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:30AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1896,6 +2246,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -1908,69 +2261,81 @@
     "phone": "(330) 253-5161",
     "www": "stbernardakron.org",
     "mass_times": [
-      "Sunday: 10:00AM, 12:00PM, 08:00PM",
+      "Sunday: 10:00AM",
       "Monday: 12:10PM",
       "Tuesday: 12:10PM",
       "Wednesday: 12:10PM",
       "Thursday: 12:10PM",
       "Friday: 12:10PM",
-      "Saturday: 04:30PM"
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
     "name": "St. Bernadette",
     "latitude": 41.4543426,
     "longitude": -81.886538,
-    "address": "2256 Clague Road",
-    "city": "Westlake",
-    "zip_code": "44145",
+    "address": "22690 Lorain Rd.",
+    "city": "Fairview Park",
+    "zip_code": "44126",
     "phone": "440-734-1300",
-    "www": "www.saintbernadetteparish.org",
+    "www": "www.DiscoverMass.com",
     "mass_times": [
-      "Sunday: 08:00AM, 09:45AM, 11:30AM",
-      "Monday: 09:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 09:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 08:00AM, 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 9:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 8:00AM"
+    ],
+    "conf_times": [
+      "Saturday: 9:00AM to 9:30AM"
     ]
   },
   {
     "name": "St. Bede the Venerable",
     "latitude": 41.7205215,
     "longitude": -81.3118303,
-    "address": "9114 Lake Shore Blvd",
+    "address": "9114 Lake Shore Blvd.",
     "city": "Mentor",
     "zip_code": "44060",
     "phone": "440-257-5544",
     "www": "stbedementor.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Wednesday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:00PM"
     ]
   },
   {
     "name": "St. Basil The Great",
     "latitude": 41.3255562,
     "longitude": -81.6277639,
-    "address": "8700 Brecksville Rd",
+    "address": "8700 Brecksville Road",
     "city": "Brecksville",
     "zip_code": "44141",
     "phone": "440-526-1686",
-    "www": "basilthegreat.org/yearofbeauty",
+    "www": "https://basilthegreat.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:00AM, 11:00AM, 05:30PM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -1983,12 +2348,15 @@
     "phone": "440-842-5400",
     "www": "stbartholomewparish.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -1996,18 +2364,20 @@
     "latitude": 41.3112067,
     "longitude": -81.5378666,
     "address": "9451 Brandywine Rd",
-    "city": "Northfield, Ohio",
+    "city": "Northfield, Ohio 44067",
     "zip_code": "44067",
     "phone": "330-467-7959",
     "www": "www.stbarnabasfamily.org",
     "mass_times": [
-      "Sunday: 08:30AM, 10:30AM, 05:30PM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 07:00AM",
-      "Thursday: 07:00AM",
-      "Friday: 08:30AM",
-      "Saturday: 08:30AM, 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:30AM",
+      "Thursday: 7:00AM",
+      "Friday: 8:30AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Monday: 7:30PM to 8:30PM",
+      "Saturday: 9:00AM to 9:15AM"
     ]
   },
   {
@@ -2020,6 +2390,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2034,6 +2407,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2047,6 +2423,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2057,15 +2436,19 @@
     "city": "Parma",
     "zip_code": "44134",
     "phone": "(440) 842-2666",
-    "www": "www.stanthonypaduaparma.org",
+    "www": "stanthonypaduaparma.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 12:00PM",
-      "Monday: 07:00AM, 08:00AM",
-      "Tuesday: 07:00AM, 08:00AM",
-      "Wednesday: 07:00AM, 08:00AM",
-      "Thursday: 07:00AM, 08:00AM",
-      "Friday: 07:00AM, 08:00AM",
-      "Saturday: 04:30PM, 06:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 7:00AM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 7:00AM",
+      "Thursday: 7:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Monday: 6:00PM to 7:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2076,28 +2459,34 @@
     "city": "Lorain",
     "zip_code": "44052",
     "phone": "440-288-0106",
-    "www": "www.StAnthonyLorain.org/our-parish",
+    "www": "www.StAnthonyLorain.org",
     "mass_times": [
       "Sunday: 10:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
     "name": "St. Anthony of Padua",
     "latitude": 41.751859,
     "longitude": -81.274452,
-    "address": "316 Fifth St. (Parish Office)",
+    "address": "521 Plum Street (Church), 316 Fifth St. (Parish Office)",
     "city": "Fairport Harbor",
     "zip_code": "44077",
     "phone": "440.354.4525",
-    "www": "https://www.stafh.org",
+    "www": "www.stafh.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM",
-      "Monday: 06:00PM",
-      "Wednesday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 6:00PM",
+      "Wednesday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -2111,25 +2500,31 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
     "name": "St. Anselm",
     "latitude": 41.5149894,
     "longitude": -81.3374935,
-    "address": "12969 Chillicothe Rd, Chesterland, OH 44026",
-    "city": "Chesterland",
+    "address": "13013 Chillicothe Rd",
+    "city": "Chesterland, OH",
     "zip_code": "44026",
     "phone": "440-729-9575",
     "www": "stanselm.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 07:00PM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 12:00AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -2138,16 +2533,20 @@
     "longitude": -81.784017,
     "address": "161 W. Clinton St.",
     "city": "Doylestown",
-    "zip_code": "OH 44230",
+    "zip_code": "44230",
     "phone": "330-658-2145",
     "www": "www.stsppc.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Wednesday: 07:00PM",
-      "Thursday: 08:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:00PM, 06:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Wednesday: 7:00PM",
+      "Thursday: 8:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Thursday: 6:00PM to 6:45PM",
+      "Saturday: 9:00AM to 10:00AM"
     ]
   },
   {
@@ -2160,13 +2559,15 @@
     "phone": "(440) 333-2133",
     "www": "samparish.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:30AM, 05:30PM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 7:30AM",
+      "Monday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 8:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2174,15 +2575,18 @@
     "latitude": 41.003444,
     "longitude": -81.667031,
     "address": "4022 Johnson Rd.",
-    "city": "Norton",
+    "city": "Norton, OH",
     "zip_code": "44203",
-    "phone": "330-825-3135",
-    "www": "www.standrewnorton.com",
+    "phone": "330-825-3852",
+    "www": "http://www.standrewnorton.com/",
     "mass_times": [
-      "Sunday: 10:00AM, 11:30AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 08:00AM, 05:30PM"
+      "Sunday: 10:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 5:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:00PM to 3:00PM"
     ]
   },
   {
@@ -2196,38 +2600,49 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
     "name": "St. Ambrose",
     "latitude": 41.2498025,
     "longitude": -81.8403235,
-    "address": "929 Pearl Rd.",
+    "address": "929 Pearl Road",
     "city": "Brunswick",
     "zip_code": "44212",
     "phone": "330-460-7300",
-    "www": "www.StAmbrose.us",
+    "www": "http://www.StAmbrose.us",
     "mass_times": [
-      "Sunday: 07:30AM, 09:00AM, 10:30AM, 12:00PM, 05:00PM",
-      "Monday: 08:15AM",
-      "Wednesday: 08:15AM",
-      "Thursday: 05:30PM",
-      "Friday: 08:15AM",
-      "Saturday: 04:30AM, 08:15AM"
+      "Sunday: 7:30AM",
+      "Monday: 8:15AM",
+      "Wednesday: 8:15AM",
+      "Thursday: 5:30PM",
+      "Friday: 8:15AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Wednesday: 7:00PM to 8:00PM",
+      "Saturday: 3:00PM to 4:30PM"
     ]
   },
   {
     "name": "St. Aloysius - St. Agatha",
     "latitude": 41.5397129,
     "longitude": -81.609061,
-    "address": "10932 ST. CLAIR AVENUE",
+    "address": "10932 St. Clair Avenue",
     "city": "Cleveland",
     "zip_code": "44108-1939",
     "phone": "216-451-3262",
     "www": "www.saintaloysiuscleveland.com",
     "mass_times": [
       "Sunday: 10:00AM",
-      "Wednesday: 11:30AM"
+      "Tuesday: 6:00PM",
+      "Wednesday: 10:00AM"
+    ],
+    "conf_times": [
+      "Sunday: 9:00AM to 10:00AM"
     ]
   },
   {
@@ -2235,18 +2650,22 @@
     "latitude": 41.3254965,
     "longitude": -81.7331466,
     "address": "6667 Wallings Road",
-    "city": "North Royalton, Ohio",
+    "city": "North Royalton",
     "zip_code": "44133",
-    "phone": "440-237-6760",
-    "www": "saint-albert.org",
+    "phone": "(440) 237-6760",
+    "www": "www.saint-albert.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:30AM, 11:30AM, 05:00PM",
+      "Sunday: 7:30AM",
       "Monday: 11:30AM",
       "Tuesday: 11:30AM",
       "Wednesday: 11:30AM",
       "Thursday: 11:30AM",
       "Friday: 11:30AM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 8:00PM",
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -2259,6 +2678,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2273,12 +2695,14 @@
     "www": "www.saintagneselyria.church",
     "mass_times": [
       "Sunday: 10:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:30PM"
+      "Monday: 9:00AM",
+      "Tuesday: 9:00AM",
+      "Thursday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:15PM"
     ]
   },
   {
@@ -2291,6 +2715,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2305,6 +2732,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2312,18 +2742,23 @@
     "latitude": 41.375229,
     "longitude": -81.8552935,
     "address": "66 Adalbert Street",
-    "city": "Berea, Ohio",
+    "city": "Berea",
     "zip_code": "44017",
     "phone": "(440)-234-6830",
     "www": "saintadalbertparish.org",
     "mass_times": [
-      "Sunday: 08:30AM, 10:00AM, 11:30AM, 06:00PM",
-      "Monday: 08:30AM",
-      "Tuesday: 06:30PM",
-      "Wednesday: 08:30AM",
-      "Thursday: 06:30PM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 6:30PM",
+      "Wednesday: 8:30AM",
+      "Thursday: 6:30PM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Tuesday: 5:30PM to 6:15PM",
+      "Thursday: 5:30PM to 6:15PM",
+      "Saturday: 3:00PM to 4:30PM"
     ]
   },
   {
@@ -2333,33 +2768,39 @@
     "address": "7719 Detroit Avenue",
     "city": "Cleveland",
     "zip_code": "44102",
-    "phone": "216-631-3305",
+    "phone": "216-631-2888",
     "www": "www.lasagradafamiliaparish.org",
     "mass_times": [
-      "Sunday: 10:00AM, 12:00PM",
-      "Wednesday: 06:30PM",
-      "Thursday: 06:30PM",
-      "Friday: 06:30PM",
-      "Saturday: 05:00PM"
+      "Sunday: 10:00AM",
+      "Wednesday: 6:30PM",
+      "Thursday: 6:30PM",
+      "Friday: 6:30PM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Thursday: 5:30PM to 6:15PM",
+      "Saturday: 4:00PM to 4:45PM"
     ]
   },
   {
     "name": "Sacred Heart of Jesus",
     "latitude": 41.0258816,
     "longitude": -81.7230331,
-    "address": "272 Broad St",
+    "address": "125 Main Street",
     "city": "Wadsworth, OH",
     "zip_code": "44281",
     "phone": "330-336-3049",
     "www": "shofjesus.com",
     "mass_times": [
-      "Sunday: 08:00AM, 10:30AM, 05:00PM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM, 09:30AM",
-      "Friday: 08:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Monday: 11:00AM to 12:00PM",
+      "Saturday: 11:00AM to 12:00PM"
     ]
   },
   {
@@ -2367,7 +2808,7 @@
     "latitude": 41.5179066,
     "longitude": -81.5186292,
     "address": "1545 S. Green Rd",
-    "city": "South Euclid",
+    "city": "S. Euclid",
     "zip_code": "44121",
     "phone": "216.382.7601",
     "www": "www.sacredheartofjesusparish.org",
@@ -2375,7 +2816,10 @@
       "Sunday: 10:00AM",
       "Monday: 12:10PM",
       "Friday: 12:10PM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -2388,6 +2832,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2402,6 +2849,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2409,53 +2859,60 @@
     "latitude": 41.4102989,
     "longitude": -81.4523014,
     "address": "32001 Cannon Road",
-    "city": "Solon",
+    "city": "Solon, OH",
     "zip_code": "44139",
     "phone": "440-248-0980",
     "www": "https://churchofresurrection.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 4:30PM"
     ]
   },
   {
     "name": "Prince of Peace",
     "latitude": 41.0158417,
     "longitude": -81.6362693,
-    "address": "1263 Shannon Ave.",
+    "address": "1263 Shannon Avenue",
     "city": "Barberton",
     "zip_code": "44203",
-    "phone": "(330) 825-9543",
-    "www": "www.princeofpeaceparish.org",
+    "phone": "330-825-9543",
+    "www": "http://www.princeofpeaceparish.org",
     "mass_times": [
-      "Sunday: 08:30AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
     "name": "Our Lady Queen of Peace",
     "latitude": 41.2769793,
     "longitude": -82.0600877,
-    "address": "702 Erie Street",
-    "city": "Grafton, OH",
+    "address": "708 Erie St.",
+    "city": "Grafton",
     "zip_code": "44044",
-    "phone": "440-926-2364",
+    "phone": "(440) 926-2364",
     "www": "www.olqpgrafton.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 09:00AM",
-      "Wednesday: 06:30PM",
-      "Thursday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 9:00AM",
+      "Tuesday: 4:30PM",
+      "Wednesday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:00PM"
     ]
   },
   {
@@ -2468,12 +2925,15 @@
     "phone": "330-633-3637",
     "www": "www.ourladyofvictory.net",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 9:00AM to 9:30AM"
     ]
   },
   {
@@ -2484,14 +2944,17 @@
     "city": "Euclid",
     "zip_code": "44119",
     "phone": "216-486-0850",
-    "www": "https://olleuclid.org",
+    "www": "olleuclid.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 08:45AM",
-      "Wednesday: 09:00AM",
-      "Thursday: 09:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 9:00AM",
+      "Tuesday: 8:45AM",
+      "Wednesday: 9:00AM",
+      "Thursday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -2505,25 +2968,31 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
     "name": "Our Lady of Mount Carmel",
     "latitude": 41.609924,
     "longitude": -81.464812,
-    "address": "29850 Euclid Ave",
+    "address": "29850 Euclid Ave.",
     "city": "Wickliffe",
     "zip_code": "44092",
     "phone": "(440) 585-0700",
-    "www": "http://www.olmcwickliffe.org",
+    "www": "www.olmcwickliffe.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM",
-      "Monday: 07:00AM, 07:00PM",
-      "Tuesday: 07:00AM, 08:30AM",
-      "Wednesday: 07:00AM",
-      "Thursday: 07:00AM, 08:30AM",
-      "Friday: 07:00AM, 12:30PM",
-      "Saturday: 08:30AM, 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 7:00AM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 7:00AM",
+      "Thursday: 7:00AM",
+      "Friday: 7:00AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -2536,13 +3005,16 @@
     "phone": "(216) 651-5043",
     "www": "www.olmccleveland.org",
     "mass_times": [
-      "Sunday: 08:00AM, 11:30AM, 05:00PM",
-      "Monday: 06:00PM",
-      "Tuesday: 06:30AM",
-      "Wednesday: 06:00PM",
-      "Thursday: 06:30AM",
-      "Friday: 06:00PM",
-      "Saturday: 08:15AM"
+      "Sunday: 8:00AM",
+      "Monday: 6:00PM",
+      "Tuesday: 6:30AM",
+      "Wednesday: 6:00PM",
+      "Thursday: 6:30AM",
+      "Friday: 6:00PM",
+      "Saturday: 8:15AM"
+    ],
+    "conf_times": [
+      "Monday: 5:15PM to 5:45PM"
     ]
   },
   {
@@ -2555,8 +3027,13 @@
     "phone": "216.641.2829",
     "www": "www.ourladyoflourdes-cle.com",
     "mass_times": [
-      "Sunday: 10:00AM, 12:30PM",
-      "Saturday: 04:00PM"
+      "Sunday: 10:00AM",
+      "Tuesday: 4:00PM",
+      "Wednesday: 10:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2570,9 +3047,12 @@
     "www": "www.ourladyofhopebedford.org",
     "mass_times": [
       "Sunday: 11:00AM",
-      "Monday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Monday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -2586,6 +3066,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2593,16 +3076,20 @@
     "latitude": 41.2470762,
     "longitude": -81.745778,
     "address": "1088 Ridge Road",
-    "city": "Hinckley",
+    "city": "Hinckley, Ohio",
     "zip_code": "44233",
     "phone": "330-278-4121",
     "www": "www.olghinckley.org",
     "mass_times": [
-      "Sunday: 08:00AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -2615,12 +3102,15 @@
     "phone": "216-252-2332",
     "www": "www.olangels.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 06:00PM",
-      "Wednesday: 08:00AM, 06:00PM",
-      "Thursday: 06:00PM",
-      "Friday: 06:00PM",
-      "Saturday: 04:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 6:00PM",
+      "Wednesday: 8:00AM",
+      "Thursday: 6:00PM",
+      "Friday: 6:00PM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:45PM"
     ]
   },
   {
@@ -2633,6 +3123,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2647,6 +3140,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2660,6 +3156,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2672,10 +3171,14 @@
     "phone": "(330) 722-1180",
     "www": "www.olhc-parish.com",
     "mass_times": [
-      "Sunday: 08:30AM, 09:00AM, 10:30AM, 11:00AM",
-      "Monday: 06:00PM",
-      "Wednesday: 09:00AM",
-      "Saturday: 04:00PM, 06:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 6:00PM",
+      "Wednesday: 9:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Monday: 6:00PM to 7:00PM",
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -2688,12 +3191,15 @@
     "phone": "330-699-5086",
     "www": "www.nativityofthelord.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2706,6 +3212,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2720,11 +3229,14 @@
     "www": "nativitybvmlorain.org",
     "mass_times": [
       "Sunday: 10:30AM",
-      "Monday: 08:15AM",
-      "Wednesday: 06:30PM",
-      "Thursday: 08:15AM",
-      "Friday: 08:15AM",
-      "Saturday: 04:00PM"
+      "Monday: 8:15AM",
+      "Wednesday: 6:30PM",
+      "Thursday: 8:15AM",
+      "Friday: 8:15AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:00PM"
     ]
   },
   {
@@ -2738,6 +3250,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2750,13 +3265,20 @@
     "phone": "216-749-2323",
     "www": "www.maryqop.org",
     "mass_times": [
-      "Sunday: 06:30AM, 08:30AM, 11:00AM",
-      "Monday: 06:15AM, 08:00AM",
-      "Tuesday: 06:15AM, 08:00AM",
-      "Wednesday: 06:15AM, 08:00AM",
-      "Thursday: 06:15AM, 08:00AM",
-      "Friday: 06:15AM, 08:00AM",
-      "Saturday: 08:00AM, 04:30PM"
+      "Sunday: 6:30AM",
+      "Monday: 6:15AM",
+      "Tuesday: 6:15AM",
+      "Wednesday: 6:15AM",
+      "Thursday: 6:15AM",
+      "Friday: 6:15AM",
+      "Saturday: 8:00AM"
+    ],
+    "conf_times": [
+      "Monday: 8:30AM to 9:00AM",
+      "Tuesday: 8:30AM to 9:00AM",
+      "Wednesday: 8:30AM to 9:00AM",
+      "Thursday: 8:30AM to 9:00AM",
+      "Saturday: 8:45AM to 9:15AM"
     ]
   },
   {
@@ -2769,12 +3291,16 @@
     "phone": "216-433-1440",
     "www": "www.mqabrookpark.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 04:30PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Friday: 8:30AM to 9:00AM",
+      "Saturday: 3:30PM to 4:15PM"
     ]
   },
   {
@@ -2787,13 +3313,16 @@
     "phone": "330-929-8361",
     "www": "www.ihmcfo.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:15AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:15AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2807,6 +3336,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2819,13 +3351,16 @@
     "phone": "440-942-4500",
     "www": "immaculate.net",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 07:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM",
-      "Thursday: 07:30AM",
-      "Friday: 07:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2838,13 +3373,17 @@
     "phone": "(440) 428-5164",
     "www": "www.iccmadison.com",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 11:30AM",
-      "Monday: 08:30AM",
-      "Tuesday: 07:00PM",
-      "Wednesday: 08:30AM",
-      "Thursday: 07:00PM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:00AM",
+      "Monday: 8:30AM",
+      "Tuesday: 7:00PM",
+      "Wednesday: 8:30AM",
+      "Thursday: 7:00PM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Sunday: 9:15AM to 9:45AM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -2857,6 +3396,9 @@
     "phone": "",
     "www": "",
     "mass_times": [
+      "TBD"
+    ],
+    "conf_times": [
       "TBD"
     ]
   },
@@ -2871,6 +3413,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2883,13 +3428,17 @@
     "phone": "(440) 937-5363",
     "www": "www.htavon.org",
     "mass_times": [
-      "Sunday: 07:30AM, 08:00AM, 09:00AM, 10:00AM, 10:30AM, 12:00PM",
-      "Monday: 07:45AM, 07:30PM",
-      "Tuesday: 07:45AM",
-      "Wednesday: 07:45AM, 08:30AM",
-      "Thursday: 07:45AM, 07:30PM",
-      "Friday: 07:45AM, 08:30AM",
-      "Saturday: 08:30AM, 04:00PM, 05:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 7:45AM",
+      "Tuesday: 7:45AM",
+      "Wednesday: 7:45AM",
+      "Thursday: 7:45AM",
+      "Friday: 7:45AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Monday: 7:00PM to 7:25PM",
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -2903,6 +3452,9 @@
     "www": "",
     "mass_times": [
       "TBD"
+    ],
+    "conf_times": [
+      "TBD"
     ]
   },
   {
@@ -2915,11 +3467,14 @@
     "phone": "440-933-3777",
     "www": "www.hspal.org",
     "mass_times": [
-      "Sunday: 09:00AM, 10:30AM, 12:00PM",
-      "Tuesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Tuesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:30PM to 4:30PM"
     ]
   },
   {
@@ -2932,12 +3487,16 @@
     "phone": "(216) 421-2995",
     "www": "www.holy-rosary.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 08:00PM",
+      "Sunday: 8:30AM",
       "Monday: 12:15PM",
       "Tuesday: 12:15PM",
       "Wednesday: 12:15PM",
       "Friday: 12:15PM",
-      "Saturday: 04:00PM"
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Wednesday: 6:30PM to 7:30PM",
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -2951,9 +3510,12 @@
     "www": "www.holyredeemer-cleveland.org",
     "mass_times": [
       "Sunday: 11:00AM",
-      "Monday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Saturday: 04:00PM"
+      "Monday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:30PM"
     ]
   },
   {
@@ -2966,13 +3528,16 @@
     "phone": "(216) 271-4242",
     "www": "http://www.holynamecleveland.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 06:00PM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 08:00AM, 04:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 8:00AM"
+    ],
+    "conf_times": [
+      "Saturday: 2:30PM to 3:30PM"
     ]
   },
   {
@@ -2985,13 +3550,16 @@
     "phone": "330-722-6633",
     "www": "https://holymartyrs.net",
     "mass_times": [
-      "Sunday: 09:30AM, 11:30AM, 05:00PM",
+      "Sunday: 9:30AM",
       "Monday: 12:00PM",
       "Tuesday: 12:00PM",
       "Wednesday: 12:00PM",
       "Thursday: 12:00PM",
       "Friday: 12:00PM",
-      "Saturday: 04:30PM"
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -3004,13 +3572,17 @@
     "phone": "330-688-6412",
     "www": "www.holyfamilystow.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:00AM, 11:30AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Wednesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Wednesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Wednesday: 7:00PM to 8:00PM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -3023,13 +3595,16 @@
     "phone": "440-842-5533",
     "www": "www.holyfamparma.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:30AM, 11:30AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 07:30AM, 09:30AM, 11:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 7:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:45PM"
     ]
   },
   {
@@ -3042,12 +3617,15 @@
     "phone": "440-708-0000",
     "www": "www.holyangelschurch.com",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 09:00AM",
-      "Tuesday: 07:00AM",
-      "Wednesday: 09:00AM",
-      "Friday: 09:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 9:00AM",
+      "Tuesday: 7:00AM",
+      "Wednesday: 9:00AM",
+      "Friday: 9:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:30PM"
     ]
   },
   {
@@ -3060,12 +3638,15 @@
     "phone": "(330) 666-1373",
     "www": "www.copleyangels.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Monday: 08:00AM",
-      "Tuesday: 08:00AM",
-      "Thursday: 08:00AM",
-      "Friday: 08:00AM",
-      "Saturday: 05:00PM"
+      "Sunday: 9:00AM",
+      "Monday: 8:00AM",
+      "Tuesday: 8:00AM",
+      "Thursday: 8:00AM",
+      "Friday: 8:00AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 4:00PM to 5:00PM"
     ]
   },
   {
@@ -3078,13 +3659,16 @@
     "phone": "(216) 932-0617",
     "www": "churchofthegesu.org",
     "mass_times": [
-      "Sunday: 08:00AM, 10:00AM, 11:30AM",
-      "Monday: 07:30AM, 08:30AM",
-      "Tuesday: 07:30AM",
-      "Wednesday: 07:30AM, 08:30AM",
-      "Thursday: 07:30AM",
-      "Friday: 07:30AM, 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:00AM",
+      "Monday: 7:30AM",
+      "Tuesday: 7:30AM",
+      "Wednesday: 7:30AM",
+      "Thursday: 7:30AM",
+      "Friday: 7:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -3097,13 +3681,19 @@
     "phone": "440-256-1412",
     "www": "www.divinewordkirtland.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Thursday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Thursday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Sunday: 7:00PM to 8:00PM",
+      "Monday: 9:00AM to 10:00AM",
+      "Friday: 9:00AM to 10:00AM",
+      "Saturday: 3:30PM to 4:15PM"
     ]
   },
   {
@@ -3116,8 +3706,11 @@
     "phone": "(216) 321-0024",
     "www": "cosparish.com",
     "mass_times": [
-      "Sunday: 08:30AM, 11:30AM, 10:00AM",
-      "Saturday: 04:00PM"
+      "Sunday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -3130,13 +3723,21 @@
     "phone": "216-771-6666",
     "www": "SaintJohnCathedral.com",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM, 05:30PM",
-      "Monday: 07:15AM, 12:00PM",
-      "Tuesday: 07:15AM, 12:00PM",
-      "Wednesday: 07:15AM, 12:00PM",
-      "Thursday: 07:15AM, 12:00PM",
-      "Friday: 07:15AM, 12:00PM",
-      "Saturday: 04:30PM"
+      "Sunday: 8:30AM",
+      "Monday: 7:15AM",
+      "Tuesday: 7:15AM",
+      "Wednesday: 7:15AM",
+      "Thursday: 7:15AM",
+      "Friday: 7:15AM",
+      "Saturday: 4:30PM"
+    ],
+    "conf_times": [
+      "Monday: 6:30AM to 7:00AM",
+      "Tuesday: 6:30AM to 7:00AM",
+      "Wednesday: 6:30AM to 7:00AM",
+      "Thursday: 6:30AM to 7:00AM",
+      "Friday: 6:30AM to 7:00AM",
+      "Saturday: 3:00PM to 4:00PM"
     ]
   },
   {
@@ -3149,12 +3750,13 @@
     "phone": "216-671-5890",
     "www": "www.blessedtrinitycleveland.org",
     "mass_times": [
-      "Sunday: 09:00AM, 11:00AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 08:30AM",
-      "Friday: 08:30AM",
-      "Saturday: 04:00PM"
-    ]
+      "Sunday: 9:00AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 8:30AM",
+      "Friday: 8:30AM",
+      "Saturday: 4:00PM"
+    ],
+    "conf_times": []
   },
   {
     "name": "Blessed Trinity",
@@ -3166,12 +3768,17 @@
     "phone": "330-376-5144",
     "www": "http://www.blessedtrinityakron.org",
     "mass_times": [
-      "Sunday: 08:30AM, 11:00AM",
-      "Monday: 08:30AM",
-      "Tuesday: 08:30AM",
-      "Wednesday: 05:30PM",
-      "Friday: 08:30AM",
-      "Saturday: 05:00PM"
+      "Sunday: 8:30AM",
+      "Monday: 8:30AM",
+      "Tuesday: 8:30AM",
+      "Wednesday: 5:30PM",
+      "Friday: 8:30AM",
+      "Saturday: 5:00PM"
+    ],
+    "conf_times": [
+      "Monday: 6:00PM to 7:00PM",
+      "Wednesday: 6:00PM to 7:00PM",
+      "Friday: 6:00PM to 7:00PM"
     ]
   },
   {
@@ -3184,13 +3791,16 @@
     "phone": "(440) 526-1177",
     "www": "www.coabvm.org",
     "mass_times": [
-      "Sunday: 07:30AM, 09:30AM, 11:30AM, 06:00PM",
-      "Monday: 06:30AM, 08:30AM",
-      "Tuesday: 06:30AM, 08:30AM",
-      "Wednesday: 06:30AM, 08:30AM",
-      "Thursday: 06:30AM, 08:30AM",
-      "Friday: 06:30AM, 08:15AM",
-      "Saturday: 08:30AM, 04:00PM"
+      "Sunday: 7:30AM",
+      "Monday: 6:30AM",
+      "Tuesday: 6:30AM",
+      "Wednesday: 6:30AM",
+      "Thursday: 6:30AM",
+      "Friday: 6:30AM",
+      "Saturday: 8:30AM"
+    ],
+    "conf_times": [
+      "Saturday: 3:00PM to 3:45PM"
     ]
   }
 ]

@@ -6,6 +6,7 @@ class Parish {
   final String phone;
   final String website;
   final List<String> massTimes;
+  final List<String> confTimes;
   final String? contactInfo;
   final double? latitude;
   final double? longitude;
@@ -18,6 +19,7 @@ class Parish {
     required this.phone,
     required this.website,
     required this.massTimes,
+    required this.confTimes,
     this.contactInfo,
     this.latitude,
     this.longitude,
@@ -43,6 +45,9 @@ class Parish {
       contactInfo: json['contact_info'] ?? 'See parish website',
       massTimes: json['mass_times'] != null
           ? List<String>.from(json['mass_times'])
+          : [],
+      confTimes: json['conf_times'] != null
+          ? List<String>.from(json['conf_times'])
           : [],
       latitude: json['latitude'] != null
           ? json['latitude'].toDouble()

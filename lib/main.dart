@@ -11,129 +11,162 @@ import 'globals.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  // await dotenv.load(fileName: ".env");
   // await parishService.loadParishData();
   runApp(MassGPTApp());
 }
 
 class MassGPTApp extends StatelessWidget {
+  const MassGPTApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MassGPT',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: _buildThemeData(),
+      home: const HomePage(),
+    );
+  }
+
+  ThemeData _buildThemeData() {
+    // Define your color scheme in one place
+    const Color backgroundColor = Color(0xFF003366); // Dark blue
+    const Color accentColor = Color(0xFFFFA500);     // Orange
+    const Color textColor = Color(0xFFFFFDD0);       // Cream
+
+    return ThemeData(
+      primaryColor: backgroundColor,
+      // primarySwatch can be generated from a MaterialColor if needed.
+      // For example, if you have the brand color in different shades.
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: backgroundColor,
+        secondary: accentColor,
       ),
-      home: HomePage(),
+      scaffoldBackgroundColor: backgroundColor,
+      textTheme: TextTheme(
+        displayLarge: TextStyle(
+          fontSize: 48.0,
+          fontWeight: FontWeight.bold,
+          color: textColor,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 24.0,
+          color: textColor,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 18.0,
+          color: const Color.fromARGB(255, 251, 251, 251),
+        ),
+        titleLarge: TextStyle(
+          fontSize: 18.0,
+          color: textColor,
+        ),
+        displaySmall: TextStyle(
+          fontSize: 18.0,
+          color: backgroundColor,
+        )
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: accentColor,
+          foregroundColor: backgroundColor,      
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
+        ),
+      ),
     );
   }
 }
 
+
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // Define the color scheme
-    final Color backgroundColor = Color(0xFF003366); // Dark blue
-    final Color accentColor = Color(0xFFFFA500); // Orange
-    final Color textColor = Color(0xFFFFFDD0); // Cream
+    final theme = Theme.of(context);
+    final headline1 = theme.textTheme.displayLarge;
+    final headline2 = theme.textTheme.displayMedium;
 
     return Scaffold(
-      backgroundColor: backgroundColor,
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'MassGPT',
-                    style: TextStyle(
-                      color: textColor,
-                      fontSize: 48.0,
-                      fontWeight: FontWeight.bold,
+      // Because we set scaffoldBackgroundColor in _buildThemeData,
+      // we don’t need to set it here again. 
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            /// Top Section
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'MassGPT',
+                      style: headline1,
                     ),
-                  ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    'Find masses near you!',
-                    style: TextStyle(
-                      color: textColor,
-                      fontSize: 24.0,
+                    const SizedBox(height: 10.0),
+                    Text(
+                      'Find masses near you!',
+                      style: headline2,
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // "Research a Parish" Button
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: accentColor,
-                        foregroundColor: backgroundColor,
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ResearchParishPage(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Research a Parish',
-                        style: TextStyle(
-                          fontSize: 18.0,
+
+            /// Bottom Section
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    /// "Research a Parish" Button
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>  ResearchParishPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Research a Parish',
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                  SizedBox(width: 20.0),
-                  // "Find a Parish near me" Button
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: accentColor,
-                        foregroundColor: backgroundColor,
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FindParishNearMePage(),
-                          ),
-                        );
-                        // Implement navigation to FindParishNearMePage when ready
-                      },
-                      child: Text(
-                        'Find a Parish near me',
-                        style: TextStyle(
-                          fontSize: 18.0,
+                    const SizedBox(width: 20.0),
+
+                    /// "Find a Parish near me" Button
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FindParishNearMePage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Find a Parish near me',
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

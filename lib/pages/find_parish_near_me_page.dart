@@ -1,16 +1,16 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
-//import 'package:flutter_map_cancellable_tile_provider/flutter_map_cancellable_tile_provider.dart';
-import 'dart:convert';
-import '../globals.dart';
+
+import '../globals.dart'; // If needed
 import '../models/parish.dart';
 import 'parish_detail_page.dart';
-// import '../services/parish_service.dart';
-
 
 class FindParishNearMePage extends StatefulWidget {
+  const FindParishNearMePage({Key? key}) : super(key: key);
+
   @override
   _FindParishNearMePageState createState() => _FindParishNearMePageState();
 }
@@ -26,26 +26,23 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
     _loadParishData();
     _getUserLocation();
   }
-  // @override
-  // Widget build(BuildContext context) {final List<Parish> parishes = parishService.parishes;}
 
   Future<void> _loadParishData() async {
     try {
-      final String response =
-          await DefaultAssetBundle.of(context).loadString('data/parishes.json');
+      final String response = await DefaultAssetBundle.of(context)
+          .loadString('data/parishes.json');
       final List<dynamic> data = json.decode(response);
 
       setState(() {
         _parishes = data.map((jsonItem) => Parish.fromJson(jsonItem)).toList();
       });
     } catch (e) {
-      print('Error loading parish data: $e');
+      debugPrint('Error loading parish data: $e');
     }
   }
 
   Future<void> _getUserLocation() async {
     try {
-      // Check permission status
       LocationPermission permission = await Geolocator.checkPermission();
 
       if (permission == LocationPermission.denied ||
@@ -54,7 +51,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
         if (permission != LocationPermission.whileInUse &&
             permission != LocationPermission.always) {
           // Permissions are denied, handle appropriately
-          print('Location permissions are denied');
+          debugPrint('Location permissions are denied');
           setState(() {
             _isLoading = false;
           });
@@ -62,45 +59,44 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
         }
       }
 
-      // When permissions are granted, get the position
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+      final Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
 
       setState(() {
         userLocation = LatLng(position.latitude, position.longitude);
         _isLoading = false;
       });
     } catch (e) {
-      print('Error getting location: $e');
+      debugPrint('Error getting location: $e');
       setState(() {
         _isLoading = false;
       });
-      // Handle error, e.g., show a message to the user.
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColor = const Color(0xFF003366);
+    final theme = Theme.of(context);
     final localUserLocation = userLocation;
 
     return Scaffold(
-      backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text('Find a Parish Near Me'),
-        backgroundColor: backgroundColor,
+        title: const Text('Find a Parish Near Me'),
       ),
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(
-                color: Color(0xFFFFFDD0),
+                color: theme.colorScheme.secondary,
               ),
             )
           : localUserLocation == null
               ? Center(
                   child: Text(
                     'Unable to get your location.',
-                    style: TextStyle(color: Color(0xFFFFFDD0)),
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: theme.colorScheme.onPrimary,
+                    ),
                   ),
                 )
               : FlutterMap(
@@ -110,15 +106,16 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
                   ),
                   children: [
                     TileLayer(
-                      urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                      urlTemplate:
+                          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                       subdomains: ['a', 'b', 'c'],
                       userAgentPackageName: 'com.example.mass_gpt',
                     ),
                     MarkerLayer(
                       markers: [
                         if (userLocation != null) _buildUserLocationMarker(),
-                        ..._buildParishMarkers()
-                      ]
+                        ..._buildParishMarkers(),
+                      ],
                     ),
                   ],
                 ),
@@ -132,17 +129,13 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
       height: 40.0,
       child: Icon(
         Icons.circle,
-        color: Colors.blue[400],
+        color:Colors.blue[400],
         size: 20.0,
       )
     );
   }
 
-
-  // @override
-  // Widget build(BuildContext context) {final List<Parish> parishes = parishService.parishes;}
   List<Marker> _buildParishMarkers() {
-    // return parishService.parishes
     return _parishes
         .where((parish) => parish.latitude != null && parish.longitude != null)
         .map(
@@ -150,43 +143,39 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
             point: LatLng(parish.latitude!, parish.longitude!),
             width: 80.0,
             height: 80.0,
-            child: GestureDetector(
-              onTap: () {
-                _showParishInfo(parish);
-              },
-              child: Icon(
+            child:GestureDetector(
+              onTap: () => _showParishInfo(parish),
+              child: const Icon(
                 Icons.location_on,
                 color: Colors.red,
                 size: 40.0,
-              ),
-            ),
+              )
+            )
           ),
         )
         .toList();
   }
 
   void _showParishInfo(Parish parish) {
+    final theme = Theme.of(context);
     showModalBottomSheet(
       context: context,
-      backgroundColor: Color(0xFF003366),
+      backgroundColor: theme.scaffoldBackgroundColor,
       builder: (context) {
         return Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 parish.name,
-                style: TextStyle(
-                    color: Color(0xFFFFFDD0),
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFFFA500),
+                style: theme.textTheme.titleLarge?.copyWith(
+                  // Example: override color if needed:
+                  color: theme.textTheme.displayLarge?.color,
                 ),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context); // Close the bottom sheet
                   Navigator.push(
@@ -196,10 +185,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
                     ),
                   );
                 },
-                child: Text(
-                  'View Details',
-                  style: TextStyle(color: Color(0xFF003366)),
-                ),
+                child: const Text('View Details'),
               ),
             ],
           ),
