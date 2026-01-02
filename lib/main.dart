@@ -11,7 +11,6 @@ import 'models/parish.dart';
 import 'pages/parish_detail_page.dart';
 import 'pages/find_parish_near_me_page.dart';
 import 'pages/filtered_parish_list_page.dart';
-import 'pages/research_parish_page.dart';
 
 // Dev override: set to a LatLng to skip GPS, or null to use real location
 const LatLng? kDevLocation = kDebugMode
@@ -662,22 +661,27 @@ class _HomePageState extends State<HomePage> {
             label: 'Adoration',
             color: const Color(0xFFE67E22),
             onTap: () {
-              _showAdorationComingSoon();
+              _showComingSoon(
+                icon: Icons.brightness_5,
+                title: 'Adoration Times',
+                message: 'Adoration schedule information is coming soon. Check back later for updates!',
+                color: const Color(0xFFE67E22),
+              );
             },
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: _QuickAccessButton(
-            icon: Icons.church,
+            icon: Icons.event,
             label: 'Parish Events',
             color: const Color(0xFF9B59B6),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResearchParishPage(),
-                ),
+              _showComingSoon(
+                icon: Icons.event,
+                title: 'Parish Events',
+                message: 'Parish event listings are coming soon. Check back later for updates!',
+                color: const Color(0xFF9B59B6),
               );
             },
           ),
@@ -686,7 +690,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _showAdorationComingSoon() {
+  void _showComingSoon({
+    required IconData icon,
+    required String title,
+    required String message,
+    required Color color,
+  }) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -713,18 +722,18 @@ class _HomePageState extends State<HomePage> {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE67E22).withOpacity(0.1),
+                  color: color.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
-                  Icons.brightness_5,
-                  color: Color(0xFFE67E22),
+                child: Icon(
+                  icon,
+                  color: color,
                   size: 32,
                 ),
               ),
               const SizedBox(height: 16),
               Text(
-                'Adoration Times',
+                title,
                 style: GoogleFonts.lato(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -733,7 +742,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Adoration schedule information is coming soon. Check back later for updates!',
+                message,
                 style: GoogleFonts.lato(
                   fontSize: 14,
                   color: Colors.black54,
@@ -747,7 +756,7 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                   onPressed: () => Navigator.pop(context),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFE67E22),
+                    backgroundColor: color,
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(

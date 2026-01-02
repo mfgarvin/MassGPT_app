@@ -282,10 +282,15 @@ Implemented functionality for the four quick access buttons on HomePage:
    - **Mass Times**: Opens `FilteredParishListPage` with mass times filter
    - **Confession**: Opens `FilteredParishListPage` with confession filter
    - **Adoration**: Shows "Coming Soon" bottom sheet (no data yet)
-   - **All Parishes**: Opens `ResearchParishPage` for browsing/searching
+   - **Parish Events**: Shows "Coming Soon" bottom sheet (for future expansion)
 
 3. **Sort toggle feature**
    - Button in top-right shows current sort mode
    - Tapping toggles between distance and alphabetical
    - Distance calculated using Haversine formula
    - Falls back to alphabetical if location unavailable
+
+4. **Reusable `_showComingSoon` method**
+   - Generic bottom sheet for "Coming Soon" features
+   - Accepts icon, title, message, and accent color
+   - Used by Adoration and Parish Events buttons
