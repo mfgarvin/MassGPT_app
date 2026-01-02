@@ -235,5 +235,32 @@ Enhanced HomePage with inline search and quick access buttons:
    - Subtitle
    - Search Parishes section with autocomplete
    - Looking for section (4 quick buttons)
-   - Discover section ("Find a Parish Near Me" card)
+   - Nearby Parishes section (horizontal scrolling list)
    - Info section (coverage area)
+
+### Nearby Parishes List (2026-01-02)
+
+Replaced "Find a Parish Near Me" card with a horizontal scrolling list of nearby parishes:
+
+1. **Added location functionality to HomePage** (`lib/main.dart`)
+   - Added `kDevLocation` constant (mirrors the one in `find_parish_near_me_page.dart`)
+   - Added `_getUserLocation()` method with dev override support
+   - Added `_calculateDistance()` using Haversine formula (returns miles)
+   - Added `_updateNearbyParishes()` to sort and select 10 nearest parishes
+
+2. **New "Nearby Parishes" section**
+   - Section header with "View All" button (navigates to map view)
+   - Horizontal scrolling `ListView` showing 10 nearest parishes
+   - Loading state: spinner with "Finding nearby parishes..." message
+   - Error state: "Location unavailable" with "Try Again" button
+   - Empty state: "No parishes found nearby" message
+
+3. **`_NearbyParishCard` widget**
+   - Fixed width (200px) cards in horizontal scroll
+   - Church icon and distance badge (e.g., "1.2 mi") in header
+   - Parish name (up to 2 lines) and city
+   - First mass time with clock icon at bottom
+   - Tapping navigates to `ParishDetailPage`
+
+4. **Removed unused `_ActionCard` class**
+   - No longer needed since the action card was replaced with the list

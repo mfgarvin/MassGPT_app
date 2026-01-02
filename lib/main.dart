@@ -1,11 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math' as math;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:latlong2/latlong.dart';
 import 'models/parish.dart';
 import 'pages/parish_detail_page.dart';
 import 'pages/find_parish_near_me_page.dart';
+
+// Dev override: set to a LatLng to skip GPS, or null to use real location
+const LatLng? kDevLocation = kDebugMode
+    ? LatLng(41.48, -81.78) // Lakewood, OH - near several parishes
+    : null;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,14 +71,18 @@ class _HomePageState extends State<HomePage> {
   final FocusNode _searchFocusNode = FocusNode();
   List<Parish> _parishes = [];
   List<Parish> _searchResults = [];
+  List<Parish> _nearbyParishes = [];
   bool _isLoading = true;
   bool _showResults = false;
   Timer? _debounce;
+  LatLng? _userLocation;
+  bool _locationLoading = true;
 
   @override
   void initState() {
     super.initState();
     _loadParishData();
+    _getUserLocation();
     _searchFocusNode.addListener(_onFocusChange);
   }
 
@@ -99,12 +112,97 @@ class _HomePageState extends State<HomePage> {
         _parishes = data.map((json) => Parish.fromJson(json)).toList();
         _isLoading = false;
       });
+      _updateNearbyParishes();
     } catch (e) {
       setState(() {
         _isLoading = false;
       });
       debugPrint('Error loading parish data: $e');
     }
+  }
+
+  Future<void> _getUserLocation() async {
+    // Use dev override if set
+    if (kDevLocation != null) {
+      debugPrint('Using dev location: ${kDevLocation!.latitude}, ${kDevLocation!.longitude}');
+      setState(() {
+        _userLocation = kDevLocation;
+        _locationLoading = false;
+      });
+      _updateNearbyParishes();
+      return;
+    }
+
+    try {
+      LocationPermission permission = await Geolocator.checkPermission();
+
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        permission = await Geolocator.requestPermission();
+        if (permission != LocationPermission.whileInUse &&
+            permission != LocationPermission.always) {
+          debugPrint('Location permissions are denied');
+          setState(() {
+            _locationLoading = false;
+          });
+          return;
+        }
+      }
+
+      final Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+
+      setState(() {
+        _userLocation = LatLng(position.latitude, position.longitude);
+        _locationLoading = false;
+      });
+      _updateNearbyParishes();
+    } catch (e) {
+      debugPrint('Error getting location: $e');
+      setState(() {
+        _locationLoading = false;
+      });
+    }
+  }
+
+  double _calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+    // Haversine formula for distance in miles
+    const double earthRadiusMiles = 3958.8;
+    final double dLat = _toRadians(lat2 - lat1);
+    final double dLon = _toRadians(lon2 - lon1);
+    final double a = math.sin(dLat / 2) * math.sin(dLat / 2) +
+        math.cos(_toRadians(lat1)) *
+            math.cos(_toRadians(lat2)) *
+            math.sin(dLon / 2) *
+            math.sin(dLon / 2);
+    final double c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a));
+    return earthRadiusMiles * c;
+  }
+
+  double _toRadians(double degrees) => degrees * math.pi / 180;
+
+  void _updateNearbyParishes() {
+    if (_userLocation == null || _parishes.isEmpty) return;
+
+    final parishesWithDistance = _parishes
+        .where((p) => p.latitude != null && p.longitude != null)
+        .map((p) => MapEntry(
+              p,
+              _calculateDistance(
+                _userLocation!.latitude,
+                _userLocation!.longitude,
+                p.latitude!,
+                p.longitude!,
+              ),
+            ))
+        .toList();
+
+    parishesWithDistance.sort((a, b) => a.value.compareTo(b.value));
+
+    setState(() {
+      _nearbyParishes = parishesWithDistance.take(10).map((e) => e.key).toList();
+    });
   }
 
   void _onSearchChanged(String query) {
@@ -231,32 +329,45 @@ class _HomePageState extends State<HomePage> {
                   _buildQuickAccessButtons(),
                   const SizedBox(height: 30),
 
-                  // Discover Section
-                  Text(
-                    'Discover',
-                    style: GoogleFonts.lato(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black.withOpacity(0.7),
-                    ),
+                  // Nearby Parishes Section
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Nearby Parishes',
+                        style: GoogleFonts.lato(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black.withOpacity(0.7),
+                        ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FindParishNearMePage(),
+                            ),
+                          );
+                        },
+                        icon: const Icon(Icons.map, size: 18),
+                        label: Text(
+                          'View All',
+                          style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        style: TextButton.styleFrom(
+                          foregroundColor: kPrimaryColor,
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 16),
 
-                  // Find Parish Near Me Card
-                  _ActionCard(
-                    icon: Icons.location_on,
-                    title: 'Find a Parish Near Me',
-                    subtitle: 'Use GPS to find nearby parishes on a map',
-                    color: kSecondaryColor,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FindParishNearMePage(),
-                        ),
-                      );
-                    },
-                  ),
+                  // Nearby Parishes Horizontal List
+                  _buildNearbyParishesList(),
                   const SizedBox(height: 30),
 
                   // Info Section
@@ -547,87 +658,166 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-}
 
-class _ActionCard extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String subtitle;
-  final Color color;
-  final VoidCallback onTap;
-
-  const _ActionCard({
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-    required this.color,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(20),
-      child: Container(
-        padding: const EdgeInsets.all(24),
+  Widget _buildNearbyParishesList() {
+    if (_locationLoading || _isLoading) {
+      return Container(
+        height: 180,
         decoration: BoxDecoration(
           color: kCardColor,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 20,
-              spreadRadius: 0,
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 15,
               offset: const Offset(0, 4),
             ),
           ],
         ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(16),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: kPrimaryColor,
+                ),
               ),
-              child: Icon(
-                icon,
-                color: color,
-                size: 32,
+              const SizedBox(height: 12),
+              Text(
+                'Finding nearby parishes...',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
               ),
-            ),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: GoogleFonts.lato(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    subtitle,
-                    style: GoogleFonts.lato(
-                      fontSize: 14,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: color.withOpacity(0.5),
-              size: 20,
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (_userLocation == null) {
+      return Container(
+        height: 180,
+        decoration: BoxDecoration(
+          color: kCardColor,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 15,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.location_off,
+                color: Colors.grey[400],
+                size: 32,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'Location unavailable',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 8),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    _locationLoading = true;
+                  });
+                  _getUserLocation();
+                },
+                child: Text(
+                  'Try Again',
+                  style: GoogleFonts.lato(
+                    color: kPrimaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (_nearbyParishes.isEmpty) {
+      return Container(
+        height: 180,
+        decoration: BoxDecoration(
+          color: kCardColor,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 15,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.church,
+                color: Colors.grey[400],
+                size: 32,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'No parishes found nearby',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.black54,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return SizedBox(
+      height: 180,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        itemCount: _nearbyParishes.length,
+        separatorBuilder: (context, index) => const SizedBox(width: 12),
+        itemBuilder: (context, index) {
+          final parish = _nearbyParishes[index];
+          final distance = _calculateDistance(
+            _userLocation!.latitude,
+            _userLocation!.longitude,
+            parish.latitude!,
+            parish.longitude!,
+          );
+          return _NearbyParishCard(
+            parish: parish,
+            distance: distance,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ParishDetailPage(parish: parish),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
@@ -692,6 +882,121 @@ class _QuickAccessButton extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NearbyParishCard extends StatelessWidget {
+  final Parish parish;
+  final double distance;
+  final VoidCallback onTap;
+
+  const _NearbyParishCard({
+    required this.parish,
+    required this.distance,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 200,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: kCardColor,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 15,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: kSecondaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(
+                    Icons.church,
+                    color: kSecondaryColor,
+                    size: 20,
+                  ),
+                ),
+                const Spacer(),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    '${distance.toStringAsFixed(1)} mi',
+                    style: GoogleFonts.lato(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: kPrimaryColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Text(
+              parish.name,
+              style: GoogleFonts.lato(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 2),
+            Text(
+              parish.city,
+              style: GoogleFonts.lato(
+                fontSize: 13,
+                color: Colors.black54,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const Spacer(),
+            if (parish.massTimes.isNotEmpty)
+              Row(
+                children: [
+                  Icon(
+                    Icons.access_time,
+                    size: 14,
+                    color: Colors.grey[500],
+                  ),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Text(
+                      parish.massTimes.first,
+                      style: GoogleFonts.lato(
+                        fontSize: 11,
+                        color: Colors.grey[600],
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
       ),
