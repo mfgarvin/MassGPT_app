@@ -149,3 +149,23 @@ Changes made during initial setup session:
    - Installed Android Studio and SDK via snap
    - Configured Flutter to use Android SDK at `~/Android/Sdk`
    - Accepted Android licenses
+
+## Session Log: 2026-01-02
+
+Changes made to fix Android build:
+
+1. **Upgraded Android Gradle Plugin** (`android/settings.gradle`)
+   - AGP 7.3.0 → 8.6.0
+   - Required for compatibility with modern Flutter and Kotlin versions
+
+2. **Upgraded Kotlin version** (`android/settings.gradle`)
+   - Kotlin 2.0.21 → 2.1.0
+   - Cleaned up commented-out version lines
+
+3. **Updated Java compatibility** (`android/app/build.gradle`)
+   - Java 8 → Java 17 (required by AGP 8.x)
+   - Updated `sourceCompatibility`, `targetCompatibility`, and `jvmTarget`
+
+4. **Fixed AndroidManifest.xml** (`android/app/src/main/AndroidManifest.xml`)
+   - Removed deprecated `package` attribute from `<manifest>` tag
+   - Namespace is now defined only in `build.gradle` via `namespace` property
