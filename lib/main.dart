@@ -10,6 +10,8 @@ import 'package:latlong2/latlong.dart';
 import 'models/parish.dart';
 import 'pages/parish_detail_page.dart';
 import 'pages/find_parish_near_me_page.dart';
+import 'pages/filtered_parish_list_page.dart';
+import 'pages/research_parish_page.dart';
 
 // Dev override: set to a LatLng to skip GPS, or null to use real location
 const LatLng? kDevLocation = kDebugMode
@@ -618,7 +620,17 @@ class _HomePageState extends State<HomePage> {
             label: 'Mass Times',
             color: kPrimaryColor,
             onTap: () {
-              // TODO: Filter for mass times
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FilteredParishListPage(
+                    filter: ParishFilter.massTimes,
+                    title: 'Mass Times',
+                    accentColor: kPrimaryColor,
+                    userLocation: _userLocation,
+                  ),
+                ),
+              );
             },
           ),
         ),
@@ -629,7 +641,17 @@ class _HomePageState extends State<HomePage> {
             label: 'Confession',
             color: kSecondaryColor,
             onTap: () {
-              // TODO: Filter for confession
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FilteredParishListPage(
+                    filter: ParishFilter.confession,
+                    title: 'Confession Times',
+                    accentColor: kSecondaryColor,
+                    userLocation: _userLocation,
+                  ),
+                ),
+              );
             },
           ),
         ),
@@ -640,7 +662,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Adoration',
             color: const Color(0xFFE67E22),
             onTap: () {
-              // TODO: Filter for adoration
+              _showAdorationComingSoon();
             },
           ),
         ),
@@ -648,14 +670,104 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: _QuickAccessButton(
             icon: Icons.church,
-            label: 'Parish Details',
+            label: 'All Parishes',
             color: const Color(0xFF9B59B6),
             onTap: () {
-              // TODO: Show parish details
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResearchParishPage(),
+                ),
+              );
             },
           ),
         ),
       ],
+    );
+  }
+
+  void _showAdorationComingSoon() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return Container(
+          margin: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: kCardColor,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFE67E22).withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.brightness_5,
+                  color: Color(0xFFE67E22),
+                  size: 32,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Adoration Times',
+                style: GoogleFonts.lato(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Adoration schedule information is coming soon. Check back later for updates!',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFE67E22),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: Text(
+                    'Got It',
+                    style: GoogleFonts.lato(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 

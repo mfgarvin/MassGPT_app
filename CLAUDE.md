@@ -264,3 +264,28 @@ Replaced "Find a Parish Near Me" card with a horizontal scrolling list of nearby
 
 4. **Removed unused `_ActionCard` class**
    - No longer needed since the action card was replaced with the list
+
+### Quick Access Button Filters (2026-01-02)
+
+Implemented functionality for the four quick access buttons on HomePage:
+
+1. **New `FilteredParishListPage`** (`lib/pages/filtered_parish_list_page.dart`)
+   - Reusable page for displaying filtered parish lists
+   - `ParishFilter` enum: `massTimes`, `confession`, `all`
+   - `SortOrder` enum: `distance`, `alphabetical`
+   - Default sort by distance (nearest first)
+   - Toggle button to switch between "Nearest" and "A-Z" sorting
+   - Distance badges on cards when sorted by distance
+   - Shows parish count, times (up to 3 with "+N more" indicator)
+
+2. **Quick access button actions** (`lib/main.dart`)
+   - **Mass Times**: Opens `FilteredParishListPage` with mass times filter
+   - **Confession**: Opens `FilteredParishListPage` with confession filter
+   - **Adoration**: Shows "Coming Soon" bottom sheet (no data yet)
+   - **All Parishes**: Opens `ResearchParishPage` for browsing/searching
+
+3. **Sort toggle feature**
+   - Button in top-right shows current sort mode
+   - Tapping toggles between distance and alphabetical
+   - Distance calculated using Haversine formula
+   - Falls back to alphabetical if location unavailable
