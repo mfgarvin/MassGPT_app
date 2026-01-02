@@ -81,10 +81,13 @@ JSON field mapping: `zip_code`, `www`, `mass_times`, `conf_times`, `contact_info
 
 ### Theme
 
-Defined in `main.dart:_buildThemeData()`:
-- Primary/Background: `#003366` (dark blue)
-- Accent/Secondary: `#FFA500` (orange)
-- Text: `#FFFDD0` (cream)
+Defined as global constants in `main.dart` (inspired by [travel_app](https://github.com/Shadow60539/travel_app)):
+- `kBackgroundColor`: `#FEFEFE` (off-white)
+- `kPrimaryColor`: `#3F95A1` (teal)
+- `kSecondaryColor`: `#003366` (dark blue)
+- `kCardColor`: `Colors.white`
+
+Typography uses Google Fonts (Lato) via the `google_fonts` package.
 
 ## Development Notes
 
@@ -169,3 +172,40 @@ Changes made to fix Android build:
 4. **Fixed AndroidManifest.xml** (`android/app/src/main/AndroidManifest.xml`)
    - Removed deprecated `package` attribute from `<manifest>` tag
    - Namespace is now defined only in `build.gradle` via `namespace` property
+
+### UI Redesign (2026-01-02)
+
+Complete UI redesign inspired by [Shadow60539/travel_app](https://github.com/Shadow60539/travel_app):
+
+1. **Added `google_fonts` dependency** (`pubspec.yaml`)
+   - Clean Lato typography throughout the app
+
+2. **New color scheme** (`lib/main.dart`)
+   - Changed from dark blue background to light off-white theme
+   - Teal (`#3F95A1`) as primary accent color
+   - Dark blue (`#003366`) as secondary color
+   - White cards with subtle shadows
+
+3. **Redesigned HomePage** (`lib/main.dart`)
+   - Header with app title and church icon
+   - "Discover" section label
+   - Two large action cards with icons, subtitles, and arrow indicators
+   - Info card showing coverage area (80+ parishes)
+
+4. **Redesigned ResearchParishPage** (`lib/pages/research_parish_page.dart`)
+   - Modern rounded search bar with shadow
+   - Empty state with icon and instructions
+   - Parish cards showing name, address, and first mass time
+   - Result count display
+
+5. **Redesigned FindParishNearMePage** (`lib/pages/find_parish_near_me_page.dart`)
+   - Full-screen map with floating back button
+   - Info card overlay: "Parishes Near You"
+   - Custom user location marker (teal dot with glow)
+   - Custom parish markers (blue circles with church icon)
+   - Modern bottom sheet when tapping a parish
+
+6. **Redesigned ParishDetailPage** (`lib/pages/parish_detail_page.dart`)
+   - Collapsing SliverAppBar with gradient header
+   - Card-based layout for all info sections
+   - Consistent styling with rounded corners and shadows

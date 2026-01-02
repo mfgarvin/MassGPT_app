@@ -1,169 +1,280 @@
 import 'package:flutter/material.dart';
-// import 'services/parish_service.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'pages/research_parish_page.dart';
 import 'pages/find_parish_near_me_page.dart';
-import 'globals.dart';
-
-//void main() => runApp(MassGPTApp());
-
-// final ParishService parishService = ParishService();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await dotenv.load(fileName: ".env");
-  // await parishService.loadParishData();
-  runApp(MassGPTApp());
+  runApp(const MassGPTApp());
 }
+
+// Colors inspired by travel_app
+const Color kBackgroundColor = Color(0xffFEFEFE);
+const Color kPrimaryColor = Color(0xff3F95A1); // Teal accent
+const Color kSecondaryColor = Color(0xFF003366); // Original dark blue
+const Color kCardColor = Colors.white;
 
 class MassGPTApp extends StatelessWidget {
   const MassGPTApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: kBackgroundColor,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: kBackgroundColor,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
+
     return MaterialApp(
       title: 'MassGPT',
-      theme: _buildThemeData(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.light().copyWith(
+        textTheme: GoogleFonts.latoTextTheme(),
+        scaffoldBackgroundColor: kBackgroundColor,
+        primaryColor: kPrimaryColor,
+        colorScheme: ColorScheme.light(
+          primary: kPrimaryColor,
+          secondary: kSecondaryColor,
+        ),
+        splashFactory: InkRipple.splashFactory,
+      ),
       home: const HomePage(),
     );
   }
-
-  ThemeData _buildThemeData() {
-    // Define your color scheme in one place
-    const Color backgroundColor = Color(0xFF003366); // Dark blue
-    const Color accentColor = Color(0xFFFFA500);     // Orange
-    const Color textColor = Color(0xFFFFFDD0);       // Cream
-
-    return ThemeData(
-      primaryColor: backgroundColor,
-      // primarySwatch can be generated from a MaterialColor if needed.
-      // For example, if you have the brand color in different shades.
-      colorScheme: ColorScheme.fromSwatch().copyWith(
-        primary: backgroundColor,
-        secondary: accentColor,
-      ),
-      scaffoldBackgroundColor: backgroundColor,
-      textTheme: TextTheme(
-        displayLarge: TextStyle(
-          fontSize: 48.0,
-          fontWeight: FontWeight.bold,
-          color: textColor,
-        ),
-        displayMedium: TextStyle(
-          fontSize: 24.0,
-          color: textColor,
-        ),
-        bodyLarge: TextStyle(
-          fontSize: 18.0,
-          color: const Color.fromARGB(255, 251, 251, 251),
-        ),
-        titleLarge: TextStyle(
-          fontSize: 18.0,
-          color: textColor,
-        ),
-        displaySmall: TextStyle(
-          fontSize: 18.0,
-          color: backgroundColor,
-        )
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: accentColor,
-          foregroundColor: backgroundColor,      
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-        ),
-      ),
-    );
-  }
 }
-
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final headline1 = theme.textTheme.displayLarge;
-    final headline2 = theme.textTheme.displayMedium;
-
     return Scaffold(
-      // Because we set scaffoldBackgroundColor in _buildThemeData,
-      // we don’t need to set it here again. 
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            /// Top Section
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 40),
+                // Header Section
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'MassGPT',
-                      style: headline1,
+                      style: GoogleFonts.lato(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: kPrimaryColor,
+                      ),
                     ),
-                    const SizedBox(height: 10.0),
-                    Text(
-                      'Find masses near you!',
-                      style: headline2,
-                      textAlign: TextAlign.center,
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: kPrimaryColor.withOpacity(0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.church,
+                        color: kPrimaryColor,
+                        size: 24,
+                      ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 8),
+                Text(
+                  'Find Catholic masses near you',
+                  style: GoogleFonts.lato(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  ),
+                ),
+                const SizedBox(height: 50),
+
+                // Discover Section
+                Text(
+                  'Discover',
+                  style: GoogleFonts.lato(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black.withOpacity(0.7),
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Action Cards
+                _ActionCard(
+                  icon: Icons.search,
+                  title: 'Research a Parish',
+                  subtitle: 'Search parishes by name, city, or ZIP code',
+                  color: kPrimaryColor,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResearchParishPage(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 20),
+                _ActionCard(
+                  icon: Icons.location_on,
+                  title: 'Find a Parish Near Me',
+                  subtitle: 'Use GPS to find nearby parishes on a map',
+                  color: kSecondaryColor,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FindParishNearMePage(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 40),
+
+                // Info Section
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor.withOpacity(0.05),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: kPrimaryColor.withOpacity(0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.info_outline,
+                          color: kPrimaryColor,
+                          size: 24,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Cleveland/Akron Area',
+                              style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              '80+ parishes with mass times',
+                              style: GoogleFonts.lato(
+                                fontSize: 12,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 40),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ActionCard extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _ActionCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: kCardColor,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 20,
+              spreadRadius: 0,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Icon(
+                icon,
+                color: color,
+                size: 32,
               ),
             ),
-
-            /// Bottom Section
+            const SizedBox(width: 20),
             Expanded(
-              flex: 2,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    /// "Research a Parish" Button
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>  ResearchParishPage(),
-                            ),
-                          );
-                        },
-                        child: const Text(
-                          'Research a Parish',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.lato(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
                     ),
-                    const SizedBox(width: 20.0),
-
-                    /// "Find a Parish near me" Button
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => FindParishNearMePage(),
-                            ),
-                          );
-                        },
-                        child: const Text(
-                          'Find a Parish near me',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    subtitle,
+                    style: GoogleFonts.lato(
+                      fontSize: 14,
+                      color: Colors.black54,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: color.withOpacity(0.5),
+              size: 20,
             ),
           ],
         ),
