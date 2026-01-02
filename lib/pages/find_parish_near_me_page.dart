@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
@@ -7,6 +8,11 @@ import 'package:latlong2/latlong.dart';
 import '../globals.dart'; // If needed
 import '../models/parish.dart';
 import 'parish_detail_page.dart';
+
+// Dev override: set to a LatLng to skip GPS, or null to use real location
+const LatLng? kDevLocation = kDebugMode
+    ? LatLng(41.48, -81.78) // Lakewood, OH - near several parishes
+    : null;
 
 class FindParishNearMePage extends StatefulWidget {
   const FindParishNearMePage({Key? key}) : super(key: key);
@@ -42,6 +48,16 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
   }
 
   Future<void> _getUserLocation() async {
+    // Use dev override if set
+    if (kDevLocation != null) {
+      debugPrint('Using dev location: ${kDevLocation!.latitude}, ${kDevLocation!.longitude}');
+      setState(() {
+        userLocation = kDevLocation;
+        _isLoading = false;
+      });
+      return;
+    }
+
     try {
       LocationPermission permission = await Geolocator.checkPermission();
 
@@ -107,8 +123,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage> {
                   children: [
                     TileLayer(
                       urlTemplate:
-                          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                      subdomains: ['a', 'b', 'c'],
+                          "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                       userAgentPackageName: 'com.example.mass_gpt',
                     ),
                     MarkerLayer(
