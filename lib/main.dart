@@ -670,7 +670,7 @@ class _HomePageState extends State<HomePage> {
         Expanded(
           child: _QuickAccessButton(
             icon: Icons.church,
-            label: 'All Parishes',
+            label: 'Parish Events',
             color: const Color(0xFF9B59B6),
             onTap: () {
               Navigator.push(
