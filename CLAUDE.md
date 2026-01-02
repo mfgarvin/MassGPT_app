@@ -209,3 +209,31 @@ Complete UI redesign inspired by [Shadow60539/travel_app](https://github.com/Sha
    - Collapsing SliverAppBar with gradient header
    - Card-based layout for all info sections
    - Consistent styling with rounded corners and shadows
+
+### HomePage Search & Quick Access (2026-01-02)
+
+Enhanced HomePage with inline search and quick access buttons:
+
+1. **Replaced "Research a Parish" card with search bar** (`lib/main.dart`)
+   - Inline search with autocomplete dropdown (up to 5 results)
+   - Debounced search (200ms) for smooth typing
+   - Results show parish name, city, and ZIP code
+   - Tapping a result navigates directly to ParishDetailPage
+   - "No parishes found" message when no matches
+
+2. **Added "Looking for" quick access section**
+   - 4 quick access buttons in a row:
+     - Mass Times (teal)
+     - Confession (dark blue)
+     - Adoration (orange)
+     - Parish Details (purple)
+   - Each button has icon, label, and colored background
+   - Placeholder onTap handlers for future functionality
+
+3. **HomePage layout order**
+   - Header (MassGPT title + church icon)
+   - Subtitle
+   - Search Parishes section with autocomplete
+   - Looking for section (4 quick buttons)
+   - Discover section ("Find a Parish Near Me" card)
+   - Info section (coverage area)
