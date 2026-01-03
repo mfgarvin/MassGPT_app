@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'models/parish.dart';
 import 'pages/parish_detail_page.dart';
 import 'pages/find_parish_near_me_page.dart';
@@ -19,26 +20,125 @@ const LatLng? kDevLocation = kDebugMode
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await favoritesManager.init();
   runApp(const MassGPTApp());
 }
 
 // Colors inspired by travel_app
 const Color kBackgroundColor = Color(0xffFEFEFE);
+const Color kBackgroundColorDark = Color(0xFF1A1A2E);
 const Color kPrimaryColor = Color(0xff3F95A1); // Teal accent
 const Color kSecondaryColor = Color(0xFF003366); // Original dark blue
 const Color kCardColor = Colors.white;
+const Color kCardColorDark = Color(0xFF16213E);
 
-class MassGPTApp extends StatelessWidget {
+// Theme notifier for app-wide theme management
+class ThemeNotifier extends ChangeNotifier {
+  bool _isDarkMode = false;
+
+  bool get isDarkMode => _isDarkMode;
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    notifyListeners();
+  }
+
+  void setDarkMode(bool value) {
+    _isDarkMode = value;
+    notifyListeners();
+  }
+}
+
+// Global theme notifier instance
+final themeNotifier = ThemeNotifier();
+
+// Favorites manager for storing favorite parishes with persistence
+class FavoritesManager extends ChangeNotifier {
+  static const String _prefsKey = 'favorite_parishes';
+  final Set<String> _favoriteNames = {};
+  bool _initialized = false;
+
+  bool get initialized => _initialized;
+
+  Future<void> init() async {
+    if (_initialized) return;
+    final prefs = await SharedPreferences.getInstance();
+    final savedFavorites = prefs.getStringList(_prefsKey) ?? [];
+    _favoriteNames.addAll(savedFavorites);
+    _initialized = true;
+    notifyListeners();
+  }
+
+  Future<void> _save() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(_prefsKey, _favoriteNames.toList());
+  }
+
+  bool isFavorite(String parishName) => _favoriteNames.contains(parishName);
+
+  void toggleFavorite(String parishName) {
+    if (_favoriteNames.contains(parishName)) {
+      _favoriteNames.remove(parishName);
+    } else {
+      _favoriteNames.add(parishName);
+    }
+    _save();
+    notifyListeners();
+  }
+
+  void addFavorite(String parishName) {
+    _favoriteNames.add(parishName);
+    _save();
+    notifyListeners();
+  }
+
+  void removeFavorite(String parishName) {
+    _favoriteNames.remove(parishName);
+    _save();
+    notifyListeners();
+  }
+
+  Set<String> get favorites => Set.unmodifiable(_favoriteNames);
+  int get count => _favoriteNames.length;
+}
+
+// Global favorites manager instance
+final favoritesManager = FavoritesManager();
+
+class MassGPTApp extends StatefulWidget {
   const MassGPTApp({Key? key}) : super(key: key);
 
   @override
+  State<MassGPTApp> createState() => _MassGPTAppState();
+}
+
+class _MassGPTAppState extends State<MassGPTApp> {
+  @override
+  void initState() {
+    super.initState();
+    themeNotifier.addListener(_onThemeChanged);
+  }
+
+  @override
+  void dispose() {
+    themeNotifier.removeListener(_onThemeChanged);
+    super.dispose();
+  }
+
+  void _onThemeChanged() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final isDark = themeNotifier.isDarkMode;
+
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: kBackgroundColor,
-        statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: kBackgroundColor,
-        systemNavigationBarIconBrightness: Brightness.dark,
+      SystemUiOverlayStyle(
+        statusBarColor: isDark ? kBackgroundColorDark : kBackgroundColor,
+        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+        systemNavigationBarColor: isDark ? kBackgroundColorDark : kBackgroundColor,
+        systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
       ),
     );
 
@@ -55,6 +155,19 @@ class MassGPTApp extends StatelessWidget {
         ),
         splashFactory: InkRipple.splashFactory,
       ),
+      darkTheme: ThemeData.dark().copyWith(
+        textTheme: GoogleFonts.latoTextTheme(ThemeData.dark().textTheme),
+        scaffoldBackgroundColor: kBackgroundColorDark,
+        primaryColor: kPrimaryColor,
+        colorScheme: ColorScheme.dark(
+          primary: kPrimaryColor,
+          secondary: kSecondaryColor,
+          surface: kCardColorDark,
+        ),
+        cardColor: kCardColorDark,
+        splashFactory: InkRipple.splashFactory,
+      ),
+      themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
       home: const HomePage(),
     );
   }
@@ -85,6 +198,7 @@ class _HomePageState extends State<HomePage> {
     _loadParishData();
     _getUserLocation();
     _searchFocusNode.addListener(_onFocusChange);
+    themeNotifier.addListener(_onThemeChanged);
   }
 
   @override
@@ -93,7 +207,12 @@ class _HomePageState extends State<HomePage> {
     _searchFocusNode.removeListener(_onFocusChange);
     _searchFocusNode.dispose();
     _debounce?.cancel();
+    themeNotifier.removeListener(_onThemeChanged);
     super.dispose();
+  }
+
+  void _onThemeChanged() {
+    setState(() {});
   }
 
   void _onFocusChange() {
@@ -245,6 +364,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Theme-aware color getters
+  bool get _isDark => themeNotifier.isDarkMode;
+  Color get _backgroundColor => _isDark ? kBackgroundColorDark : kBackgroundColor;
+  Color get _cardColor => _isDark ? kCardColorDark : kCardColor;
+  Color get _textColor => _isDark ? Colors.white : Colors.black87;
+  Color get _subtextColor => _isDark ? Colors.white70 : Colors.black54;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -257,6 +383,7 @@ class _HomePageState extends State<HomePage> {
         });
       },
       child: Scaffold(
+        backgroundColor: _backgroundColor,
         body: SafeArea(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -278,16 +405,63 @@ class _HomePageState extends State<HomePage> {
                           color: kPrimaryColor,
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: kPrimaryColor.withOpacity(0.1),
-                          shape: BoxShape.circle,
+                      PopupMenuButton<String>(
+                        onSelected: (value) {
+                          if (value == 'feedback') {
+                            _showFeedbackPage();
+                          } else if (value == 'settings') {
+                            _showSettingsPage();
+                          } else if (value == 'favorites') {
+                            _showFavoritesPage();
+                          }
+                        },
+                        offset: const Offset(0, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Icon(
-                          Icons.church,
-                          color: kPrimaryColor,
-                          size: 24,
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 'favorites',
+                            child: Row(
+                              children: [
+                                const Icon(Icons.favorite_outline, color: kPrimaryColor, size: 20),
+                                const SizedBox(width: 12),
+                                Text('Favorites', style: GoogleFonts.lato()),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'settings',
+                            child: Row(
+                              children: [
+                                const Icon(Icons.settings_outlined, color: kPrimaryColor, size: 20),
+                                const SizedBox(width: 12),
+                                Text('Settings', style: GoogleFonts.lato()),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'feedback',
+                            child: Row(
+                              children: [
+                                const Icon(Icons.feedback_outlined, color: kPrimaryColor, size: 20),
+                                const SizedBox(width: 12),
+                                Text('Feedback', style: GoogleFonts.lato()),
+                              ],
+                            ),
+                          ),
+                        ],
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: kPrimaryColor.withOpacity(0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.church,
+                            color: kPrimaryColor,
+                            size: 24,
+                          ),
                         ),
                       ),
                     ],
@@ -297,7 +471,7 @@ class _HomePageState extends State<HomePage> {
                     'Find Catholic masses near you',
                     style: GoogleFonts.lato(
                       fontSize: 16,
-                      color: Colors.black54,
+                      color: _subtextColor,
                     ),
                   ),
                   const SizedBox(height: 40),
@@ -308,7 +482,7 @@ class _HomePageState extends State<HomePage> {
                     style: GoogleFonts.lato(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black.withOpacity(0.7),
+                      color: _textColor,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -323,7 +497,7 @@ class _HomePageState extends State<HomePage> {
                     style: GoogleFonts.lato(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black.withOpacity(0.7),
+                      color: _textColor,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -339,7 +513,7 @@ class _HomePageState extends State<HomePage> {
                         style: GoogleFonts.lato(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.7),
+                          color: _textColor,
                         ),
                       ),
                       TextButton.icon(
@@ -375,7 +549,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kPrimaryColor.withOpacity(0.05),
+                      color: kPrimaryColor.withOpacity(_isDark ? 0.15 : 0.05),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
@@ -402,7 +576,7 @@ class _HomePageState extends State<HomePage> {
                                 style: GoogleFonts.lato(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
+                                  color: _textColor,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -410,7 +584,7 @@ class _HomePageState extends State<HomePage> {
                                 '80+ parishes with mass times',
                                 style: GoogleFonts.lato(
                                   fontSize: 12,
-                                  color: Colors.black54,
+                                  color: _subtextColor,
                                 ),
                               ),
                             ],
@@ -435,7 +609,7 @@ class _HomePageState extends State<HomePage> {
         // Search Input
         Container(
           decoration: BoxDecoration(
-            color: kCardColor,
+            color: _cardColor,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -452,12 +626,12 @@ class _HomePageState extends State<HomePage> {
             onChanged: _onSearchChanged,
             style: GoogleFonts.lato(
               fontSize: 16,
-              color: Colors.black87,
+              color: _textColor,
             ),
             decoration: InputDecoration(
               hintText: 'Search by name, city, or ZIP code',
               hintStyle: GoogleFonts.lato(
-                color: Colors.grey,
+                color: _subtextColor,
                 fontSize: 16,
               ),
               prefixIcon: const Icon(
@@ -466,7 +640,7 @@ class _HomePageState extends State<HomePage> {
               ),
               suffixIcon: _searchController.text.isNotEmpty
                   ? IconButton(
-                      icon: const Icon(Icons.clear, color: Colors.grey),
+                      icon: Icon(Icons.clear, color: _subtextColor),
                       onPressed: () {
                         _searchController.clear();
                         _updateSearchResults('');
@@ -486,7 +660,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             margin: const EdgeInsets.only(top: 8),
             decoration: BoxDecoration(
-              color: kCardColor,
+              color: _cardColor,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
@@ -536,7 +710,7 @@ class _HomePageState extends State<HomePage> {
                                       style: GoogleFonts.lato(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
-                                        color: Colors.black87,
+                                        color: _textColor,
                                       ),
                                     ),
                                     const SizedBox(height: 2),
@@ -544,7 +718,7 @@ class _HomePageState extends State<HomePage> {
                                       '${parish.city} ${parish.zipCode}',
                                       style: GoogleFonts.lato(
                                         fontSize: 13,
-                                        color: Colors.black54,
+                                        color: _subtextColor,
                                       ),
                                     ),
                                   ],
@@ -553,7 +727,7 @@ class _HomePageState extends State<HomePage> {
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 16,
-                                color: Colors.grey.withOpacity(0.5),
+                                color: _subtextColor.withOpacity(0.5),
                               ),
                             ],
                           ),
@@ -563,7 +737,7 @@ class _HomePageState extends State<HomePage> {
                         Divider(
                           height: 1,
                           indent: 56,
-                          color: Colors.grey.withOpacity(0.2),
+                          color: _subtextColor.withOpacity(0.2),
                         ),
                     ],
                   );
@@ -577,7 +751,7 @@ class _HomePageState extends State<HomePage> {
             margin: const EdgeInsets.only(top: 8),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: kCardColor,
+              color: _cardColor,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
@@ -592,7 +766,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Icon(
                   Icons.search_off,
-                  color: Colors.grey[400],
+                  color: _subtextColor,
                   size: 24,
                 ),
                 const SizedBox(width: 12),
@@ -600,7 +774,7 @@ class _HomePageState extends State<HomePage> {
                   'No parishes found',
                   style: GoogleFonts.lato(
                     fontSize: 15,
-                    color: Colors.grey[600],
+                    color: _subtextColor,
                   ),
                 ),
               ],
@@ -690,6 +864,81 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _showFeedbackPage() {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Feedback',
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 200),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return const FeedbackPage();
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0, 1),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          )),
+          child: child,
+        );
+      },
+    );
+  }
+
+  void _showSettingsPage() {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Settings',
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 200),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return const SettingsPage();
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0, 1),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          )),
+          child: child,
+        );
+      },
+    );
+  }
+
+  void _showFavoritesPage() {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Favorites',
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 200),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return FavoritesPage(parishes: _parishes);
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0, 1),
+            end: Offset.zero,
+          ).animate(CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          )),
+          child: child,
+        );
+      },
+    );
+  }
+
   void _showComingSoon({
     required IconData icon,
     required String title,
@@ -704,7 +953,7 @@ class _HomePageState extends State<HomePage> {
           margin: const EdgeInsets.all(16),
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: kCardColor,
+            color: _cardColor,
             borderRadius: BorderRadius.circular(24),
           ),
           child: Column(
@@ -714,7 +963,7 @@ class _HomePageState extends State<HomePage> {
                 width: 40,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.3),
+                  color: _subtextColor.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -737,7 +986,7 @@ class _HomePageState extends State<HomePage> {
                 style: GoogleFonts.lato(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: _textColor,
                 ),
               ),
               const SizedBox(height: 8),
@@ -745,7 +994,7 @@ class _HomePageState extends State<HomePage> {
                 message,
                 style: GoogleFonts.lato(
                   fontSize: 14,
-                  color: Colors.black54,
+                  color: _subtextColor,
                   height: 1.5,
                 ),
                 textAlign: TextAlign.center,
@@ -785,7 +1034,7 @@ class _HomePageState extends State<HomePage> {
       return Container(
         height: 180,
         decoration: BoxDecoration(
-          color: kCardColor,
+          color: _cardColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -812,7 +1061,7 @@ class _HomePageState extends State<HomePage> {
                 'Finding nearby parishes...',
                 style: GoogleFonts.lato(
                   fontSize: 14,
-                  color: Colors.black54,
+                  color: _subtextColor,
                 ),
               ),
             ],
@@ -825,7 +1074,7 @@ class _HomePageState extends State<HomePage> {
       return Container(
         height: 180,
         decoration: BoxDecoration(
-          color: kCardColor,
+          color: _cardColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -841,7 +1090,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Icon(
                 Icons.location_off,
-                color: Colors.grey[400],
+                color: _subtextColor,
                 size: 32,
               ),
               const SizedBox(height: 12),
@@ -849,7 +1098,7 @@ class _HomePageState extends State<HomePage> {
                 'Location unavailable',
                 style: GoogleFonts.lato(
                   fontSize: 14,
-                  color: Colors.black54,
+                  color: _subtextColor,
                 ),
               ),
               const SizedBox(height: 8),
@@ -878,7 +1127,7 @@ class _HomePageState extends State<HomePage> {
       return Container(
         height: 180,
         decoration: BoxDecoration(
-          color: kCardColor,
+          color: _cardColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -894,7 +1143,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Icon(
                 Icons.church,
-                color: Colors.grey[400],
+                color: _subtextColor,
                 size: 32,
               ),
               const SizedBox(height: 12),
@@ -902,7 +1151,7 @@ class _HomePageState extends State<HomePage> {
                 'No parishes found nearby',
                 style: GoogleFonts.lato(
                   fontSize: 14,
-                  color: Colors.black54,
+                  color: _subtextColor,
                 ),
               ),
             ],
@@ -929,6 +1178,9 @@ class _HomePageState extends State<HomePage> {
           return _NearbyParishCard(
             parish: parish,
             distance: distance,
+            cardColor: _cardColor,
+            textColor: _textColor,
+            subtextColor: _subtextColor,
             onTap: () {
               Navigator.push(
                 context,
@@ -959,13 +1211,17 @@ class _QuickAccessButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = themeNotifier.isDarkMode;
+    final cardColor = isDark ? kCardColorDark : kCardColor;
+    final textColor = isDark ? Colors.white : Colors.black87;
+
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: kCardColor,
+          color: cardColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -997,7 +1253,7 @@ class _QuickAccessButton extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: textColor,
               ),
               textAlign: TextAlign.center,
               maxLines: 1,
@@ -1013,11 +1269,17 @@ class _QuickAccessButton extends StatelessWidget {
 class _NearbyParishCard extends StatelessWidget {
   final Parish parish;
   final double distance;
+  final Color cardColor;
+  final Color textColor;
+  final Color subtextColor;
   final VoidCallback onTap;
 
   const _NearbyParishCard({
     required this.parish,
     required this.distance,
+    required this.cardColor,
+    required this.textColor,
+    required this.subtextColor,
     required this.onTap,
   });
 
@@ -1029,7 +1291,7 @@ class _NearbyParishCard extends StatelessWidget {
         width: 200,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: kCardColor,
+          color: cardColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -1080,7 +1342,7 @@ class _NearbyParishCard extends StatelessWidget {
               style: GoogleFonts.lato(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: textColor,
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -1090,7 +1352,7 @@ class _NearbyParishCard extends StatelessWidget {
               parish.city,
               style: GoogleFonts.lato(
                 fontSize: 13,
-                color: Colors.black54,
+                color: subtextColor,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -1102,7 +1364,7 @@ class _NearbyParishCard extends StatelessWidget {
                   Icon(
                     Icons.access_time,
                     size: 14,
-                    color: Colors.grey[500],
+                    color: subtextColor,
                   ),
                   const SizedBox(width: 4),
                   Expanded(
@@ -1110,7 +1372,7 @@ class _NearbyParishCard extends StatelessWidget {
                       parish.massTimes.first,
                       style: GoogleFonts.lato(
                         fontSize: 11,
-                        color: Colors.grey[600],
+                        color: subtextColor,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -1120,6 +1382,645 @@ class _NearbyParishCard extends StatelessWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class FeedbackPage extends StatefulWidget {
+  const FeedbackPage({Key? key}) : super(key: key);
+
+  @override
+  State<FeedbackPage> createState() => _FeedbackPageState();
+}
+
+class _FeedbackPageState extends State<FeedbackPage> {
+  final TextEditingController _feedbackController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  bool _isSubmitting = false;
+
+  @override
+  void initState() {
+    super.initState();
+    themeNotifier.addListener(_onThemeChanged);
+  }
+
+  @override
+  void dispose() {
+    _feedbackController.dispose();
+    _emailController.dispose();
+    themeNotifier.removeListener(_onThemeChanged);
+    super.dispose();
+  }
+
+  void _onThemeChanged() {
+    setState(() {});
+  }
+
+  void _submitFeedback() {
+    if (_feedbackController.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter your feedback', style: GoogleFonts.lato()),
+          backgroundColor: Colors.red[400],
+        ),
+      );
+      return;
+    }
+
+    setState(() {
+      _isSubmitting = true;
+    });
+
+    // Simulate sending feedback
+    Future.delayed(const Duration(seconds: 1), () {
+      if (mounted) {
+        setState(() {
+          _isSubmitting = false;
+        });
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Thank you for your feedback!', style: GoogleFonts.lato()),
+            backgroundColor: kPrimaryColor,
+          ),
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = themeNotifier.isDarkMode;
+    final backgroundColor = isDark ? kBackgroundColorDark : kBackgroundColor;
+    final cardColor = isDark ? kCardColorDark : kCardColor;
+    final textColor = isDark ? Colors.white : Colors.black87;
+    final subtextColor = isDark ? Colors.white70 : Colors.black54;
+
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: AppBar(
+          backgroundColor: backgroundColor,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.close, color: textColor),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            'Send Feedback',
+            style: GoogleFonts.lato(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header info
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: kPrimaryColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.email_outlined, color: kPrimaryColor),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Feedback will be sent to:',
+                            style: GoogleFonts.lato(
+                              fontSize: 12,
+                              color: subtextColor,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            'feedback@massgpt.org',
+                            style: GoogleFonts.lato(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: kPrimaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // Your email (optional)
+              Text(
+                'Your Email (optional)',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.06),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  style: GoogleFonts.lato(fontSize: 15, color: textColor),
+                  decoration: InputDecoration(
+                    hintText: 'your@email.com',
+                    hintStyle: GoogleFonts.lato(color: subtextColor),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Feedback
+              Text(
+                'Your Feedback',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.06),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  controller: _feedbackController,
+                  maxLines: 6,
+                  style: GoogleFonts.lato(fontSize: 15, color: textColor),
+                  decoration: InputDecoration(
+                    hintText: 'Tell us what you think, report a bug, or suggest a feature...',
+                    hintStyle: GoogleFonts.lato(color: subtextColor),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(16),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+
+              // Submit button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _isSubmitting ? null : _submitFeedback,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kPrimaryColor,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: _isSubmitting
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                      : Text(
+                          'Submit Feedback',
+                          style: GoogleFonts.lato(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  @override
+  void initState() {
+    super.initState();
+    themeNotifier.addListener(_onThemeChanged);
+  }
+
+  @override
+  void dispose() {
+    themeNotifier.removeListener(_onThemeChanged);
+    super.dispose();
+  }
+
+  void _onThemeChanged() {
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = themeNotifier.isDarkMode;
+    final backgroundColor = isDark ? kBackgroundColorDark : kBackgroundColor;
+    final cardColor = isDark ? kCardColorDark : kCardColor;
+    final textColor = isDark ? Colors.white : Colors.black87;
+    final subtextColor = isDark ? Colors.white70 : Colors.black54;
+
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: AppBar(
+          backgroundColor: backgroundColor,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.close, color: textColor),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            'Settings',
+            style: GoogleFonts.lato(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Appearance section
+              Text(
+                'Appearance',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: kPrimaryColor,
+                ),
+              ),
+              const SizedBox(height: 12),
+
+              // Dark mode toggle
+              Container(
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.06),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: ListTile(
+                  leading: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: kPrimaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      isDark ? Icons.dark_mode : Icons.light_mode,
+                      color: kPrimaryColor,
+                      size: 24,
+                    ),
+                  ),
+                  title: Text(
+                    'Dark Mode',
+                    style: GoogleFonts.lato(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
+                    ),
+                  ),
+                  subtitle: Text(
+                    isDark ? 'Currently using dark theme' : 'Currently using light theme',
+                    style: GoogleFonts.lato(
+                      fontSize: 13,
+                      color: subtextColor,
+                    ),
+                  ),
+                  trailing: Switch(
+                    value: isDark,
+                    onChanged: (value) {
+                      themeNotifier.setDarkMode(value);
+                    },
+                    activeColor: kPrimaryColor,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+              ),
+              const SizedBox(height: 32),
+
+              // App info section
+              Text(
+                'About',
+                style: GoogleFonts.lato(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: kPrimaryColor,
+                ),
+              ),
+              const SizedBox(height: 12),
+
+              Container(
+                decoration: BoxDecoration(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.06),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: kPrimaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Icon(
+                          Icons.info_outline,
+                          color: kPrimaryColor,
+                          size: 24,
+                        ),
+                      ),
+                      title: Text(
+                        'Version',
+                        style: GoogleFonts.lato(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: textColor,
+                        ),
+                      ),
+                      trailing: Text(
+                        '1.0.0',
+                        style: GoogleFonts.lato(
+                          fontSize: 14,
+                          color: subtextColor,
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FavoritesPage extends StatefulWidget {
+  final List<Parish> parishes;
+
+  const FavoritesPage({Key? key, required this.parishes}) : super(key: key);
+
+  @override
+  State<FavoritesPage> createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends State<FavoritesPage> {
+  @override
+  void initState() {
+    super.initState();
+    favoritesManager.addListener(_onFavoritesChanged);
+  }
+
+  @override
+  void dispose() {
+    favoritesManager.removeListener(_onFavoritesChanged);
+    super.dispose();
+  }
+
+  void _onFavoritesChanged() {
+    setState(() {});
+  }
+
+  List<Parish> get _favoriteParishes {
+    return widget.parishes
+        .where((p) => favoritesManager.isFavorite(p.name))
+        .toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = themeNotifier.isDarkMode;
+    final backgroundColor = isDark ? kBackgroundColorDark : kBackgroundColor;
+    final cardColor = isDark ? kCardColorDark : kCardColor;
+    final textColor = isDark ? Colors.white : Colors.black87;
+    final subtextColor = isDark ? Colors.white70 : Colors.black54;
+    final favorites = _favoriteParishes;
+
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: AppBar(
+          backgroundColor: backgroundColor,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.close, color: textColor),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            'Favorites',
+            style: GoogleFonts.lato(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: textColor,
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: favorites.isEmpty
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.star_border,
+                      size: 64,
+                      color: Colors.grey[400],
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'No favorites yet',
+                      style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: subtextColor,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: Text(
+                        'Tap the star icon on a parish page to add it to your favorites',
+                        style: GoogleFonts.lato(
+                          fontSize: 14,
+                          color: subtextColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : ListView.separated(
+                padding: const EdgeInsets.all(20),
+                itemCount: favorites.length,
+                separatorBuilder: (context, index) => const SizedBox(height: 12),
+                itemBuilder: (context, index) {
+                  final parish = favorites[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ParishDetailPage(parish: parish),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: cardColor,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.06),
+                            blurRadius: 10,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: kPrimaryColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(
+                              Icons.church,
+                              color: kPrimaryColor,
+                              size: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  parish.name,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: textColor,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${parish.city} ${parish.zipCode}',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 14,
+                                    color: subtextColor,
+                                  ),
+                                ),
+                                if (parish.massTimes.isNotEmpty) ...[
+                                  const SizedBox(height: 4),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.access_time,
+                                        size: 14,
+                                        color: subtextColor,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Expanded(
+                                        child: Text(
+                                          parish.massTimes.first,
+                                          style: GoogleFonts.lato(
+                                            fontSize: 12,
+                                            color: subtextColor,
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            onPressed: () {
+                              favoritesManager.toggleFavorite(parish.name);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
       ),
     );
   }

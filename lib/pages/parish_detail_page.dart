@@ -1,17 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/parish.dart';
-import '../main.dart' show kPrimaryColor, kSecondaryColor, kBackgroundColor, kCardColor;
+import '../main.dart' show kPrimaryColor, kSecondaryColor, kBackgroundColor, kBackgroundColorDark, kCardColor, kCardColorDark, favoritesManager, themeNotifier;
 
-class ParishDetailPage extends StatelessWidget {
+class ParishDetailPage extends StatefulWidget {
   final Parish parish;
 
   const ParishDetailPage({Key? key, required this.parish}) : super(key: key);
 
   @override
+  State<ParishDetailPage> createState() => _ParishDetailPageState();
+}
+
+class _ParishDetailPageState extends State<ParishDetailPage> {
+  @override
+  void initState() {
+    super.initState();
+    favoritesManager.addListener(_onChanged);
+    themeNotifier.addListener(_onChanged);
+  }
+
+  @override
+  void dispose() {
+    favoritesManager.removeListener(_onChanged);
+    themeNotifier.removeListener(_onChanged);
+    super.dispose();
+  }
+
+  void _onChanged() {
+    setState(() {});
+  }
+
+  Parish get parish => widget.parish;
+
+  @override
   Widget build(BuildContext context) {
+    final isFavorite = favoritesManager.isFavorite(parish.name);
+    final isDark = themeNotifier.isDarkMode;
+    final backgroundColor = isDark ? kBackgroundColorDark : kBackgroundColor;
+    final cardColor = isDark ? kCardColorDark : kCardColor;
+    final textColor = isDark ? Colors.white : Colors.black87;
+    final subtextColor = isDark ? Colors.white70 : Colors.black54;
+
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: backgroundColor,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
@@ -23,14 +55,33 @@ class ParishDetailPage extends StatelessWidget {
             leading: Container(
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: kCardColor.withOpacity(0.9),
+                color: cardColor.withOpacity(0.9),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new, color: kPrimaryColor, size: 20),
+                icon: Icon(Icons.arrow_back_ios_new, color: kPrimaryColor, size: 20),
                 onPressed: () => Navigator.pop(context),
               ),
             ),
+            actions: [
+              Container(
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: cardColor.withOpacity(0.9),
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.star : Icons.star_border,
+                    color: isFavorite ? Colors.amber : kPrimaryColor,
+                    size: 24,
+                  ),
+                  onPressed: () {
+                    favoritesManager.toggleFavorite(parish.name);
+                  },
+                ),
+              ),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: BoxDecoration(
@@ -90,6 +141,8 @@ class ParishDetailPage extends StatelessWidget {
                     title: 'Address',
                     content: '${parish.address}\n${parish.city} ${parish.zipCode}',
                     color: kPrimaryColor,
+                    cardColor: cardColor,
+                    textColor: textColor,
                   ),
                   const SizedBox(height: 16),
 
@@ -100,6 +153,10 @@ class ParishDetailPage extends StatelessWidget {
                     items: parish.massTimes,
                     emptyMessage: 'No Mass times available',
                     color: kSecondaryColor,
+                    cardColor: cardColor,
+                    textColor: textColor,
+                    subtextColor: subtextColor,
+                    isDark: isDark,
                   ),
                   const SizedBox(height: 16),
 
@@ -110,11 +167,15 @@ class ParishDetailPage extends StatelessWidget {
                     items: parish.confTimes,
                     emptyMessage: 'By Appointment Only',
                     color: kPrimaryColor,
+                    cardColor: cardColor,
+                    textColor: textColor,
+                    subtextColor: subtextColor,
+                    isDark: isDark,
                   ),
                   const SizedBox(height: 16),
 
                   // Contact Info Card
-                  _buildContactCard(),
+                  _buildContactCard(cardColor, textColor, subtextColor),
                   const SizedBox(height: 30),
                 ],
               ),
@@ -125,11 +186,11 @@ class ParishDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _buildContactCard() {
+  Widget _buildContactCard(Color cardColor, Color textColor, Color subtextColor) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: kCardColor,
+        color: cardColor,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -163,7 +224,7 @@ class ParishDetailPage extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: textColor,
                 ),
               ),
             ],
@@ -174,6 +235,8 @@ class ParishDetailPage extends StatelessWidget {
             icon: Icons.phone,
             label: 'Phone',
             value: parish.phone,
+            textColor: textColor,
+            subtextColor: subtextColor,
           ),
           const SizedBox(height: 12),
           // Website
@@ -181,6 +244,8 @@ class ParishDetailPage extends StatelessWidget {
             icon: Icons.language,
             label: 'Website',
             value: parish.website ?? 'N/A',
+            textColor: textColor,
+            subtextColor: subtextColor,
           ),
         ],
       ),
@@ -193,12 +258,16 @@ class _InfoCard extends StatelessWidget {
   final String title;
   final String content;
   final Color color;
+  final Color cardColor;
+  final Color textColor;
 
   const _InfoCard({
     required this.icon,
     required this.title,
     required this.content,
     required this.color,
+    required this.cardColor,
+    required this.textColor,
   });
 
   @override
@@ -206,7 +275,7 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: kCardColor,
+        color: cardColor,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -250,7 +319,7 @@ class _InfoCard extends StatelessWidget {
                   content,
                   style: GoogleFonts.lato(
                     fontSize: 15,
-                    color: Colors.black87,
+                    color: textColor,
                     height: 1.4,
                   ),
                 ),
@@ -269,6 +338,10 @@ class _ScheduleCard extends StatelessWidget {
   final List<String> items;
   final String emptyMessage;
   final Color color;
+  final Color cardColor;
+  final Color textColor;
+  final Color subtextColor;
+  final bool isDark;
 
   const _ScheduleCard({
     required this.icon,
@@ -276,6 +349,10 @@ class _ScheduleCard extends StatelessWidget {
     required this.items,
     required this.emptyMessage,
     required this.color,
+    required this.cardColor,
+    required this.textColor,
+    required this.subtextColor,
+    required this.isDark,
   });
 
   @override
@@ -283,7 +360,7 @@ class _ScheduleCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: kCardColor,
+        color: cardColor,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -317,7 +394,7 @@ class _ScheduleCard extends StatelessWidget {
                 style: GoogleFonts.lato(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: textColor,
                 ),
               ),
             ],
@@ -327,7 +404,7 @@ class _ScheduleCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.1),
+                color: (isDark ? Colors.white : Colors.grey).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -335,14 +412,14 @@ class _ScheduleCard extends StatelessWidget {
                   Icon(
                     Icons.info_outline,
                     size: 18,
-                    color: Colors.grey[600],
+                    color: subtextColor,
                   ),
                   const SizedBox(width: 10),
                   Text(
                     emptyMessage,
                     style: GoogleFonts.lato(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: subtextColor,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -370,7 +447,7 @@ class _ScheduleCard extends StatelessWidget {
                           item,
                           style: GoogleFonts.lato(
                             fontSize: 15,
-                            color: Colors.black87,
+                            color: textColor,
                           ),
                         ),
                       ),
@@ -387,11 +464,15 @@ class _ContactRow extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
+  final Color textColor;
+  final Color subtextColor;
 
   const _ContactRow({
     required this.icon,
     required this.label,
     required this.value,
+    required this.textColor,
+    required this.subtextColor,
   });
 
   @override
@@ -411,7 +492,7 @@ class _ContactRow extends StatelessWidget {
               label,
               style: GoogleFonts.lato(
                 fontSize: 12,
-                color: Colors.black54,
+                color: subtextColor,
               ),
             ),
             const SizedBox(height: 2),
@@ -419,7 +500,7 @@ class _ContactRow extends StatelessWidget {
               value,
               style: GoogleFonts.lato(
                 fontSize: 15,
-                color: Colors.black87,
+                color: textColor,
               ),
             ),
           ],

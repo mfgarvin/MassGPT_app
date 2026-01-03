@@ -294,3 +294,100 @@ Implemented functionality for the four quick access buttons on HomePage:
    - Generic bottom sheet for "Coming Soon" features
    - Accepts icon, title, message, and accent color
    - Used by Adoration and Parish Events buttons
+
+### App Menu & Settings (2026-01-02)
+
+Added dropdown menu to the church icon in the top-right of HomePage:
+
+1. **PopupMenuButton on church icon** (`lib/main.dart`)
+   - Favorites option (heart icon)
+   - Settings option (gear icon)
+   - Feedback option (feedback icon)
+
+2. **FeedbackPage** (`lib/main.dart`)
+   - Full-screen modal overlay with slide-up animation
+   - Header showing feedback destination: `feedback@massgpt.org`
+   - Optional email field for replies
+   - Multi-line feedback text area
+   - Submit button with loading state and success notification
+
+3. **SettingsPage** (`lib/main.dart`)
+   - Dark mode toggle switch
+   - Version info display (1.0.0)
+   - Full dark mode support
+
+4. **ThemeNotifier** (`lib/main.dart`)
+   - Global `ChangeNotifier` for app-wide theme management
+   - `isDarkMode` getter and `toggleTheme()`/`setDarkMode()` methods
+   - `MassGPTApp` converted to `StatefulWidget` to listen for theme changes
+   - Both light and dark `ThemeData` configured in `MaterialApp`
+
+5. **Dark mode color constants** (`lib/main.dart`)
+   - `kBackgroundColorDark`: `#1A1A2E` (dark blue)
+   - `kCardColorDark`: `#16213E` (slightly lighter dark blue)
+
+### Favorites Feature (2026-01-02)
+
+Implemented favorites system allowing users to save parishes:
+
+1. **FavoritesManager** (`lib/main.dart`)
+   - Global `ChangeNotifier` for managing favorites
+   - `isFavorite()`, `toggleFavorite()`, `addFavorite()`, `removeFavorite()` methods
+   - Stores favorites by parish name in a `Set<String>`
+
+2. **Star icon on ParishDetailPage** (`lib/pages/parish_detail_page.dart`)
+   - Added favorite toggle button in app bar (top-right)
+   - Empty star (outline) when not favorited
+   - Filled amber star when favorited
+   - Listens to `FavoritesManager` for real-time updates
+
+3. **FavoritesPage** (`lib/main.dart`)
+   - Full-screen modal showing all favorited parishes
+   - Empty state with instructions when no favorites
+   - Parish cards with name, city, mass time, and remove button
+   - Tapping a card navigates to ParishDetailPage
+
+4. **Persistence with SharedPreferences** (`lib/main.dart`, `pubspec.yaml`)
+   - Added `shared_preferences: ^2.2.2` dependency
+   - `FavoritesManager.init()` loads favorites from storage on app start
+   - Favorites saved automatically when modified
+   - Favorites persist across app restarts
+
+### Dark Mode Support (2026-01-02)
+
+Added comprehensive dark mode support throughout the app:
+
+1. **HomePage** (`lib/main.dart`)
+   - Added `themeNotifier` listener to `_HomePageState`
+   - Theme-aware color getters: `_isDark`, `_backgroundColor`, `_cardColor`, `_textColor`, `_subtextColor`
+   - Updated all section headers, subtitles, and info cards
+
+2. **Search bar and autocomplete** (`lib/main.dart`)
+   - Input text, hints, and clear button use theme colors
+   - Search results dropdown adapts to dark mode
+   - Dividers and icons use appropriate colors
+
+3. **Quick access buttons** (`lib/main.dart`)
+   - `_QuickAccessButton` reads theme from `themeNotifier`
+   - Card background and label text adapt to theme
+
+4. **Nearby parishes list** (`lib/main.dart`)
+   - `_NearbyParishCard` accepts theme colors as parameters
+   - Loading, error, and empty states use theme colors
+
+5. **Coming soon dialogs** (`lib/main.dart`)
+   - Card background, title, and message use theme colors
+
+6. **FeedbackPage** (`lib/main.dart`)
+   - App bar, labels, inputs, and hints adapt to theme
+
+7. **SettingsPage** (`lib/main.dart`)
+   - Already had full dark mode support
+
+8. **FavoritesPage** (`lib/main.dart`)
+   - Already had full dark mode support
+
+9. **ParishDetailPage** (`lib/pages/parish_detail_page.dart`)
+   - Added `themeNotifier` listener
+   - Background, cards, and all text adapt to theme
+   - All helper widgets (`_InfoCard`, `_ScheduleCard`, `_ContactRow`) accept theme colors
