@@ -456,6 +456,17 @@ Added support for parish images in the detail page header:
    - Landscape orientation works best with the header layout
    - JPEG format preferred for photos (smaller file size)
 
+### Android URL Launcher Fix (2026-01-02)
+
+Fixed tap-to-action features not working on Android 11+ devices:
+
+1. **AndroidManifest.xml queries** (`android/app/src/main/AndroidManifest.xml`)
+   - Added `<queries>` declarations required by Android 11+ (API 30+)
+   - `https` / `http` schemes for opening websites
+   - `tel` scheme for phone calls (DIAL intent)
+   - `geo` scheme for opening maps
+   - Without these declarations, `url_launcher` silently fails on newer Android versions
+
 ## Future Enhancements
 
 ### Google Places API for Parish Images
