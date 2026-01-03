@@ -10,6 +10,7 @@ class Parish {
   final String? contactInfo;
   final double? latitude;
   final double? longitude;
+  final String? imageUrl;
 
   Parish({
     required this.name,
@@ -23,6 +24,7 @@ class Parish {
     this.contactInfo,
     this.latitude,
     this.longitude,
+    this.imageUrl,
   });
 
   factory Parish.fromJson(Map<String, dynamic> json) {
@@ -55,6 +57,7 @@ class Parish {
       longitude: json['longitude'] != null
           ? json['longitude'].toDouble()
           : null,
+      imageUrl: json['image_url'],
     );
   }
 }

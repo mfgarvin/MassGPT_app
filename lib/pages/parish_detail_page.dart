@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../models/parish.dart';
 import '../main.dart' show kPrimaryColor, kSecondaryColor, kBackgroundColor, kBackgroundColorDark, kCardColor, kCardColorDark, favoritesManager, themeNotifier;
 
@@ -32,6 +34,142 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
   }
 
   Parish get parish => widget.parish;
+
+  Future<void> _launchMaps() async {
+    final address = '${parish.address}, ${parish.city} ${parish.zipCode}';
+    final encodedAddress = Uri.encodeComponent(address);
+    final Uri mapsUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=$encodedAddress');
+
+    if (await canLaunchUrl(mapsUrl)) {
+      await launchUrl(mapsUrl, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  Future<void> _launchPhone() async {
+    final phoneNumber = parish.phone.replaceAll(RegExp(r'[^\d+]'), '');
+    final Uri phoneUrl = Uri.parse('tel:$phoneNumber');
+
+    if (await canLaunchUrl(phoneUrl)) {
+      await launchUrl(phoneUrl);
+    }
+  }
+
+  Future<void> _launchWebsite() async {
+    if (parish.website.isEmpty || parish.website == 'No Website') return;
+
+    String url = parish.website;
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'https://$url';
+    }
+
+    final Uri websiteUrl = Uri.parse(url);
+    if (await canLaunchUrl(websiteUrl)) {
+      await launchUrl(websiteUrl, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  Widget _buildHeaderBackground() {
+    final hasImage = parish.imageUrl != null && parish.imageUrl!.isNotEmpty;
+
+    if (hasImage) {
+      // Show actual parish image with gradient overlay
+      return Stack(
+        fit: StackFit.expand,
+        children: [
+          CachedNetworkImage(
+            imageUrl: parish.imageUrl!,
+            fit: BoxFit.cover,
+            placeholder: (context, url) => _buildPlaceholderBackground(),
+            errorWidget: (context, url, error) => _buildPlaceholderBackground(),
+          ),
+          // Gradient overlay for text readability
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withOpacity(0.3),
+                  Colors.black.withOpacity(0.7),
+                ],
+              ),
+            ),
+          ),
+          // Parish name at bottom
+          Positioned(
+            bottom: 20,
+            left: 24,
+            right: 24,
+            child: Text(
+              parish.name,
+              style: GoogleFonts.lato(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                shadows: [
+                  Shadow(
+                    offset: const Offset(0, 1),
+                    blurRadius: 4,
+                    color: Colors.black.withOpacity(0.5),
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      );
+    } else {
+      // Show placeholder background
+      return _buildPlaceholderBackground();
+    }
+  }
+
+  Widget _buildPlaceholderBackground() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            kSecondaryColor,
+            kSecondaryColor.withOpacity(0.8),
+          ],
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 40),
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.15),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.church,
+              size: 50,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(
+              parish.name,
+              style: GoogleFonts.lato(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,49 +221,7 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      kSecondaryColor,
-                      kSecondaryColor.withOpacity(0.8),
-                    ],
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 40),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.church,
-                        size: 50,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: Text(
-                        parish.name,
-                        style: GoogleFonts.lato(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              background: _buildHeaderBackground(),
             ),
           ),
           // Content
@@ -135,14 +231,17 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Address Card
-                  _InfoCard(
+                  // Address Card (tappable to open in maps)
+                  _TappableInfoCard(
                     icon: Icons.location_on,
                     title: 'Address',
                     content: '${parish.address}\n${parish.city} ${parish.zipCode}',
                     color: kPrimaryColor,
                     cardColor: cardColor,
                     textColor: textColor,
+                    actionIcon: Icons.directions,
+                    actionLabel: 'Get Directions',
+                    onTap: _launchMaps,
                   ),
                   const SizedBox(height: 16),
 
@@ -230,22 +329,24 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
             ],
           ),
           const SizedBox(height: 20),
-          // Phone
-          _ContactRow(
+          // Phone (tappable to call)
+          _TappableContactRow(
             icon: Icons.phone,
             label: 'Phone',
             value: parish.phone,
             textColor: textColor,
             subtextColor: subtextColor,
+            onTap: parish.phone != 'No Phone Listed' ? _launchPhone : null,
           ),
           const SizedBox(height: 12),
-          // Website
-          _ContactRow(
+          // Website (tappable to open)
+          _TappableContactRow(
             icon: Icons.language,
             label: 'Website',
-            value: parish.website ?? 'N/A',
+            value: parish.website.isNotEmpty ? parish.website : 'N/A',
             textColor: textColor,
             subtextColor: subtextColor,
+            onTap: (parish.website.isNotEmpty && parish.website != 'No Website') ? _launchWebsite : null,
           ),
         ],
       ),
@@ -253,80 +354,121 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
   }
 }
 
-class _InfoCard extends StatelessWidget {
+class _TappableInfoCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String content;
   final Color color;
   final Color cardColor;
   final Color textColor;
+  final IconData actionIcon;
+  final String actionLabel;
+  final VoidCallback? onTap;
 
-  const _InfoCard({
+  const _TappableInfoCard({
     required this.icon,
     required this.title,
     required this.content,
     required this.color,
     required this.cardColor,
     required this.textColor,
+    required this.actionIcon,
+    required this.actionLabel,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: cardColor,
+    return Material(
+      color: cardColor,
+      borderRadius: BorderRadius.circular(20),
+      child: InkWell(
+        onTap: onTap,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 15,
-            spreadRadius: 0,
-            offset: const Offset(0, 4),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.06),
+                blurRadius: 15,
+                spreadRadius: 0,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              icon,
-              color: color,
-              size: 24,
-            ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.lato(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: color,
-                  ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                const SizedBox(height: 6),
-                Text(
-                  content,
-                  style: GoogleFonts.lato(
-                    fontSize: 15,
-                    color: textColor,
-                    height: 1.4,
-                  ),
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: GoogleFonts.lato(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: color,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      content,
+                      style: GoogleFonts.lato(
+                        fontSize: 15,
+                        color: textColor,
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (onTap != null) ...[
+                const SizedBox(width: 12),
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: color.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        actionIcon,
+                        color: color,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      actionLabel,
+                      style: GoogleFonts.lato(
+                        fontSize: 10,
+                        color: color,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
               ],
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -460,52 +602,80 @@ class _ScheduleCard extends StatelessWidget {
   }
 }
 
-class _ContactRow extends StatelessWidget {
+class _TappableContactRow extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
   final Color textColor;
   final Color subtextColor;
+  final VoidCallback? onTap;
 
-  const _ContactRow({
+  const _TappableContactRow({
     required this.icon,
     required this.label,
     required this.value,
     required this.textColor,
     required this.subtextColor,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          size: 20,
-          color: kPrimaryColor,
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    final isClickable = onTap != null;
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+        child: Row(
           children: [
-            Text(
-              label,
-              style: GoogleFonts.lato(
-                fontSize: 12,
-                color: subtextColor,
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: (isClickable ? kPrimaryColor : Colors.grey).withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                icon,
+                size: 20,
+                color: isClickable ? kPrimaryColor : Colors.grey,
               ),
             ),
-            const SizedBox(height: 2),
-            Text(
-              value,
-              style: GoogleFonts.lato(
-                fontSize: 15,
-                color: textColor,
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: GoogleFonts.lato(
+                      fontSize: 12,
+                      color: subtextColor,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    value,
+                    style: GoogleFonts.lato(
+                      fontSize: 15,
+                      color: isClickable ? kPrimaryColor : textColor,
+                      decoration: isClickable ? TextDecoration.underline : null,
+                      decorationColor: kPrimaryColor,
+                    ),
+                  ),
+                ],
               ),
             ),
+            if (isClickable)
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 16,
+                color: kPrimaryColor.withOpacity(0.6),
+              ),
           ],
         ),
-      ],
+      ),
     );
   }
 }

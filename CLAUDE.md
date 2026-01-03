@@ -391,3 +391,89 @@ Added comprehensive dark mode support throughout the app:
    - Added `themeNotifier` listener
    - Background, cards, and all text adapt to theme
    - All helper widgets (`_InfoCard`, `_ScheduleCard`, `_ContactRow`) accept theme colors
+
+### Tap-to-Action for Contact Info (2026-01-02)
+
+Added interactive actions for address, phone, and website on ParishDetailPage:
+
+1. **url_launcher dependency** (`pubspec.yaml`)
+   - Enables launching external URLs for maps, calls, and websites
+
+2. **Address Card** (`lib/pages/parish_detail_page.dart`)
+   - New `_TappableInfoCard` widget with "Get Directions" action button
+   - Tapping opens Google Maps with the encoded parish address
+
+3. **Contact Row Actions**
+   - New `_TappableContactRow` widget with visual feedback
+   - **Phone**: Tapping initiates a phone call via `tel:` URL
+   - **Website**: Tapping opens the website in external browser
+   - Non-actionable items appear grayed out (no underline/arrow)
+
+4. **Helper methods**
+   - `_launchMaps()` - Opens Google Maps search with address
+   - `_launchPhone()` - Strips non-digits and launches tel: URL
+   - `_launchWebsite()` - Adds https:// if needed, opens in browser
+
+### Parish Images (2026-01-02)
+
+Added support for parish images in the detail page header:
+
+1. **cached_network_image dependency** (`pubspec.yaml`)
+   - Efficient image loading with caching and placeholders
+
+2. **Parish model update** (`lib/models/parish.dart`)
+   - Added optional `imageUrl` field
+   - JSON key: `image_url`
+
+3. **ParishDetailPage header** (`lib/pages/parish_detail_page.dart`)
+   - `_buildHeaderBackground()` - Checks for image URL
+   - If image exists: Shows cached image with gradient overlay for text readability
+   - If no image: Shows placeholder with gradient background and church icon
+   - `_buildPlaceholderBackground()` - Reusable placeholder widget
+
+4. **Adding images to parishes**
+
+   To add an image for a parish, add the `image_url` field to the parish entry in `data/parishes.json`:
+   ```json
+   {
+     "name": "Transfiguration",
+     "latitude": 41.4771636,
+     "longitude": -81.7767796,
+     "address": "12608 Madison Avenue",
+     "city": "Lakewood, OH",
+     "zip_code": "44107",
+     "phone": "(216) 521-7288",
+     "www": "lakewoodcatholicacademy.com",
+     "image_url": "https://example.com/transfiguration-church.jpg",
+     "mass_times": ["Sunday: 9:00AM", "Saturday: 4:00PM"],
+     "conf_times": ["Saturday: 3:15PM to 3:45PM"]
+   }
+   ```
+
+   **Image recommendations:**
+   - Use HTTPS URLs for security
+   - Recommended size: 800x600 pixels or larger
+   - Landscape orientation works best with the header layout
+   - JPEG format preferred for photos (smaller file size)
+
+## Future Enhancements
+
+### Google Places API for Parish Images
+
+Consider integrating the Google Places API to automatically fetch real photos of parishes:
+
+1. **Implementation approach**:
+   - Use parish name + city to search for the place
+   - Fetch place photos using the Place Photos API
+   - Cache results to minimize API calls
+
+2. **Requirements**:
+   - Google Cloud Platform account
+   - Places API enabled
+   - API key with appropriate restrictions
+
+3. **Estimated API costs** (as of 2025):
+   - Place Search: $17 per 1,000 requests
+   - Place Photos: $7 per 1,000 requests
+
+4. **Alternative**: Continue using manual `image_url` entries in parish data for curated, cost-free images
