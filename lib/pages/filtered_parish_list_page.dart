@@ -422,210 +422,237 @@ class _FilteredParishListPageState extends State<FilteredParishListPage> {
     showModalBottomSheet(
       context: context,
       backgroundColor: cardColor,
+      // The chip sections can outgrow the default half-screen sheet (small
+      // phones, large text scale) and the sheet does not scroll on its own —
+      // without this the lower filters are clipped and unreachable.
+      isScrollControlled: true,
+      useSafeArea: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) => StatefulBuilder(
-        builder: (context, setSheetState) => Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header
-              Row(
-                children: [
-                  Icon(Icons.filter_list, color: widget.accentColor),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Filter by Time',
-                    style: GoogleFonts.inter(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: textColor,
-                    ),
-                  ),
-                  const Spacer(),
-                  if (_hasActiveFilters())
-                    TextButton(
-                      onPressed: () {
-                        setSheetState(() {
-                          _dayFilter = DayFilter.any;
-                          _timeOfDayFilter = TimeOfDayFilter.any;
-                          _languageFilter = LanguageFilter.any;
-                          _selectedWeekdays = {};
-                        });
-                        setState(() {});
-                      },
-                      child: Text(
-                        'Clear',
-                        style: GoogleFonts.inter(color: widget.accentColor),
+        builder: (context, setSheetState) => ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.85,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Header
+                Row(
+                  children: [
+                    Icon(Icons.filter_list, color: widget.accentColor),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Filter by Time',
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: textColor,
                       ),
                     ),
-                ],
-              ),
-              const SizedBox(height: 16),
-
-              // Day filter
-              Text(
-                'When',
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: subtextColor,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 8,
-                children: [
-                  _buildFilterChip('Any day', _dayFilter == DayFilter.any, () {
-                    setSheetState(() => _dayFilter = DayFilter.any);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                  _buildFilterChip('Today', _dayFilter == DayFilter.today, () {
-                    setSheetState(() => _dayFilter = DayFilter.today);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                  _buildFilterChip('Tomorrow', _dayFilter == DayFilter.tomorrow, () {
-                    setSheetState(() => _dayFilter = DayFilter.tomorrow);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                  _buildFilterChip('This week', _dayFilter == DayFilter.thisWeek, () {
-                    setSheetState(() => _dayFilter = DayFilter.thisWeek);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                ],
-              ),
-              const SizedBox(height: 16),
-
-              // Time of day filter
-              Text(
-                'Time of day',
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: subtextColor,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 8,
-                children: [
-                  _buildFilterChip('Any time', _timeOfDayFilter == TimeOfDayFilter.any, () {
-                    setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.any);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                  _buildFilterChip('Morning', _timeOfDayFilter == TimeOfDayFilter.morning, () {
-                    setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.morning);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                  _buildFilterChip('Afternoon', _timeOfDayFilter == TimeOfDayFilter.afternoon, () {
-                    setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.afternoon);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                  _buildFilterChip('Evening', _timeOfDayFilter == TimeOfDayFilter.evening, () {
-                    setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.evening);
-                    setState(() {});
-                  }, cardColor, textColor, subtextColor),
-                ],
-              ),
-              const SizedBox(height: 16),
-
-              // Language filter (Mass only)
-              if (_languageFilterApplies) ...[
-                Text(
-                  'Language',
-                  style: GoogleFonts.inter(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: subtextColor,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  children: [
-                    _buildFilterChip('Any', _languageFilter == LanguageFilter.any, () {
-                      setSheetState(() => _languageFilter = LanguageFilter.any);
-                      setState(() {});
-                    }, cardColor, textColor, subtextColor),
-                    _buildFilterChip('Spanish', _languageFilter == LanguageFilter.spanish, () {
-                      setSheetState(() => _languageFilter = LanguageFilter.spanish);
-                      setState(() {});
-                    }, cardColor, textColor, subtextColor),
-                    _buildFilterChip('Other language', _languageFilter == LanguageFilter.other, () {
-                      setSheetState(() => _languageFilter = LanguageFilter.other);
-                      setState(() {});
-                    }, cardColor, textColor, subtextColor),
+                    const Spacer(),
+                    if (_hasActiveFilters())
+                      TextButton(
+                        onPressed: () {
+                          setSheetState(() {
+                            _dayFilter = DayFilter.any;
+                            _timeOfDayFilter = TimeOfDayFilter.any;
+                            _languageFilter = LanguageFilter.any;
+                            _selectedWeekdays = {};
+                          });
+                          setState(() {});
+                        },
+                        child: Text(
+                          'Clear',
+                          style: GoogleFonts.inter(color: widget.accentColor),
+                        ),
+                      ),
                   ],
                 ),
                 const SizedBox(height: 16),
+
+                // Everything between the header and Done scrolls, so no
+                // filter section can be clipped out of reach.
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                    // Day filter
+                    Text(
+                      'When',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: subtextColor,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        _buildFilterChip('Any day', _dayFilter == DayFilter.any, () {
+                          setSheetState(() => _dayFilter = DayFilter.any);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                        _buildFilterChip('Today', _dayFilter == DayFilter.today, () {
+                          setSheetState(() => _dayFilter = DayFilter.today);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                        _buildFilterChip('Tomorrow', _dayFilter == DayFilter.tomorrow, () {
+                          setSheetState(() => _dayFilter = DayFilter.tomorrow);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                        _buildFilterChip('This week', _dayFilter == DayFilter.thisWeek, () {
+                          setSheetState(() => _dayFilter = DayFilter.thisWeek);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+
+                    // Time of day filter
+                    Text(
+                      'Time of day',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: subtextColor,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        _buildFilterChip('Any time', _timeOfDayFilter == TimeOfDayFilter.any, () {
+                          setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.any);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                        _buildFilterChip('Morning', _timeOfDayFilter == TimeOfDayFilter.morning, () {
+                          setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.morning);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                        _buildFilterChip('Afternoon', _timeOfDayFilter == TimeOfDayFilter.afternoon, () {
+                          setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.afternoon);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                        _buildFilterChip('Evening', _timeOfDayFilter == TimeOfDayFilter.evening, () {
+                          setSheetState(() => _timeOfDayFilter = TimeOfDayFilter.evening);
+                          setState(() {});
+                        }, cardColor, textColor, subtextColor),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+
+                    // Language filter (Mass only)
+                    if (_languageFilterApplies) ...[
+                      Text(
+                        'Language',
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: subtextColor,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          _buildFilterChip('Any', _languageFilter == LanguageFilter.any, () {
+                            setSheetState(() => _languageFilter = LanguageFilter.any);
+                            setState(() {});
+                          }, cardColor, textColor, subtextColor),
+                          _buildFilterChip('Spanish', _languageFilter == LanguageFilter.spanish, () {
+                            setSheetState(() => _languageFilter = LanguageFilter.spanish);
+                            setState(() {});
+                          }, cardColor, textColor, subtextColor),
+                          _buildFilterChip('Other language', _languageFilter == LanguageFilter.other, () {
+                            setSheetState(() => _languageFilter = LanguageFilter.other);
+                            setState(() {});
+                          }, cardColor, textColor, subtextColor),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                    ],
+
+                    // Weekday filter
+                    Text(
+                      'Day of week',
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: subtextColor,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        for (final day in [
+                          (7, 'Sun'),
+                          (1, 'Mon'),
+                          (2, 'Tue'),
+                          (3, 'Wed'),
+                          (4, 'Thu'),
+                          (5, 'Fri'),
+                          (6, 'Sat'),
+                        ])
+                          _buildFilterChip(
+                            day.$2,
+                            _selectedWeekdays.contains(day.$1),
+                            () {
+                              setSheetState(() {
+                                if (_selectedWeekdays.contains(day.$1)) {
+                                  _selectedWeekdays.remove(day.$1);
+                                } else {
+                                  _selectedWeekdays.add(day.$1);
+                                }
+                              });
+                              setState(() {});
+                            },
+                            cardColor,
+                            textColor,
+                            subtextColor,
+                          ),
+                      ],
+                    ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Done button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: widget.accentColor,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      'Done',
+                      style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
               ],
-
-              // Weekday filter
-              Text(
-                'Day of week',
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: subtextColor,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 8,
-                children: [
-                  for (final day in [
-                    (7, 'Sun'),
-                    (1, 'Mon'),
-                    (2, 'Tue'),
-                    (3, 'Wed'),
-                    (4, 'Thu'),
-                    (5, 'Fri'),
-                    (6, 'Sat'),
-                  ])
-                    _buildFilterChip(
-                      day.$2,
-                      _selectedWeekdays.contains(day.$1),
-                      () {
-                        setSheetState(() {
-                          if (_selectedWeekdays.contains(day.$1)) {
-                            _selectedWeekdays.remove(day.$1);
-                          } else {
-                            _selectedWeekdays.add(day.$1);
-                          }
-                        });
-                        setState(() {});
-                      },
-                      cardColor,
-                      textColor,
-                      subtextColor,
-                    ),
-                ],
-              ),
-              const SizedBox(height: 20),
-
-              // Done button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: widget.accentColor,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    'Done',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
