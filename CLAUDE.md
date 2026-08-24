@@ -162,6 +162,15 @@ The map uses OpenStreetMap tiles without subdomains (per OSM guidelines):
 urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
 ```
 
+Tiles are recoloured to match the theme by a `ColorFilter.matrix` on the
+`TileLayer` only (never the markers): `_parchmentFilter` in light mode, and in
+dark mode `_nightFilter` — invert ∘ hue-rotate 180° ∘ warm desaturation, which
+is what keeps the dark map labels legible instead of dimming them into the
+land. The rotation is what stops inverted Lake Erie from turning orange, and
+warming it further past the current tuning is what turns the lake olive and
+indistinguishable from land — the map's blue is worth more than the warmth
+here. The map is also locked north-up (`InteractiveFlag.rotate` removed).
+
 ### Parish Data
 
 Data is fetched at runtime from the remote `export.json` (184 parishes, Cleveland/Akron

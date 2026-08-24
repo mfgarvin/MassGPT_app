@@ -8,7 +8,18 @@ import 'package:url_launcher/url_launcher.dart';
 import '../models/parish.dart';
 import '../services/location_service.dart';
 import '../services/parish_service.dart';
-import '../main.dart' show kPrimaryColor, kSecondaryColor, kBackgroundColor, kCardColor;
+import '../main.dart'
+    show
+        kPrimaryColor,
+        kSecondaryColor,
+        kBackgroundColor,
+        kBackgroundColorDark,
+        kCardColor,
+        kCardColorDark,
+        kTextDark,
+        kAccentGoldDeep,
+        primaryAccentFor,
+        themeNotifier;
 import '../widgets/stained_glass_header.dart';
 import '../widgets/zip_location_dialog.dart';
 import 'parish_detail_page.dart';
@@ -57,6 +68,31 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
     0.12, 0.20, 0.50, 0, 5,  // B
     0,    0,    0,    1, 0,  // A
   ]);
+
+  // Night wash for dark mode. The daytime tiles are light-on-light, so simply
+  // dimming them would take the labels down with the land and leave nothing
+  // readable. This is instead the composition of three matrices — invert,
+  // hue-rotate 180° (so inverted water comes back blue rather than orange),
+  // then the same warm desaturation the parchment filter uses, dimmed. Dark
+  // text becomes candlelight cream, land settles just above the dark card
+  // colour, and water still reads as water. The one concession is polarity:
+  // white road fill inverts to near-black, so roads read as dark ribbons with
+  // light casings rather than light lines. No linear matrix can invert the
+  // labels without also inverting the roads.
+  static const _nightFilter = ColorFilter.matrix(<double>[
+     0.326, -1.288, -0.130, 0, 286.5, // R
+    -0.366, -0.551, -0.123, 0, 270.1, // G
+    -0.340, -1.140,  0.513, 0, 248.3, // B
+     0,      0,      0,     1, 0,     // A
+  ]);
+
+  bool get _isDark => themeNotifier.isDarkMode;
+  Color get _bgColor => _isDark ? kBackgroundColorDark : kBackgroundColor;
+  Color get _cardColor => _isDark ? kCardColorDark : kCardColor;
+  Color get _textColor => _isDark ? kTextDark : Colors.black87;
+  Color get _subtextColor =>
+      _isDark ? kTextDark.withValues(alpha: 0.7) : Colors.black54;
+  Color get _accent => primaryAccentFor(isDark: _isDark);
 
   @override
   void initState() {
@@ -237,7 +273,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
     final localUserLocation = userLocation;
 
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: _bgColor,
       extendBodyBehindAppBar: true,
       appBar: widget.inTab
           ? null
@@ -247,7 +283,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               leading: Container(
                 margin: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: kCardColor,
+                  color: _cardColor,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -268,13 +304,13 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CircularProgressIndicator(color: kPrimaryColor),
+                  CircularProgressIndicator(color: _accent),
                   const SizedBox(height: 24),
                   Text(
                     'Finding your location...',
                     style: GoogleFonts.inter(
                       fontSize: 16,
-                      color: Colors.black54,
+                      color: _subtextColor,
                     ),
                   ),
                 ],
@@ -284,7 +320,8 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               ? _buildLocationErrorState()
               : Stack(
                   children: [
-                    // Map with parchment color filter applied to tiles only
+                    // Map with the parchment (or, in dark mode, night)
+                    // color filter applied to tiles only
                     FlutterMap(
                       mapController: _mapController,
                       options: MapOptions(
@@ -316,7 +353,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                       ),
                       children: [
                         ColorFiltered(
-                          colorFilter: _parchmentFilter,
+                          colorFilter: _isDark ? _nightFilter : _parchmentFilter,
                           child: TileLayer(
                             urlTemplate:
                                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -381,7 +418,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
     final pill = Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: kCardColor,
+        color: _cardColor,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
@@ -395,7 +432,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
         children: [
           Icon(
             searching ? Icons.search : Icons.location_on,
-            color: kPrimaryColor,
+            color: _accent,
             size: 16,
           ),
           const SizedBox(width: 6),
@@ -406,7 +443,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
             style: GoogleFonts.inter(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: Colors.black87,
+              color: _textColor,
             ),
           ),
         ],
@@ -453,7 +490,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
       label: 'Map data from OpenStreetMap contributors. Opens the OpenStreetMap '
           'copyright page.',
       child: Material(
-        color: kCardColor.withValues(alpha: 0.82),
+        color: _cardColor.withValues(alpha: 0.82),
         borderRadius: BorderRadius.circular(4),
         child: InkWell(
           onTap: _openOsmCopyright,
@@ -464,7 +501,9 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               '© OpenStreetMap contributors',
               style: GoogleFonts.inter(
                 fontSize: 10,
-                color: kSecondaryColor.withValues(alpha: 0.85),
+                color: _isDark
+                    ? kTextDark.withValues(alpha: 0.75)
+                    : kSecondaryColor.withValues(alpha: 0.85),
               ),
             ),
           ),
@@ -481,7 +520,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
           ? 'Centre on ZIP code ${_fix?.zip}'
           : 'Centre on my location',
       child: Material(
-        color: kCardColor,
+        color: _cardColor,
         shape: const CircleBorder(),
         elevation: 4,
         child: InkWell(
@@ -491,7 +530,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
             padding: const EdgeInsets.all(12),
             child: Icon(
               usingZip ? Icons.pin_drop_outlined : Icons.my_location,
-              color: kPrimaryColor,
+              color: _accent,
               size: 24,
             ),
           ),
@@ -525,7 +564,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: _textColor,
               ),
             ),
             const SizedBox(height: 8),
@@ -533,7 +572,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               _locationFailureMessage(_locationFailure),
               style: GoogleFonts.inter(
                 fontSize: 14,
-                color: Colors.black54,
+                color: _subtextColor,
               ),
               textAlign: TextAlign.center,
             ),
@@ -546,8 +585,8 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                 _getUserLocation(recenter: true);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: kPrimaryColor,
-                foregroundColor: Colors.white,
+                backgroundColor: _accent,
+                foregroundColor: _isDark ? kBackgroundColorDark : Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -571,7 +610,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                 'Enter a ZIP code instead',
                 style: GoogleFonts.inter(fontWeight: FontWeight.w600),
               ),
-              style: TextButton.styleFrom(foregroundColor: kPrimaryColor),
+              style: TextButton.styleFrom(foregroundColor: _accent),
             ),
           ],
         ),
@@ -604,12 +643,12 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
       height: 30.0,
       child: Container(
         decoration: BoxDecoration(
-          color: kPrimaryColor,
+          color: _accent,
           shape: BoxShape.circle,
           border: Border.all(color: Colors.white, width: 3),
           boxShadow: [
             BoxShadow(
-              color: kPrimaryColor.withValues(alpha: 0.3),
+              color: _accent.withValues(alpha: 0.3),
               blurRadius: 10,
               spreadRadius: 2,
             ),
@@ -635,12 +674,16 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               duration: const Duration(milliseconds: 220),
               curve: Curves.easeOutCubic,
               decoration: BoxDecoration(
-                color: isSelected ? kPrimaryColor : kSecondaryColor,
+                // Deep plum vanishes into a night-washed map, so unselected
+                // pins go bronze in dark mode.
+                color: isSelected
+                    ? _accent
+                    : (_isDark ? kAccentGoldDeep : kSecondaryColor),
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: isSelected ? 3 : 2),
                 boxShadow: [
                   BoxShadow(
-                    color: (isSelected ? kPrimaryColor : Colors.black)
+                    color: (isSelected ? _accent : Colors.black)
                         .withValues(alpha: isSelected ? 0.4 : 0.25),
                     blurRadius: isSelected ? 14 : 6,
                     spreadRadius: isSelected ? 2 : 0,
@@ -649,7 +692,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
               ),
               child: Icon(
                 Icons.church,
-                color: Colors.white,
+                color: isSelected && _isDark ? kBackgroundColorDark : Colors.white,
                 size: isSelected ? 26 : 20,
               ),
             ),
@@ -700,6 +743,12 @@ class _MapParishCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firstMass = parish.massTimes.isNotEmpty ? parish.massTimes.first.display : null;
+    final isDark = themeNotifier.isDarkMode;
+    final cardColor = isDark ? kCardColorDark : kCardColor;
+    final textColor = isDark ? kTextDark : Colors.black87;
+    final subtextColor =
+        isDark ? kTextDark.withValues(alpha: 0.7) : Colors.black54;
+    final accent = primaryAccentFor(isDark: isDark);
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -707,7 +756,7 @@ class _MapParishCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         child: Ink(
           decoration: BoxDecoration(
-            color: kCardColor,
+            color: cardColor,
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
               BoxShadow(
@@ -748,7 +797,7 @@ class _MapParishCard extends StatelessWidget {
                       style: GoogleFonts.inter(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                        color: textColor,
                         height: 1.15,
                       ),
                       maxLines: 2,
@@ -759,7 +808,7 @@ class _MapParishCard extends StatelessWidget {
                       parish.city,
                       style: GoogleFonts.inter(
                         fontSize: 12,
-                        color: Colors.black54,
+                        color: subtextColor,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -768,14 +817,14 @@ class _MapParishCard extends StatelessWidget {
                       const SizedBox(height: 6),
                       Row(
                         children: [
-                          const Icon(Icons.access_time, size: 12, color: kSecondaryColor),
+                          Icon(Icons.access_time, size: 12, color: accent),
                           const SizedBox(width: 4),
                           Expanded(
                             child: Text(
                               firstMass,
                               style: GoogleFonts.inter(
                                 fontSize: 11,
-                                color: kSecondaryColor,
+                                color: accent,
                                 fontWeight: FontWeight.w600,
                               ),
                               maxLines: 1,
@@ -788,7 +837,11 @@ class _MapParishCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.black38),
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 14,
+                color: subtextColor.withValues(alpha: 0.6),
+              ),
             ],
           ),
         ),
