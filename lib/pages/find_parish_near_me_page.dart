@@ -98,9 +98,18 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // RootShell holds the tabs in a `static const` list, so a theme flip
+    // rebuilds RootShell but hands this page the identical widget instance and
+    // Flutter skips the subtree. Every tab subscribes for itself; without this
+    // the map keeps its old wash until some other change happens to repaint it.
+    themeNotifier.addListener(_onThemeChanged);
     locationService.addListener(_onSharedLocation);
     _loadParishData();
     _getUserLocation();
+  }
+
+  void _onThemeChanged() {
+    if (mounted) setState(() {});
   }
 
   /// Adopt a fix the Home tab obtained — both tabs stay alive side by side.
@@ -114,6 +123,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    themeNotifier.removeListener(_onThemeChanged);
     locationService.removeListener(_onSharedLocation);
     _mapController.dispose();
     _pageController.dispose();

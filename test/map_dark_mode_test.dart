@@ -65,6 +65,21 @@ void main() {
     expect(dark, isNot(equals(light)));
   });
 
+  testWidgets('a theme flip alone repaints the tab', (tester) async {
+    // RootShell keeps the tabs in a const list, so this page is handed the
+    // identical widget instance on a theme change and never rebuilds unless it
+    // subscribes for itself. Flipping the notifier with nothing else touching
+    // the page is exactly the case that used to leave the map on its old wash.
+    themeNotifier.setDarkMode(false);
+    await _pumpMap(tester);
+    final light = _tileFilter(tester);
+
+    themeNotifier.setDarkMode(true);
+    await tester.pump();
+
+    expect(_tileFilter(tester), isNot(equals(light)));
+  });
+
   testWidgets('map chrome follows dark mode', (tester) async {
     themeNotifier.setDarkMode(true);
     await _pumpMap(tester);
