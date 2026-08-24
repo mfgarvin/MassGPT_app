@@ -292,6 +292,15 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                         initialZoom: 13.0,
                         minZoom: 8.0,
                         maxZoom: 18.0,
+                        // North is always up. A twist gesture rotating the
+                        // map is disorienting when the point is "where am I
+                        // relative to these parishes", and nothing here draws
+                        // a compass to rotate back with.
+                        interactionOptions: InteractionOptions(
+                          flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                          cursorKeyboardRotationOptions:
+                              CursorKeyboardRotationOptions.disabled(),
+                        ),
                         onMapReady: () => _mapReady = true,
                         onPositionChanged: (position, hasGesture) {
                           // A hand-driven pan/zoom pins the view; refreshes
