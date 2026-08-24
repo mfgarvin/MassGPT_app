@@ -59,6 +59,7 @@ Future<void> main() async {
     }
   });
 
+  await themeNotifier.init();
   await favoritesManager.init();
   await AppVersion.load();
   // 2.4 KB off the bundle — parsed here so the coverage check is a synchronous
@@ -94,18 +95,36 @@ Color goldTextAccentFor({required bool isDark}) =>
 
 // Theme notifier for app-wide theme management
 class ThemeNotifier extends ChangeNotifier {
+  static const String _prefsKey = 'dark_mode';
+
   bool _isDarkMode = false;
 
   bool get isDarkMode => _isDarkMode;
 
-  void toggleTheme() {
-    _isDarkMode = !_isDarkMode;
+  /// Restore the saved choice. Called from `main()` before `runApp`, so the
+  /// first frame is already in the right theme and there's no light flash.
+  Future<void> init() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getBool(_prefsKey);
+    if (saved == null || saved == _isDarkMode) return;
+    _isDarkMode = saved;
     notifyListeners();
   }
 
+  void toggleTheme() => setDarkMode(!_isDarkMode);
+
   void setDarkMode(bool value) {
+    if (value == _isDarkMode) return;
     _isDarkMode = value;
     notifyListeners();
+    _persist(value);
+  }
+
+  /// Fire-and-forget: the toggle shouldn't wait on disk, and a failed write
+  /// costs the preference, not the session.
+  Future<void> _persist(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_prefsKey, value);
   }
 }
 
