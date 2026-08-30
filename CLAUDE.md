@@ -92,6 +92,17 @@ multiple worship sites gets one record each; `parish_id` is the identity, not
 - `parishId` — optional unique identifier
 - `massTimes`, `confTimes`, `adoration` — `List<ScheduleEntry>` (pre-parsed; nothing downstream parses schedule strings)
 - `adorationIsPerpetual: bool` + `hasAdoration` getter
+- `weeksOfMonth` / `excludedWeeks` on `ScheduleEntry` — monthly-ordinal
+  recurrence. **Every** recurrence decision goes through
+  `ScheduleEntry.occursOn(day)`, which answers dated, weekly and monthly alike;
+  answering "is it on today" from `dayOfWeek` alone is wrong for these entries.
+  UI that collapses entries sharing a time into one multi-day row must include
+  `recurrenceKey` in its grouping key, or a First Friday Mass merges with a
+  weekly one and the row claims both happen every week. The ordinal is rendered
+  (`ordinalShortLabel`) only where a view asserts a *standing weekly schedule* —
+  the Mass card and the A–Z list's `_groupChip` — not on the confession/adoration
+  timeline card, whose rows are single upcoming occurrences already bucketed
+  through `nextOccurrence`.
 - `bulletinUrl`, `eventsSummary`, `imageUrl`, `contactInfo` — optional
 - `latitude`, `longitude` — nullable plain floats (now present in the data)
 - `lastUpdated` — parsed from the per-record `timestamp`
@@ -102,6 +113,11 @@ JSON comes from the **structured** `export.json` shape:
 - `schedules.confession[]`: `{day, start, end, notes}`
 - `schedules.adoration`: `{is_perpetual, times: [{day, start, end, notes}]}`
 - plain numeric `latitude`/`longitude`, plus `bulletin_url`, `timestamp`, `invite_feedback`
+- optional `weeks_of_month` / `excluded_weeks` (`int[]`, domain `1`–`5` and `-1`)
+  on any schedule entry: monthly-ordinal recurrence ("First Friday", "Last
+  Sunday"). Absent/null/empty all mean *every week* — the app must not
+  distinguish them. **Supported since 2026-08-29; the scraper does not emit
+  them yet**, so the code is inert until the data arrives.
 - Legacy keys (`mass_times`, `confessions`, `conf_times`, `www`, `lonlat`) are gone.
 
 ### Key Dependencies
