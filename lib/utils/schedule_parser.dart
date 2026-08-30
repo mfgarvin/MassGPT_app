@@ -38,6 +38,20 @@ class ScheduleEntry {
   /// Free-text annotation ("Vigil Mass", "Christmas Eve", etc.).
   final String? note;
 
+  /// The exporter's `weeks_of_month`: the entry occurs *only* in these ordinal
+  /// weeks of the month ("First Friday", "2nd and 4th Saturday"). `1`..`5`, or
+  /// `-1` for the last such weekday. Null means every week, which is what an
+  /// export predating this field — and the great majority of entries — says.
+  ///
+  /// `5` and `-1` are not the same: a 5th Friday exists only in some months,
+  /// while `-1` is whichever Friday is last, the 5th in a 5-Friday month.
+  final List<int>? weeksOfMonth;
+
+  /// The exporter's `excluded_weeks`: the inverse rule — every week *except*
+  /// these ("Weekday Mass, except on First Fridays"). Same value domain.
+  /// Never non-null alongside [weeksOfMonth]; null means never skipped.
+  final List<int>? excludedWeeks;
+
   ScheduleEntry({
     required this.dayOfWeek,
     required this.hour,
@@ -48,6 +62,8 @@ class ScheduleEntry {
     this.date,
     this.language,
     this.note,
+    this.weeksOfMonth,
+    this.excludedWeeks,
   });
 
   /// True when the entry carries a real window, not just a start time.
@@ -80,6 +96,84 @@ class ScheduleEntry {
   /// True for dated (holiday / one-off) entries.
   bool get isDated => date != null;
 
+  /// True when this entry recurs on an ordinal weekday of the month rather
+  /// than every week. Route every recurrence decision through [occursOn]
+  /// rather than testing this: it answers all three cases at once.
+  bool get isMonthly => weeksOfMonth != null || excludedWeeks != null;
+
+  /// Does this entry occur on the calendar day [day]? The single predicate
+  /// for dated, weekly and monthly entries alike — anything that answers "is
+  /// it on today" or "when is it next" from [dayOfWeek] alone is wrong for a
+  /// monthly entry.
+  bool occursOn(DateTime day) {
+    if (date != null) {
+      return day.year == date!.year &&
+          day.month == date!.month &&
+          day.day == date!.day;
+    }
+    if (day.weekday != dayOfWeek) return false;
+    if (!isMonthly) return true;
+
+    // Which ordinal weekday-of-month is this date, and is it the last one?
+    final n = ((day.day - 1) ~/ 7) + 1;
+    final daysInMonth = DateTime(day.year, day.month + 1, 0).day;
+    final isLast = day.day + 7 > daysInMonth;
+    bool listed(List<int> weeks) =>
+        weeks.contains(n) || (weeks.contains(-1) && isLast);
+
+    return weeksOfMonth != null ? listed(weeksOfMonth!) : !listed(excludedWeeks!);
+  }
+
+  /// Grouping discriminator for UI that merges entries sharing a time into one
+  /// multi-day row. Empty for a weekly entry, so weekly rows group exactly as
+  /// they did before this field existed; distinct for each ordinal rule, so a
+  /// "First Friday" slot can never be collapsed into a weekly row and rendered
+  /// as if it happened every week.
+  String get recurrenceKey {
+    if (weeksOfMonth != null) return 'w${weeksOfMonth!.join(',')}';
+    if (excludedWeeks != null) return 'x${excludedWeeks!.join(',')}';
+    return '';
+  }
+
+  static const Map<int, String> _ordinalNames = {
+    1: '1st',
+    2: '2nd',
+    3: '3rd',
+    4: '4th',
+    5: '5th',
+    -1: 'Last',
+  };
+
+  /// Compact ordinal for a chip — "1st", "2nd·4th", "Last", "Except 1st" — or
+  /// null for a weekly entry. Deliberately short: the day columns it rides in
+  /// are ~64px wide.
+  ///
+  /// "Except" rather than "Not": it echoes the note the field is derived from
+  /// ("Weekday Mass (except on First Fridays)"), and under a "Fri" chip it
+  /// reads as a sentence. It also keeps the excluded case visibly distinct
+  /// from a plain "1st" sitting in the same list, which "No 1st" would not.
+  String? get ordinalShortLabel {
+    if (!isMonthly) return null;
+    final weeks = weeksOfMonth ?? excludedWeeks!;
+    final names = weeks.map((w) => _ordinalNames[w] ?? '$w').join('·');
+    return weeksOfMonth != null ? names : 'Except $names';
+  }
+
+  /// Sentence form of the ordinal rule ("1st & 3rd Friday of the month"), or
+  /// null for a weekly entry.
+  ///
+  /// The exporter guarantees [note] keeps stating the ordinal in prose, so
+  /// this is normally redundant — it exists so a row still reads truthfully if
+  /// an entry ever arrives carrying the rule and no note.
+  String? get ordinalDescription {
+    if (!isMonthly) return null;
+    final weeks = weeksOfMonth ?? excludedWeeks!;
+    final names = weeks.map((w) => _ordinalNames[w] ?? '$w').join(' & ');
+    return weeksOfMonth != null
+        ? '$names $dayName of the month'
+        : 'Every $dayName except the $names';
+  }
+
   static const Map<String, int> _dayMap = {
     'monday': 1,
     'tuesday': 2,
@@ -106,6 +200,10 @@ class ScheduleEntry {
     // _structured_ranges), so the fallback matches that rule for a pre-v2.5.0
     // cached export. Strict `<`, so equal endpoints fall back to false — an
     // unstated end, which is the safe reading.
+    // The two keys are mutually exclusive by contract; if both ever arrive,
+    // `weeks_of_month` wins (EXPORT_SHAPE_CHANGES.md, "Semantics").
+    final weeks = _parseWeeks(json['weeks_of_month']);
+    final excluded = weeks == null ? _parseWeeks(json['excluded_weeks']) : null;
     final endNextDay = (json['end_next_day'] as bool?) ??
         (end != null &&
             (end.hour * 60 + end.minute) < (start.hour * 60 + start.minute));
@@ -123,7 +221,25 @@ class ScheduleEntry {
       note: (json['notes'] as String?)?.trim().isEmpty ?? true
           ? null
           : (json['notes'] as String).trim(),
+      weeksOfMonth: weeks,
+      excludedWeeks: excluded,
     );
+  }
+
+  /// Parse an ordinal-week list. The domain is `1`..`5` and `-1`; anything
+  /// else is malformed and discarded. Absent, null, not-a-list and empty all
+  /// collapse to null — the spec is explicit that a consumer must not
+  /// distinguish them, and null is "every week", which is how every entry
+  /// written before this field behaves.
+  static List<int>? _parseWeeks(dynamic value) {
+    if (value is! List) return null;
+    final out = value
+        .whereType<int>()
+        .where((n) => (n >= 1 && n <= 5) || n == -1)
+        .toSet()
+        .toList()
+      ..sort();
+    return out.isEmpty ? null : out;
   }
 
   /// Parse a list of structured schedule objects into entries.
@@ -183,15 +299,7 @@ class ScheduleEntry {
 
     for (final offset in const [0, -1]) {
       final day = today.add(Duration(days: offset));
-      if (date != null) {
-        if (day.year != date!.year ||
-            day.month != date!.month ||
-            day.day != date!.day) {
-          continue;
-        }
-      } else if (day.weekday != dayOfWeek) {
-        continue;
-      }
+      if (!occursOn(day)) continue;
       final start = DateTime(day.year, day.month, day.day, hour, minute);
       if (!now.isBefore(start) && now.isBefore(endOf(start)!)) return start;
     }
@@ -218,6 +326,20 @@ class ScheduleEntry {
 
     if (date != null) {
       return DateTime(date!.year, date!.month, date!.day, hour, minute);
+    }
+
+    if (isMonthly) {
+      // A monthly rule can't be reached by adding 7, so scan candidate days.
+      // The bound is generous — a `[5]`-only slot can be ~3 months out — and
+      // falling through to the weekly arithmetic keeps an unforeseen rule
+      // showing a Mass too often rather than hiding it entirely.
+      final today = DateTime(now.year, now.month, now.day);
+      for (var i = 0; i <= 400; i++) {
+        final day = today.add(Duration(days: i));
+        if (!occursOn(day)) continue;
+        final start = DateTime(day.year, day.month, day.day, hour, minute);
+        if (!start.isBefore(now)) return start;
+      }
     }
 
     final currentDayOfWeek = now.weekday; // 1 = Monday, 7 = Sunday
@@ -290,13 +412,20 @@ class ScheduleEntry {
   /// Compact label for chips and previews, e.g. "Sun · 9:00 AM".
   String get display => '$dayLabel · $timeLabel';
 
+  /// The note to show on a row: the exporter's prose, or the ordinal rule
+  /// spelled out when a monthly entry arrives without one. Never both — the
+  /// note already states the ordinal whenever it exists, and repeating it
+  /// would read as two different rules.
+  String? get displayNote => note ?? ordinalDescription;
+
   /// Combined language + note annotation for muted display, or null.
-  /// Mass views prefer [languageBadge] + [note] separately; this stays for
-  /// confession/adoration cards (which never carry a language).
+  /// Mass views prefer [languageBadge] + [displayNote] separately; this stays
+  /// for confession/adoration cards (which never carry a language).
   String? get noteLabel {
     final parts = <String>[];
     if (language != null) parts.add(language!);
-    if (note != null) parts.add(note!);
+    final n = displayNote;
+    if (n != null) parts.add(n);
     return parts.isEmpty ? null : parts.join(' · ');
   }
 
@@ -459,7 +588,7 @@ class ScheduleParser {
     // whether the exporter wrote a null end or an end equal to the start.
     String signature(List<ScheduleEntry> list) => list
         .map((e) =>
-            '${e.hour}:${e.minute}-${e.hasRange ? '${e.endHour}:${e.endMinute}' : ''}-${e.languageBadge}')
+            '${e.hour}:${e.minute}-${e.hasRange ? '${e.endHour}:${e.endMinute}' : ''}-${e.languageBadge}-${e.recurrenceKey}')
         .join('|');
 
     final runs = <({int firstDay, int lastDay, List<ScheduleEntry> entries})>[];

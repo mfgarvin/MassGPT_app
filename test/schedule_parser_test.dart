@@ -423,4 +423,196 @@ void main() {
       expect(groups.last.entries.single.hasRange, true);
     });
   });
+
+  // Ordinal-weekday recurrence: `weeks_of_month` / `excluded_weeks`, the
+  // additive keys specified in ../bulletin-v2/EXPORT_SHAPE_CHANGES.md. The
+  // scraper does not emit them yet, so these pin the app's side of the
+  // contract in advance. Calendar facts used below: August 2026 has four
+  // Fridays (7, 14, 21, 28); September's first is the 4th; October has five
+  // (2, 9, 16, 23, 30).
+  group('monthly-ordinal recurrence', () {
+    Map<String, dynamic> monthly(String day, String start,
+            {List<dynamic>? weeks, List<dynamic>? excluded, String? notes}) =>
+        {
+          'day': day,
+          'start': start,
+          'notes': notes,
+          if (weeks != null) 'weeks_of_month': weeks,
+          if (excluded != null) 'excluded_weeks': excluded,
+        };
+
+    test('absent keys mean weekly, exactly as before', () {
+      final e = ScheduleEntry.fromJson(massJson('Friday', '08:15'))!;
+      expect(e.isMonthly, false);
+      expect(e.weeksOfMonth, isNull);
+      expect(e.excludedWeeks, isNull);
+      expect(e.occursOn(DateTime(2026, 8, 7)), true);
+      expect(e.occursOn(DateTime(2026, 8, 28)), true);
+      expect(e.recurrenceKey, '');
+      expect(e.ordinalShortLabel, isNull);
+    });
+
+    test('null and empty are weekly too, and never distinguished', () {
+      for (final v in [null, <dynamic>[], 'first', 0]) {
+        final e = ScheduleEntry.fromJson({
+          'day': 'Friday',
+          'start': '08:15',
+          'weeks_of_month': v,
+          'excluded_weeks': v,
+        })!;
+        expect(e.isMonthly, false, reason: 'weeks_of_month: $v');
+      }
+    });
+
+    test('out-of-domain values are discarded; a wholly bad list is weekly', () {
+      final mixed =
+          ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [1, 9, -2]))!;
+      expect(mixed.weeksOfMonth, [1]);
+      final junk = ScheduleEntry.fromJson(
+          monthly('Friday', '17:30', weeks: [0, 6, 'first', null]))!;
+      expect(junk.isMonthly, false);
+    });
+
+    test('values are de-duplicated and sorted, -1 first', () {
+      final e = ScheduleEntry.fromJson(
+          monthly('Saturday', '15:00', weeks: [4, 2, 4, -1]))!;
+      expect(e.weeksOfMonth, [-1, 2, 4]);
+    });
+
+    test('weeks_of_month wins if both keys somehow arrive', () {
+      final e = ScheduleEntry.fromJson(
+          monthly('Friday', '17:30', weeks: [1], excluded: [2]))!;
+      expect(e.weeksOfMonth, [1]);
+      expect(e.excludedWeeks, isNull);
+    });
+
+    test('occursOn honours the ordinal, and only on the right weekday', () {
+      final firstFriday =
+          ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [1]))!;
+      expect(firstFriday.occursOn(DateTime(2026, 8, 7)), true);
+      expect(firstFriday.occursOn(DateTime(2026, 8, 14)), false);
+      expect(firstFriday.occursOn(DateTime(2026, 8, 6)), false); // Thursday
+    });
+
+    test('-1 is the last of its weekday, 5 only exists in some months', () {
+      final last =
+          ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [-1]))!;
+      final fifth =
+          ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [5]))!;
+      // August 2026 has four Fridays: the 28th is last, and there is no fifth.
+      expect(last.occursOn(DateTime(2026, 8, 28)), true);
+      expect(fifth.occursOn(DateTime(2026, 8, 28)), false);
+      // October 2026 has five: the 30th is both the fifth and the last.
+      expect(last.occursOn(DateTime(2026, 10, 30)), true);
+      expect(fifth.occursOn(DateTime(2026, 10, 30)), true);
+      expect(last.occursOn(DateTime(2026, 10, 23)), false);
+    });
+
+    test('excluded_weeks is the inverse', () {
+      final e = ScheduleEntry.fromJson(monthly('Friday', '08:15',
+          excluded: [1], notes: 'Weekday Mass (except on First Fridays)'))!;
+      expect(e.occursOn(DateTime(2026, 8, 7)), false);
+      expect(e.occursOn(DateTime(2026, 8, 14)), true);
+      expect(e.occursOn(DateTime(2026, 8, 28)), true);
+    });
+
+    test('nextOccurrence skips to the right week, not the next weekday', () {
+      final e = ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [1]))!;
+      // Mon 10 Aug: the coming Friday is the 14th, but this Mass is the 4th
+      // of September.
+      expect(e.nextOccurrence(DateTime(2026, 8, 10, 12, 0)),
+          DateTime(2026, 9, 4, 17, 30));
+    });
+
+    test('nextOccurrence rolls past today once the slot has started', () {
+      final e = ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [1]))!;
+      expect(e.nextOccurrence(DateTime(2026, 8, 7, 18, 0)),
+          DateTime(2026, 9, 4, 17, 30));
+      expect(e.nextOccurrence(DateTime(2026, 8, 7, 9, 0)),
+          DateTime(2026, 8, 7, 17, 30));
+    });
+
+    test('a fifth-week slot can be months out and is still found', () {
+      final e = ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [5]))!;
+      expect(e.nextOccurrence(DateTime(2026, 8, 1, 12, 0)),
+          DateTime(2026, 10, 30, 17, 30));
+    });
+
+    test('an excluded week is skipped by nextOccurrence', () {
+      final e =
+          ScheduleEntry.fromJson(monthly('Friday', '08:15', excluded: [1]))!;
+      expect(e.nextOccurrence(DateTime(2026, 9, 1, 12, 0)),
+          DateTime(2026, 9, 11, 8, 15));
+    });
+
+    test('an off-week window is not reported as in progress', () {
+      final e = ScheduleEntry.fromJson({
+        'day': 'Friday',
+        'start': '17:30',
+        'end': '18:15',
+        'end_next_day': false,
+        'weeks_of_month': [1],
+      })!;
+      // 14 Aug is the second Friday: nothing is open, and "next" is September.
+      expect(e.isInProgress(DateTime(2026, 8, 14, 17, 45)), false);
+      expect(e.nextOccurrence(DateTime(2026, 8, 14, 17, 45)),
+          DateTime(2026, 9, 4, 17, 30));
+      // 7 Aug is the first: the window is genuinely open.
+      expect(e.isInProgress(DateTime(2026, 8, 7, 17, 45)), true);
+    });
+
+    test('soonest ranking prefers a weekly entry over a distant monthly one',
+        () {
+      final entries = ScheduleEntry.listFromJson([
+        monthly('Friday', '17:30', weeks: [1]),
+        massJson('Friday', '19:00'),
+      ]);
+      final next = ScheduleParser.findNextOccurrence(
+          entries, DateTime(2026, 8, 10, 12, 0))!;
+      expect(next.hour, 19);
+    });
+
+    test('labels describe the rule', () {
+      final first =
+          ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [1]))!;
+      expect(first.ordinalShortLabel, '1st');
+      expect(first.ordinalDescription, '1st Friday of the month');
+
+      final twoAndFour =
+          ScheduleEntry.fromJson(monthly('Saturday', '15:00', weeks: [2, 4]))!;
+      expect(twoAndFour.ordinalShortLabel, '2nd·4th');
+      expect(twoAndFour.ordinalDescription, '2nd & 4th Saturday of the month');
+
+      final last =
+          ScheduleEntry.fromJson(monthly('Sunday', '14:00', weeks: [-1]))!;
+      expect(last.ordinalShortLabel, 'Last');
+
+      final except =
+          ScheduleEntry.fromJson(monthly('Friday', '08:15', excluded: [1]))!;
+      expect(except.ordinalShortLabel, 'Except 1st');
+      expect(except.ordinalDescription, 'Every Friday except the 1st');
+    });
+
+    test('the exporter note wins over the generated description', () {
+      final e = ScheduleEntry.fromJson(monthly('Friday', '17:30',
+          weeks: [1], notes: 'First Friday of the month'))!;
+      expect(e.displayNote, 'First Friday of the month');
+      expect(e.noteLabel, 'First Friday of the month');
+    });
+
+    test('a monthly entry without a note still says so', () {
+      final e = ScheduleEntry.fromJson(monthly('Friday', '17:30', weeks: [1]))!;
+      expect(e.displayNote, '1st Friday of the month');
+    });
+
+    test('groupByDay never merges a monthly day-run with a weekly one', () {
+      final entries = ScheduleEntry.listFromJson([
+        massJson('Wednesday', '08:15'),
+        monthly('Thursday', '08:15', weeks: [1]),
+        massJson('Friday', '08:15'),
+      ]);
+      final groups = ScheduleParser.groupByDay(entries);
+      expect(groups.map((g) => g.label).toList(), ['Wed', 'Thu', 'Fri']);
+    });
+  });
 }
