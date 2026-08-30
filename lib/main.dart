@@ -303,6 +303,40 @@ class RootShell extends StatefulWidget {
 
 class _RootShellState extends State<RootShell> {
   int _index = 0;
+  bool _orientationLocked = false;
+
+  /// Phones are portrait-only; tablets rotate freely.
+  ///
+  /// Nothing in this app is laid out for a short, wide phone screen: the Map
+  /// tab's parish carousel and the schedule cards both assume a portrait
+  /// column, and a landscape phone leaves the map a letterbox strip with the
+  /// carousel eating most of it. A tablet has the height to spare in either
+  /// orientation, and locking one there is the more annoying bug — a tablet is
+  /// often docked or in a keyboard case landscape-first.
+  ///
+  /// 600dp shortest side is the conventional phone/tablet split (it is what
+  /// Android's own `sw600dp` resource bucket uses). Read via [MediaQuery] here
+  /// rather than in `main()` because the view has no size until a frame is in
+  /// flight. `shortestSide` is orientation-independent, so this decides the
+  /// same way whichever way the device is held when it launches.
+  void _applyOrientationLock() {
+    if (_orientationLocked) return;
+    final shortestSide = MediaQuery.sizeOf(context).shortestSide;
+    if (shortestSide <= 0) return; // no real size yet; try again next time
+    _orientationLocked = true;
+    if (shortestSide < 600) {
+      SystemChrome.setPreferredOrientations(const [
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _applyOrientationLock();
+  }
 
   @override
   void initState() {
@@ -511,6 +545,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   List<Parish> get _favoriteParishes =>
       _parishes.where((p) => favoritesManager.isFavorite(p)).toList();
 
+  /// Anchors the search field + results so they can be scrolled clear of the
+  /// keyboard — see [_revealSearch].
+  final GlobalKey _searchSectionKey = GlobalKey();
+
   void _onThemeChanged() {
     setState(() {});
   }
@@ -521,6 +559,37 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         _showResults = false;
       });
     }
+    if (_searchFocusNode.hasFocus) _revealSearch();
+  }
+
+  /// Scroll the search field (and the results below it) clear of the keyboard.
+  ///
+  /// Search sits partway down a long scrolling Home page, so raising the
+  /// keyboard covers the very results the user is typing to see. Aligning the
+  /// section to the top of the viewport gives the result list the whole
+  /// remaining height, which is the most room the keyboard leaves.
+  ///
+  /// Deferred by a post-frame callback because the inset animates: at the
+  /// moment focus arrives, the viewport is still full height, so scrolling now
+  /// would land short once it shrinks. The extra delay covers the keyboard's
+  /// own slide-in, and re-running is harmless — [Scrollable.ensureVisible] on
+  /// an already-visible box is a no-op.
+  void _revealSearch() {
+    void reveal() {
+      final ctx = _searchSectionKey.currentContext;
+      if (ctx == null || !mounted) return;
+      Scrollable.ensureVisible(
+        ctx,
+        alignment: 0.0,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      reveal();
+      Future.delayed(const Duration(milliseconds: 300), reveal);
+    });
   }
 
   Future<void> _loadParishData() async {
@@ -868,6 +937,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         }).take(5).toList(); // Limit to 5 results for autocomplete
       }
     });
+    // The list grows downward as matches arrive, so re-check the reveal: a
+    // 5-result list needs more clearance than the bare field did.
+    if (_showResults && _searchFocusNode.hasFocus) _revealSearch();
   }
 
   void _selectParish(Parish parish) {
@@ -1140,6 +1212,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
 
   Widget _buildSearchBar() {
     return Column(
+      key: _searchSectionKey,
       children: [
         // Search Input
         Container(
@@ -1516,6 +1589,47 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   /// Horizontal quick-launcher of every home (favorite) parish, so returning
   /// users can jump straight into the parishes they follow. Each card shows the
   /// parish and its next upcoming Mass. Empty when no favorites are saved.
+  /// Wrap a horizontal card row so its trailing edge fades into the page.
+  ///
+  /// The rows live inside the page's 20px padding, so a card is clipped flush
+  /// against that margin — which reads as a deliberate edge, not as "there is
+  /// more this way". Fading the last few pixels to the background colour is
+  /// the standard cue that content continues, and unlike an arrow or a dot
+  /// row it costs no vertical space and needs no state to stay in sync.
+  ///
+  /// [IgnorePointer] so the gradient never eats a tap or a drag that starts
+  /// on the card underneath it.
+  Widget _withTrailingFade(Widget child, {required double height}) {
+    return SizedBox(
+      height: height,
+      child: Stack(
+        children: [
+          Positioned.fill(child: child),
+          Positioned(
+            top: 0,
+            bottom: 0,
+            right: 0,
+            width: 28,
+            child: IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      _backgroundColor.withValues(alpha: 0.0),
+                      _backgroundColor,
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   List<Widget> _buildHomeParishesSection() {
     final favorites = _favoriteParishes;
     if (favorites.isEmpty) return const [];
@@ -1526,14 +1640,17 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         style: AppText.titleLarge(color: _textColor),
       ),
       const SizedBox(height: 16),
-      SizedBox(
+      _withTrailingFade(
         // Tall enough for a 2-line parish name plus the avatar row and the
         // pinned "Next ·" line without overflowing the card (was 150 → 19px
         // overflow when the name wrapped to two lines).
         height: 176,
-        child: ListView.separated(
+        ListView.separated(
           scrollDirection: Axis.horizontal,
           physics: const BouncingScrollPhysics(),
+          // Trailing room so the last card can clear the fade instead of
+          // ending underneath it.
+          padding: const EdgeInsets.only(right: 28),
           itemCount: favorites.length,
           separatorBuilder: (context, index) => const SizedBox(width: 12),
           itemBuilder: (context, index) {
@@ -1710,11 +1827,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       );
     }
 
-    return SizedBox(
+    return _withTrailingFade(
       height: 180,
-      child: ListView.separated(
+      ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.only(right: 28),
         itemCount: _nearbyParishes.length,
         separatorBuilder: (context, index) => const SizedBox(width: 12),
         itemBuilder: (context, index) {

@@ -1,3 +1,6 @@
+import 'dart:io' show Platform;
+
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -132,13 +135,57 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
   Color get _secondaryAccent =>
       themeNotifier.isDarkMode ? _primaryAccent : kSecondaryColor;
 
-  Future<void> _launchMaps() async {
+  /// Hand the address to whatever the device treats as *its* map app, rather
+  /// than to Google Maps by name.
+  ///
+  /// On iOS that means Apple Maps, which is what a `maps.apple.com` link opens
+  /// — and if the user has Google Maps installed and prefers it, iOS offers it
+  /// from there. On Android the `geo:` scheme is the platform's own "show me
+  /// this place" intent, so it resolves through the user's default map app
+  /// (Google Maps for most, but Organic Maps / OsmAnd / Waze for anyone who
+  /// set one). The query goes in `q=` for both.
+  ///
+  /// Coordinates are preferred when we have them — an address string is
+  /// re-geocoded by the receiving app and can land on the wrong side of a
+  /// block — but the address rides along as the label so the pin is named, and
+  /// is the whole query when coordinates are missing (they are nullable).
+  Uri _mapsUri() {
     final address = '${parish.address}, ${parish.city} ${parish.zipCode}';
-    final encodedAddress = Uri.encodeComponent(address);
-    final Uri mapsUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=$encodedAddress');
+    final lat = parish.latitude;
+    final lon = parish.longitude;
+    final hasCoords = lat != null && lon != null;
 
-    if (await canLaunchUrl(mapsUrl)) {
-      await launchUrl(mapsUrl, mode: LaunchMode.externalApplication);
+    if (!kIsWeb && Platform.isAndroid) {
+      // geo:lat,lon?q=lat,lon(Label) — the coordinate before `?` is the map
+      // centre, the `q` is the dropped pin. Label must be encoded.
+      final q = hasCoords
+          ? '$lat,$lon(${Uri.encodeComponent(address)})'
+          : Uri.encodeComponent(address);
+      return Uri.parse('geo:${hasCoords ? '$lat,$lon' : '0,0'}?q=$q');
+    }
+    if (!kIsWeb && Platform.isIOS) {
+      return Uri.parse(hasCoords
+          ? 'https://maps.apple.com/?ll=$lat,$lon&q=${Uri.encodeComponent(address)}'
+          : 'https://maps.apple.com/?q=${Uri.encodeComponent(address)}');
+    }
+    // Desktop and web have no single "default map app" to defer to.
+    return Uri.parse(
+        'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(address)}');
+  }
+
+  Future<void> _launchMaps() async {
+    final url = _mapsUri();
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+      return;
+    }
+    // A device with no handler for `geo:` (rare, but an Android build with no
+    // map app installed does it) still deserves to reach a map.
+    final address = '${parish.address}, ${parish.city} ${parish.zipCode}';
+    final fallback = Uri.parse(
+        'https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(address)}');
+    if (await canLaunchUrl(fallback)) {
+      await launchUrl(fallback, mode: LaunchMode.externalApplication);
     }
   }
 
