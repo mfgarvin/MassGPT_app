@@ -965,8 +965,8 @@ class _FilteredParishListPageState extends State<FilteredParishListPage> {
                   // for something open around the clock.
                   showTimeUntil: _sortOrder == SortOrder.nearestAndSoonest &&
                       minutesUntil != null,
-                  preferUpcoming:
-                      _sortOrder != SortOrder.alphabetical && !_hasActiveFilters(),
+                  preferUpcoming: _sortOrder == SortOrder.nearestAndSoonest &&
+                      !_hasActiveFilters(),
                   filteredTimes: _hasActiveFilters()
                       ? _entriesMatchingFilters(parish)
                       : null,
@@ -1001,10 +1001,12 @@ class _ParishCard extends StatelessWidget {
   final bool showDistance;
   final bool showTimeUntil;
 
-  /// In Soonest/Nearest modes the times sample shows the next upcoming day's
-  /// schedule — what's left today, else tomorrow's, etc. — so it always
-  /// agrees with the "Tomorrow morning" badge. Off in A-Z (which shows the
-  /// full day-grouped schedule) and whenever day/time filters are active.
+  /// In Soonest mode the times sample shows the next upcoming day's schedule —
+  /// what's left today, else tomorrow's, etc. — so it always agrees with the
+  /// "Tomorrow morning" badge. Off whenever day/time filters are active, and in
+  /// both A-Z and Nearest, which show the full day-grouped weekly schedule
+  /// instead: neither sorts by time, so a card claiming to be about "next"
+  /// would be answering a question its own ordering never asked.
   final bool preferUpcoming;
 
   /// When day/time filters are active, the entries that match them (soonest
@@ -1316,10 +1318,11 @@ class _ParishCard extends StatelessWidget {
     if (showingFiltered) {
       label = 'Filtered';
     } else if (dayLabel != null) {
-      // Soonest sort: the "Tomorrow morning" badge already names the day.
-      // Without that badge (Nearest shows distance), the row carries it.
-      // [times] is the upcoming day's entries, so it answers the only question
-      // the label needs: is there one Mass that day, or several?
+      // Only Soonest reaches here, and it carries the "Tomorrow morning" badge
+      // already, so [showTimeUntil] is the normal path; the [dayLabel] fallback
+      // covers a card whose minutes-until never resolved. [times] is the
+      // upcoming day's entries, so it answers the only question the label
+      // needs: is there one Mass that day, or several?
       final single = times.length == 1;
       label = showTimeUntil
           ? switch (filter) {
@@ -1334,8 +1337,8 @@ class _ParishCard extends StatelessWidget {
     final isPerpetual =
         filter == ParishFilter.adoration && parish.adorationIsPerpetual;
 
-    // Day-focused and filtered samples: up to 3 per-entry chips. The A-Z
-    // weekly view instead shows the whole schedule as day-grouped chips.
+    // Day-focused and filtered samples: up to 3 per-entry chips. The A-Z and
+    // Nearest views instead show the whole schedule as day-grouped chips.
     final grouped = !showingFiltered && dayLabel == null;
     final displayTimes =
         grouped ? const <ScheduleEntry>[] : times.take(3).toList();

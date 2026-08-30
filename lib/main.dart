@@ -1390,22 +1390,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             );
           }),
         ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: _QuickAccessButton(
-            icon: const Icon(Icons.event, color: kSecondaryColor, size: 28),
-            label: 'Parish Events',
-            color: kSecondaryColor,
-            onTap: () {
-              _showComingSoon(
-                icon: Icons.event,
-                title: 'Parish Events',
-                message: 'Parish event listings are coming soon. Check back later for updates!',
-                color: kSecondaryColor,
-              );
-            },
-          ),
-        ),
       ],
     );
   }
@@ -1480,96 +1464,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             curve: Curves.easeOut,
           )),
           child: child,
-        );
-      },
-    );
-  }
-
-  void _showComingSoon({
-    required IconData icon,
-    required String title,
-    required String message,
-    required Color color,
-  }) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (context) {
-        return Container(
-          margin: const EdgeInsets.all(16),
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: _cardColor,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 40,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: _subtextColor.withValues(alpha: 0.3),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              const SizedBox(height: 24),
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icon,
-                  color: color,
-                  size: 32,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                title,
-                style: GoogleFonts.inter(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: _textColor,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                message,
-                style: GoogleFonts.inter(
-                  fontSize: 14,
-                  color: _subtextColor,
-                  height: 1.5,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: color,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    'Got It',
-                    style: GoogleFonts.inter(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
         );
       },
     );
