@@ -232,9 +232,15 @@ the worker, the site, and text-level iOS config (`Info.plist`, bundle IDs, the
 build-number script) are all plain files.
 
 **macOS is for iOS only**: Xcode UI changes (signing team, capabilities),
-CocoaPods (`ios/Podfile`, `ios/Podfile.lock`), Simulator/device testing, and
-archiving/uploading. **Never run `tool/release.sh` on the Mac** — versions are
-bumped and tagged in one place, on Linux, or the two checkouts race the tag.
+Simulator/device testing, and archiving/uploading. **Never run
+`tool/release.sh` on the Mac** — versions are bumped and tagged in one place, on
+Linux, or the two checkouts race the tag.
+
+**There is no CocoaPods here.** Flutter 3.47.0 moved plugin registration to
+Swift Package Manager, so `ios/Podfile`/`Podfile.lock` do not exist and never
+will; the plugins link via a regenerated, gitignored local package at
+`ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage`. See
+[`docs/ios-testflight.md`](docs/ios-testflight.md) ("No Podfile, by design").
 
 Protocol: `main` only, one machine at a time, `git pull --rebase` before
 starting, commit and push before switching. Xcode rewrites `project.pbxproj`

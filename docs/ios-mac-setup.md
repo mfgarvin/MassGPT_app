@@ -9,8 +9,12 @@
 
 > Notes for shipping **ParishFinder** on iOS, written to be read cold when you return
 > to this. Everything below assumes you're picking up on a Mac. Nothing here can
-> be finished on the Linux dev box — iOS builds, the Simulator, code signing, and
-> CocoaPods are macOS + Xcode only.
+> be finished on the Linux dev box — iOS builds, the Simulator, and code signing
+> are macOS + Xcode only.
+
+> **CocoaPods references below are obsolete.** Flutter 3.47.0 moved plugin
+> registration to Swift Package Manager; there is no `ios/Podfile`. See
+> [`ios-testflight.md`](ios-testflight.md), "No Podfile, by design".
 
 ---
 
@@ -101,11 +105,10 @@ Do these in order so you're not debugging on a metered clock:
 
 ```bash
 # 0. Toolchain present
-flutter doctor                      # expect Xcode + CocoaPods green
+flutter doctor                      # expect Xcode green
 
 # 1. Deps
-flutter pub get
-cd ios && pod install && cd ..      # generates Podfile / Podfile.lock (none committed yet — normal)
+flutter pub get                     # plugins link via SPM; there is no pod install step
 
 # 2. Verify the hand-edited project opens cleanly
 open ios/Runner.xcworkspace         # must open with NO "project is damaged" error
