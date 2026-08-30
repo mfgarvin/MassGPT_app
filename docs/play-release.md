@@ -37,9 +37,9 @@ machine's disk.
 Create `android/key.properties` (already gitignored — never commit it):
 
 ```properties
-storeFile=/home/michael/parishfinder-upload.jks
+storeFile=/home/michael/keys/parishfinder-upload.jks
 storePassword=<your store password>
-keyAlias=upload
+keyAlias=mykey
 keyPassword=<your key password>
 ```
 
