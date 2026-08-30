@@ -1225,6 +1225,15 @@ class _ParishCard extends StatelessWidget {
   }
 
   /// One chip per day-run: "Sun 7:30 · 9:00 · 11:00 AM".
+  /// Matches the language badge's weight and size — both are the same kind of
+  /// mark: a small qualifier on a time.
+  TextStyle get _ordinalSpanStyle => GoogleFonts.inter(
+        fontSize: 9,
+        fontWeight: FontWeight.w700,
+        color: accentColor,
+        letterSpacing: 0.5,
+      );
+
   Widget _groupChip(ScheduleDayGroup group) {
     final base = GoogleFonts.inter(fontSize: 12, color: textColor);
     final spans = <TextSpan>[
@@ -1241,6 +1250,14 @@ class _ParishCard extends StatelessWidget {
       final e = group.entries[i];
       if (i > 0) spans.add(TextSpan(text: ' · ', style: base));
       spans.add(TextSpan(text: _groupedTime(group.entries, i), style: base));
+      // These chips are the *standing weekly schedule* with no note beside
+      // them, so a monthly slot would otherwise read as happening every week.
+      // A day group can mix rules (groupByDay only keeps whole days apart), so
+      // the marker rides on the time, not the day label.
+      final ordinal = e.ordinalShortLabel;
+      if (ordinal != null) {
+        spans.add(TextSpan(text: ' $ordinal', style: _ordinalSpanStyle));
+      }
       final badge =
           filter == ParishFilter.adoration ? null : e.languageBadge;
       if (badge != null) {
@@ -1388,6 +1405,11 @@ class _ParishCard extends StatelessWidget {
                           color: textColor,
                         ),
                       ),
+                      if (time.ordinalShortLabel != null) ...[
+                        const SizedBox(width: 4),
+                        Text(time.ordinalShortLabel!,
+                            style: _ordinalSpanStyle),
+                      ],
                       if (badge != null) ...[
                         const SizedBox(width: 6),
                         LanguageBadge(label: badge, color: accentColor),

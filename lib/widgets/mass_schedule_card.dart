@@ -179,8 +179,9 @@ class MassScheduleCard extends StatelessWidget {
         children: [
           _sectionLabel(label),
           const SizedBox(height: 10),
-          ...rows.map((r) => _row(r.daysLabel, r.entry.timeLabel, r.entry.note,
-              r.entry.languageBadge)),
+          ...rows.map((r) => _row(r.daysLabel, r.entry.timeLabel,
+              r.entry.displayNote, r.entry.languageBadge,
+              r.entry.ordinalShortLabel)),
         ],
       ),
     );
@@ -198,7 +199,7 @@ class MassScheduleCard extends StatelessWidget {
           ...entries.map((e) {
             final d = e.nextOccurrence(now, kCountMassInProgress);
             final dateLabel = '${e.dayLabel} ${d.month}/${d.day}';
-            return _row(dateLabel, e.timeLabel, e.note, e.languageBadge);
+            return _row(dateLabel, e.timeLabel, e.displayNote, e.languageBadge);
           }),
         ],
       ),
@@ -209,8 +210,10 @@ class MassScheduleCard extends StatelessWidget {
   /// instead of competing with it for the ~120px tail of the row.
   static const _inlineNoteMaxChars = 28;
 
+  /// One schedule row. [ordinalLabel] is the monthly-recurrence marker
+  /// ("1st", "Last", "Not 1st") shown under the day, or null for a weekly row.
   Widget _row(String dayLabel, String timeLabel, String? note,
-      [String? languageBadge]) {
+      [String? languageBadge, String? ordinalLabel]) {
     final inlineNote =
         note != null && note.length <= _inlineNoteMaxChars ? note : null;
     final blockNote = note != null && inlineNote == null ? note : null;
@@ -231,20 +234,49 @@ class MassScheduleCard extends StatelessWidget {
             children: [
               Container(
                 width: 64,
+                // Floor, not a fixed height, so a monthly row's two-line chip
+                // matches the one-line chips around it without clipping a day
+                // label that needs to wrap ("Mon, Tue, Thu" is three lines at
+                // 64px). 38 is the two-line content height (11px day + 9px
+                // ordinal) plus the 3px vertical padding; at 36 the ordinal
+                // clips. A longer label still grows the row, as it always did.
+                constraints: const BoxConstraints(minHeight: 38),
+                alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 4),
                 margin: const EdgeInsets.only(right: 10),
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Text(
-                  dayLabel,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.inter(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: color,
-                  ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      dayLabel,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.inter(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        color: color,
+                      ),
+                    ),
+                    // The ordinal rides under the day rather than beside it —
+                    // "1st Fri" doesn't fit the 64px column, and shrinking the
+                    // day to make room would cost every ordinary row.
+                    if (ordinalLabel != null)
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          ordinalLabel,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 9,
+                            fontWeight: FontWeight.w600,
+                            color: color.withValues(alpha: 0.75),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ),
               SizedBox(
@@ -300,8 +332,11 @@ class MassScheduleCard extends StatelessWidget {
   }) {
     final groups = <String, List<ScheduleEntry>>{};
     for (final e in entries) {
+      // The ordinal is part of the key: without it a "First Friday" Mass
+      // merges with a weekly one at the same time and the row claims both
+      // happen every week.
       final key = '${e.hour}:${e.minute}:${e.endHour}:${e.endMinute}:'
-          '${e.language ?? ''}:${e.note ?? ''}';
+          '${e.language ?? ''}:${e.note ?? ''}:${e.recurrenceKey}';
       groups.putIfAbsent(key, () => []).add(e);
     }
 
