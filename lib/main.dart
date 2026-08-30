@@ -1599,9 +1599,17 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   ///
   /// [IgnorePointer] so the gradient never eats a tap or a drag that starts
   /// on the card underneath it.
-  Widget _withTrailingFade(Widget child, {required double height}) {
+  ///
+  /// [cardHeight] is the height of the cards themselves, not of the box: the
+  /// box is grown by [kCardShadowPad] top and bottom, and the list is padded
+  /// inward by the same amount (see [horizontalCardPadding]). A horizontal
+  /// [ListView] clips to its viewport, so sizing the box to the card exactly —
+  /// which is what it used to do — sliced each card's drop shadow off flat
+  /// along the top and bottom, drawing a hard line across the row. The cards
+  /// keep their size; the shadow just gets somewhere to land.
+  Widget _withTrailingFade(Widget child, {required double cardHeight}) {
     return SizedBox(
-      height: height,
+      height: cardHeight + kCardShadowPad * 2,
       child: Stack(
         children: [
           Positioned.fill(child: child),
@@ -1630,6 +1638,18 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     );
   }
 
+  /// Breathing room around a horizontal card row so the cards' drop shadows
+  /// render instead of being clipped by the list viewport. Comfortably clears
+  /// the cards' `blurRadius: 15` with its `Offset(0, 4)`.
+  static const double kCardShadowPad = 14;
+
+  /// Padding for a horizontal card list: [kCardShadowPad] top and bottom for
+  /// the shadow, and trailing room so the last card clears the fade rather
+  /// than ending underneath it. Leading stays 0 so the first card lines up
+  /// with the page's own margin.
+  static const EdgeInsets horizontalCardPadding =
+      EdgeInsets.fromLTRB(0, kCardShadowPad, 28, kCardShadowPad);
+
   List<Widget> _buildHomeParishesSection() {
     final favorites = _favoriteParishes;
     if (favorites.isEmpty) return const [];
@@ -1644,13 +1664,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         // Tall enough for a 2-line parish name plus the avatar row and the
         // pinned "Next ·" line without overflowing the card (was 150 → 19px
         // overflow when the name wrapped to two lines).
-        height: 176,
+        cardHeight: 176,
         ListView.separated(
           scrollDirection: Axis.horizontal,
           physics: const BouncingScrollPhysics(),
-          // Trailing room so the last card can clear the fade instead of
-          // ending underneath it.
-          padding: const EdgeInsets.only(right: 28),
+          padding: horizontalCardPadding,
           itemCount: favorites.length,
           separatorBuilder: (context, index) => const SizedBox(width: 12),
           itemBuilder: (context, index) {
@@ -1828,11 +1846,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     }
 
     return _withTrailingFade(
-      height: 180,
+      cardHeight: 180,
       ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.only(right: 28),
+        padding: horizontalCardPadding,
         itemCount: _nearbyParishes.length,
         separatorBuilder: (context, index) => const SizedBox(width: 12),
         itemBuilder: (context, index) {
