@@ -54,7 +54,7 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
     if (key == null) return;
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // Let the Hero header settle before scrolling.
+      // Let the header artwork settle before scrolling.
       await Future.delayed(const Duration(milliseconds: 350));
       final ctx = key.currentContext;
       if (!mounted || ctx == null || !ctx.mounted) return;
@@ -271,11 +271,24 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
     return Stack(
       fit: StackFit.expand,
       children: [
-        ParishGlassHero(
-          seed: parish.parishId ?? parish.name,
-          patron: parish.name,
-          overlayDarken: headerDarkenFor(paletteForParish(parish.name)),
-          child: _buildHeaderArtwork(),
+        _HeaderArtworkSettle(
+          // The field tone the panel itself paints under everything, carrying
+          // the same scrim the finished header does. Sitting under the artwork
+          // it gives the white parish name something dark to sit on from the
+          // very first frame, so the fade reads as detail resolving onto a
+          // header that was already the right colour — never as text briefly
+          // stranded on a pale background.
+          base: Color.lerp(
+            paletteForParish(parish.name).deep,
+            Colors.black,
+            headerDarkenFor(paletteForParish(parish.name)),
+          )!,
+          child: ParishGlassHero(
+            seed: parish.parishId ?? parish.name,
+            patron: parish.name,
+            overlayDarken: headerDarkenFor(paletteForParish(parish.name)),
+            child: _buildHeaderArtwork(),
+          ),
         ),
         Positioned(
           bottom: 18,
@@ -1526,6 +1539,85 @@ class _IssueChip extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Settles the parish header artwork in behind chrome that is already drawn.
+///
+/// This replaced a Hero flight between the list card's glass chip and this
+/// header. The flight never worked, for reasons that were structural rather
+/// than tunable: [StainedGlassHeader] is procedural and derives its whole
+/// composition from the shorter side of the box it is given, so a flight
+/// between a square chip and a wide header repainted a *different* panel every
+/// frame. Pinning the size to stop that only moved the problem — scaling one
+/// fixed composition into the other's aspect meant the pop appeared to dive
+/// into the icon before snapping back. And either way the shuttle arrived over
+/// an app bar that had already rendered its title, back button and star,
+/// wiping them as it landed.
+///
+/// So there is no shared element now. The page opens with its ordinary route
+/// transition, the chrome is there from the first frame and stays put, and the
+/// artwork resolves in underneath it — a fade from [base] plus a slight settle
+/// out of an overscale, which reads as the panel coming into focus rather than
+/// flying in from somewhere.
+class _HeaderArtworkSettle extends StatefulWidget {
+  final Color base;
+  final Widget child;
+
+  const _HeaderArtworkSettle({required this.base, required this.child});
+
+  @override
+  State<_HeaderArtworkSettle> createState() => _HeaderArtworkSettleState();
+}
+
+class _HeaderArtworkSettleState extends State<_HeaderArtworkSettle>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 520),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    // After the first frame, so the fade does not compete with the route
+    // transition for the same frames — the page slides in, then the glass
+    // arrives, rather than both moving at once.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _controller.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final fade = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
+    final settle = CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic);
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        ColoredBox(color: widget.base),
+        AnimatedBuilder(
+          animation: _controller,
+          builder: (_, child) => Opacity(
+            opacity: fade.value,
+            // 1.06 → 1.0. Small enough to read as settling rather than as a
+            // zoom, and it only ever scales *down*, so the panel never has to
+            // resolve detail it is about to discard.
+            child: Transform.scale(
+              scale: 1.0 + 0.06 * (1 - settle.value),
+              child: child,
+            ),
+          ),
+          child: widget.child,
+        ),
+      ],
     );
   }
 }

@@ -1,33 +1,17 @@
 import 'dart:math' as math;
-import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
 
 import '../utils/parish_palette.dart';
 
-/// Stable Hero tag for a parish so list-card chips morph into the detail header.
-String parishHeroTag(String seed) => 'parish-glass-$seed';
-
-/// Scrim strength used by the parish detail header — kept here so the Hero
-/// flight can lerp toward the same value the header settles on.
+/// Scrim strength used by the parish detail header.
 const double kHeaderOverlayDarken = 0.45;
 
-/// Wraps a parish's seeded stained-glass art in a [Hero] that morphs cleanly
-/// into the detail-page header.
+/// Presents a parish's seeded stained-glass art.
 ///
-/// Two things it fixes over a bare [Hero]:
-/// * **Straight-line flight.** MaterialApp's hero controller defaults to
-///   [MaterialRectArcTween], which sweeps the chip out on a curve — it reads as
-///   the art flying in from somewhere off to the side. A plain [RectTween] goes
-///   directly from the chip to the header.
-/// * **A dedicated shuttle.** Rather than stretching either end's widget tree
-///   across the flight, the shuttle paints just the artwork, lerping the corner
-///   radius and scrim between the two ends. Keeping text (and anything else
-///   needing a [Material] ancestor) out of the flying subtree also avoids the
-///   yellow double-underline the overlay would otherwise draw on it.
-///
-/// [child] is the resting appearance at this end; [borderRadius] and
-/// [overlayDarken] must describe that same appearance so the flight lines up
-/// with it seamlessly.
+/// Named for the [Hero] it used to wrap. There is no shared-element flight
+/// any more — see [build] — but the wrapper is kept so every place that shows
+/// a parish's glass still goes through one widget, and so the treatment can be
+/// changed in one place.
 class ParishGlassHero extends StatelessWidget {
   final String seed;
 
@@ -46,43 +30,19 @@ class ParishGlassHero extends StatelessWidget {
     this.overlayDarken = 0,
   });
 
-  static double _radiusOf(BuildContext heroContext) =>
-      heroContext.findAncestorWidgetOfExactType<ParishGlassHero>()?.borderRadius ?? 0;
-
-  static double _darkenOf(BuildContext heroContext) =>
-      heroContext.findAncestorWidgetOfExactType<ParishGlassHero>()?.overlayDarken ?? 0;
-
+  /// No shared-element flight. The parish header now settles in on the detail
+  /// page itself (see `_HeaderArtworkSettle` in `parish_detail_page.dart`),
+  /// which is why this is a plain wrapper: [StainedGlassHeader] is procedural
+  /// and composes from the shorter side of its box, so flying it between a
+  /// square chip and a wide header repainted a different panel every frame,
+  /// and pinning the size traded that for a pop flight that dived into the
+  /// icon before snapping back.
+  ///
+  /// [borderRadius] and [overlayDarken] are kept because callers pass them and
+  /// a future treatment would want them; nothing reads them today.
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: parishHeroTag(seed),
-      createRectTween: (begin, end) => RectTween(begin: begin, end: end),
-      flightShuttleBuilder: (_, animation, __, fromContext, toContext) {
-        // `animation` runs 0 → 1 for both push and pop (the pop flight is
-        // driven by a ReverseAnimation), and from/to are swapped on pop — so
-        // lerping from → to is correct in both directions.
-        final fromRadius = _radiusOf(fromContext);
-        final toRadius = _radiusOf(toContext);
-        final fromDarken = _darkenOf(fromContext);
-        final toDarken = _darkenOf(toContext);
-        return AnimatedBuilder(
-          animation: animation,
-          builder: (_, __) {
-            final t = animation.value;
-            return ClipRRect(
-              borderRadius:
-                  BorderRadius.circular(lerpDouble(fromRadius, toRadius, t)!),
-              child: StainedGlassHeader(
-                seed: seed,
-                patron: patron,
-                overlayDarken: lerpDouble(fromDarken, toDarken, t)!,
-              ),
-            );
-          },
-        );
-      },
-      child: child,
-    );
+    return child;
   }
 }
 

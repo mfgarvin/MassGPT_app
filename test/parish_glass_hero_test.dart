@@ -178,20 +178,25 @@ void main() {
       );
     }
 
-    testWidgets('duplicate tags collide without HeroMode', (tester) async {
+    testWidgets('duplicate tags cannot collide: there are no heroes',
+        (tester) async {
+      // The parish glass used to fly between the card chip and the detail
+      // header, which meant two live tabs could hold the same hero tag and
+      // throw. The flight is gone (see ParishGlassHero.build), so the hazard
+      // is structural rather than guarded — this pins that, because restoring
+      // a Hero without restoring HeroMode would bring the crash back.
       await tester.pumpWidget(shell(heroMode: false));
+      expect(find.byType(Hero), findsNothing);
+
       final nav = tester.state<NavigatorState>(find.byType(Navigator));
       nav.push(MaterialPageRoute<void>(
         builder: (_) => Scaffold(body: SizedBox(height: 200, child: _header())),
       ));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 100));
-      expect(
-        tester.takeException(),
-        isA<FlutterError>().having(
-          (e) => e.message, 'message', contains('multiple heroes that share the same tag')),
-        reason: 'this is the bug HeroMode exists to prevent',
-      );
+      expect(tester.takeException(), isNull);
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
     });
 
     testWidgets('HeroMode leaves only the visible tab in play', (tester) async {
@@ -208,14 +213,14 @@ void main() {
     });
   });
 
-  testWidgets('flight uses a straight-line rect tween', (tester) async {
+  testWidgets('the parish glass does not fly', (tester) async {
+    // Kept as a decision record. The flight was removed because
+    // StainedGlassHeader is procedural and composes from the shorter side of
+    // its box: flying it between a square chip and a wide header repainted a
+    // different panel every frame, and pinning the size to stop that traded it
+    // for a pop that dived into the icon before snapping back. The header now
+    // settles in on the detail page instead.
     await tester.pumpWidget(app());
-    final hero = tester.widget<Hero>(find.byType(Hero));
-    final tween = hero.createRectTween!(
-      const Rect.fromLTWH(0, 0, 10, 10),
-      const Rect.fromLTWH(100, 100, 200, 100),
-    );
-    // MaterialRectArcTween (the MaterialApp default) would bow off this line.
-    expect(tween.transform(0.5), const Rect.fromLTWH(50, 50, 105, 55));
+    expect(find.byType(Hero), findsNothing);
   });
 }
