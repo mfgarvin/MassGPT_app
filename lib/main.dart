@@ -948,12 +948,25 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       _showResults = false;
       _searchResults.clear();
     });
+    _pushPage(ParishDetailPage(parish: parish));
+  }
+
+  /// Leave Home for [page], dropping focus from the search field first.
+  ///
+  /// Flutter restores focus to whatever held it when a route is popped, so a
+  /// still-focused search field means the keyboard springs back up the moment
+  /// the user swipes back — even though what they tapped was a parish card or
+  /// a quick-access button somewhere else on the page entirely. Unfocusing on
+  /// the way out is what makes coming back quiet.
+  ///
+  /// Every route out of Home goes through here so none of them can drift: the
+  /// results list used to be the only path that unfocused, which is exactly
+  /// why it was the only one that behaved.
+  Future<void> _pushPage(Widget page) {
     _searchFocusNode.unfocus();
-    Navigator.push(
+    return Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => ParishDetailPage(parish: parish),
-      ),
+      MaterialPageRoute(builder: (_) => page),
     );
   }
 
@@ -1093,17 +1106,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                         HeroIntent.confession => const Color(0xFF5E3370),
                         HeroIntent.adoration => goldTextAccentFor(isDark: _isDark),
                       };
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FilteredParishListPage(
-                            filter: filter,
-                            title: title,
-                            accentColor: accent,
-                            userLocation: _userLocation,
-                          ),
-                        ),
-                      );
+                      _pushPage(FilteredParishListPage(
+                        filter: filter,
+                        title: title,
+                        accentColor: accent,
+                        userLocation: _userLocation,
+                      ));
                     },
                   ),
                   const SizedBox(height: 30),
@@ -1403,17 +1411,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               label: 'Mass Times',
               color: massAccent,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FilteredParishListPage(
-                      filter: ParishFilter.massTimes,
-                      title: 'Mass Times',
-                      accentColor: massAccent,
-                      userLocation: _userLocation,
-                    ),
-                  ),
-                );
+                _pushPage(FilteredParishListPage(
+                  filter: ParishFilter.massTimes,
+                  title: 'Mass Times',
+                  accentColor: massAccent,
+                  userLocation: _userLocation,
+                ));
               },
             );
           }),
@@ -1425,17 +1428,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             label: 'Confession',
             color: const Color(0xFF5E3370),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FilteredParishListPage(
-                    filter: ParishFilter.confession,
-                    title: 'Confession Times',
-                    accentColor: const Color(0xFF5E3370),
-                    userLocation: _userLocation,
-                  ),
-                ),
-              );
+              _pushPage(FilteredParishListPage(
+                filter: ParishFilter.confession,
+                title: 'Confession Times',
+                accentColor: const Color(0xFF5E3370),
+                userLocation: _userLocation,
+              ));
             },
           ),
         ),
@@ -1448,17 +1446,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               label: 'Adoration',
               color: goldAccent,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FilteredParishListPage(
-                      filter: ParishFilter.adoration,
-                      title: 'Adoration',
-                      accentColor: goldAccent,
-                      userLocation: _userLocation,
-                    ),
-                  ),
-                );
+                _pushPage(FilteredParishListPage(
+                  filter: ParishFilter.adoration,
+                  title: 'Adoration',
+                  accentColor: goldAccent,
+                  userLocation: _userLocation,
+                ));
               },
             );
           }),
@@ -1552,10 +1545,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     final nearbyMin = NextMassTile.findSoonestMinutes(_nearbyParishes);
     final imminent = nearbyMin != null && nearbyMin <= 60;
 
-    void open(Parish p) => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => ParishDetailPage(parish: p)),
-        );
+    void open(Parish p) => _pushPage(ParishDetailPage(parish: p));
 
     final nearbyTile = NextMassTile(
       parishes: _nearbyParishes,
@@ -1709,12 +1699,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
               subtextColor: _subtextColor,
               accentColor: primaryAccentFor(isDark: _isDark),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ParishDetailPage(parish: parish),
-                  ),
-                );
+                _pushPage(ParishDetailPage(parish: parish));
               },
             );
           },
@@ -1897,12 +1882,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             textColor: _textColor,
             subtextColor: _subtextColor,
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ParishDetailPage(parish: parish),
-                ),
-              );
+              _pushPage(ParishDetailPage(parish: parish));
             },
           );
         },
