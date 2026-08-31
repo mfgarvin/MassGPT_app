@@ -1586,54 +1586,75 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     return [nearbyTile, const SizedBox(height: 16)];
   }
 
-  /// Horizontal quick-launcher of every home (favorite) parish, so returning
-  /// users can jump straight into the parishes they follow. Each card shows the
-  /// parish and its next upcoming Mass. Empty when no favorites are saved.
-  /// Wrap a horizontal card row so its trailing edge fades into the page.
+  /// A soft fade over one gutter of a horizontal row, so cards dissolve into
+  /// the page instead of being sliced off at the viewport edge.
   ///
-  /// The rows live inside the page's 20px padding, so a card is clipped flush
-  /// against that margin — which reads as a deliberate edge, not as "there is
-  /// more this way". Fading the last few pixels to the background colour is
-  /// the standard cue that content continues, and unlike an arrow or a dot
-  /// row it costs no vertical space and needs no state to stay in sync.
-  ///
-  /// [IgnorePointer] so the gradient never eats a tap or a drag that starts
-  /// on the card underneath it.
-  ///
-  /// [cardHeight] is the height of the cards themselves, not of the box: the
-  /// box is grown by [kCardShadowPad] top and bottom, and the list is padded
-  /// inward by the same amount (see [horizontalCardPadding]). A horizontal
-  /// [ListView] clips to its viewport, so sizing the box to the card exactly —
-  /// which is what it used to do — sliced each card's drop shadow off flat
-  /// along the top and bottom, drawing a hard line across the row. The cards
-  /// keep their size; the shadow just gets somewhere to land.
-  Widget _withTrailingFade(Widget child, {required double cardHeight}) {
-    return SizedBox(
-      height: cardHeight + kCardShadowPad * 2,
-      child: Stack(
-        children: [
-          Positioned.fill(child: child),
-          Positioned(
-            top: 0,
-            bottom: 0,
-            right: 0,
-            width: 28,
-            child: IgnorePointer(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      _backgroundColor.withValues(alpha: 0.0),
-                      _backgroundColor,
-                    ],
-                  ),
-                ),
-              ),
+  /// Exactly [kPageHPadding] wide, so at rest it covers the gutter and stops
+  /// where the first (or last) card begins; only once the row is scrolled does
+  /// a card actually pass underneath it. [IgnorePointer] so the gradient never
+  /// eats a tap or a drag that starts on the card below.
+  Widget _edgeFade({required bool leading}) {
+    return Positioned(
+      top: 0,
+      bottom: 0,
+      left: leading ? 0 : null,
+      right: leading ? null : 0,
+      width: kPageHPadding,
+      child: IgnorePointer(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: leading
+                  ? [_backgroundColor, _backgroundColor.withValues(alpha: 0.0)]
+                  : [_backgroundColor.withValues(alpha: 0.0), _backgroundColor],
             ),
           ),
-        ],
+        ),
+      ),
+    );
+  }
+
+  /// Wrap a horizontal card row so it spans the full screen and fades out at
+  /// both edges.
+  ///
+  /// A horizontal [ListView] clips to its viewport, and these rows sit inside
+  /// the page's [kPageHPadding] margin — so the viewport used to end exactly
+  /// where the cards did, on all four sides. That cropped every card's drop
+  /// shadow flat: a hard line along the top and bottom of the row, and a hard
+  /// cut at the left and right.
+  ///
+  /// So the row is widened back out to the full page width with [OverflowBox]
+  /// (cancelling the ambient padding) and the *list* is padded inward instead,
+  /// by [horizontalCardPadding]. The cards land in exactly the same place —
+  /// still aligned to the section headings above them — but the viewport now
+  /// extends a clear margin past them on every side, which is the room the
+  /// shadow needs. It also means cards scroll under the true screen edge
+  /// rather than stopping short of it, which is the better scroll cue.
+  ///
+  /// The width comes from the incoming constraints rather than [MediaQuery] so
+  /// it stays correct inside any [SafeArea] inset, and [cardHeight] is the
+  /// height of the cards, not of the box — the box adds [kCardShadowPad].
+  Widget _withEdgeFades(Widget child, {required double cardHeight}) {
+    return SizedBox(
+      height: cardHeight + kCardShadowPad * 2,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final fullWidth = constraints.maxWidth + kPageHPadding * 2;
+          return OverflowBox(
+            minWidth: fullWidth,
+            maxWidth: fullWidth,
+            alignment: Alignment.center,
+            child: Stack(
+              children: [
+                Positioned.fill(child: child),
+                _edgeFade(leading: true),
+                _edgeFade(leading: false),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -1643,13 +1664,21 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   /// the cards' `blurRadius: 15` with its `Offset(0, 4)`.
   static const double kCardShadowPad = 14;
 
-  /// Padding for a horizontal card list: [kCardShadowPad] top and bottom for
-  /// the shadow, and trailing room so the last card clears the fade rather
-  /// than ending underneath it. Leading stays 0 so the first card lines up
-  /// with the page's own margin.
-  static const EdgeInsets horizontalCardPadding =
-      EdgeInsets.fromLTRB(0, kCardShadowPad, 28, kCardShadowPad);
+  /// The page's own horizontal margin. A horizontal row is widened past it by
+  /// [_withEdgeFades] and then re-inset by this much, so its cards stay lined
+  /// up with the headings above while its viewport runs to the screen edge.
+  static const double kPageHPadding = 20;
 
+  /// Padding for a horizontal card list, applied inside the full-bleed row:
+  /// [kPageHPadding] left and right to put the cards back where the page
+  /// margin would have them (and to leave the shadow somewhere to land), and
+  /// [kCardShadowPad] top and bottom for the same reason vertically.
+  static const EdgeInsets horizontalCardPadding = EdgeInsets.fromLTRB(
+      kPageHPadding, kCardShadowPad, kPageHPadding, kCardShadowPad);
+
+  /// Horizontal quick-launcher of every home (favorite) parish, so returning
+  /// users can jump straight into the parishes they follow. Each card shows the
+  /// parish and its next upcoming Mass. Empty when no favorites are saved.
   List<Widget> _buildHomeParishesSection() {
     final favorites = _favoriteParishes;
     if (favorites.isEmpty) return const [];
@@ -1660,7 +1689,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         style: AppText.titleLarge(color: _textColor),
       ),
       const SizedBox(height: 16),
-      _withTrailingFade(
+      _withEdgeFades(
         // Tall enough for a 2-line parish name plus the avatar row and the
         // pinned "Next ·" line without overflowing the card (was 150 → 19px
         // overflow when the name wrapped to two lines).
@@ -1845,7 +1874,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       );
     }
 
-    return _withTrailingFade(
+    return _withEdgeFades(
       cardHeight: 180,
       ListView.separated(
         scrollDirection: Axis.horizontal,
