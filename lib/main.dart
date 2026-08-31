@@ -128,6 +128,34 @@ class ThemeNotifier extends ChangeNotifier {
   }
 }
 
+/// The system bars' styling for a given theme.
+///
+/// The status bar sits directly on the app's own background, so its icons have
+/// to be the opposite of whatever we painted there — dark on parchment, light
+/// on black — or the clock and battery vanish into it.
+///
+/// The two platforms spell that opposite way round, which is the trap:
+/// `statusBarIconBrightness` (Android) is the brightness of the *icons*, while
+/// `statusBarBrightness` (iOS) is the brightness of the *background behind*
+/// them, from which iOS infers the icons. In light mode Android wants `dark`
+/// and iOS wants `light`, and both are asking for black icons. Omitting the
+/// iOS key — which this used to do — left iOS on its white default, invisible
+/// on parchment.
+///
+/// Lives here as one function because it is applied in two places that must
+/// agree: once imperatively at app root, and declaratively by [RootShell] so
+/// that popping a route restores it.
+SystemUiOverlayStyle systemOverlayStyleFor({required bool isDark}) {
+  return SystemUiOverlayStyle(
+    statusBarColor: isDark ? kBackgroundColorDark : kBackgroundColor,
+    statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+    statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+    systemNavigationBarColor: isDark ? kBackgroundColorDark : kBackgroundColor,
+    systemNavigationBarIconBrightness:
+        isDark ? Brightness.light : Brightness.dark,
+  );
+}
+
 // Global theme notifier instance
 final themeNotifier = ThemeNotifier();
 
@@ -248,14 +276,7 @@ class _ParishFinderAppState extends State<ParishFinderApp> {
   Widget build(BuildContext context) {
     final isDark = themeNotifier.isDarkMode;
 
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: isDark ? kBackgroundColorDark : kBackgroundColor,
-        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-        systemNavigationBarColor: isDark ? kBackgroundColorDark : kBackgroundColor,
-        systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-      ),
-    );
+    SystemChrome.setSystemUIOverlayStyle(systemOverlayStyleFor(isDark: isDark));
 
     return MaterialApp(
       title: 'ParishFinder',
@@ -396,6 +417,20 @@ class _RootShellState extends State<RootShell> {
   Widget build(BuildContext context) {
     final isDark = themeNotifier.isDarkMode;
     final accent = primaryAccentFor(isDark: isDark);
+    // Declared, not merely set once. A one-shot SystemChrome call in the app
+    // root's build() is not re-run when a route pops, so any page that asserts
+    // its own style leaves it behind: the parish page's SliverAppBar sits on
+    // the dark stained-glass header and rightly asks for light icons, and
+    // returning here used to keep them — pale clock and battery on parchment.
+    // An AnnotatedRegion is re-resolved from the layer tree on every route
+    // change, so the shell reclaims its style the moment it is topmost again.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: systemOverlayStyleFor(isDark: isDark),
+      child: _buildShell(isDark: isDark, accent: accent),
+    );
+  }
+
+  Widget _buildShell({required bool isDark, required Color accent}) {
     return Scaffold(
       body: IndexedStack(
         index: _index,
