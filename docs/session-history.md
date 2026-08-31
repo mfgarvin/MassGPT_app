@@ -360,6 +360,34 @@ Consider integrating the Google Places API to automatically fetch real photos of
 
 4. **Alternative**: Continue using manual `image_url` entries in parish data for curated, cost-free images
 
+### TODO (Linux): `gen_icons.py --check` passes when it cannot check
+
+Found 2026-08-30 on the Mac. `python3 tool/gen_icons.py --check` prints
+`rsvg-convert not found (apt install librsvg2-bin)` and then **exits 0**:
+
+```
+$ python3 tool/gen_icons.py --check
+rsvg-convert not found (apt install librsvg2-bin)
+$ echo $?
+0
+```
+
+A missing renderer is reported as success, so the check silently verifies
+nothing. That is worst on **macOS**, which has no `rsvg-convert` by default and
+is the machine release IPAs are built on — so any future release gate wired to
+`--check` would be green on exactly the machine where drift ships.
+
+Fix: exit non-zero when the renderer is absent, so "cannot verify" is distinct
+from "verified, matches". Worth deciding at the same time whether `--check`
+should look for `rsvg-convert` only, or fall back to a macOS-available renderer
+(`brew install librsvg` provides it, but requiring a brew package to validate a
+release is its own trap).
+
+Unblocked and unrelated to the icon assets themselves, which are correct: the
+launch image is generated from the icon vector, the 1024 app icon carries no
+alpha, the launch mark does, and `LaunchBackground.colorset` has both light and
+dark appearances.
+
 ## Session Log: 2026-01-05
 
 ### Updated Parish Data Format
