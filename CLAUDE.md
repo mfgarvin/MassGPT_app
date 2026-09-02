@@ -116,8 +116,11 @@ JSON comes from the **structured** `export.json` shape:
 - optional `weeks_of_month` / `excluded_weeks` (`int[]`, domain `1`–`5` and `-1`)
   on any schedule entry: monthly-ordinal recurrence ("First Friday", "Last
   Sunday"). Absent/null/empty all mean *every week* — the app must not
-  distinguish them. **Supported since 2026-08-29; the scraper does not emit
-  them yet**, so the code is inert until the data arrives.
+  distinguish them. **Live in the data as of 2026-09-02**: 57 entries across
+  40 parishes (mass, confession and adoration alike), values `1` (45), `2`
+  (7), `-1` (4) and `3` (1). No `excluded_weeks` in the wild yet. The
+  ordinal-recurrence code paths are therefore exercised by real records now,
+  not inert.
 - Legacy keys (`mass_times`, `confessions`, `conf_times`, `www`, `lonlat`) are gone.
 
 ### Key Dependencies
