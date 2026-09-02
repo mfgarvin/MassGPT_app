@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
 import '../theme/app_text.dart';
 
@@ -64,6 +65,25 @@ class _NextMassBannerState extends State<NextMassBanner> {
     final timeLabel = _formatTime(next.hour, next.minute);
 
     final isImminent = minutes <= 60;
+
+    // At large text sizes the countdown pill and the "Tomorrow · 7:30 AM" line
+    // can't share a row — the pill kept its width and the line shredded into
+    // "Tom / orro / w ·". Past this threshold the pill moves under the time.
+    final stacked = context.prefersStackedLayout;
+    final countdownPill = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: isImminent
+            ? Colors.amber.withValues(alpha: 0.9)
+            : Colors.white.withValues(alpha: 0.22),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        countdown,
+        style: AppText.label(color: isImminent ? Colors.black87 : Colors.white)
+            .copyWith(fontSize: 13),
+      ),
+    );
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
@@ -133,22 +153,14 @@ class _NextMassBannerState extends State<NextMassBanner> {
                     ],
                   ],
                 ),
+                if (stacked) ...[
+                  const SizedBox(height: 8),
+                  Align(alignment: Alignment.centerLeft, child: countdownPill),
+                ],
               ],
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-            decoration: BoxDecoration(
-              color: isImminent
-                  ? Colors.amber.withValues(alpha: 0.9)
-                  : Colors.white.withValues(alpha: 0.22),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              countdown,
-              style: AppText.label(color: isImminent ? Colors.black87 : Colors.white).copyWith(fontSize: 13),
-            ),
-          ),
+          if (!stacked) countdownPill,
         ],
       ),
     );

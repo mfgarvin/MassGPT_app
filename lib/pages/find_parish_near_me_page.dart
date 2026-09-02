@@ -6,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/parish.dart';
+import '../utils/layout_scale.dart';
 import '../services/location_service.dart';
 import '../services/parish_service.dart';
 import '../main.dart'
@@ -282,6 +283,17 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
   Widget build(BuildContext context) {
     final localUserLocation = userLocation;
 
+    // The carousel is a fixed strip over the map, so its cards can't scroll
+    // their way out of trouble — at large text sizes a parish name plus its
+    // city and next Mass overflowed the 150px. It grows with the text, but
+    // only up to [_carouselMaxHeight]: the card's text is bounded (a
+    // two-line name, one line of city, one of time), so past that the extra
+    // height was empty card over a map the user still needs to see.
+    final carouselHeight = context.scaled(150,
+        max: math.min(_carouselMaxHeight,
+            MediaQuery.sizeOf(context).height * 0.32));
+    final carouselTop = 20 + carouselHeight + 16;
+
     return Scaffold(
       backgroundColor: _bgColor,
       extendBodyBehindAppBar: true,
@@ -395,7 +407,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                     // after panning, so it sits above the carousel.
                     Positioned(
                       right: 16,
-                      bottom: 186,
+                      bottom: carouselTop,
                       child: _buildRecenterButton(),
                     ),
                     // OSM credit. The ODbL wants attribution where the map is
@@ -404,7 +416,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                     // recenter button, clear of the carousel below.
                     Positioned(
                       left: 12,
-                      bottom: 186,
+                      bottom: carouselTop,
                       child: _buildMapAttribution(),
                     ),
                     // Bottom: swipeable parish carousel
@@ -412,7 +424,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                       left: 0,
                       right: 0,
                       bottom: 20,
-                      height: 150,
+                      height: carouselHeight,
                       child: _buildParishCarousel(),
                     ),
                   ],
@@ -494,7 +506,23 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
     }
   }
 
+  /// Ceiling for the carousel strip. Measured, not guessed: at the largest
+  /// system font a card needs ~171px for its two-line name, city and Mass
+  /// time, so this leaves a little headroom and no more. Without a ceiling
+  /// the strip scaled to 300px and covered half the map.
+  static const double _carouselMaxHeight = 180;
+
   Widget _buildMapAttribution() {
+    // The attribution is a legal credit, not content — it should stay legible
+    // without growing to compete with the map at large system font sizes, so
+    // its text scales at most a little.
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: 1.2,
+      child: _attributionChip(),
+    );
+  }
+
+  Widget _attributionChip() {
     return Semantics(
       link: true,
       label: 'Map data from OpenStreetMap contributors. Opens the OpenStreetMap '
@@ -779,24 +807,31 @@ class _MapParishCard extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           child: Row(
             children: [
-              ParishGlassHero(
-                seed: parish.parishId ?? parish.name,
-                patron: parish.name,
-                borderRadius: 12,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: SizedBox(
-                    width: 64,
-                    height: 64,
-                    child: StainedGlassHeader(
-                      seed: parish.parishId ?? parish.name,
-                      patron: parish.name,
-                      overlayDarken: 0.0,
+              // The glass thumbnail is decoration; the name is the point. At
+              // large text sizes its fixed 64px (plus the gap) is the
+              // difference between "Transfiguration Parish" reading straight
+              // and breaking mid-word, so past [prefersStackedLayout] the
+              // card gives the width to the text instead.
+              if (!context.prefersStackedLayout) ...[
+                ParishGlassHero(
+                  seed: parish.parishId ?? parish.name,
+                  patron: parish.name,
+                  borderRadius: 12,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: SizedBox(
+                      width: 64,
+                      height: 64,
+                      child: StainedGlassHeader(
+                        seed: parish.parishId ?? parish.name,
+                        patron: parish.name,
+                        overlayDarken: 0.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 14),
+                const SizedBox(width: 14),
+              ],
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

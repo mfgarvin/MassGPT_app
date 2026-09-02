@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
 
 /// Schedule card that groups entries into Today / Tomorrow / This week / Beyond
@@ -77,12 +78,17 @@ class TimelineScheduleCard extends StatelessWidget {
           child: icon,
         ),
         const SizedBox(width: 16),
-        Text(
-          title,
-          style: GoogleFonts.cormorantGaramond(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-            color: textColor,
+        // Wraps rather than overflows: at large text scales a two-word title
+        // ("Confession Times") is wider than the row, and an unconstrained
+        // Text there clips with a debug stripe instead of taking a second line.
+        Expanded(
+          child: Text(
+            title,
+            style: GoogleFonts.cormorantGaramond(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: textColor,
+            ),
           ),
         ),
       ],
@@ -150,82 +156,134 @@ class TimelineScheduleCard extends StatelessWidget {
     );
   }
 
-  /// Notes longer than this get their own full-width line below the time
-  /// instead of competing with it for the tail of the row.
-  static const _inlineNoteMaxChars = 28;
+  /// A row's lead at normal text size: the day chip plus its margin (only on
+  /// this-week / beyond rows) and the time column. Both grow with the text
+  /// scale — see [TextScaleLayout.scaled] and the same rule in
+  /// MassScheduleCard.
+  static const _dayColumnWidth = 38.0;
+  static const _dayColumnMargin = 10.0;
+  static const _timeColumnWidth = 128.0;
+
+  /// Horizontal padding a note chip adds around its text.
+  static const _noteChipPadding = 16.0;
 
   Widget _entryRow(UpcomingEntry e, String bucketLabel) {
     final showDay = bucketLabel == 'This week' || bucketLabel == 'Beyond';
     final note = e.noteLabel;
-    final inlineNote =
-        note != null && note.length <= _inlineNoteMaxChars ? note : null;
-    final blockNote = note != null && inlineNote == null ? note : null;
-    final noteStyle = GoogleFonts.inter(
+    // Prose note: its own full-width line under the row.
+    final blockStyle = GoogleFonts.inter(
       fontSize: 13,
       color: subtextColor,
       fontStyle: FontStyle.italic,
     );
+    // Tag note: a chip beside the time.
+    final chipStyle = GoogleFonts.inter(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: subtextColor,
+    );
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Day chip (only shown for this-week / beyond)
-              if (showDay)
-                Container(
-                  width: 38,
-                  padding: const EdgeInsets.symmetric(vertical: 3),
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(6),
+    // Measured, not counted — see the same rule in MassScheduleCard. A
+    // character budget can't see how wide the row is, so notes that "fit" it
+    // still rendered as "Mar ia…" in the narrow tail.
+    return LayoutBuilder(builder: (context, constraints) {
+      final dayWidth = showDay
+          ? context.scaled(_dayColumnWidth, max: constraints.maxWidth * 0.25)
+          : 0.0;
+      final dayLead = showDay ? dayWidth + _dayColumnMargin : 0.0;
+      final timeWidth = context.scaled(_timeColumnWidth,
+          max: constraints.maxWidth - dayLead - 24);
+
+      String? chipNote;
+      String? blockNote;
+      if (note != null) {
+        final tail = constraints.maxWidth - dayLead - timeWidth;
+        final painter = TextPainter(
+          text: TextSpan(text: note, style: chipStyle),
+          textDirection: TextDirection.ltr,
+          maxLines: 1,
+          textScaler: MediaQuery.textScalerOf(context),
+        )..layout();
+        if (tail > 0 && painter.width + _noteChipPadding <= tail) {
+          chipNote = note;
+        } else {
+          blockNote = note;
+        }
+      }
+
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Day chip (only shown for this-week / beyond)
+                if (showDay)
+                  Container(
+                    width: dayWidth,
+                    padding: const EdgeInsets.symmetric(vertical: 3),
+                    margin: const EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      color: color.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      e.dayLabel,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.inter(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w700,
+                        color: color,
+                      ),
+                    ),
                   ),
+                // Time (or time range)
+                SizedBox(
+                  width: timeWidth,
                   child: Text(
-                    e.dayLabel,
-                    textAlign: TextAlign.center,
+                    e.timeLabel,
                     style: GoogleFonts.inter(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: color,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
                     ),
                   ),
                 ),
-              // Time (or time range)
-              SizedBox(
-                width: 128,
-                child: Text(
-                  e.timeLabel,
-                  style: GoogleFonts.inter(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: textColor,
+                // Short note as a chip beside the time (e.g. "Vigil Mass").
+                if (chipNote != null)
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: _noteChipPadding / 2, vertical: 3),
+                        decoration: BoxDecoration(
+                          color: subtextColor.withValues(alpha: 0.10),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          chipNote,
+                          style: chipStyle,
+                          maxLines: 1,
+                          // Measured to fit, so this never fires.
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              // Short note inline (e.g. "Vigil Mass", "Spanish")
-              if (inlineNote != null)
-                Expanded(
-                  child: Text(
-                    inlineNote,
-                    style: noteStyle,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-            ],
-          ),
-          // Long note: full width under the row, indented past the day chip.
-          if (blockNote != null)
-            Padding(
-              padding: EdgeInsets.only(left: showDay ? 48 : 0, top: 2),
-              child: Text(blockNote, style: noteStyle),
+              ],
             ),
-        ],
-      ),
-    );
+            // Long note: full width under the row, indented past the day chip.
+            if (blockNote != null)
+              Padding(
+                padding: EdgeInsets.only(left: dayLead, top: 2),
+                child: Text(blockNote, style: blockStyle),
+              ),
+          ],
+        ),
+      );
+    });
   }
 }

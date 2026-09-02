@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../models/parish.dart';
+import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
 import '../theme/app_text.dart';
 import 'stained_glass_header.dart';
@@ -146,7 +147,12 @@ class _NextMassTileState extends State<NextMassTile> {
   ) {
     final seed = hit.parish.parishId ?? hit.parish.name;
     return AspectRatio(
-      aspectRatio: 1.0,
+      // Square at normal text size, taller as the text grows: the tile is half
+      // the page wide, so at 2x its three lines no longer fit a square and
+      // spilled 30px out the bottom. The ratio has to stay bounded (the
+      // content Column uses a Spacer, which needs a height), so the tile gets
+      // proportionally taller rather than unconstrained.
+      aspectRatio: 1.0 / context.textScale.clamp(1.0, 2.0),
       child: Material(
         color: Colors.transparent,
         child: InkWell(

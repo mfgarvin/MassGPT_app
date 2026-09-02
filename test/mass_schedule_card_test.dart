@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:parishfinder/utils/schedule_parser.dart';
 import 'package:parishfinder/widgets/mass_schedule_card.dart';
 
+import 'support/test_fonts.dart';
+
 ScheduleEntry _entry(int day, int hour, int minute,
         {String? note, List<int>? weeksOfMonth}) =>
     ScheduleEntry(
@@ -12,25 +14,45 @@ ScheduleEntry _entry(int day, int hour, int minute,
         note: note,
         weeksOfMonth: weeksOfMonth);
 
-Widget _wrap(List<ScheduleEntry> items) => MaterialApp(
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: MassScheduleCard(
-            icon: const Icon(Icons.church),
-            title: 'Mass Times',
-            items: items,
-            emptyMessage: 'No Mass times listed',
-            color: Colors.red,
-            cardColor: Colors.white,
-            textColor: Colors.black,
-            subtextColor: Colors.black54,
-            isDark: false,
+Widget _wrap(List<ScheduleEntry> items,
+        {double width = 360, double textScale = 1.0}) =>
+    MaterialApp(
+      home: MediaQuery(
+        data: MediaQueryData(textScaler: TextScaler.linear(textScale)),
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: SizedBox(
+              width: width,
+              child: MassScheduleCard(
+                icon: const Icon(Icons.church),
+                title: 'Mass Times',
+                items: items,
+                emptyMessage: 'No Mass times listed',
+                color: Colors.red,
+                cardColor: Colors.white,
+                textColor: Colors.black,
+                subtextColor: Colors.black54,
+                isDark: false,
+              ),
+            ),
           ),
         ),
       ),
     );
 
+/// True when [note] renders beside the time (chip) rather than on its own line
+/// below it (block). The chip shares the row's baseline band with the time;
+/// the block note sits strictly under it.
+bool _isChip(WidgetTester tester, String note, String time) {
+  final noteTop = tester.getTopLeft(find.text(note)).dy;
+  final timeBottom = tester.getBottomLeft(find.text(time)).dy;
+  return noteTop < timeBottom;
+}
+
 void main() {
+  // Measured assertions need the real font metrics — see loadAppFonts.
+  setUpAll(loadAppFonts);
+
   testWidgets('weekend section lists the Saturday vigil before Sunday Masses',
       (tester) async {
     await tester.pumpWidget(_wrap([
@@ -128,5 +150,62 @@ void main() {
         .where((h) => h == 38)
         .toList();
     expect(heights.length, 2);
+  });
+
+  group('note placement is measured, not counted', () {
+    // The tail left for a note after the 64px day chip, its 10px margin and
+    // the 128px time column.
+    const shortNote = 'Vigil Mass';
+    const longNote = 'Weekday Mass (Marian Chapel)';
+
+    testWidgets('a short note rides beside the time as a chip', (tester) async {
+      await tester.pumpWidget(_wrap([_entry(6, 16, 30, note: shortNote)]));
+      expect(_isChip(tester, shortNote, '4:30 PM'), isTrue);
+    });
+
+    testWidgets('a note too wide for the tail drops to its own line',
+        (tester) async {
+      await tester.pumpWidget(_wrap([_entry(2, 7, 30, note: longNote)]));
+      expect(_isChip(tester, longNote, '7:30 AM'), isFalse,
+          reason: '28 chars fit the old character budget but not the row');
+    });
+
+    testWidgets('no note is ever truncated', (tester) async {
+      await tester.pumpWidget(_wrap([
+        _entry(6, 16, 30, note: shortNote),
+        _entry(2, 7, 30, note: longNote),
+      ]));
+      for (final note in [shortNote, longNote]) {
+        final widget = tester.widget<Text>(find.text(note));
+        final painter = TextPainter(
+          text: TextSpan(text: note, style: widget.style),
+          textDirection: TextDirection.ltr,
+          maxLines: widget.maxLines,
+          textScaler: TextScaler.noScaling,
+        )..layout(maxWidth: tester.getSize(find.text(note)).width);
+        expect(painter.didExceedMaxLines, isFalse,
+            reason: '"$note" is clipped in the space it was given');
+      }
+    });
+
+    testWidgets('the same note becomes a block when the row is narrower',
+        (tester) async {
+      const note = 'Weekday Mass';
+      await tester.pumpWidget(_wrap([_entry(2, 7, 30, note: note)]));
+      expect(_isChip(tester, note, '7:30 AM'), isTrue);
+
+      await tester.pumpWidget(_wrap([_entry(2, 7, 30, note: note)], width: 260));
+      expect(_isChip(tester, note, '7:30 AM'), isFalse,
+          reason: 'the boundary follows the available width');
+    });
+
+    testWidgets('large text pushes a borderline note to its own line',
+        (tester) async {
+      const note = 'Weekday Mass';
+      await tester.pumpWidget(
+          _wrap([_entry(2, 7, 30, note: note)], textScale: 2.0));
+      expect(_isChip(tester, note, '7:30 AM'), isFalse,
+          reason: 'the measurement must account for the text scaler');
+    });
   });
 }

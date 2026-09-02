@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/parish.dart';
 import '../services/parish_service.dart';
 import '../main.dart' show kPrimaryColor, kBackgroundColor, kCardColor;
-import '../utils/search_normalize.dart';
+import '../utils/parish_search.dart';
 import 'parish_detail_page.dart';
 
 class ResearchParishPage extends StatefulWidget {
@@ -59,17 +59,11 @@ class _ResearchParishPageState extends State<ResearchParishPage> {
   }
 
   void _updateSearchResults(String query) {
-    final normalizedQuery = normalizeForSearch(query);
-
     setState(() {
       if (query.isEmpty) {
         _searchResults.clear();
       } else {
-        _searchResults = _parishes.where((parish) {
-          return normalizeForSearch(parish.name).contains(normalizedQuery) ||
-              normalizeForSearch(parish.city).contains(normalizedQuery) ||
-              parish.zipCode.contains(query);
-        }).toList();
+        _searchResults = searchParishes(_parishes, query);
       }
     });
   }

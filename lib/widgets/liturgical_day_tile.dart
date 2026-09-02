@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../services/liturgical_service.dart';
+import '../utils/layout_scale.dart';
 
 /// Tile for the day's liturgical context. Color swatch + season + the day's
 /// title + optional memorial + a button that opens the USCCB daily readings.
@@ -124,7 +125,10 @@ class _LiturgicalDayTileState extends State<LiturgicalDayTile> {
             width: double.infinity,
             child: OutlinedButton.icon(
               onPressed: _openReadings,
-              icon: const Icon(Icons.menu_book_outlined, size: 18),
+              // The icon scales with the label, or it shrinks into a speck
+              // beside 28px text.
+              icon: Icon(Icons.menu_book_outlined,
+                  size: context.scaled(18, max: 30)),
               label: Text(
                 'USCCB Daily Readings',
                 style: GoogleFonts.inter(
@@ -136,7 +140,15 @@ class _LiturgicalDayTileState extends State<LiturgicalDayTile> {
                 foregroundColor: onColor,
                 backgroundColor: onColor.withValues(alpha: 0.08),
                 side: BorderSide(color: onColor.withValues(alpha: 0.5)),
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                // Horizontal padding was 0. The button is full-width, so as
+                // soon as the label wrapped — which it does at larger text
+                // sizes — the row filled the width and put the book icon
+                // flat against the border. The gutter scales with the text
+                // so it stays a gutter rather than becoming a hairline.
+                padding: EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: context.scaled(16, max: 28),
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),

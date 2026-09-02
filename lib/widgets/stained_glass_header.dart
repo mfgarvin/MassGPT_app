@@ -172,6 +172,11 @@ class _StainedGlassPainter extends CustomPainter {
     final p = paletteForParish(patron);
 
     final short = math.min(size.width, size.height);
+    // A zero-sized box divides by zero below (`h / step`), and `.ceil()` on
+    // the resulting infinity throws UnsupportedError out of paint(). Nothing
+    // to draw at that size anyway — this happens transiently while a card is
+    // being laid out.
+    if (short <= 0) return;
     final lead = math.max(0.5, short / 130);
     // Below this the fleurons only add noise, so the chip drops to field +
     // roundel. This is why the small sizes have to be composed, not cropped.

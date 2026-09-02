@@ -5,6 +5,7 @@ import 'package:latlong2/latlong.dart';
 
 import '../models/parish.dart';
 import '../services/parish_service.dart';
+import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
 import '../main.dart'
     show
@@ -847,6 +848,13 @@ class _FilteredParishListPageState extends State<FilteredParishListPage> {
             child: SizedBox(
               width: double.infinity,
               child: SegmentedButton<SortOrder>(
+                // Three segments across a phone give each about a third of the
+                // width, which at large text sizes is narrower than the word
+                // inside it — "Soonest" wrapped to "Soone / st". Stacked, each
+                // segment gets the full width instead.
+                direction: context.prefersStackedLayout
+                    ? Axis.vertical
+                    : Axis.horizontal,
                 segments: const [
                   ButtonSegment(
                     value: SortOrder.nearestAndSoonest,
@@ -1034,123 +1042,144 @@ class _ParishCard extends StatelessWidget {
     this.filteredTimes,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: cardColor,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.06),
-              blurRadius: 15,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header row
-            Row(
-              children: [
-                ParishGlassHero(
-                  seed: parish.parishId ?? parish.name,
-                  patron: parish.name,
-                  borderRadius: 10,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: SizedBox(
-                      width: 44,
-                      height: 44,
-                      child: StainedGlassHeader(
-                        seed: parish.parishId ?? parish.name,
-                        patron: parish.name,
-                        overlayDarken: 0.0,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        parish.name,
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: textColor,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        '${parish.city} ${parish.zipCode}',
-                        style: GoogleFonts.inter(
-                          fontSize: 13,
-                          color: subtextColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                if (showDistance && distance != null)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: accentColor.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      '${distance!.toStringAsFixed(1)} mi',
-                      style: GoogleFonts.inter(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: accentColor,
-                      ),
-                    ),
-                  )
-                else if (showTimeUntil && minutesUntilNext != null)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: accentColor.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      _formatTimeUntil(minutesUntilNext!),
-                      style: GoogleFonts.inter(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: accentColor,
-                      ),
-                    ),
-                  )
-                else
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: subtextColor,
-                  ),
-              ],
-            ),
-            // Times section based on filter
-            if (_getTimesToShow().isNotEmpty ||
-                (filter == ParishFilter.adoration && parish.adorationIsPerpetual)) ...[
-              const SizedBox(height: 12),
-              Divider(height: 1, color: subtextColor.withValues(alpha: 0.2)),
-              const SizedBox(height: 12),
-              _buildTimesSection(),
-            ],
-          ],
+  /// The trailing pill: distance in Nearest, time-until in Soonest, neither in
+  /// A–Z (where the row gets a chevron instead).
+  Widget? _badge(Color accentColor) {
+    final String label;
+    if (showDistance && distance != null) {
+      label = '${distance!.toStringAsFixed(1)} mi';
+    } else if (showTimeUntil && minutesUntilNext != null) {
+      label = _formatTimeUntil(minutesUntilNext!);
+    } else {
+      return null;
+    }
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: accentColor.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.inter(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          color: accentColor,
         ),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final badge = _badge(accentColor);
+    final stacked = context.prefersStackedLayout;
+
+    return LayoutBuilder(builder: (context, constraints) {
+      return InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.06),
+                blurRadius: 15,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header row.
+              //
+              // The trailing badge ("2.4 mi", "Tomorrow morning") used to be an
+              // unconstrained sibling of the name, so it took whatever width it
+              // wanted and left the name — inside an Expanded — with the
+              // remainder. At large text sizes that remainder was a couple of
+              // characters, and a parish name rendered one letter per line. Now
+              // the badge is capped, and past [prefersStackedLayout] it moves
+              // under the name entirely rather than competing with it.
+              Row(
+                children: [
+                  ParishGlassHero(
+                    seed: parish.parishId ?? parish.name,
+                    patron: parish.name,
+                    borderRadius: 10,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: SizedBox(
+                        width: 44,
+                        height: 44,
+                        child: StainedGlassHeader(
+                          seed: parish.parishId ?? parish.name,
+                          patron: parish.name,
+                          overlayDarken: 0.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          parish.name,
+                          style: GoogleFonts.inter(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: textColor,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          '${parish.city} ${parish.zipCode}',
+                          style: GoogleFonts.inter(
+                            fontSize: 13,
+                            color: subtextColor,
+                          ),
+                        ),
+                        if (badge != null && stacked) ...[
+                          const SizedBox(height: 6),
+                          Align(alignment: Alignment.centerLeft, child: badge),
+                        ],
+                      ],
+                    ),
+                  ),
+                  if (badge != null && !stacked)
+                    // A third of the row at most: enough for "Tomorrow morning"
+                    // to wrap onto two lines, never enough to starve the name.
+                    ConstrainedBox(
+                      constraints:
+                          BoxConstraints(maxWidth: constraints.maxWidth / 3),
+                      child: badge,
+                    )
+                  else if (badge == null)
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                      color: subtextColor,
+                    ),
+                ],
+              ),
+              // Times section based on filter
+              if (_getTimesToShow().isNotEmpty ||
+                  (filter == ParishFilter.adoration && parish.adorationIsPerpetual)) ...[
+                const SizedBox(height: 12),
+                Divider(height: 1, color: subtextColor.withValues(alpha: 0.2)),
+                const SizedBox(height: 12),
+                _buildTimesSection(),
+              ],
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   List<ScheduleEntry> _getTimesToShow() {

@@ -10,6 +10,7 @@ import '../main.dart' show kSecondaryColor, kBackgroundColor, kBackgroundColorDa
 import '../services/feedback_client.dart';
 import '../widgets/custom_icons.dart';
 import '../widgets/stained_glass_header.dart';
+import '../utils/layout_scale.dart';
 import '../utils/parish_palette.dart';
 import '../widgets/next_mass_banner.dart';
 import '../widgets/timeline_schedule_card.dart';
@@ -605,12 +606,16 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
                 ),
               ),
               const SizedBox(width: 16),
-              Text(
-                'Upcoming Events',
-                style: GoogleFonts.cormorantGaramond(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: textColor,
+              // Wraps rather than overflowing: at large text sizes a
+              // two-word heading is wider than the row.
+              Expanded(
+                child: Text(
+                  'Upcoming Events',
+                  style: GoogleFonts.cormorantGaramond(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: textColor,
+                  ),
                 ),
               ),
             ],
@@ -661,12 +666,17 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
                   color: _primaryAccent,
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  'Is this information accurate?',
-                  style: GoogleFonts.inter(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    color: _primaryAccent,
+                // Flexible inside a min-width Row: the pill still hugs its
+                // label at normal sizes, but the label wraps instead of
+                // running past the screen edge when the text is large.
+                Flexible(
+                  child: Text(
+                    'Is this information accurate?',
+                    style: GoogleFonts.inter(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: _primaryAccent,
+                    ),
                   ),
                 ),
               ],
@@ -724,12 +734,16 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
                 ),
               ),
               const SizedBox(width: 16),
-              Text(
-                'Contact Information',
-                style: GoogleFonts.cormorantGaramond(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: textColor,
+              // Wraps rather than overflowing: at large text sizes a
+              // two-word heading is wider than the row.
+              Expanded(
+                child: Text(
+                  'Contact Information',
+                  style: GoogleFonts.cormorantGaramond(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                    color: textColor,
+                  ),
                 ),
               ),
             ],
@@ -804,72 +818,98 @@ class _TappableInfoCard extends StatelessWidget {
               ),
             ],
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(12),
+          child: LayoutBuilder(builder: (context, constraints) {
+            // The action ("Get Directions") used to be an unconstrained
+            // sibling of the content, so it took its natural width and the
+            // address — inside an Expanded — got whatever was left. At large
+            // text sizes that meant a full-width label beside an address
+            // squeezed to a word per line. Now it is capped, and past
+            // [prefersStackedLayout] it moves under the content instead.
+            final stacked = context.prefersStackedLayout;
+            final action = onTap == null
+                ? null
+                : Column(
+                    crossAxisAlignment: stacked
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: color.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          actionIcon,
+                          color: color,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        actionLabel,
+                        textAlign:
+                            stacked ? TextAlign.start : TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: 10,
+                          color: color,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  );
+
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: icon,
                 ),
-                child: icon,
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: color,
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: color,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      content,
-                      style: GoogleFonts.inter(
-                        fontSize: 15,
-                        color: textColor,
-                        height: 1.4,
+                      const SizedBox(height: 6),
+                      Text(
+                        content,
+                        style: GoogleFonts.inter(
+                          fontSize: 15,
+                          color: textColor,
+                          height: 1.4,
+                        ),
                       ),
-                    ),
-                  ],
+                      if (action != null && stacked) ...[
+                        const SizedBox(height: 12),
+                        action,
+                      ],
+                    ],
+                  ),
                 ),
-              ),
-              if (onTap != null) ...[
-                const SizedBox(width: 12),
-                Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: color.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Icon(
-                        actionIcon,
-                        color: color,
-                        size: 20,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      actionLabel,
-                      style: GoogleFonts.inter(
-                        fontSize: 10,
-                        color: color,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
+                if (action != null && !stacked) ...[
+                  const SizedBox(width: 12),
+                  ConstrainedBox(
+                    constraints:
+                        BoxConstraints(maxWidth: constraints.maxWidth / 3),
+                    child: action,
+                  ),
+                ],
               ],
-            ],
-          ),
+            );
+          }),
         ),
       ),
     );

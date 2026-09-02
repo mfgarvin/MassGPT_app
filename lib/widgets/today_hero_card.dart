@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/filtered_parish_list_page.dart';
 import '../theme/app_text.dart';
+import '../utils/layout_scale.dart';
 import '../main.dart' show goldTextAccentFor;
 
 /// What kind of schedule a hero suggestion is pointing the user toward.
@@ -54,15 +55,21 @@ class TodayHeroCard extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20, 18, 16, 18),
           child: Row(
             children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.18),
-                  borderRadius: BorderRadius.circular(14),
+              // Decoration, like the map card's glass chip: at large text
+              // sizes the badge and its gap cost the headline about a fifth
+              // of the card, which is what pushed "Find Mass times today"
+              // onto three lines. The headline is the card.
+              if (!context.prefersStackedLayout) ...[
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.18),
+                    borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Icon(suggestion.icon, color: Colors.white, size: 24),
                 ),
-                child: Icon(suggestion.icon, color: Colors.white, size: 24),
-              ),
-              const SizedBox(width: 16),
+                const SizedBox(width: 16),
+              ],
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

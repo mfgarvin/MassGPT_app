@@ -21,7 +21,9 @@ import 'widgets/liturgical_day_tile.dart';
 import 'widgets/zip_location_dialog.dart';
 import 'theme/app_text.dart';
 import 'utils/schedule_parser.dart';
-import 'utils/search_normalize.dart';
+import 'utils/layout_scale.dart';
+import 'utils/parish_search.dart';
+import 'widgets/remove_home_parish_dialog.dart';
 import 'utils/app_version.dart';
 import 'services/feedback_client.dart';
 import 'services/diocese_boundary.dart';
@@ -958,18 +960,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   void _updateSearchResults(String query) {
-    final normalizedQuery = normalizeForSearch(query);
-
     setState(() {
       _showResults = query.isNotEmpty;
       if (query.isEmpty) {
         _searchResults.clear();
       } else {
-        _searchResults = _parishes.where((parish) {
-          return normalizeForSearch(parish.name).contains(normalizedQuery) ||
-              normalizeForSearch(parish.city).contains(normalizedQuery) ||
-              parish.zipCode.contains(query);
-        }).take(5).toList(); // Limit to 5 results for autocomplete
+        // Ranked, so the 5 we keep are the 5 likeliest.
+        _searchResults =
+            searchParishes(_parishes, query).take(5).toList();
       }
     });
     // The list grows downward as matches arrive, so re-check the reveal: a
@@ -1043,9 +1041,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'ParishFinder',
-                        style: AppText.titleHuge(color: primaryAccentFor(isDark: _isDark)),
+                      // Flexible so the wordmark yields to the menu button at
+                      // large text sizes instead of pushing it off the edge.
+                      Flexible(
+                        child: Text(
+                          'ParishFinder',
+                          style: AppText.titleHuge(
+                              color: primaryAccentFor(isDark: _isDark)),
+                        ),
                       ),
                       PopupMenuButton<String>(
                         onSelected: (value) {
@@ -1436,61 +1439,77 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   Widget _buildQuickAccessButtons() {
+    // Three tiles across a phone give each about a third of the width. At
+    // large text sizes that is narrower than the word inside it — the labels
+    // read "Mass T… / Confes… / Adorati…", and letting them wrap only broke
+    // "Confession" mid-word. Stacked, each tile gets the full page width and
+    // lays its icon out beside the label.
+    final stacked = context.prefersStackedLayout;
+    final massAccent = primaryAccentFor(isDark: _isDark);
+    const confessionAccent = Color(0xFF5E3370);
+    final goldAccent = goldTextAccentFor(isDark: _isDark);
+
+    final tiles = [
+      _QuickAccessButton(
+        icon: Icon(Icons.access_time, color: massAccent, size: 28),
+        label: 'Mass Times',
+        color: massAccent,
+        horizontal: stacked,
+        onTap: () {
+          _pushPage(FilteredParishListPage(
+            filter: ParishFilter.massTimes,
+            title: 'Mass Times',
+            accentColor: massAccent,
+            userLocation: _userLocation,
+          ));
+        },
+      ),
+      _QuickAccessButton(
+        icon: CustomIcon.confession(color: confessionAccent, size: 28),
+        label: 'Confession',
+        color: confessionAccent,
+        horizontal: stacked,
+        onTap: () {
+          _pushPage(FilteredParishListPage(
+            filter: ParishFilter.confession,
+            title: 'Confession Times',
+            accentColor: confessionAccent,
+            userLocation: _userLocation,
+          ));
+        },
+      ),
+      _QuickAccessButton(
+        icon: CustomIcon.monstrance(color: goldAccent, size: 28),
+        label: 'Adoration',
+        color: goldAccent,
+        horizontal: stacked,
+        onTap: () {
+          _pushPage(FilteredParishListPage(
+            filter: ParishFilter.adoration,
+            title: 'Adoration',
+            accentColor: goldAccent,
+            userLocation: _userLocation,
+          ));
+        },
+      ),
+    ];
+
+    if (stacked) {
+      return Column(
+        children: [
+          for (var i = 0; i < tiles.length; i++) ...[
+            if (i > 0) const SizedBox(height: 12),
+            SizedBox(width: double.infinity, child: tiles[i]),
+          ],
+        ],
+      );
+    }
     return Row(
       children: [
-        Expanded(
-          child: Builder(builder: (context) {
-            final massAccent = primaryAccentFor(isDark: _isDark);
-            return _QuickAccessButton(
-              icon: Icon(Icons.access_time, color: massAccent, size: 28),
-              label: 'Mass Times',
-              color: massAccent,
-              onTap: () {
-                _pushPage(FilteredParishListPage(
-                  filter: ParishFilter.massTimes,
-                  title: 'Mass Times',
-                  accentColor: massAccent,
-                  userLocation: _userLocation,
-                ));
-              },
-            );
-          }),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: _QuickAccessButton(
-            icon: CustomIcon.confession(color: const Color(0xFF5E3370), size: 28),
-            label: 'Confession',
-            color: const Color(0xFF5E3370),
-            onTap: () {
-              _pushPage(FilteredParishListPage(
-                filter: ParishFilter.confession,
-                title: 'Confession Times',
-                accentColor: const Color(0xFF5E3370),
-                userLocation: _userLocation,
-              ));
-            },
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Builder(builder: (context) {
-            final goldAccent = goldTextAccentFor(isDark: _isDark);
-            return _QuickAccessButton(
-              icon: CustomIcon.monstrance(color: goldAccent, size: 28),
-              label: 'Adoration',
-              color: goldAccent,
-              onTap: () {
-                _pushPage(FilteredParishListPage(
-                  filter: ParishFilter.adoration,
-                  title: 'Adoration',
-                  accentColor: goldAccent,
-                  userLocation: _userLocation,
-                ));
-              },
-            );
-          }),
-        ),
+        for (var i = 0; i < tiles.length; i++) ...[
+          if (i > 0) const SizedBox(width: 12),
+          Expanded(child: tiles[i]),
+        ],
       ],
     );
   }
@@ -1717,8 +1736,10 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       _withEdgeFades(
         // Tall enough for a 2-line parish name plus the avatar row and the
         // pinned "Next ·" line without overflowing the card (was 150 → 19px
-        // overflow when the name wrapped to two lines).
-        cardHeight: 176,
+        // overflow when the name wrapped to two lines). Grows with the text
+        // scale, or the same overflow comes back at large font sizes — the
+        // card holds text, so its height is text-sized.
+        cardHeight: context.scaled(176),
         ListView.separated(
           scrollDirection: Axis.horizontal,
           physics: const BouncingScrollPhysics(),
@@ -1895,7 +1916,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     }
 
     return _withEdgeFades(
-      cardHeight: 180,
+      // Text-driven, so it grows with the text scale — see the home-parishes
+      // strip above.
+      cardHeight: context.scaled(180),
       ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
@@ -1932,11 +1955,16 @@ class _QuickAccessButton extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
 
+  /// Lay the tile out as a wide row (icon beside label) instead of a square
+  /// (icon above label). Used at large text sizes.
+  final bool horizontal;
+
   const _QuickAccessButton({
     required this.icon,
     required this.label,
     required this.color,
     required this.onTap,
+    this.horizontal = false,
   });
 
   @override
@@ -1962,31 +1990,58 @@ class _QuickAccessButton extends StatelessWidget {
             ),
           ],
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
+        child: horizontal
+            // Wide tile (see [_buildQuickAccessButtons]): icon and label side
+            // by side, with the whole page width to read across.
+            ? Row(
+                children: [
+                  const SizedBox(width: 4),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: color.withValues(alpha: 0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: icon,
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Text(
+                      label,
+                      style: GoogleFonts.inter(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: textColor,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: color.withValues(alpha: 0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: icon,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    label,
+                    style: GoogleFonts.inter(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
-              child: icon,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              label,
-              style: GoogleFonts.inter(
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-                color: textColor,
-              ),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -2636,13 +2691,30 @@ class _SettingsPageState extends State<SettingsPage> {
                           color: textColor,
                         ),
                       ),
-                      trailing: Text(
-                        AppVersion.display,
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          color: subtextColor,
-                        ),
-                      ),
+                      // A ListTile's trailing widget takes its natural width
+                      // and the title gets the rest, so at large text sizes
+                      // "Version" came out one letter per line with the
+                      // version string across it. Past that point the value
+                      // moves to the subtitle, where it has the full width —
+                      // the same shape as the Dark Mode tile above.
+                      subtitle: context.prefersStackedLayout
+                          ? Text(
+                              AppVersion.display,
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                color: subtextColor,
+                              ),
+                            )
+                          : null,
+                      trailing: context.prefersStackedLayout
+                          ? null
+                          : Text(
+                              AppVersion.display,
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                color: subtextColor,
+                              ),
+                            ),
                       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
                   ],
@@ -2862,13 +2934,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
                             ),
                           ),
                           IconButton(
+                            tooltip: 'Remove from home parishes',
                             icon: const Icon(
                               Icons.star,
                               color: Colors.amber,
                             ),
-                            onPressed: () {
-                              favoritesManager.toggleFavorite(parish);
-                            },
+                            // Confirmed first: this star sits on every row, so
+                            // a stray tap here is even easier than on the
+                            // detail page — and the row vanishes with it.
+                            onPressed: () =>
+                                confirmRemoveHomeParish(context, parish),
                           ),
                         ],
                       ),
@@ -2981,9 +3056,15 @@ class _AboutPageState extends State<AboutPage> {
               // App name
               Text('ParishFinder', style: AppText.titleHuge(color: textColor)),
               const SizedBox(height: 8),
-              Text(
-                'Version ${AppVersion.display}',
-                style: AppText.body(color: subtextColor),
+              // A build identifier, not prose: it should stay readable
+              // without wrapping across two lines at large system font sizes.
+              MediaQuery.withClampedTextScaling(
+                maxScaleFactor: 1.3,
+                child: Text(
+                  'Version ${AppVersion.display}',
+                  textAlign: TextAlign.center,
+                  style: AppText.body(color: subtextColor),
+                ),
               ),
               const SizedBox(height: 32),
               // Description card

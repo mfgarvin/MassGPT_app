@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
 import 'language_badge.dart';
 
@@ -104,12 +105,17 @@ class MassScheduleCard extends StatelessWidget {
           child: icon,
         ),
         const SizedBox(width: 16),
-        Text(
-          title,
-          style: GoogleFonts.cormorantGaramond(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-            color: textColor,
+        // Wraps rather than overflows: at large text scales a two-word title
+        // ("Confession Times") is wider than the row, and an unconstrained
+        // Text there clips with a debug stripe instead of taking a second line.
+        Expanded(
+          child: Text(
+            title,
+            style: GoogleFonts.cormorantGaramond(
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+              color: textColor,
+            ),
           ),
         ),
       ],
@@ -206,121 +212,179 @@ class MassScheduleCard extends StatelessWidget {
     );
   }
 
-  /// Notes longer than this get their own full-width line below the time
-  /// instead of competing with it for the ~120px tail of the row.
-  static const _inlineNoteMaxChars = 28;
+  /// A schedule row's lead at normal text size: the day chip, its margin and
+  /// the time column. Both columns grow with the text scale (see
+  /// [TextScaleLayout.scaled]) — at 2× the old fixed widths left the times
+  /// wrapping mid-label and the note tail too narrow to hold anything.
+  static const _dayColumnWidth = 64.0;
+  static const _dayColumnMargin = 10.0;
+  static const _timeColumnWidth = 128.0;
+
+  /// Horizontal padding a note chip adds around its text.
+  static const _noteChipPadding = 16.0;
 
   /// One schedule row. [ordinalLabel] is the monthly-recurrence marker
   /// ("1st", "Last", "Not 1st") shown under the day, or null for a weekly row.
   Widget _row(String dayLabel, String timeLabel, String? note,
       [String? languageBadge, String? ordinalLabel]) {
-    final inlineNote =
-        note != null && note.length <= _inlineNoteMaxChars ? note : null;
-    final blockNote = note != null && inlineNote == null ? note : null;
-
-    final noteStyle = GoogleFonts.inter(
+    // Prose note: its own full-width line under the row.
+    final blockStyle = GoogleFonts.inter(
       fontSize: 13,
       color: subtextColor,
       fontStyle: FontStyle.italic,
     );
+    // Tag note: a chip beside the time, like the language badge.
+    final chipStyle = GoogleFonts.inter(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: subtextColor,
+    );
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 64,
-                // Floor, not a fixed height, so a monthly row's two-line chip
-                // matches the one-line chips around it without clipping a day
-                // label that needs to wrap ("Mon, Tue, Thu" is three lines at
-                // 64px). 38 is the two-line content height (11px day + 9px
-                // ordinal) plus the 3px vertical padding; at 36 the ordinal
-                // clips. A longer label still grows the row, as it always did.
-                constraints: const BoxConstraints(minHeight: 38),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 4),
-                margin: const EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      dayLabel,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.inter(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        color: color,
+    // Which of the two a note gets is decided by measuring it, not by counting
+    // its characters. A character budget can't know how wide the row actually
+    // is, and the tail left over after the day chip and the time column is
+    // narrow (~84dp on a 360dp phone) — a 28-character note fits the old limit
+    // and still renders as "Weekday Mass (Mari…". Measuring puts the boundary
+    // exactly where the text stops fitting, at any width and any text scale.
+    return LayoutBuilder(builder: (context, constraints) {
+      // Cap each column so the two of them can never crowd the row: the day
+      // chip may take a quarter of it, the time whatever is left over with a
+      // little room kept back for a note.
+      final dayWidth = context.scaled(_dayColumnWidth,
+          max: constraints.maxWidth * 0.25);
+      final timeWidth = context.scaled(_timeColumnWidth,
+          max: constraints.maxWidth - dayWidth - _dayColumnMargin - 24);
+
+      String? chipNote;
+      String? blockNote;
+      if (note != null) {
+        final tail =
+            constraints.maxWidth - dayWidth - _dayColumnMargin - timeWidth;
+        final painter = TextPainter(
+          text: TextSpan(text: note, style: chipStyle),
+          textDirection: TextDirection.ltr,
+          maxLines: 1,
+          textScaler: MediaQuery.textScalerOf(context),
+        )..layout();
+        if (tail > 0 && painter.width + _noteChipPadding <= tail) {
+          chipNote = note;
+        } else {
+          blockNote = note;
+        }
+      }
+
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: dayWidth,
+                  // Floor, not a fixed height, so a monthly row's two-line chip
+                  // matches the one-line chips around it without clipping a day
+                  // label that needs to wrap ("Mon, Tue, Thu" is three lines at
+                  // 64px). 38 is the two-line content height (11px day + 9px
+                  // ordinal) plus the 3px vertical padding; at 36 the ordinal
+                  // clips. A longer label still grows the row, as it always did.
+                  constraints: const BoxConstraints(minHeight: 38),
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 4),
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.12),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        dayLabel,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          color: color,
+                        ),
                       ),
-                    ),
-                    // The ordinal rides under the day rather than beside it —
-                    // "1st Fri" doesn't fit the 64px column, and shrinking the
-                    // day to make room would cost every ordinary row.
-                    if (ordinalLabel != null)
-                      FittedBox(
-                        fit: BoxFit.scaleDown,
+                      // The ordinal rides under the day rather than beside it —
+                      // "1st Fri" doesn't fit the 64px column, and shrinking the
+                      // day to make room would cost every ordinary row.
+                      if (ordinalLabel != null)
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            ordinalLabel,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.inter(
+                              fontSize: 9,
+                              fontWeight: FontWeight.w600,
+                              color: color.withValues(alpha: 0.75),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: timeWidth,
+                  child: Row(
+                    children: [
+                      Flexible(
                         child: Text(
-                          ordinalLabel,
-                          textAlign: TextAlign.center,
+                          timeLabel,
                           style: GoogleFonts.inter(
-                            fontSize: 9,
+                            fontSize: 15,
                             fontWeight: FontWeight.w600,
-                            color: color.withValues(alpha: 0.75),
+                            color: textColor,
                           ),
                         ),
                       ),
-                  ],
+                      if (languageBadge != null) ...[
+                        const SizedBox(width: 6),
+                        LanguageBadge(label: languageBadge, color: color),
+                      ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 128,
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        timeLabel,
-                        style: GoogleFonts.inter(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: textColor,
+                if (chipNote != null)
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: _noteChipPadding / 2, vertical: 3),
+                        decoration: BoxDecoration(
+                          color: subtextColor.withValues(alpha: 0.10),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          chipNote,
+                          style: chipStyle,
+                          maxLines: 1,
+                          // Measured to fit, so this never fires — it's a floor
+                          // under a rounding disagreement, not the layout plan.
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),
-                    if (languageBadge != null) ...[
-                      const SizedBox(width: 6),
-                      LanguageBadge(label: languageBadge, color: color),
-                    ],
-                  ],
-                ),
-              ),
-              if (inlineNote != null)
-                Expanded(
-                  child: Text(
-                    inlineNote,
-                    style: noteStyle,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-            ],
-          ),
-          // Long note: full width under the row, aligned with the time column
-          // so it reads as an annotation on that Mass rather than a new entry.
-          if (blockNote != null)
-            Padding(
-              padding: const EdgeInsets.only(left: 74, top: 2),
-              child: Text(blockNote, style: noteStyle),
+              ],
             ),
-        ],
-      ),
-    );
+            // Long note: full width under the row, aligned with the time column
+            // so it reads as an annotation on that Mass rather than a new entry.
+            if (blockNote != null)
+              Padding(
+                padding: EdgeInsets.only(
+                  left: dayWidth + _dayColumnMargin, top: 2),
+                child: Text(blockNote, style: blockStyle),
+              ),
+          ],
+        ),
+      );
+    });
   }
 
   /// Collapse entries that share an identical time + note into a single row
