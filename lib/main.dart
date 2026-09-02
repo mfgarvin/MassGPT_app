@@ -95,38 +95,88 @@ Color primaryAccentFor({required bool isDark}) =>
 Color goldTextAccentFor({required bool isDark}) =>
     isDark ? kAccentCandlelight : kAccentGoldDeep;
 
+/// What the user asked for, which is not the same as what's on screen:
+/// [system] resolves against the phone's own light/dark setting.
+enum ThemeChoice { system, light, dark }
+
 // Theme notifier for app-wide theme management
-class ThemeNotifier extends ChangeNotifier {
+class ThemeNotifier extends ChangeNotifier with WidgetsBindingObserver {
+  /// Pre-2026-09 key: a plain bool, written only when the user toggled.
   static const String _prefsKey = 'dark_mode';
+  static const String _choiceKey = 'theme_choice';
 
-  bool _isDarkMode = false;
+  ThemeChoice _choice = ThemeChoice.system;
+  bool _platformIsDark = false;
 
-  bool get isDarkMode => _isDarkMode;
+  ThemeChoice get choice => _choice;
+
+  /// The theme actually in force. Everything that paints reads this, so
+  /// "system" never has to be resolved at the call site.
+  bool get isDarkMode => switch (_choice) {
+        ThemeChoice.light => false,
+        ThemeChoice.dark => true,
+        ThemeChoice.system => _platformIsDark,
+      };
 
   /// Restore the saved choice. Called from `main()` before `runApp`, so the
   /// first frame is already in the right theme and there's no light flash.
   Future<void> init() async {
+    WidgetsBinding.instance.addObserver(this);
+    _platformIsDark = PlatformDispatcher.instance.platformBrightness ==
+        Brightness.dark;
+
     final prefs = await SharedPreferences.getInstance();
-    final saved = prefs.getBool(_prefsKey);
-    if (saved == null || saved == _isDarkMode) return;
-    _isDarkMode = saved;
+    final saved = prefs.getString(_choiceKey);
+    if (saved != null) {
+      _choice = ThemeChoice.values.firstWhere((c) => c.name == saved,
+          orElse: () => ThemeChoice.system);
+    } else {
+      // Migration: someone who toggled the old switch made an explicit
+      // choice, and it would be rude to override it with the phone's
+      // setting. Someone who never touched it gets "system", which is what
+      // the switch could never offer.
+      final legacy = prefs.getBool(_prefsKey);
+      _choice = legacy == null
+          ? ThemeChoice.system
+          : (legacy ? ThemeChoice.dark : ThemeChoice.light);
+    }
     notifyListeners();
   }
 
-  void toggleTheme() => setDarkMode(!_isDarkMode);
+  /// The phone's light/dark setting changed under us. Only matters while
+  /// following it, but the field is cheap to keep current either way.
+  @override
+  void didChangePlatformBrightness() {
+    final isDark = PlatformDispatcher.instance.platformBrightness ==
+        Brightness.dark;
+    if (isDark == _platformIsDark) return;
+    _platformIsDark = isDark;
+    if (_choice == ThemeChoice.system) notifyListeners();
+  }
 
-  void setDarkMode(bool value) {
-    if (value == _isDarkMode) return;
-    _isDarkMode = value;
+  void toggleTheme() =>
+      setChoice(isDarkMode ? ThemeChoice.light : ThemeChoice.dark);
+
+  void setDarkMode(bool value) =>
+      setChoice(value ? ThemeChoice.dark : ThemeChoice.light);
+
+  void setChoice(ThemeChoice value) {
+    if (value == _choice) return;
+    _choice = value;
     notifyListeners();
     _persist(value);
   }
 
   /// Fire-and-forget: the toggle shouldn't wait on disk, and a failed write
   /// costs the preference, not the session.
-  Future<void> _persist(bool value) async {
+  Future<void> _persist(ThemeChoice value) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_prefsKey, value);
+    await prefs.setString(_choiceKey, value.name);
+    // The old key is left alone: an older build reinstalled over this one
+    // should still find the last explicit light/dark choice.
+    if (value != ThemeChoice.system) {
+      await prefs.setBool(_prefsKey, value == ThemeChoice.dark);
+    }
   }
 }
 
@@ -2532,10 +2582,50 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool _refreshing = false;
+
   @override
   void initState() {
     super.initState();
     themeNotifier.addListener(_onThemeChanged);
+  }
+
+  /// When the parish data was last fetched, and whether it's the live copy.
+  ///
+  /// The app loads cache-then-network on launch, so "saved copy" here means
+  /// the network attempt failed and these times are as old as the date says.
+  String _dataStatusLine() {
+    if (_refreshing) return 'Checking for new times…';
+    final updated = parishService.lastUpdated;
+    if (updated == null) return 'Not downloaded yet · tap to fetch';
+    final stamp = '${_monthNames[updated.month - 1]} ${updated.day}';
+    return parishService.isUsingCachedData
+        ? 'Saved copy from $stamp · tap to retry'
+        : 'Updated $stamp · tap to refresh';
+  }
+
+  static const _monthNames = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ];
+
+  Future<void> _refreshParishData() async {
+    setState(() => _refreshing = true);
+    await parishService.refreshParishes();
+    if (!mounted) return;
+    setState(() => _refreshing = false);
+
+    final failed = parishService.isUsingCachedData;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          failed
+              ? 'Could not reach the server — still using the saved copy.'
+              : 'Parish data is up to date.',
+          style: GoogleFonts.inter(),
+        ),
+      ),
+    );
   }
 
   @override
@@ -2555,6 +2645,7 @@ class _SettingsPageState extends State<SettingsPage> {
     final cardColor = isDark ? kCardColorDark : kCardColor;
     final textColor = isDark ? Colors.white : Colors.black87;
     final subtextColor = isDark ? Colors.white70 : Colors.black54;
+    final accent = primaryAccentFor(isDark: isDark);
 
     return SafeArea(
       child: Scaffold(
@@ -2605,42 +2696,95 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ],
                 ),
-                child: ListTile(
-                  leading: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: kPrimaryColor.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Icon(
-                      isDark ? Icons.dark_mode : Icons.light_mode,
-                      color: kPrimaryColor,
-                      size: 24,
-                    ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: accent.withValues(alpha: 0.1),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Icon(
+                              isDark ? Icons.dark_mode : Icons.light_mode,
+                              color: accent,
+                              size: 24,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Theme',
+                                  style: GoogleFonts.inter(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: textColor,
+                                  ),
+                                ),
+                                Text(
+                                  themeNotifier.choice == ThemeChoice.system
+                                      ? 'Following your phone — currently '
+                                          '${isDark ? 'dark' : 'light'}'
+                                      : 'Always ${isDark ? 'dark' : 'light'}',
+                                  style: GoogleFonts.inter(
+                                    fontSize: 13,
+                                    color: subtextColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: double.infinity,
+                        child: SegmentedButton<ThemeChoice>(
+                          // Stacks at large text, like the sort selector.
+                          direction: context.prefersStackedLayout
+                              ? Axis.vertical
+                              : Axis.horizontal,
+                          segments: const [
+                            ButtonSegment(
+                              value: ThemeChoice.system,
+                              label: Text('System'),
+                            ),
+                            ButtonSegment(
+                              value: ThemeChoice.light,
+                              label: Text('Light'),
+                            ),
+                            ButtonSegment(
+                              value: ThemeChoice.dark,
+                              label: Text('Dark'),
+                            ),
+                          ],
+                          selected: {themeNotifier.choice},
+                          onSelectionChanged: (selection) =>
+                              themeNotifier.setChoice(selection.first),
+                          style: SegmentedButton.styleFrom(
+                            // Oxblood disappears into the black card in dark
+                            // mode; accents route through the helper.
+                            selectedBackgroundColor:
+                                accent.withValues(alpha: 0.15),
+                            selectedForegroundColor: accent,
+                            foregroundColor: subtextColor,
+                            textStyle: GoogleFonts.inter(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          showSelectedIcon: false,
+                        ),
+                      ),
+                    ],
                   ),
-                  title: Text(
-                    'Dark Mode',
-                    style: GoogleFonts.inter(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: textColor,
-                    ),
-                  ),
-                  subtitle: Text(
-                    isDark ? 'Currently using dark theme' : 'Currently using light theme',
-                    style: GoogleFonts.inter(
-                      fontSize: 13,
-                      color: subtextColor,
-                    ),
-                  ),
-                  trailing: Switch(
-                    value: isDark,
-                    onChanged: (value) {
-                      themeNotifier.setDarkMode(value);
-                    },
-                    activeThumbColor: kPrimaryColor,
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
               ),
               const SizedBox(height: 32),
@@ -2658,7 +2802,6 @@ class _SettingsPageState extends State<SettingsPage> {
 
               Container(
                 decoration: BoxDecoration(
-                  color: cardColor,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
@@ -2668,56 +2811,65 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ],
                 ),
-                child: Column(
+                // The tile is tappable now, and a ListTile paints its ink on
+                // the nearest Material — which a coloured Container would sit
+                // in front of. So the card's colour comes from a Material and
+                // the Container is left holding only the shadow.
+                child: Material(
+                  color: cardColor,
+                  borderRadius: BorderRadius.circular(12),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
                   children: [
                     ListTile(
                       leading: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: kPrimaryColor.withValues(alpha: 0.1),
+                          color: accent.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Icon(
-                          Icons.info_outline,
-                          color: kPrimaryColor,
-                          size: 24,
-                        ),
+                        child: _refreshing
+                            ? SizedBox(
+                                width: 24,
+                                height: 24,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2),
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: accent,
+                                  ),
+                                ),
+                              )
+                            : Icon(
+                                Icons.cloud_download_outlined,
+                                color: accent,
+                                size: 24,
+                              ),
                       ),
                       title: Text(
-                        'Version',
+                        'Parish data',
                         style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: textColor,
                         ),
                       ),
-                      // A ListTile's trailing widget takes its natural width
-                      // and the title gets the rest, so at large text sizes
-                      // "Version" came out one letter per line with the
-                      // version string across it. Past that point the value
-                      // moves to the subtitle, where it has the full width —
-                      // the same shape as the Dark Mode tile above.
-                      subtitle: context.prefersStackedLayout
-                          ? Text(
-                              AppVersion.display,
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                color: subtextColor,
-                              ),
-                            )
-                          : null,
-                      trailing: context.prefersStackedLayout
-                          ? null
-                          : Text(
-                              AppVersion.display,
-                              style: GoogleFonts.inter(
-                                fontSize: 14,
-                                color: subtextColor,
-                              ),
-                            ),
+                      // Value in the subtitle rather than a trailing widget:
+                      // a ListTile's trailing takes its natural width and
+                      // leaves the title the rest, which at large text sizes
+                      // set "Parish data" one letter per line.
+                      subtitle: Text(
+                        _dataStatusLine(),
+                        style: GoogleFonts.inter(
+                          fontSize: 13,
+                          color: subtextColor,
+                        ),
+                      ),
+                      onTap: _refreshing ? null : _refreshParishData,
                       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     ),
                   ],
+                  ),
                 ),
               ),
             ],
