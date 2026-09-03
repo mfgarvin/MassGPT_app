@@ -147,6 +147,45 @@ Typography: a unified scale in `lib/theme/app_text.dart`. **Inter** for body/UI,
 **Cormorant Garamond** for display (app title, headings, parish names). Prefer the
 `AppText` scale over inline `GoogleFonts.x(fontSize: …)`.
 
+Theme choice is tri-state — `ThemeNotifier.choice` is `system` / `light` / `dark`,
+persisted under `theme_choice`, and `system` resolves against the platform
+brightness (with a `didChangePlatformBrightness` observer, so the app follows the
+phone live). Everything that paints still reads `themeNotifier.isDarkMode`; the
+legacy `dark_mode` bool is only read for migration and written for explicit
+choices.
+
+### Text scaling
+
+Flutter scales *text* with the accessibility font setting, but a `width: 128`
+column or a `height: 176` card does not — so at 2× the text grows into a box that
+didn't, and you get a name rendered one letter per line or a debug overflow
+stripe. `lib/utils/layout_scale.dart` is the convention:
+
+- `context.scaled(size, max:)` — grow a fixed dimension with the text, capped.
+- `context.prefersStackedLayout` — true at ≥1.5×, meaning "these two things can
+  no longer share a row". Used to stack a trailing badge under its content
+  (list cards, the next-Mass banner, the address card's action) and to drop
+  decoration that costs the text its width (the map card's glass chip, the Home
+  greeting card's icon).
+- Trailing widgets in a `Row` take their natural width and leave the rest to the
+  `Expanded` beside them — cap them, or the content starves.
+- `MediaQuery.withClampedTextScaling` for text that is a credit or an
+  identifier rather than content (the OSM attribution, the version string).
+
+`test/page_scaling_smoke_test.dart` pumps every screen at 1× and 2× and scrolls
+it — an overflow is an exception in a test, so it fails loudly. Precise
+per-widget cases live in `test/text_scaling_test.dart`.
+
+**Any test that measures rendered text must call `loadAppFonts()` from
+`test/support/test_fonts.dart` in `setUpAll`.** google_fonts registers Inter
+asynchronously, so without it a measurement gets fallback metrics or Inter
+metrics depending on what ran earlier in the file — the assertion becomes
+order-dependent, not wrong-looking, just flaky.
+
+Schedule day chips (Mass card and the Confession/Adoration timeline card) share
+their sizing via `lib/widgets/day_chip_text.dart` so the same "Sat" is set the
+same in all three cards on a parish page.
+
 ## Development Notes
 
 ### Dev Location Override
