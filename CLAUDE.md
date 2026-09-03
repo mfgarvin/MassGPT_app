@@ -155,7 +155,9 @@ Typography: a unified scale in `lib/theme/app_text.dart`. **Inter** for body/UI,
 Theme choice is tri-state — `ThemeNotifier.choice` is `system` / `light` / `dark`,
 persisted under `theme_choice`, and `system` resolves against the platform
 brightness (with a `didChangePlatformBrightness` observer, so the app follows the
-phone live). Everything that paints still reads `themeNotifier.isDarkMode`; the
+phone live). The **default is `light`** — a fresh install, and an unreadable
+stored value, both land there; `system` is an opt-in from Settings.
+Everything that paints still reads `themeNotifier.isDarkMode`; the
 legacy `dark_mode` bool is only read for migration and written for explicit
 choices.
 

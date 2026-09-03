@@ -174,7 +174,7 @@ class ThemeNotifier extends ChangeNotifier with WidgetsBindingObserver {
   static const String _prefsKey = 'dark_mode';
   static const String _choiceKey = 'theme_choice';
 
-  ThemeChoice _choice = ThemeChoice.system;
+  ThemeChoice _choice = ThemeChoice.light;
   bool _platformIsDark = false;
 
   ThemeChoice get choice => _choice;
@@ -198,15 +198,15 @@ class ThemeNotifier extends ChangeNotifier with WidgetsBindingObserver {
     final saved = prefs.getString(_choiceKey);
     if (saved != null) {
       _choice = ThemeChoice.values.firstWhere((c) => c.name == saved,
-          orElse: () => ThemeChoice.system);
+          orElse: () => ThemeChoice.light);
     } else {
       // Migration: someone who toggled the old switch made an explicit
       // choice, and it would be rude to override it with the phone's
-      // setting. Someone who never touched it gets "system", which is what
-      // the switch could never offer.
+      // setting. Someone who never touched it gets the default, "light" —
+      // "system" is offered in Settings but is not what we start people on.
       final legacy = prefs.getBool(_prefsKey);
       _choice = legacy == null
-          ? ThemeChoice.system
+          ? ThemeChoice.light
           : (legacy ? ThemeChoice.dark : ThemeChoice.light);
     }
     notifyListeners();

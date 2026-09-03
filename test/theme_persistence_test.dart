@@ -11,11 +11,12 @@ void main() {
 
   tearDown(() => themeNotifier.setDarkMode(false));
 
-  test('follows the phone when nothing was ever saved', () async {
+  test('defaults to light when nothing was ever saved', () async {
     SharedPreferences.setMockInitialValues({});
     await themeNotifier.init();
-    expect(themeNotifier.choice, ThemeChoice.system);
-    // The test platform reports light, so that's what resolves.
+    expect(themeNotifier.choice, ThemeChoice.light,
+        reason: 'a fresh install starts on the parchment theme; "system" is '
+            'an opt-in in Settings');
     expect(themeNotifier.isDarkMode, isFalse);
   });
 
@@ -74,10 +75,10 @@ void main() {
       expect(themeNotifier.choice, ThemeChoice.system);
     });
 
-    test('an unrecognised stored value falls back to system', () async {
+    test('an unrecognised stored value falls back to the default', () async {
       SharedPreferences.setMockInitialValues({'theme_choice': 'sepia'});
       await themeNotifier.init();
-      expect(themeNotifier.choice, ThemeChoice.system);
+      expect(themeNotifier.choice, ThemeChoice.light);
     });
   });
 
