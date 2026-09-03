@@ -17,15 +17,19 @@ This key signs every upload for the life of the app. **If you lose it you cannot
 update the app** (Play App Signing lets you request an upload-key reset, but
 that is a support round-trip — don't rely on it).
 
-`keytool` ships with the JDK. It is not on this machine's `PATH`; Android
-Studio's bundled JDK or any installed JDK provides it.
+**This was already done.** The key that signs ParishFinder lives at
+`~/keys/parishfinder-upload.jks` under alias **`mykey`** — those are the values
+step 2 needs, and running the command below again would create a *different*
+key that Play will not accept. It is recorded here only for a future app.
+
+`keytool` ships with the JDK; on this machine it is at `/usr/bin/keytool`.
 
 ```bash
 keytool -genkeypair -v \
-  -keystore ~/parishfinder-upload.jks \
+  -keystore ~/keys/parishfinder-upload.jks \
   -storetype PKCS12 \
   -keyalg RSA -keysize 2048 -validity 10000 \
-  -alias upload
+  -alias mykey
 ```
 
 Answer the prompts and choose a strong password. Store the keystore **and** its
@@ -98,6 +102,22 @@ flutter build appbundle --release
 ```
 
 The artifact lands at `build/app/outputs/bundle/release/app-release.aab`.
+
+Worth confirming what you actually built before uploading — the version and the
+signing key are both easy to get wrong and expensive to correct after Play has
+seen them:
+
+```bash
+keytool -printcert -jarfile build/app/outputs/bundle/release/app-release.aab
+unzip -l build/app/outputs/bundle/release/app-release.aab | grep '\.RSA'
+```
+
+The certificate should read `CN=Michael Garvin, O=St. Isidore Solutions` and the
+signature block `META-INF/MYKEY.RSA`. A debug-signed bundle says `CN=Android
+Debug` — Play rejects it, but better to find out here.
+
+Delete `android/key.properties` once the build is done, so the next release
+build fails loudly instead of silently reusing whatever is on disk.
 
 The **versionCode** is derived from `git rev-list --count HEAD`, floored at the
 `+N` in `pubspec.yaml`. Play permanently rejects any upload at or below a

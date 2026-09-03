@@ -1,0 +1,9 @@
+Search understands multiple words — "joseph strongsville" now finds the right parish.
+
+Day chips on a parish page are bigger and easier to read, and a First Friday or First Saturday Mass is marked as such above the day.
+
+Everything now fits at large system text sizes — parish names, Mass times and notes no longer clip or overlap.
+
+In Settings: pick System, Light or Dark theme, and refresh parish data whenever you like.
+
+Removing a home parish asks first, so a stray tap can't unsave it.
