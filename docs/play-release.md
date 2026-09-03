@@ -41,11 +41,15 @@ machine's disk.
 Create `android/key.properties` (already gitignored — never commit it):
 
 ```properties
-storeFile=/home/michael/keys/parishfinder-upload.jks
+storeFile=<absolute path to parishfinder-upload.jks>
 storePassword=<your store password>
 keyAlias=mykey
 keyPassword=<your key password>
 ```
+
+`storeFile` goes through Gradle's `file()`, which expands neither `~` nor
+`$HOME` — it must be a real absolute path. On the Linux box the keystore is
+under `~/keys/`; the password is in the password manager, not in this repo.
 
 `android/app/build.gradle` reads this file. If it is missing, **release builds
 fail loudly** rather than falling back to debug signing — a debug-signed AAB is
@@ -55,7 +59,9 @@ rotated.
 ### Sideload test builds vs. the real upload key
 
 There is a throwaway keystore at `~/parishfinder-TEST-ONLY.jks` (alias
-`testonly`, password `parishfindertest`) used to sign APKs for device testing.
+`testonly`) used to sign APKs for device testing. Its password is deliberately
+not written down here — this repo is public, and a password in it is a password
+in it, throwaway key or not.
 It is **not** an upload key and must never sign anything that reaches Play — the
 first key you upload with becomes your enrolled upload key.
 
@@ -64,11 +70,11 @@ build fails loudly rather than quietly signing with the test key. To produce a
 sideload APK:
 
 ```bash
-cat > android/key.properties <<'EOF'
-storeFile=/home/michael/parishfinder-TEST-ONLY.jks
-storePassword=parishfindertest
+cat > android/key.properties <<EOF
+storeFile=$HOME/parishfinder-TEST-ONLY.jks
+storePassword=<test keystore password>
 keyAlias=testonly
-keyPassword=parishfindertest
+keyPassword=<test keystore password>
 EOF
 
 flutter build apk --release --split-per-abi
