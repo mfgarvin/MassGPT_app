@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:parishfinder/utils/schedule_parser.dart';
 import 'package:parishfinder/widgets/timeline_schedule_card.dart';
 
+import 'package:parishfinder/widgets/day_chip_text.dart';
+
 import 'support/test_fonts.dart';
 
 ScheduleEntry _entry(int day, int hour, int minute,
@@ -101,5 +103,14 @@ void main() {
           _wrap([_entry(6, 15, 0, endHour: 16, note: note)], textScale: 2.0));
       expect(_isChip(tester, note), isFalse);
     });
+  });
+
+  testWidgets('the day chip is set to the same size as the Mass card\'s',
+      (tester) async {
+    await tester.pumpWidget(_wrap([_entry(6, 15, 0, endHour: 16)]));
+    final day = tester.widget<Text>(find.text('Sat'));
+    expect(day.style!.fontSize, dayChipTextSize('Sat'),
+        reason: 'Confession and Adoration sit on the same page as Mass '
+            'Times; a day set smaller in one card reads as a mistake');
   });
 }

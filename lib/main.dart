@@ -2678,7 +2678,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: kPrimaryColor,
+                  color: accent,
                 ),
               ),
               const SizedBox(height: 12),
@@ -2795,7 +2795,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: kPrimaryColor,
+                  color: accent,
                 ),
               ),
               const SizedBox(height: 12),

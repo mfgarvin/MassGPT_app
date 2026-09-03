@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
+import 'day_chip_text.dart';
 import 'language_badge.dart';
 
 /// Mass schedule card that presents the *standing weekly schedule* split into
@@ -300,18 +301,10 @@ class MassScheduleCard extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        dayLabel,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: color,
-                        ),
-                      ),
-                      // The ordinal rides under the day rather than beside it —
-                      // "1st Fri" doesn't fit the 64px column, and shrinking the
-                      // day to make room would cost every ordinary row.
+                      // The ordinal rides above the day, not beside it — "1st
+                      // Fri" doesn't fit the 64px column — and above rather
+                      // than below because it qualifies what follows: the chip
+                      // reads "1st / Fri" the way you'd say it.
                       if (ordinalLabel != null)
                         FittedBox(
                           fit: BoxFit.scaleDown,
@@ -319,10 +312,38 @@ class MassScheduleCard extends StatelessWidget {
                             ordinalLabel,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.inter(
-                              fontSize: 9,
+                              fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: color.withValues(alpha: 0.75),
                             ),
+                          ),
+                        ),
+                      // A run ("Mon–Fri") is one idea and shouldn't break
+                      // across lines, so it shrinks to fit instead. A list
+                      // ("Mon, Tue, Thu") is several, and still wraps.
+                      if (isDayRun(dayLabel))
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            dayLabel,
+                            maxLines: 1,
+                            style: GoogleFonts.inter(
+                              fontSize: dayChipTextSize(dayLabel),
+                              fontWeight: FontWeight.w700,
+                              color: color,
+                              height: 1.1,
+                            ),
+                          ),
+                        )
+                      else
+                        Text(
+                          dayLabel,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: dayChipTextSize(dayLabel),
+                            fontWeight: FontWeight.w700,
+                            color: color,
+                            height: 1.1,
                           ),
                         ),
                     ],

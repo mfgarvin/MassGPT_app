@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
+import 'day_chip_text.dart';
 
 /// Schedule card that groups entries into Today / Tomorrow / This week / Beyond
 /// buckets with relative time hints. Designed for Mass times where parishes
@@ -160,7 +161,9 @@ class TimelineScheduleCard extends StatelessWidget {
   /// this-week / beyond rows) and the time column. Both grow with the text
   /// scale — see [TextScaleLayout.scaled] and the same rule in
   /// MassScheduleCard.
-  static const _dayColumnWidth = 38.0;
+  /// Wider than it was (38): the day label is set to match the Mass card's
+  /// chip, and 38px could not hold it.
+  static const _dayColumnWidth = 46.0;
   static const _dayColumnMargin = 10.0;
   static const _timeColumnWidth = 128.0;
 
@@ -229,13 +232,19 @@ class TimelineScheduleCard extends StatelessWidget {
                       color: color.withValues(alpha: 0.12),
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: Text(
-                      e.dayLabel,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.inter(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w700,
-                        color: color,
+                    // Sized to fill the chip rather than sit in it as a
+                    // footnote — these are always a single day, so there is
+                    // room. FittedBox keeps a wide text scale honest.
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        e.dayLabel,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: dayChipTextSize(e.dayLabel),
+                          fontWeight: FontWeight.w700,
+                          color: color,
+                        ),
                       ),
                     ),
                   ),

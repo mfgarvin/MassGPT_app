@@ -208,4 +208,48 @@ void main() {
           reason: 'the measurement must account for the text scaler');
     });
   });
+
+  group('the day chip', () {
+    /// The rendered font size of the day label in the first (only) row.
+    double daySize(WidgetTester tester, String label) =>
+        tester.widget<Text>(find.text(label)).style!.fontSize!;
+
+    testWidgets('a single day is set large enough to fill its chip',
+        (tester) async {
+      await tester.pumpWidget(_wrap([_entry(6, 16, 30)]));
+      expect(daySize(tester, 'Sat'), greaterThan(14),
+          reason: 'a lone "Sat" has the chip to itself');
+    });
+
+    testWidgets('a day run stays smaller so it still fits', (tester) async {
+      // Both chips in one card, so the sizes are compared as rendered rather
+      // than against a number copied out of the widget.
+      await tester.pumpWidget(_wrap([
+        for (var d = 1; d <= 5; d++) _entry(d, 7, 30),
+        _entry(6, 16, 30),
+      ]));
+      expect(find.text('Mon–Fri'), findsOneWidget);
+      expect(daySize(tester, 'Mon–Fri'), lessThan(daySize(tester, 'Sat')));
+    });
+
+    testWidgets('the ordinal sits above the day, not below', (tester) async {
+      await tester.pumpWidget(
+          _wrap([_entry(6, 8, 30, weeksOfMonth: [1])]));
+      expect(find.text('1st'), findsOneWidget);
+      // "1st Sat", read top to bottom.
+      expect(tester.getTopLeft(find.text('1st')).dy,
+          lessThan(tester.getTopLeft(find.text('Sat')).dy));
+    });
+
+    testWidgets('a wrapping day list is not clipped by the larger size',
+        (tester) async {
+      await tester.pumpWidget(_wrap([
+        _entry(1, 7, 30),
+        _entry(2, 7, 30),
+        _entry(4, 7, 30),
+      ]));
+      expect(tester.takeException(), isNull);
+      expect(find.text('Mon, Tue, Thu'), findsOneWidget);
+    });
+  });
 }
