@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../pages/filtered_parish_list_page.dart';
 import '../theme/app_text.dart';
 import '../utils/layout_scale.dart';
-import '../main.dart' show goldTextAccentFor;
+import '../main.dart' show goldTextAccentFor, kConfessionViolet;
 
 /// What kind of schedule a hero suggestion is pointing the user toward.
 enum HeroIntent { mass, confession, adoration }
@@ -194,7 +194,10 @@ class TodayHeroCard extends StatelessWidget {
       case HeroIntent.mass:
         return null; // use caller accent (oxblood / candlelight)
       case HeroIntent.confession:
-        return const Color(0xFF5E3370); // dignified violet — penitential
+        // Stays the deep violet in both themes: this tints a gradient that
+        // white text sits on, so lightening it the way the Confession list's
+        // ink does would cost the headline its contrast.
+        return kConfessionViolet;
       case HeroIntent.adoration:
         return goldTextAccentFor(isDark: isDark); // bronze gold — Eucharistic
     }

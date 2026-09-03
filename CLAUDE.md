@@ -140,8 +140,13 @@ Global constants in `main.dart` — **warm parchment + oxblood + gold** (light) 
 - `kBackgroundColor`: `#FAF6EE` (warm cream parchment) · `kBackgroundColorDark`: `#000000` (OLED black)
 - `kPrimaryColor`: `#8C1F1F` (deep oxblood) · `kSecondaryColor`: `#4A2828` (deep plum)
 - `kAccentGold`: `#C9A227` (ornament only) · `kAccentGoldDeep`: `#8C5A14` (text-safe) · `kAccentCandlelight`: `#D4A24A` (dark-mode accent)
-- `kCardColor`: `#FFFCF4` · `kCardColorDark`: `#14100F`
-- Helpers `primaryAccentFor({isDark})` / `goldTextAccentFor({isDark})` — gold is too low-contrast as text on parchment, so accent *text* routes through these.
+- `kCardColor`: `#FFFCF4` · `kCardColorDark`: `#14100F` · `kCardBorderDark`: `#423833`
+- `kConfessionViolet`: `#5E3370` (penitential violet, **background** use) · `kConfessionVioletLight`: `#C0A0DC` (dark-mode ink)
+- Helpers `primaryAccentFor({isDark})` / `goldTextAccentFor({isDark})` / `violetAccentFor({isDark})` — gold is too low-contrast as text on parchment and the oxblood and violet are too low-contrast as text on black, so accent *text and icons* route through these. Mass, Confession and Adoration each have one; use them rather than a literal, or an accent authored for parchment lands at ~2:1 on the dark scaffold. The Upcoming Events card borrows the violet as a second decorative hue.
+- Semantic hues, same shape: `bulletinAccentFor` (the bulletin card's red, which cannot borrow `primaryAccentFor` because that turns *gold* in dark mode) and `successAccentFor` / `warningAccentFor` / `errorAccentFor`. **No raw `Colors.red`/`green`/`orange`/`purple` remain in `lib/`** — Material's swatches were drawn for a white app bar and clear neither ground here (`Colors.purple` was 3.0:1 on the dark card, `Colors.orange` 2.1:1 on cream). Snackbars fill with these and take their ink from `onAccentFor`. `Colors.grey` survives only as decorative low-alpha fills and as `grey[600]` subtext (4.5:1 on cream); it is never ink for content, where it measures 2.6:1.
+- `onAccentFor(accent)` — ink for a control *filled* with an accent. `Colors.white` is right on light-mode accents and wrong on dark-mode ones (white on candlelight gold is 2.3:1), so filled chips and buttons pick their foreground from the fill's luminance.
+- `cardBorderFor({isDark})` / `cardBorderSideFor({isDark})` — a card is `kCardColorDark` on `#000000`, 1.1:1, and the light theme's drop shadow is black on black, so in dark mode the hairline **is** the card's edge. Every card decoration carries one; null / `BorderSide.none` in light mode, where the shadow does the job. The `SideFor` variant is for a card whose surface is a `Material` (it takes a `shape`, not a `border`).
+- `test/dark_mode_contrast_test.dart` pins all of the above as contrast ratios — an accent that reads fine on a desk monitor and disappears on a phone is exactly what an eye misses and a number catches.
 
 Typography: a unified scale in `lib/theme/app_text.dart`. **Inter** for body/UI,
 **Cormorant Garamond** for display (app title, headings, parish names). Prefer the

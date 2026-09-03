@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../main.dart' show cardBorderFor;
 import '../utils/layout_scale.dart';
 import '../utils/schedule_parser.dart';
 import 'day_chip_text.dart';
@@ -41,6 +42,7 @@ class TimelineScheduleCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
+        border: cardBorderFor(isDark: isDark),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.06),

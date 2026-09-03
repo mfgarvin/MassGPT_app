@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/parish.dart';
-import '../main.dart' show kSecondaryColor, kBackgroundColor, kBackgroundColorDark, kCardColor, kCardColorDark, kAccentGold, favoritesManager, themeNotifier, primaryAccentFor, goldTextAccentFor;
+import '../main.dart' show kSecondaryColor, kBackgroundColor, kBackgroundColorDark, kCardColor, kCardColorDark, kAccentGold, favoritesManager, themeNotifier, primaryAccentFor, goldTextAccentFor, cardBorderFor, cardBorderSideFor, onAccentFor, violetAccentFor, bulletinAccentFor, successAccentFor, warningAccentFor;
 import '../services/feedback_client.dart';
 import '../widgets/custom_icons.dart';
 import '../widgets/stained_glass_header.dart';
@@ -579,6 +579,7 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
+        border: cardBorderFor(isDark: themeNotifier.isDarkMode),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.06),
@@ -596,12 +597,13 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.purple.withValues(alpha: 0.1),
+                  color: violetAccentFor(isDark: themeNotifier.isDarkMode)
+                      .withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.event,
-                  color: Colors.purple,
+                  color: violetAccentFor(isDark: themeNotifier.isDarkMode),
                   size: 24,
                 ),
               ),
@@ -707,6 +709,7 @@ class _ParishDetailPageState extends State<ParishDetailPage> {
       decoration: BoxDecoration(
         color: cardColor,
         borderRadius: BorderRadius.circular(20),
+        border: cardBorderFor(isDark: themeNotifier.isDarkMode),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.06),
@@ -801,7 +804,10 @@ class _TappableInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: cardColor,
-      borderRadius: BorderRadius.circular(20),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+        side: cardBorderSideFor(isDark: themeNotifier.isDarkMode),
+      ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(20),
@@ -948,13 +954,22 @@ class _TappableContactRow extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: (isClickable ? Theme.of(context).colorScheme.primary : Colors.grey).withValues(alpha: 0.1),
+                color: (isClickable
+                        ? Theme.of(context).colorScheme.primary
+                        : (themeNotifier.isDarkMode
+                            ? Colors.white
+                            : Colors.black))
+                    .withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(
                 icon,
                 size: 20,
-                color: isClickable ? Theme.of(context).colorScheme.primary : Colors.grey,
+                color: isClickable
+                    ? Theme.of(context).colorScheme.primary
+                    : (themeNotifier.isDarkMode
+                        ? Colors.white70
+                        : Colors.black54),
               ),
             ),
             const SizedBox(width: 12),
@@ -1010,7 +1025,10 @@ class _BulletinButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: cardColor,
-      borderRadius: BorderRadius.circular(16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: cardBorderSideFor(isDark: themeNotifier.isDarkMode),
+      ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
@@ -1032,12 +1050,13 @@ class _BulletinButton extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.red.withValues(alpha: 0.1),
+                  color: bulletinAccentFor(isDark: themeNotifier.isDarkMode)
+                      .withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.article,
-                  color: Colors.red,
+                  color: bulletinAccentFor(isDark: themeNotifier.isDarkMode),
                   size: 24,
                 ),
               ),
@@ -1068,12 +1087,13 @@ class _BulletinButton extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.red.withValues(alpha: 0.1),
+                  color: bulletinAccentFor(isDark: themeNotifier.isDarkMode)
+                      .withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.open_in_new,
-                  color: Colors.red,
+                  color: bulletinAccentFor(isDark: themeNotifier.isDarkMode),
                   size: 20,
                 ),
               ),
@@ -1175,8 +1195,11 @@ class _DataFeedbackSheetState extends State<_DataFeedbackSheet> {
     if (result.ok) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Thanks for the feedback!', style: GoogleFonts.inter()),
-          backgroundColor: Colors.green[600],
+          content: Text('Thanks for the feedback!',
+              style: GoogleFonts.inter(
+                  color: onAccentFor(
+                      successAccentFor(isDark: themeNotifier.isDarkMode)))),
+          backgroundColor: successAccentFor(isDark: themeNotifier.isDarkMode),
         ),
       );
       Navigator.of(context).pop();
@@ -1198,6 +1221,7 @@ class _DataFeedbackSheetState extends State<_DataFeedbackSheet> {
       decoration: BoxDecoration(
         color: widget.cardColor,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        border: cardBorderFor(isDark: themeNotifier.isDarkMode),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -1288,7 +1312,8 @@ class _DataFeedbackSheetState extends State<_DataFeedbackSheet> {
                           label: 'Yes, it\'s accurate',
                           icon: Icons.check_circle_outline,
                           isSelected: _isAccurate == true,
-                          color: Colors.green,
+                          color: successAccentFor(
+                              isDark: themeNotifier.isDarkMode),
                           cardColor: widget.cardColor,
                           onTap: () {
                             setState(() {
@@ -1305,7 +1330,8 @@ class _DataFeedbackSheetState extends State<_DataFeedbackSheet> {
                           label: 'No, there\'s an issue',
                           icon: Icons.error_outline,
                           isSelected: _isAccurate == false,
-                          color: Colors.orange,
+                          color: warningAccentFor(
+                              isDark: themeNotifier.isDarkMode),
                           cardColor: widget.cardColor,
                           onTap: () {
                             setState(() {
@@ -1431,7 +1457,8 @@ class _DataFeedbackSheetState extends State<_DataFeedbackSheet> {
                       onPressed: _isSubmitting ? null : _submitFeedback,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).colorScheme.primary,
-                        foregroundColor: Colors.white,
+                        foregroundColor:
+                            onAccentFor(Theme.of(context).colorScheme.primary),
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -1496,7 +1523,10 @@ class _ChoiceButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: isSelected ? color : Colors.grey.withValues(alpha: 0.3),
+              color: isSelected
+                  ? color
+                  : (themeNotifier.isDarkMode ? Colors.white : Colors.black)
+                      .withValues(alpha: 0.3),
               width: isSelected ? 2 : 1,
             ),
           ),
@@ -1504,7 +1534,11 @@ class _ChoiceButton extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: isSelected ? color : Colors.grey,
+                color: isSelected
+                    ? color
+                    : (themeNotifier.isDarkMode
+                        ? Colors.white70
+                        : Colors.black54),
                 size: 28,
               ),
               const SizedBox(height: 8),
@@ -1513,7 +1547,11 @@ class _ChoiceButton extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 12,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                  color: isSelected ? color : Colors.grey,
+                  color: isSelected
+                      ? color
+                      : (themeNotifier.isDarkMode
+                          ? Colors.white70
+                          : Colors.black54),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -1555,7 +1593,10 @@ class _IssueChip extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: isSelected ? Theme.of(context).colorScheme.primary : Colors.grey.withValues(alpha: 0.3),
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : (themeNotifier.isDarkMode ? Colors.white : Colors.black)
+                      .withValues(alpha: 0.3),
             ),
           ),
           child: Row(
@@ -1564,7 +1605,9 @@ class _IssueChip extends StatelessWidget {
               Icon(
                 icon,
                 size: 16,
-                color: isSelected ? Colors.white : textColor,
+                color: isSelected
+                    ? onAccentFor(Theme.of(context).colorScheme.primary)
+                    : textColor,
               ),
               const SizedBox(width: 6),
               Text(
@@ -1572,7 +1615,9 @@ class _IssueChip extends StatelessWidget {
                 style: GoogleFonts.inter(
                   fontSize: 13,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                  color: isSelected ? Colors.white : textColor,
+                  color: isSelected
+                    ? onAccentFor(Theme.of(context).colorScheme.primary)
+                    : textColor,
                 ),
               ),
             ],

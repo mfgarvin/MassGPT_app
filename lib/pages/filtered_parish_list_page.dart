@@ -14,6 +14,8 @@ import '../main.dart'
         kBackgroundColorDark,
         kCardColor,
         kCardColorDark,
+        cardBorderFor,
+        onAccentFor,
         themeNotifier;
 import 'parish_detail_page.dart';
 import '../widgets/stained_glass_header.dart';
@@ -640,7 +642,7 @@ class _FilteredParishListPageState extends State<FilteredParishListPage> {
                     onPressed: () => Navigator.pop(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: widget.accentColor,
-                      foregroundColor: Colors.white,
+                      foregroundColor: onAccentFor(widget.accentColor),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -684,7 +686,7 @@ class _FilteredParishListPageState extends State<FilteredParishListPage> {
           style: GoogleFonts.inter(
             fontSize: 13,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
-            color: selected ? Colors.white : textColor,
+            color: selected ? onAccentFor(widget.accentColor) : textColor,
           ),
         ),
       ),
@@ -921,6 +923,7 @@ class _FilteredParishListPageState extends State<FilteredParishListPage> {
                       decoration: BoxDecoration(
                         color: cardColor,
                         borderRadius: BorderRadius.circular(16),
+                        border: cardBorderFor(isDark: isDark),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withValues(alpha: 0.06),
@@ -1084,6 +1087,7 @@ class _ParishCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: cardColor,
             borderRadius: BorderRadius.circular(16),
+            border: cardBorderFor(isDark: themeNotifier.isDarkMode),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.06),

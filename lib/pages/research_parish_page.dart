@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../models/parish.dart';
 import '../services/parish_service.dart';
-import '../main.dart' show kPrimaryColor, kBackgroundColor, kCardColor;
+import '../main.dart'
+    show kPrimaryColor, kBackgroundColor, kCardColor, kStatusWarning;
 import '../utils/parish_search.dart';
 import 'parish_detail_page.dart';
 
@@ -123,7 +124,7 @@ class _ResearchParishPageState extends State<ResearchParishPage> {
                       decoration: InputDecoration(
                         hintText: 'Search by name, city, or ZIP',
                         hintStyle: GoogleFonts.inter(
-                          color: Colors.grey,
+                          color: Colors.black54,
                           fontSize: 16,
                         ),
                         prefixIcon: const Icon(
@@ -132,7 +133,7 @@ class _ResearchParishPageState extends State<ResearchParishPage> {
                         ),
                         suffixIcon: _searchController.text.isNotEmpty
                             ? IconButton(
-                                icon: const Icon(Icons.clear, color: Colors.grey),
+                                icon: const Icon(Icons.clear, color: Colors.black54),
                                 onPressed: () {
                                   _searchController.clear();
                                   _updateSearchResults('');
@@ -224,12 +225,12 @@ class _ResearchParishPageState extends State<ResearchParishPage> {
           Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: Colors.orange.withValues(alpha: 0.1),
+              color: kStatusWarning.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: const Icon(
               Icons.search_off,
-              color: Colors.orange,
+              color: kStatusWarning,
               size: 48,
             ),
           ),

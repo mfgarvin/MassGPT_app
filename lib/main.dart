@@ -80,6 +80,21 @@ const Color kAccentGoldDeep = Color(0xFF8C5A14); // deep bronze-gold — text-sa
 const Color kAccentCandlelight = Color(0xFFD4A24A); // candlelight gold — dominant dark accent
 const Color kCardColor = Color(0xFFFFFCF4); // warm card surface (very subtle warm white)
 const Color kCardColorDark = Color(0xFF14100F); // warm-toned near-black card
+const Color kCardBorderDark = Color(0xFF423833); // hairline edge for cards on OLED black
+const Color kConfessionViolet = Color(0xFF5E3370); // penitential violet — background use
+const Color kConfessionVioletLight = Color(0xFFC0A0DC); // lifted violet — text/icon on black
+// Semantic hues. Material's stock swatches were authored against a white app
+// bar and hold up against neither ground here — `Colors.purple` is 3.0:1 on the
+// dark card, `Colors.orange` 2.1:1 on cream. Each of these deepens for
+// parchment and lifts for OLED black, the way the three accents do.
+const Color kBulletinRed = Color(0xFFA83232); // bulletin card, on cream
+const Color kBulletinRedLight = Color(0xFFE59A94); // …and on black
+const Color kStatusSuccess = Color(0xFF2E7D32);
+const Color kStatusSuccessLight = Color(0xFF86D194);
+const Color kStatusWarning = Color(0xFF9A5B00);
+const Color kStatusWarningLight = Color(0xFFF2A64F);
+const Color kStatusError = Color(0xFFA3271F);
+const Color kStatusErrorLight = Color(0xFFEF9A93);
 const Color kTextLight = Color(0xFF2A1B1B); // warm near-black text
 const Color kTextDark = Color(0xFFF4E9D8); // warm cream text on dark
 
@@ -94,6 +109,60 @@ Color primaryAccentFor({required bool isDark}) =>
 /// as a foreground color (label text, accent rules, kicker labels).
 Color goldTextAccentFor({required bool isDark}) =>
     isDark ? kAccentCandlelight : kAccentGoldDeep;
+
+/// The palette's violet, as a *foreground*. [kConfessionViolet] is a background
+/// colour — white text sits on it in the Today hero card's gradient — and at
+/// 2.2:1 on the dark scaffold it is an unlit smudge when used as ink. Mass and
+/// Adoration already lighten in dark mode via the two helpers above; this is
+/// the same move for the third accent, so the Confession tile and the whole
+/// Confession list adapt with them. The Upcoming Events card borrows it as a
+/// second decorative hue.
+Color violetAccentFor({required bool isDark}) =>
+    isDark ? kConfessionVioletLight : kConfessionViolet;
+
+/// Cards are `kCardColorDark` on a true-black scaffold — 1.1:1, no visible
+/// edge — and the drop shadow the light theme leans on is black on black. A
+/// hairline is what gives a dark-mode card its boundary; null in light mode,
+/// where the shadow already does the job.
+BoxBorder? cardBorderFor({required bool isDark}) =>
+    isDark ? Border.all(color: kCardBorderDark) : null;
+
+/// The bulletin card's red. Distinct from [kPrimaryColor] because
+/// [primaryAccentFor] turns the oxblood *gold* in dark mode, and the bulletin
+/// icon is meant to stay red.
+Color bulletinAccentFor({required bool isDark}) =>
+    isDark ? kBulletinRedLight : kBulletinRed;
+
+/// Success / warning / error, for status text and icons. Snackbars fill with
+/// these and take their ink from [onAccentFor], since the dark-mode variants
+/// are light enough that white would vanish on them.
+Color successAccentFor({required bool isDark}) =>
+    isDark ? kStatusSuccessLight : kStatusSuccess;
+Color warningAccentFor({required bool isDark}) =>
+    isDark ? kStatusWarningLight : kStatusWarning;
+Color errorAccentFor({required bool isDark}) =>
+    isDark ? kStatusErrorLight : kStatusError;
+
+/// Ink for a control *filled* with an accent. `Colors.white` was hard-coded at
+/// these spots, which was right while every accent was a dark one — but the
+/// dark theme's accents are light (candlelight gold, the lifted violet), and
+/// white on candlelight is 2.3:1. Deciding from the fill's own luminance keeps
+/// a filled chip or button legible in both themes and for all three accents.
+/// A snackbar's ink, given the helper that produced its fill. Snackbars default
+/// to the theme's own contrasting colour, which is wrong once the fill is one of
+/// ours — in dark mode these fills are light, so the default light ink vanishes.
+Color _snackInk(Color Function({required bool isDark}) accent) =>
+    onAccentFor(accent(isDark: themeNotifier.isDarkMode));
+
+Color onAccentFor(Color accent) =>
+    ThemeData.estimateBrightnessForColor(accent) == Brightness.dark
+        ? Colors.white
+        : kTextLight;
+
+/// [cardBorderFor] for a card whose surface is a `Material` rather than a
+/// `BoxDecoration` — Material takes a `shape`, not a `border`.
+BorderSide cardBorderSideFor({required bool isDark}) =>
+    isDark ? const BorderSide(color: kCardBorderDark) : BorderSide.none;
 
 /// What the user asked for, which is not the same as what's on screen:
 /// [system] resolves against the phone's own light/dark setting.
@@ -739,7 +808,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             ),
           ],
         ),
-        backgroundColor: Colors.orange[700],
+        backgroundColor: warningAccentFor(isDark: _isDark),
         duration: const Duration(seconds: 4),
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(16),
@@ -761,13 +830,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: Colors.orange.withValues(alpha: 0.1),
+                    color: warningAccentFor(isDark: _isDark)
+                        .withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.wifi_off,
                     size: 64,
-                    color: Colors.orange,
+                    color: warningAccentFor(isDark: _isDark),
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -1191,7 +1261,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                       };
                       final accent = switch (intent) {
                         HeroIntent.mass => primaryAccentFor(isDark: _isDark),
-                        HeroIntent.confession => const Color(0xFF5E3370),
+                        HeroIntent.confession => violetAccentFor(isDark: _isDark),
                         HeroIntent.adoration => goldTextAccentFor(isDark: _isDark),
                       };
                       _pushPage(FilteredParishListPage(
@@ -1315,6 +1385,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           decoration: BoxDecoration(
             color: _cardColor,
             borderRadius: BorderRadius.circular(16),
+            border: cardBorderFor(isDark: _isDark),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.08),
@@ -1366,6 +1437,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             decoration: BoxDecoration(
               color: _cardColor,
               borderRadius: BorderRadius.circular(16),
+              border: cardBorderFor(isDark: _isDark),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.08),
@@ -1457,6 +1529,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             decoration: BoxDecoration(
               color: _cardColor,
               borderRadius: BorderRadius.circular(16),
+              border: cardBorderFor(isDark: _isDark),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withValues(alpha: 0.08),
@@ -1496,7 +1569,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     // lays its icon out beside the label.
     final stacked = context.prefersStackedLayout;
     final massAccent = primaryAccentFor(isDark: _isDark);
-    const confessionAccent = Color(0xFF5E3370);
+    final confessionAccent = violetAccentFor(isDark: _isDark);
     final goldAccent = goldTextAccentFor(isDark: _isDark);
 
     final tiles = [
@@ -1822,6 +1895,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         decoration: BoxDecoration(
           color: _cardColor,
           borderRadius: BorderRadius.circular(16),
+          border: cardBorderFor(isDark: _isDark),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -1862,6 +1936,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         decoration: BoxDecoration(
           color: _cardColor,
           borderRadius: BorderRadius.circular(16),
+          border: cardBorderFor(isDark: _isDark),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -1934,6 +2009,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         decoration: BoxDecoration(
           color: _cardColor,
           borderRadius: BorderRadius.circular(16),
+          border: cardBorderFor(isDark: _isDark),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -2031,6 +2107,7 @@ class _QuickAccessButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: cardColor,
           borderRadius: BorderRadius.circular(16),
+          border: cardBorderFor(isDark: isDark),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -2124,6 +2201,7 @@ class _NearbyParishCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: cardColor,
           borderRadius: BorderRadius.circular(16),
+          border: cardBorderFor(isDark: themeNotifier.isDarkMode),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -2257,6 +2335,7 @@ class _HomeParishCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: cardColor,
           borderRadius: BorderRadius.circular(16),
+          border: cardBorderFor(isDark: themeNotifier.isDarkMode),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -2365,8 +2444,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
     if (_feedbackController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Please enter your feedback', style: GoogleFonts.inter()),
-          backgroundColor: Colors.red[400],
+          content: Text('Please enter your feedback',
+              style: GoogleFonts.inter(color: _snackInk(errorAccentFor))),
+          backgroundColor: errorAccentFor(isDark: themeNotifier.isDarkMode),
         ),
       );
       return;
@@ -2388,16 +2468,18 @@ class _FeedbackPageState extends State<FeedbackPage> {
     if (result.ok) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Feedback sent — thank you!', style: GoogleFonts.inter()),
-          backgroundColor: Colors.green[600],
+          content: Text('Feedback sent — thank you!',
+              style: GoogleFonts.inter(color: _snackInk(successAccentFor))),
+          backgroundColor: successAccentFor(isDark: themeNotifier.isDarkMode),
         ),
       );
       Navigator.of(context).pop();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(result.error ?? 'Could not send feedback', style: GoogleFonts.inter()),
-          backgroundColor: Colors.red[400],
+          content: Text(result.error ?? 'Could not send feedback',
+              style: GoogleFonts.inter(color: _snackInk(errorAccentFor))),
+          backgroundColor: errorAccentFor(isDark: themeNotifier.isDarkMode),
         ),
       );
     }
@@ -2476,6 +2558,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 decoration: BoxDecoration(
                   color: cardColor,
                   borderRadius: BorderRadius.circular(12),
+                  border: cardBorderFor(isDark: isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),
@@ -2512,6 +2595,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 decoration: BoxDecoration(
                   color: cardColor,
                   borderRadius: BorderRadius.circular(12),
+                  border: cardBorderFor(isDark: isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),
@@ -2688,6 +2772,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 decoration: BoxDecoration(
                   color: cardColor,
                   borderRadius: BorderRadius.circular(12),
+                  border: cardBorderFor(isDark: isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),
@@ -2817,8 +2902,11 @@ class _SettingsPageState extends State<SettingsPage> {
                 // the Container is left holding only the shadow.
                 child: Material(
                   color: cardColor,
-                  borderRadius: BorderRadius.circular(12),
                   clipBehavior: Clip.antiAlias,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    side: cardBorderSideFor(isDark: isDark),
+                  ),
                   child: Column(
                   children: [
                     ListTile(
@@ -2969,7 +3057,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     Icon(
                       Icons.star_border,
                       size: 64,
-                      color: Colors.grey[400],
+                      color: isDark ? Colors.white38 : Colors.black26,
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -3015,6 +3103,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       decoration: BoxDecoration(
                         color: cardColor,
                         borderRadius: BorderRadius.circular(16),
+                        border: cardBorderFor(isDark: isDark),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withValues(alpha: 0.06),
@@ -3226,6 +3315,7 @@ class _AboutPageState extends State<AboutPage> {
                 decoration: BoxDecoration(
                   color: cardColor,
                   borderRadius: BorderRadius.circular(16),
+                  border: cardBorderFor(isDark: isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),
@@ -3263,6 +3353,7 @@ class _AboutPageState extends State<AboutPage> {
                 decoration: BoxDecoration(
                   color: cardColor,
                   borderRadius: BorderRadius.circular(16),
+                  border: cardBorderFor(isDark: isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),
@@ -3315,6 +3406,7 @@ class _AboutPageState extends State<AboutPage> {
                 decoration: BoxDecoration(
                   color: cardColor,
                   borderRadius: BorderRadius.circular(16),
+                  border: cardBorderFor(isDark: isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.06),

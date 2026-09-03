@@ -20,6 +20,8 @@ import '../main.dart'
         kTextDark,
         kAccentGoldDeep,
         primaryAccentFor,
+        cardBorderFor,
+        warningAccentFor,
         themeNotifier;
 import '../widgets/stained_glass_header.dart';
 import '../widgets/zip_location_dialog.dart';
@@ -307,6 +309,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
                 decoration: BoxDecoration(
                   color: _cardColor,
                   shape: BoxShape.circle,
+                  border: cardBorderFor(isDark: _isDark),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withValues(alpha: 0.1),
@@ -442,6 +445,7 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
       decoration: BoxDecoration(
         color: _cardColor,
         borderRadius: BorderRadius.circular(24),
+        border: cardBorderFor(isDark: _isDark),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.12),
@@ -587,12 +591,13 @@ class _FindParishNearMePageState extends State<FindParishNearMePage>
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.orange.withValues(alpha: 0.1),
+                color: warningAccentFor(isDark: _isDark)
+                    .withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.location_off,
-                color: Colors.orange,
+                color: warningAccentFor(isDark: _isDark),
                 size: 48,
               ),
             ),
@@ -796,6 +801,7 @@ class _MapParishCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: cardColor,
             borderRadius: BorderRadius.circular(18),
+            border: cardBorderFor(isDark: isDark),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.18),
